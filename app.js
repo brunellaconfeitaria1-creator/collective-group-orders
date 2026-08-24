@@ -81,21 +81,30 @@ document.getElementById("finish").onclick=async()=>{
   try{
     // Atualização otimista simples. Para produção com muitos compradores simultâneos,
     // recomenda-se trocar por uma função SQL/RPC atômica no Supabase.
-    for(const p of products.filter(x=>cart[x.id]?.qty)){
-      const fresh=(await api(`products?id=eq.${p.id}&select=stock_available`))[0];
-      const qty=cart[p.id].qty, available=Number(fresh.stock_available);
-      if(qty>available) throw new Error(`Estoque insuficiente para ${p.name}. Restam ${available}.`);
-      await api(`products?id=eq.${p.id}`,{
-        method:"PATCH",
-        headers:{Prefer:"return=minimal"},
-        body:JSON.stringify({stock_available:available-qty})
-      });
-    }
-    status.className="status ok"; status.textContent="Pedido confirmado. O estoque foi atualizado.";
-    cart={}; renderCart(); await loadProducts();
-  }catch(e){
-    status.className="status error"; status.textContent="Não foi possível confirmar: "+e.message;
-  }finally{btn.disabled=false}
+    for (const p of products.filter(x => cart[x.id]?.qty)) {
+  const qty = cart[p.id].qty;
+
+  await api("rpc/decrement_stock", {
+    method: "POST",
+    body: JSON.stringify({
+      p_product_id: p.id,
+      p_quantity: qty
+    })
+  });
+}
+
+status.className="status ok";
+status.textContent="Pedido confirmado. O estoque foi atualizado.";
+cart={};
+renderCart();
+await loadProducts();
+
+}catch(e){
+  status.className="status error";
+  status.textContent=e.message;
+}finally{
+  btn.disabled=false;
+  }
 };
 
 loadProducts(); renderCart();
