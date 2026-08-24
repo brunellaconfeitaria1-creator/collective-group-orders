@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Collective Group Orders</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <h1>COLLECTIVE GROUP ORDERS</h1>
+    <p>Pedidos coletivos de forma simples</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="intro">
+    <span>Rateio</span>
+    <h2>Produtos disponíveis</h2>
+    <p>Escolha a quantidade desejada. O carrinho calcula o valor automaticamente.</p>
+    <div class="notice">Taxa de separação R$ 50,00 + envio para sua casa por pessoa.</div>
+  </section>
+
+  <section id="products" class="grid"></section>
+
+  <section class="cart">
+    <h2>Meu carrinho</h2>
+    <div id="cartItems"><p>Nenhum produto adicionado.</p></div>
+    <div class="totals">
+      <p>Produtos: <strong id="subtotal">R$ 0,00</strong></p>
+      <p>Taxa de separação: <strong>R$ 50,00</strong></p>
+      <p class="shipping">+ envio para sua casa</p>
+      <p class="grand">Total sem frete: <strong id="total">R$ 50,00</strong></p>
+    </div>
+    <button id="finish" disabled>Finalizar pedido</button>
+    <p id="status" class="status"></p>
+  </section>
+</main>
+<script src="app.js"></script>
+</body>
+</html>
