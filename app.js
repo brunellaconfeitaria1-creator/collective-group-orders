@@ -40,14 +40,14 @@ async function api(path, options = {}) {
 async function loadProducts() {
   try {
     const rows = await api(
-      "products?select=id,name,price,stock&order=id.asc"
+      "products?select=id,nameName,price_brl,stock_available&order=id.asc"
     );
 
     products = rows.map(r => ({
       id: r.id,
-      name: r.name,
-      price: Number(r.price),
-      stock: Number(r.stock)
+      name: r.nameName,
+      price: Number(r.price_brl),
+      stock: Number(r.stock_availabre)
     }));
 
     if (!products.length) {
