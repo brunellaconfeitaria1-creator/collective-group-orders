@@ -53,7 +53,7 @@ async function loadProducts() {
     if (!products.length) {
       throw new Error("Nenhum produto encontrado");
     }
-  } catch (e) {
+  } catch (e) {console.error("ERRO SUPABASE:", e);
     products = fallbackProducts;
 
     const status = document.getElementById("status");
