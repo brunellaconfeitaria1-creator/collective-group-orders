@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Criar cadastro</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<main class="wrap">
+  <section class="card">
+
+    <h2>Criar cadastro</h2>
+    <p>Crie seu acesso para fazer e acompanhar seus pedidos.</p>
+
+    <form id="cadastroForm">
+
+      <label>Nome completo</label>
+      <input id="nome" type="text" required>
+
+      <label>E-mail</label>
+      <input id="email" type="email" required>
+
+      <label>Senha</label>
+      <input id="senha" type="password" minlength="6" required>
+
+      <button type="submit">CRIAR CADASTRO</button>
+
+    </form>
+
+    <p id="mensagem"></p>
+
+    <p>
+      Já possui cadastro?
+      <a href="login.html">Entrar</a>
+    </p>
+
+  </section>
+</main>
+
+<script>
+const SUPABASE_URL = "https://mghspixakxqwozclqekp.supabase.co";
+const SUPABASE_ANON_KEY =" sb_publishable_2u7B7_ZvZuKc-e3UPxx3rg_5oEN83x5";
+
+document.getElementById("cadastroForm").addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const nome = document.getElementById("nome").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const senha = document.getElementById("senha").value;
+  const mensagem = document.getElementById("mensagem");
+
+  mensagem.textContent = "Criando cadastro...";
+
+  try {
+    const response = await fetch(
+      `${SUPABASE_URL}/auth/v1/signup`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "apikey": SUPABASE_ANON_KEY
+        },
+        body: JSON.stringify({
+          email: email,
+          password: senha,
+          data: {
+            nome: nome
+          }
+        })
+      }
+    );
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data.msg || data.message || "Não foi possível criar o cadastro.");
+    }
+
+    mensagem.textContent = "Cadastro criado! Agora você pode entrar.";
+    
+    setTimeout(() => {
+      window.location.href = "login.html";
+    }, 1500);
+
+  } catch (error) {
+    mensagem.textContent = error.message;
+  }
+});
+</script>
+
+</body>
+</html>
