@@ -245,8 +245,13 @@ if (finishButton) {
           freight: 0,
           total: subtotal + 50,
           status: "novo",
-user_id: localStorage.getItem("user_id")
-        })
+user_id: localStorage.getItem("user_id"),
+      items: rows.map(p => ({
+  product_id: p.id,
+  name: p.name,
+  quantity: cart[p.id].qty,
+  price: p.price
+}))  })
       });
 
       for (const p of rows) {
