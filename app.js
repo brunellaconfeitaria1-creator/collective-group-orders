@@ -244,7 +244,8 @@ if (finishButton) {
             (customerEmail ? ` - ${customerEmail}` : ""),
           freight: 0,
           total: subtotal + 50,
-          status: "novo"
+          status: "novo",
+user_id: localStorage.getItem("user_id")
         })
       });
 
