@@ -329,3 +329,41 @@ if (loginForm) {
     }
   });
 }
+async function loadMyOrders() {
+  const ordersList = document.getElementById("ordersList");
+  if (!ordersList) return;
+
+  const userId = localStorage.getItem("user_id");
+
+  if (!userId) {
+    window.location.href = "login.html";
+    return;
+  }
+
+  try {
+    const orders = await api(
+      `orders?user_id=eq.${userId}&select=*&order=created_at.desc`
+    );
+
+    if (!orders.length) {
+      ordersList.innerHTML = "<p>Você ainda não possui pedidos.</p>";
+      return;
+    }
+
+    ordersList.innerHTML = orders.map(order => `
+      <div class="card">
+        <h3>Pedido #${order.id}</h3>
+        <p><strong>Data:</strong> ${new Date(order.created_at).toLocaleString("pt-BR")}</p>
+        <p><strong>Total:</strong> ${fmt(order.total)}</p>
+        <p><strong>Status:</strong> ${order.status || "novo"}</p>
+      </div>
+    `).join("");
+
+  } catch (error) {
+    ordersList.innerHTML =
+      "<p>Não foi possível carregar seus pedidos.</p>";
+    console.error(error);
+  }
+}
+
+loadMyOrders();
