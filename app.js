@@ -280,3 +280,51 @@ if (finishButton) {
 
 loadProducts();
 renderCart();
+
+// LOGIN DO CLIENTE
+const loginForm = document.getElementById("loginForm");
+
+if (loginForm) {
+  loginForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value;
+    const message = document.getElementById("loginMessage");
+
+    message.textContent = "Entrando...";
+
+    try {
+      const response = await fetch(
+        `${SUPABASE_URL}/auth/v1/token?grant_type=password`,
+        {
+          method: "POST",
+          headers: {
+            apikey: SUPABASE_ANON_KEY,
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            email: email,
+            password: password
+          })
+        }
+      );
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error_description || data.msg || "E-mail ou senha inválidos");
+      }
+
+      localStorage.setItem("access_token", data.access_token);
+      localStorage.setItem("user_id", data.user.id);
+      localStorage.setItem("user_email", data.user.email);
+
+      message.textContent = "Login realizado com sucesso!";
+      window.location.href = "index.html";
+
+    } catch (error) {
+      message.textContent = "Erro: " + error.message;
+    }
+  });
+}
