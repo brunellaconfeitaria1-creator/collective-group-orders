@@ -1,5 +1,6 @@
-const SUPABASE_URL = "https://ygulvirkzwvdyl";
-const SUPABASE_ANON_KEY = "sb_publishable_2u";
+const SUPABASE_URL = "https://ygulvirkzwvdyfgqsbjj.supabase.co";
+;
+const SUPABASE_ANON_KEY = "sb_publishable_2u7B7_ZvZuKc-e3UPxx3rg_5oEN83x5";
 
 const fallbackProducts = [
   { id: 42, name: "RETATRUTIDA UTHER 60 MG", price: 238.19, stock: 0 },
