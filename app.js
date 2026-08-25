@@ -367,3 +367,44 @@ async function loadMyOrders() {
 }
 
 loadMyOrders();
+async function loadAdminOrders() {
+  const adminList = document.getElementById("adminOrdersList");
+  if (!adminList) return;
+
+  const ADMIN_EMAIL = "nuuna102@gmail.com";
+  const userEmail = localStorage.getItem("user_email");
+
+  if (!userEmail || userEmail.toLowerCase() !== ADMIN_EMAIL.toLowerCase()) {
+    alert("Acesso permitido somente para administradora.");
+    window.location.href = "index.html";
+    return;
+  }
+
+  try {
+    const orders = await api(
+      "orders?select=*&order=created_at.desc"
+    );
+
+    if (!orders.length) {
+      adminList.innerHTML = "<p>Nenhum pedido encontrado.</p>";
+      return;
+    }
+
+    adminList.innerHTML = orders.map(order => `
+      <div class="card">
+        <h3>Pedido #${order.id}</h3>
+        <p><strong>Cliente:</strong> ${order.customer_name || "-"}</p>
+        <p><strong>Telefone:</strong> ${order.customer_phone || "-"}</p>
+        <p><strong>Data:</strong> ${new Date(order.created_at).toLocaleString("pt-BR")}</p>
+        <p><strong>Total:</strong> ${fmt(order.total)}</p>
+        <p><strong>Status:</strong> ${order.status || "novo"}</p>
+      </div>
+    `).join("");
+
+  } catch (error) {
+    adminList.innerHTML = "<p>Não foi possível carregar os pedidos.</p>";
+    console.error(error);
+  }
+}
+
+loadAdminOrders();
