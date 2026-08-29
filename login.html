@@ -1,165 +1,191 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Login | Forever Collective</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<style>
-*{box-sizing:border-box}
+  <title>Login | Forever Collective</title>
 
-body{
-  margin:0;
-  min-height:100vh;
-  background:#03050a;
-  color:#fff;
-  font-family:Arial,sans-serif;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:20px;
-}
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-.login-box{
-  width:100%;
-  max-width:430px;
-  background:#070a11;
-  border:1px solid #252c3d;
-  border-radius:24px;
-  padding:32px 25px;
-  box-shadow:0 0 45px rgba(111,32,255,.18);
-}
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: #03050a;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
 
-.logo{
-  font-size:28px;
-  font-weight:800;
-  letter-spacing:2px;
-  margin-bottom:8px;
-}
+    .login-box {
+      width: 100%;
+      max-width: 430px;
+      background: #070a11;
+      border: 1px solid #252c3d;
+      border-radius: 24px;
+      padding: 32px 25px;
+      box-shadow: 0 0 45px rgba(111, 32, 255, .18);
+    }
 
-.logo span{
-  color:#8b35ff;
-}
+    .logo {
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      margin-bottom: 8px;
+    }
 
-.subtitle{
-  color:#aab0bf;
-  margin-bottom:28px;
-  font-size:16px;
-}
+    .logo span {
+      color: #8b35ff;
+    }
 
-label{
-  display:block;
-  margin:15px 0 7px;
-  color:#d9dce5;
-  font-weight:bold;
-}
+    .subtitle {
+      color: #aab0bf;
+      margin-bottom: 28px;
+      font-size: 16px;
+    }
 
-input{
-  width:100%;
-  padding:15px;
-  background:#0b1019;
-  color:white;
-  border:1px solid #293246;
-  border-radius:12px;
-  outline:none;
-  font-size:16px;
-}
+    label {
+      display: block;
+      margin: 15px 0 7px;
+      color: #d9dce5;
+      font-weight: bold;
+    }
 
-input:focus{
-  border-color:#7c32ff;
-}
+    input {
+      width: 100%;
+      padding: 15px;
+      background: #0b1019;
+      color: white;
+      border: 1px solid #293246;
+      border-radius: 12px;
+      outline: none;
+      font-size: 16px;
+    }
 
-button{
-  width:100%;
-  margin-top:22px;
-  padding:15px;
-  border:0;
-  border-radius:12px;
-  color:white;
-  font-size:17px;
-  font-weight:bold;
-  background:linear-gradient(90deg,#1676ff,#8c25f7);
-  cursor:pointer;
-}
+    input:focus {
+      border-color: #7c32ff;
+    }
 
-#loginMessage{
-  text-align:center;
-  margin-top:15px;
-  color:#ff6b6b;
-}
+    button {
+      width: 100%;
+      margin-top: 22px;
+      padding: 15px;
+      border: 0;
+      border-radius: 12px;
+      color: white;
+      font-size: 17px;
+      font-weight: bold;
+      background: linear-gradient(90deg, #1676ff, #8c25f7);
+      cursor: pointer;
+    }
 
-.register{
-  text-align:center;
-  margin-top:25px;
-  color:#aab0bf;
-}
+    #loginMessage {
+      text-align: center;
+      margin-top: 15px;
+      color: #ff6b6b;
+    }
 
-.register a{
-  color:#8b35ff;
-  font-weight:bold;
-  text-decoration:none;
-}
+    .forgot {
+      text-align: right;
+      margin-top: 10px;
+    }
 
-.back{
-  display:block;
-  text-align:center;
-  margin-top:20px;
-  color:#7f8798;
-  text-decoration:none;
-}
-</style>
+    .forgot a {
+      color: #53a7ff;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .register {
+      text-align: center;
+      margin-top: 25px;
+      color: #aab0bf;
+    }
+
+    .register a {
+      color: #8b35ff;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .back {
+      display: block;
+      text-align: center;
+      margin-top: 20px;
+      color: #7f8798;
+      text-decoration: none;
+    }
+  </style>
 </head>
 
 <body>
 
-<div class="login-box">
+  <div class="login-box">
 
-  <div class="logo">
-    🧬 FOREVER <span>COLLECTIVE</span>
+    <div class="logo">
+      🧬 FOREVER <span>COLLECTIVE</span>
+    </div>
+
+    <div class="subtitle">
+      Entre para acessar sua conta
+    </div>
+
+    <form id="loginForm">
+
+      <label for="email">E-mail</label>
+
+      <input
+        type="email"
+        id="email"
+        placeholder="Digite seu e-mail"
+        required
+      >
+
+      <label for="password">Senha</label>
+
+      <input
+        type="password"
+        id="password"
+        placeholder="Digite sua senha"
+        required
+      >
+
+      <div class="forgot">
+        <a href="recuperar-senha.html">
+          Esqueci minha senha
+        </a>
+      </div>
+
+      <button type="submit">
+        ENTRAR
+      </button>
+
+    </form>
+
+    <p id="loginMessage"></p>
+
+    <div class="register">
+      Ainda não tem cadastro?
+      <a href="cadastro.html">
+        Criar cadastro
+      </a>
+    </div>
+
+    <a class="back" href="index.html">
+      ← Voltar para o início
+    </a>
+
   </div>
 
-  <div class="subtitle">
-    Entre para acessar sua conta
-  </div>
-
-  <form id="loginForm">
-
-    <label for="email">E-mail</label>
-    <input
-      type="email"
-      id="email"
-      placeholder="Digite seu e-mail"
-      required
-    >
-
-    <label for="password">Senha</label>
-    <input
-      type="password"
-      id="password"
-      placeholder="Digite sua senha"
-      required
-    >
-
-    <button type="submit">
-      ENTRAR
-    </button>
-
-  </form>
-
-  <p id="loginMessage"></p>
-
-  <div class="register">
-    Ainda não tem cadastro?
-    <a href="cadastro.html">Criar cadastro</a>
-  </div>
-
-  <a class="back" href="index.html">
-    ← Voltar para o início
-  </a>
-
-</div>
-
-<script src="app.js"></script>
+  <script src="app.js?v=4"></script>
 
 </body>
 </html>
