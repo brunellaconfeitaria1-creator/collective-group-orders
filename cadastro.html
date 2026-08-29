@@ -1,156 +1,178 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Criar cadastro | Forever Collective</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<style>
-*{box-sizing:border-box}
+  <title>Criar cadastro | Forever Collective</title>
 
-body{
- margin:0;
- min-height:100vh;
- background:#03050a;
- color:#fff;
- font-family:Arial,sans-serif;
- display:flex;
- align-items:center;
- justify-content:center;
- padding:20px;
-}
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-.box{
- width:100%;
- max-width:430px;
- background:#070a11;
- border:1px solid #252c3d;
- border-radius:24px;
- padding:32px 25px;
- box-shadow:0 0 45px rgba(111,32,255,.18);
-}
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: #03050a;
+      color: #ffffff;
+      font-family: Arial, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
 
-.logo{
- font-size:28px;
- font-weight:800;
- letter-spacing:2px;
- margin-bottom:8px;
-}
+    .box {
+      width: 100%;
+      max-width: 430px;
+      background: #070a11;
+      border: 1px solid #252c3d;
+      border-radius: 24px;
+      padding: 32px 25px;
+      box-shadow: 0 0 45px rgba(111, 32, 255, 0.18);
+    }
 
-.logo span{color:#8b35ff}
+    .logo {
+      font-size: 27px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      margin-bottom: 8px;
+    }
 
-.subtitle{
- color:#aab0bf;
- margin-bottom:28px;
- font-size:16px;
-}
+    .logo span {
+      color: #8b35ff;
+    }
 
-label{
- display:block;
- margin:15px 0 7px;
- color:#d9dce5;
- font-weight:bold;
-}
+    .subtitle {
+      color: #aab0bf;
+      margin-bottom: 28px;
+      font-size: 16px;
+      line-height: 1.5;
+    }
 
-input{
- width:100%;
- padding:15px;
- background:#0b1019;
- color:white;
- border:1px solid #293246;
- border-radius:12px;
- outline:none;
- font-size:16px;
-}
+    label {
+      display: block;
+      margin: 15px 0 7px;
+      color: #d9dce5;
+      font-weight: bold;
+    }
 
-input:focus{border-color:#7c32ff}
+    input {
+      width: 100%;
+      padding: 15px;
+      background: #0b1019;
+      color: #ffffff;
+      border: 1px solid #30394d;
+      border-radius: 12px;
+      font-size: 16px;
+      outline: none;
+    }
 
-button{
- width:100%;
- margin-top:22px;
- padding:15px;
- border:0;
- border-radius:12px;
- color:white;
- font-size:17px;
- font-weight:bold;
- background:linear-gradient(90deg,#1676ff,#8c25f7);
- cursor:pointer;
-}
+    input:focus {
+      border-color: #1676ff;
+      box-shadow: 0 0 0 2px rgba(22, 118, 255, 0.15);
+    }
 
-#cadastroMessage{
- text-align:center;
- margin-top:15px;
-}
+    button {
+      width: 100%;
+      margin-top: 22px;
+      padding: 15px;
+      border: 0;
+      border-radius: 12px;
+      color: white;
+      font-size: 17px;
+      font-weight: bold;
+      background: linear-gradient(90deg, #1676ff, #8c25ff);
+      cursor: pointer;
+    }
 
-.login{
- text-align:center;
- margin-top:25px;
- color:#aab0bf;
-}
+    button:active {
+      transform: scale(0.99);
+    }
 
-.login a{
- color:#8b35ff;
- font-weight:bold;
- text-decoration:none;
-}
-</style>
+    #signupMessage {
+      text-align: center;
+      margin-top: 15px;
+      min-height: 20px;
+      font-size: 14px;
+    }
+
+    .login {
+      text-align: center;
+      margin-top: 25px;
+      color: #aab0bf;
+    }
+
+    .login a {
+      color: #8b35ff;
+      font-weight: bold;
+      text-decoration: none;
+    }
+  </style>
 </head>
 
 <body>
 
-<div class="box">
+  <div class="box">
 
- <div class="logo">
- 🧬 FOREVER <span>COLLECTIVE</span>
- </div>
+    <div class="logo">
+      🧬 FOREVER <span>COLLECTIVE</span>
+    </div>
 
- <div class="subtitle">
- Crie sua conta para fazer e acompanhar seus pedidos.
- </div>
+    <div class="subtitle">
+      Crie sua conta para fazer e acompanhar seus pedidos.
+    </div>
 
- <form id="cadastroForm">
+    <form id="signupForm">
 
-  <label for="nome">Nome completo</label>
-  <input
-   type="text"
-   id="nome"
-   placeholder="Digite seu nome"
-   required
-  >
+      <label for="signupName">Nome completo</label>
 
-  <label for="email">E-mail</label>
-  <input
-   type="email"
-   id="email"
-   placeholder="Digite seu e-mail"
-   required
-  >
+      <input
+        type="text"
+        id="signupName"
+        placeholder="Digite seu nome"
+        required
+      >
 
-  <label for="password">Senha</label>
-  <input
-   type="password"
-   id="password"
-   placeholder="Crie uma senha"
-   required
-  >
+      <label for="signupEmail">E-mail</label>
 
-  <button type="submit">
-   CRIAR CADASTRO
-  </button>
+      <input
+        type="email"
+        id="signupEmail"
+        placeholder="Digite seu e-mail"
+        required
+      >
 
- </form>
+      <label for="signupPassword">Senha</label>
 
- <p id="cadastroMessage"></p>
+      <input
+        type="password"
+        id="signupPassword"
+        placeholder="Crie uma senha"
+        minlength="6"
+        required
+      >
 
- <div class="login">
- Já possui cadastro?
- <a href="login.html">Entrar</a>
- </div>
+      <button type="submit">
+        CRIAR CADASTRO
+      </button>
 
-</div>
+    </form>
 
-<script src="app.js?v=2"></script>
+    <p id="signupMessage"></p>
+
+    <div class="login">
+      Já possui cadastro?
+      <a href="login.html">Entrar</a>
+    </div>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="app.js?v=2"></script>
 
 </body>
+
 </html>
