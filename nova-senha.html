@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Nova senha | Forever Collective</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: #03050a;
+      color: white;
+      font-family: Arial, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .box {
+      width: 100%;
+      max-width: 430px;
+      background: #070a11;
+      border: 1px solid #252c3d;
+      border-radius: 24px;
+      padding: 32px 25px;
+      box-shadow: 0 0 45px rgba(111,32,255,.18);
+    }
+
+    .logo {
+      font-size: 27px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      margin-bottom: 8px;
+    }
+
+    .logo span {
+      color: #8b35ff;
+    }
+
+    .subtitle {
+      color: #aab0bf;
+      line-height: 1.5;
+      margin-bottom: 25px;
+    }
+
+    label {
+      display: block;
+      margin: 15px 0 7px;
+      font-weight: bold;
+    }
+
+    input {
+      width: 100%;
+      padding: 15px;
+      background: #0b1019;
+      color: white;
+      border: 1px solid #30394d;
+      border-radius: 12px;
+      font-size: 16px;
+      outline: none;
+    }
+
+    input:focus {
+      border-color: #7c32ff;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 22px;
+      padding: 15px;
+      border: 0;
+      border-radius: 12px;
+      color: white;
+      font-size: 17px;
+      font-weight: bold;
+      background: linear-gradient(90deg,#1676ff,#8c25f7);
+      cursor: pointer;
+    }
+
+    button:disabled {
+      opacity: .5;
+      cursor: not-allowed;
+    }
+
+    #message {
+      text-align: center;
+      margin-top: 18px;
+      line-height: 1.5;
+      min-height: 22px;
+    }
+
+    .back {
+      display: block;
+      text-align: center;
+      margin-top: 22px;
+      color: #8b35ff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="box">
+
+    <div class="logo">
+      🧬 FOREVER <span>COLLECTIVE</span>
+    </div>
+
+    <div class="subtitle">
+      Digite sua nova senha.
+    </div>
+
+    <form id="passwordForm">
+
+      <label for="password">
+        Nova senha
+      </label>
+
+      <input
+        type="password"
+        id="password"
+        placeholder="Digite a nova senha"
+        minlength="6"
+        required
+      >
+
+      <label for="confirmPassword">
+        Confirmar nova senha
+      </label>
+
+      <input
+        type="password"
+        id="confirmPassword"
+        placeholder="Digite novamente"
+        minlength="6"
+        required
+      >
+
+      <button
+        type="submit"
+        id="saveButton"
+      >
+        SALVAR NOVA SENHA
+      </button>
+
+    </form>
+
+    <p id="message"></p>
+
+    <a class="back" href="login.html">
+      ← Voltar para o login
+    </a>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <script>
+
+    const SUPABASE_URL =
+      "https://ygulvirkzwvdyfgqsbjj.supabase.co";
+
+    const SUPABASE_KEY =
+      "sb_publishable_2u7B7_ZvZuKc-e3UPxx3rg_5oEN83x5";
+
+    const client =
+      supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
+      );
+
+    const form =
+      document.getElementById("passwordForm");
+
+    const message =
+      document.getElementById("message");
+
+    const saveButton =
+      document.getElementById("saveButton");
+
+
+    client.auth.onAuthStateChange(
+      function(event, session) {
+
+        if (
+          event === "PASSWORD_RECOVERY" ||
+          session
+        ) {
+          message.style.color = "#54e39e";
+          message.textContent =
+            "Link confirmado. Digite sua nova senha.";
+        }
+
+      }
+    );
+
+
+    form.addEventListener(
+      "submit",
+      async function(e) {
+
+        e.preventDefault();
+
+        const password =
+          document.getElementById("password").value;
+
+        const confirmPassword =
+          document.getElementById("confirmPassword").value;
+
+
+        if (password.length < 6) {
+
+          message.style.color = "#ff6b6b";
+
+          message.textContent =
+            "A senha precisa ter pelo menos 6 caracteres.";
+
+          return;
+        }
+
+
+        if (password !== confirmPassword) {
+
+          message.style.color = "#ff6b6b";
+
+          message.textContent =
+            "As duas senhas não são iguais.";
+
+          return;
+        }
+
+
+        saveButton.disabled = true;
+
+        message.style.color = "#aab0bf";
+
+        message.textContent =
+          "Salvando nova senha...";
+
+
+        const { data, error } =
+          await client.auth.updateUser({
+            password: password
+          });
+
+
+        if (error) {
+
+          saveButton.disabled = false;
+
+          message.style.color = "#ff6b6b";
+
+          message.textContent =
+            "Erro: " + error.message;
+
+          return;
+        }
+
+
+        message.style.color = "#54e39e";
+
+        message.textContent =
+          "Senha alterada com sucesso! Você será levada para o login.";
+
+
+        setTimeout(
+          function() {
+            window.location.href =
+              "login.html";
+          },
+          2000
+        );
+
+      }
+    );
+
+  </script>
+
+</body>
+</html>
