@@ -1,42 +1,892 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head><script>
-  const adminEmail = "nuuna102@gmail.com";
-  const loggedEmail = localStorage.getItem("user_email");
 
-  if (loggedEmail !== adminEmail) {
-    window.location.href = "index.html";
-  }
-</script>
+<head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin | Collective Group Orders</title>
-  <link rel="stylesheet" href="style.css">
+
+  <title>Painel Administrativo | Forever Collective</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: #03050a;
+      color: #f7f7fb;
+      font-family: Arial, sans-serif;
+    }
+
+    .wrap {
+      max-width: 1100px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    .top {
+      background: #070a11;
+      border: 1px solid #202637;
+      border-radius: 18px;
+      padding: 22px;
+      margin-bottom: 20px;
+    }
+
+    .logo {
+      font-weight: 800;
+      letter-spacing: 2px;
+      font-size: 22px;
+    }
+
+    .logo span {
+      color: #8b35ff;
+    }
+
+    .top h1 {
+      margin: 18px 0 7px;
+      font-size: 30px;
+    }
+
+    .top p {
+      color: #aab0bf;
+      margin: 0;
+    }
+
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 12px;
+      margin-bottom: 22px;
+    }
+
+    .summary-card {
+      background: #080b12;
+      border: 1px solid #202637;
+      border-radius: 15px;
+      padding: 18px;
+    }
+
+    .summary-card strong {
+      display: block;
+      font-size: 28px;
+      color: #9c55ff;
+      margin-bottom: 5px;
+    }
+
+    .summary-card span {
+      color: #aab0bf;
+    }
+
+    .customer {
+      background: #080b12;
+      border: 1px solid #292f40;
+      border-radius: 18px;
+      margin-bottom: 18px;
+      overflow: hidden;
+    }
+
+    .customer-header {
+      padding: 20px;
+      background:
+        linear-gradient(
+          120deg,
+          rgba(22,118,255,.12),
+          rgba(140,37,247,.12)
+        );
+      border-bottom: 1px solid #292f40;
+    }
+
+    .customer-header h2 {
+      margin: 0 0 12px;
+      font-size: 23px;
+      color: white;
+    }
+
+    .customer-info {
+      display: grid;
+      grid-template-columns: repeat(2,1fr);
+      gap: 8px 16px;
+      color: #c4c8d4;
+      font-size: 14px;
+    }
+
+    .customer-total {
+      margin-top: 15px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .tag {
+      background: #111725;
+      border: 1px solid #303a50;
+      border-radius: 20px;
+      padding: 7px 11px;
+      font-size: 13px;
+      color: #d8dcE7;
+    }
+
+    .orders {
+      padding: 14px;
+    }
+
+    .order {
+      border: 1px solid #242b3c;
+      border-radius: 14px;
+      margin-bottom: 12px;
+      background: #050810;
+      overflow: hidden;
+    }
+
+    .order:last-child {
+      margin-bottom: 0;
+    }
+
+    .order summary {
+      cursor: pointer;
+      list-style: none;
+      padding: 16px;
+    }
+
+    .order summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .order-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      align-items: center;
+    }
+
+    .order-number {
+      font-weight: bold;
+      font-size: 17px;
+    }
+
+    .order-total {
+      font-weight: bold;
+      color: #61b0ff;
+      font-size: 17px;
+    }
+
+    .order-date {
+      margin-top: 7px;
+      color: #8f96a8;
+      font-size: 13px;
+    }
+
+    .order-body {
+      padding: 0 16px 16px;
+      border-top: 1px solid #1d2330;
+    }
+
+    .order-body p {
+      margin: 12px 0;
+      color: #c5c9d4;
+    }
+
+    .items {
+      margin-top: 15px;
+    }
+
+    .items-title {
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    .item {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid #1c2230;
+      color: #c8ccd6;
+    }
+
+    .item:last-child {
+      border-bottom: 0;
+    }
+
+    .status {
+      display: inline-block;
+      padding: 5px 9px;
+      border-radius: 15px;
+      background: #161d2a;
+      border: 1px solid #30394d;
+    }
+
+    .loading,
+    .error,
+    .empty {
+      background: #080b12;
+      border: 1px solid #202637;
+      border-radius: 15px;
+      padding: 25px;
+      text-align: center;
+      color: #aab0bf;
+    }
+
+    .error {
+      color: #ff7676;
+    }
+
+    .back {
+      display: inline-block;
+      margin-top: 10px;
+      margin-bottom: 30px;
+      color: #8b55ff;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    @media(max-width:700px) {
+
+      .summary {
+        grid-template-columns: 1fr;
+      }
+
+      .customer-info {
+        grid-template-columns: 1fr;
+      }
+
+      .order-top {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 5px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
   <main class="wrap">
 
-    <section class="intro">
-      <span>Área administrativa</span>
-      <h2>Todos os pedidos</h2>
-      <p>Acompanhe aqui os pedidos de todos os clientes.</p>
-    </section>
+    <section class="top">
 
-    <section class="card">
-      <div id="adminOrdersList">
-        <p>Carregando pedidos...</p>
+      <div class="logo">
+        🧬 FOREVER <span>COLLECTIVE</span>
       </div>
+
+      <h1>Painel administrativo</h1>
+
+      <p>
+        Todos os pedidos organizados por cliente.
+      </p>
+
     </section>
 
-    <section class="card">
-      <a href="index.html">← Voltar para produtos</a>
+
+    <section class="summary">
+
+      <div class="summary-card">
+        <strong id="totalClients">0</strong>
+        <span>Clientes</span>
+      </div>
+
+      <div class="summary-card">
+        <strong id="totalOrders">0</strong>
+        <span>Pedidos</span>
+      </div>
+
+      <div class="summary-card">
+        <strong id="totalValue">R$ 0,00</strong>
+        <span>Valor total</span>
+      </div>
+
     </section>
+
+
+    <div id="adminOrdersList">
+
+      <div class="loading">
+        Carregando pedidos...
+      </div>
+
+    </div>
+
+
+    <a class="back" href="index.html">
+      ← Voltar para o início
+    </a>
 
   </main>
 
-  <script src="app.js"></script>
+
+  <script>
+
+    const SUPABASE_URL =
+      "https://ygulvirkzwvdyfgqsbjj.supabase.co";
+
+    const SUPABASE_KEY =
+      "sb_publishable_2u7B7_ZvZuKc-e3UPxx3rg_5oEN83x5";
+
+    const ADMIN_EMAIL =
+      "nuuna102@gmail.com";
+
+
+    function money(value) {
+
+      return Number(value || 0)
+        .toLocaleString(
+          "pt-BR",
+          {
+            style: "currency",
+            currency: "BRL"
+          }
+        );
+
+    }
+
+
+    function escapeHtml(value) {
+
+      return String(value ?? "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+
+    }
+
+
+    function formatDate(value) {
+
+      if (!value) return "-";
+
+      return new Date(value)
+        .toLocaleString("pt-BR");
+
+    }
+
+
+    async function verifyAdmin(token) {
+
+      const response =
+        await fetch(
+          SUPABASE_URL + "/auth/v1/user",
+          {
+            headers: {
+              apikey: SUPABASE_KEY,
+              Authorization:
+                "Bearer " + token
+            }
+          }
+        );
+
+
+      if (!response.ok) {
+
+        return false;
+
+      }
+
+
+      const user =
+        await response.json();
+
+
+      return (
+        user.email &&
+        user.email.toLowerCase() ===
+        ADMIN_EMAIL.toLowerCase()
+      );
+
+    }
+
+
+    async function getOrders(token) {
+
+      const response =
+        await fetch(
+          SUPABASE_URL +
+          "/rest/v1/orders?select=*&order=created_at.desc",
+          {
+            headers: {
+              apikey: SUPABASE_KEY,
+              Authorization:
+                "Bearer " + token
+            }
+          }
+        );
+
+
+      if (!response.ok) {
+
+        const text =
+          await response.text();
+
+        throw new Error(text);
+
+      }
+
+
+      return response.json();
+
+    }
+
+
+    function customerKey(order) {
+
+      if (order.user_id) {
+
+        return "USER:" + order.user_id;
+
+      }
+
+
+      if (order.customer_email) {
+
+        return "EMAIL:" +
+          order.customer_email
+          .trim()
+          .toLowerCase();
+
+      }
+
+
+      if (order.customer_phone) {
+
+        return "PHONE:" +
+          order.customer_phone
+          .replace(/\D/g, "");
+
+      }
+
+
+      return "NAME:" +
+        String(order.customer_name || "Sem nome")
+        .trim()
+        .toLowerCase();
+
+    }
+
+
+    function groupOrders(orders) {
+
+      const groups = {};
+
+
+      orders.forEach(function(order) {
+
+        const key =
+          customerKey(order);
+
+
+        if (!groups[key]) {
+
+          groups[key] = {
+            name:
+              order.customer_name ||
+              "Cliente sem nome",
+
+            phone:
+              order.customer_phone ||
+              "",
+
+            email:
+              order.customer_email ||
+              "",
+
+            orders: []
+          };
+
+        }
+
+
+        if (
+          !groups[key].phone &&
+          order.customer_phone
+        ) {
+
+          groups[key].phone =
+            order.customer_phone;
+
+        }
+
+
+        if (
+          !groups[key].email &&
+          order.customer_email
+        ) {
+
+          groups[key].email =
+            order.customer_email;
+
+        }
+
+
+        groups[key].orders.push(order);
+
+      });
+
+
+      return Object.values(groups)
+        .sort(function(a,b) {
+
+          return a.name.localeCompare(
+            b.name,
+            "pt-BR"
+          );
+
+        });
+
+    }
+
+
+    function renderItems(items) {
+
+      if (
+        !items ||
+        !Array.isArray(items) ||
+        items.length === 0
+      ) {
+
+        return `
+          <div class="items">
+            <div class="items-title">
+              Produtos
+            </div>
+
+            <p>
+              Itens não informados.
+            </p>
+          </div>
+        `;
+
+      }
+
+
+      return `
+        <div class="items">
+
+          <div class="items-title">
+            Produtos
+          </div>
+
+          ${items.map(function(item) {
+
+            const name =
+              item.name ||
+              item.product_name ||
+              "Produto";
+
+            const quantity =
+              Number(
+                item.quantity ||
+                item.qty ||
+                0
+              );
+
+            const price =
+              Number(
+                item.price ||
+                item.unit_price ||
+                0
+              );
+
+            return `
+              <div class="item">
+
+                <span>
+                  ${escapeHtml(name)}
+                </span>
+
+                <strong>
+                  ${quantity} un.
+                  ${price
+                    ? " • " + money(price)
+                    : ""
+                  }
+                </strong>
+
+              </div>
+            `;
+
+          }).join("")}
+
+        </div>
+      `;
+
+    }
+
+
+    function renderCustomers(groups) {
+
+      const container =
+        document.getElementById(
+          "adminOrdersList"
+        );
+
+
+      if (!groups.length) {
+
+        container.innerHTML =
+          `
+          <div class="empty">
+            Nenhum pedido encontrado.
+          </div>
+          `;
+
+        return;
+
+      }
+
+
+      container.innerHTML =
+        groups.map(
+          function(customer) {
+
+            const customerTotal =
+              customer.orders.reduce(
+                function(sum, order) {
+
+                  return sum +
+                    Number(order.total || 0);
+
+                },
+                0
+              );
+
+
+            return `
+              <section class="customer">
+
+                <div class="customer-header">
+
+                  <h2>
+                    ${escapeHtml(customer.name)}
+                  </h2>
+
+                  <div class="customer-info">
+
+                    <div>
+                      <strong>📱 Telefone:</strong>
+                      ${escapeHtml(
+                        customer.phone || "-"
+                      )}
+                    </div>
+
+                    <div>
+                      <strong>✉️ E-mail:</strong>
+                      ${escapeHtml(
+                        customer.email || "-"
+                      )}
+                    </div>
+
+                  </div>
+
+
+                  <div class="customer-total">
+
+                    <span class="tag">
+                      ${customer.orders.length}
+                      pedido(s)
+                    </span>
+
+                    <span class="tag">
+                      Total:
+                      ${money(customerTotal)}
+                    </span>
+
+                  </div>
+
+                </div>
+
+
+                <div class="orders">
+
+                  ${customer.orders.map(
+                    function(order) {
+
+                      return `
+                        <details class="order">
+
+                          <summary>
+
+                            <div class="order-top">
+
+                              <span class="order-number">
+                                Pedido #${escapeHtml(order.id)}
+                              </span>
+
+                              <span class="order-total">
+                                ${money(order.total)}
+                              </span>
+
+                            </div>
+
+                            <div class="order-date">
+                              ${formatDate(
+                                order.created_at
+                              )}
+                            </div>
+
+                          </summary>
+
+
+                          <div class="order-body">
+
+                            <p>
+                              <strong>Status:</strong>
+                              <span class="status">
+                                ${escapeHtml(
+                                  order.status ||
+                                  "novo"
+                                )}
+                              </span>
+                            </p>
+
+                            <p>
+                              <strong>CEP:</strong>
+                              ${escapeHtml(
+                                order.customer_cep ||
+                                "-"
+                              )}
+                            </p>
+
+                            <p>
+                              <strong>Endereço:</strong>
+                              ${escapeHtml(
+                                order.customer_address ||
+                                "-"
+                              )}
+                            </p>
+
+                            ${renderItems(
+                              order.items
+                            )}
+
+                          </div>
+
+                        </details>
+                      `;
+
+                    }
+                  ).join("")}
+
+                </div>
+
+              </section>
+            `;
+
+          }
+        ).join("");
+
+    }
+
+
+    async function loadAdmin() {
+
+      const container =
+        document.getElementById(
+          "adminOrdersList"
+        );
+
+
+      const token =
+        localStorage.getItem(
+          "access_token"
+        );
+
+
+      if (!token) {
+
+        window.location.href =
+          "login.html";
+
+        return;
+
+      }
+
+
+      try {
+
+        const allowed =
+          await verifyAdmin(token);
+
+
+        if (!allowed) {
+
+          alert(
+            "Acesso permitido somente para administradora."
+          );
+
+          window.location.href =
+            "index.html";
+
+          return;
+
+        }
+
+
+        const orders =
+          await getOrders(token);
+
+
+        const groups =
+          groupOrders(orders);
+
+
+        document.getElementById(
+          "totalClients"
+        ).textContent =
+          groups.length;
+
+
+        document.getElementById(
+          "totalOrders"
+        ).textContent =
+          orders.length;
+
+
+        const totalValue =
+          orders.reduce(
+            function(sum, order) {
+
+              return sum +
+                Number(order.total || 0);
+
+            },
+            0
+          );
+
+
+        document.getElementById(
+          "totalValue"
+        ).textContent =
+          money(totalValue);
+
+
+        renderCustomers(groups);
+
+
+      } catch(error) {
+
+        console.error(error);
+
+        container.innerHTML =
+          `
+          <div class="error">
+            Não foi possível carregar
+            os pedidos.
+            <br><br>
+            Saia e entre novamente
+            na conta administrativa.
+          </div>
+          `;
+
+      }
+
+    }
+
+
+    loadAdmin();
+
+  </script>
 
 </body>
-</html>
+  </html>
