@@ -1,20 +1,348 @@
-<!doctype html><html lang='pt-BR'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>Forever Collective</title><style>*{box-sizing:border-box}body{margin:0;background:#03050a;color:#f7f7fb;font-family:Inter,Arial,sans-serif}.wrap{max-width:1180px;margin:auto;padding:24px}.nav{display:flex;align-items:center;justify-content:space-between;border:1px solid #202637;border-radius:18px;padding:16px 20px;background:#070a11}.logo{font-weight:800;letter-spacing:2px}.logo b{color:#8b35ff}.links{display:flex;gap:24px;color:#bfc4d2;font-size:14px}.hero{margin-top:18px;border:1px solid #202637;border-radius:22px;padding:42px;background:radial-gradient(circle at 85% 30%,#38107a 0,#0a0b16 30%,#06080e 65%);min-height:300px;display:flex;justify-content:space-between;align-items:center}.hero h1{font-size:46px;margin:10px 0}.hero h1 span{color:#8b35ff}.badge{display:inline-block;border:1px solid #1678ff;border-radius:20px;padding:7px 12px;color:#53a7ff;font-size:12px}.vial{width:170px;height:220px;border:2px solid #7c32ff;border-radius:35px 35px 22px 22px;background:linear-gradient(#07132a,#5c12c8 45%,#090716);box-shadow:0 0 55px #6d20ff;display:grid;place-items:center;font-weight:800;letter-spacing:2px}.stats,.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px}.stat,.card{border:1px solid #202637;border-radius:16px;padding:20px;background:#080b12}.stat strong{font-size:28px;display:block}.section{margin-top:28px}.card .tag{display:inline-block;padding:5px 10px;border:1px solid #7d2cff;border-radius:16px;color:#d39bff;font-size:12px}.card h3{font-size:22px}.card p{color:#aab0bf;line-height:1.5;min-height:48px}.btn{border:0;border-radius:10px;padding:12px 16px;color:white;font-weight:700;background:linear-gradient(90deg,#1676ff,#8c25f7);cursor:pointer}.products{display:grid;grid-template-columns:1fr 1fr;gap:14px}.product{border:1px solid #202637;border-radius:16px;padding:20px;background:#080b12}.progress{height:8px;background:#171b27;border-radius:9px;overflow:hidden;margin:12px 0}.progress i{display:block;height:100%;background:linear-gradient(90deg,#7c22ff,#2376ff)}.footer{color:#6f7688;text-align:center;padding:30px}@media(max-width:760px){.links{display:none}.hero{padding:28px}.hero h1{font-size:34px}.vial{width:100px;height:150px}.stats,.cards,.products{grid-template-columns:1fr}.wrap{padding:12px}}</style></head><body><div class='wrap'><div class='nav'><div class='logo'>🧬 FOREVER <b>COLLECTIVE</b></div><div class='links'><span>Início</span><span>Catálogos</span><span>Como comprar</span><span>Meus pedidos</span></div><button class='btn' onclick="window.location.href='login.html'">Entrar</button></div><section class='hero'><div><span class='badge'>● SISTEMA ATIVO</span><h1>Bem-vinda, <span id="userGreeting">Cliente!</span></h1><p>Uma forma simples e organizada de acompanhar pedidos coletivos.</p></div><div class='vial'>UTHER<br>60MG</div></section><div class='stats'><div class='stat'><strong>2</strong>Catálogos ativos</div><div class='stat'><strong>2</strong>Produtos disponíveis</div><div class='stat'><strong>10</strong>Unidades por box</div></div><section class='section'><h2>Nossos catálogos</h2><div class='cards'><div class='card'><span class='tag'>UTHER</span><h3>UTHER</h3><p>Catálogo principal com acompanhamento de fechamento de boxes.</p><button class='btn'>Ver catálogo →</button></div><div class='card'><span class='tag'>PEDIDOS</span><h3>Meus pedidos</h3><p>Cada cliente acompanha apenas os próprios pedidos e reservas.</p><button class='btn' onclick="window.location.href='meus-pedidos.html'">Acessar →</button></div><div class='card'><span class='tag'>ADMIN</span><h3>Painel administrativo</h3><p>Área restrita para gerenciamento de clientes, produtos e pedidos.</p><<button class='btn' id='loginButton' onclick="window.location.href='login.html'">Entrar</button>.href='admin.html'">Administrar →</button></div></div></section><section class='section'><h2>Produtos</h2><div class='products'><div class='product'><h3>RETATRUTIDE 60MG</h3><p>Uther • Box com 10 unidades</p><b>Progresso do box: 7 / 10</b><div class='progress'><i style='width:70%'></i></div><button class='btn'>Reservar</button></div><div class='product'><h3>TIRZEPATIDE 60MG</h3><p>Uther • Box com 10 unidades</p><b>Progresso do box: 5 / 10</b><div class='progress'><i style='width:50%'></i></div><button class='btn'>Reservar</button></div></div></section><div class='footer'>FOREVER COLLECTIVE • Collective Ordering System</div></div><script>
-const userName = localStorage.getItem("user_name");
-if (userName) {
-  document.getElementById("userGreeting").textContent = userName + "!";
-}
-const loginButton = document.getElementById("loginButton");
-const loggedUser = localStorage.getItem("user_id");
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Forever Collective</title>
 
-if (loggedUser) {
-  loginButton.textContent = "Sair";
+  <style>
+    *{box-sizing:border-box}
 
-  loginButton.onclick = function () {
-    localStorage.removeItem("access_token");
-    localStorage.removeItem("user_id");
-    localStorage.removeItem("user_email");
-    localStorage.removeItem("user_name");
-    window.location.href = "index.html";
-  };
-}  
-</script></body></html>
+    body{
+      margin:0;
+      background:#03050a;
+      color:#f7f7fb;
+      font-family:Inter,Arial,sans-serif;
+    }
+
+    .wrap{
+      max-width:1180px;
+      margin:auto;
+      padding:24px;
+    }
+
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      border:1px solid #202637;
+      border-radius:18px;
+      padding:16px 20px;
+      background:#070a11;
+    }
+
+    .logo{
+      font-weight:800;
+      letter-spacing:2px;
+    }
+
+    .logo b{color:#8b35ff}
+
+    .links{
+      display:flex;
+      gap:24px;
+      color:#bfc4d2;
+      font-size:14px;
+    }
+
+    .hero{
+      margin-top:18px;
+      border:1px solid #202637;
+      border-radius:22px;
+      padding:42px;
+      background:radial-gradient(circle at 85% 30%,#38107a 0,#0a0b16 30%,#06080e 65%);
+      min-height:300px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+
+    .hero h1{
+      font-size:46px;
+      margin:10px 0;
+    }
+
+    .hero h1 span{color:#8b35ff}
+
+    .badge{
+      display:inline-block;
+      border:1px solid #1678ff;
+      border-radius:20px;
+      padding:7px 12px;
+      color:#53a7ff;
+      font-size:12px;
+    }
+
+    .vial{
+      width:170px;
+      height:220px;
+      border:2px solid #7c32ff;
+      border-radius:35px 35px 22px 22px;
+      background:linear-gradient(#07132a,#5c12c8 45%,#090716);
+      box-shadow:0 0 55px #6d20ff;
+      display:grid;
+      place-items:center;
+      font-weight:800;
+      letter-spacing:2px;
+    }
+
+    .stats,.cards{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:14px;
+      margin-top:18px;
+    }
+
+    .stat,.card{
+      border:1px solid #202637;
+      border-radius:16px;
+      padding:20px;
+      background:#080b12;
+    }
+
+    .stat strong{
+      font-size:28px;
+      display:block;
+    }
+
+    .section{margin-top:28px}
+
+    .card .tag{
+      display:inline-block;
+      padding:5px 10px;
+      border:1px solid #7d2cff;
+      border-radius:16px;
+      color:#d39bff;
+      font-size:12px;
+    }
+
+    .card h3{font-size:22px}
+
+    .card p{
+      color:#aab0bf;
+      line-height:1.5;
+      min-height:48px;
+    }
+
+    .btn{
+      border:0;
+      border-radius:10px;
+      padding:12px 16px;
+      color:white;
+      font-weight:700;
+      background:linear-gradient(90deg,#1676ff,#8c25f7);
+      cursor:pointer;
+    }
+
+    .products{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:14px;
+    }
+
+    .product{
+      border:1px solid #202637;
+      border-radius:16px;
+      padding:20px;
+      background:#080b12;
+    }
+
+    .progress{
+      height:8px;
+      background:#171b27;
+      border-radius:9px;
+      overflow:hidden;
+      margin:12px 0;
+    }
+
+    .progress i{
+      display:block;
+      height:100%;
+      background:linear-gradient(90deg,#7c22ff,#2376ff);
+    }
+
+    .footer{
+      color:#6f7688;
+      text-align:center;
+      padding:30px;
+    }
+
+    @media(max-width:760px){
+      .links{display:none}
+      .hero{padding:28px}
+      .hero h1{font-size:34px}
+      .vial{width:100px;height:150px}
+      .stats,.cards,.products{grid-template-columns:1fr}
+      .wrap{padding:12px}
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="wrap">
+
+  <div class="nav">
+    <div class="logo">🧬 FOREVER <b>COLLECTIVE</b></div>
+
+    <div class="links">
+      <span>Início</span>
+      <span>Catálogos</span>
+      <span>Como comprar</span>
+      <span>Meus pedidos</span>
+    </div>
+
+    <button
+      class="btn"
+      id="loginButton"
+      onclick="window.location.href='login.html'"
+    >
+      Entrar
+    </button>
+  </div>
+
+  <section class="hero">
+    <div>
+      <span class="badge">● SISTEMA ATIVO</span>
+
+      <h1>
+        Bem-vinda,
+        <span id="userGreeting">Cliente!</span>
+      </h1>
+
+      <p>
+        Uma forma simples e organizada de acompanhar pedidos coletivos.
+      </p>
+    </div>
+
+    <div class="vial">
+      UTHER<br>60MG
+    </div>
+  </section>
+
+  <div class="stats">
+    <div class="stat">
+      <strong>2</strong>
+      Catálogos ativos
+    </div>
+
+    <div class="stat">
+      <strong>2</strong>
+      Produtos disponíveis
+    </div>
+
+    <div class="stat">
+      <strong>10</strong>
+      Unidades por box
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>Nossos catálogos</h2>
+
+    <div class="cards">
+
+      <div class="card">
+        <span class="tag">UTHER</span>
+        <h3>UTHER</h3>
+        <p>
+          Catálogo principal com acompanhamento de fechamento de boxes.
+        </p>
+        <button class="btn">Ver catálogo →</button>
+      </div>
+
+      <div class="card">
+        <span class="tag">PEDIDOS</span>
+        <h3>Meus pedidos</h3>
+        <p>
+          Cada cliente acompanha apenas os próprios pedidos e reservas.
+        </p>
+        <button
+          class="btn"
+          onclick="window.location.href='meus-pedidos.html'"
+        >
+          Acessar →
+        </button>
+      </div>
+
+      <div class="card">
+        <span class="tag">ADMIN</span>
+        <h3>Painel administrativo</h3>
+        <p>
+          Área restrita para gerenciamento de clientes, produtos e pedidos.
+        </p>
+        <button
+          class="btn"
+          onclick="window.location.href='admin.html'"
+        >
+          Administrar →
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Produtos</h2>
+
+    <div class="products">
+
+      <div class="product">
+        <h3>RETATRUTIDE 60MG</h3>
+        <p>Uther • Box com 10 unidades</p>
+        <b>Progresso do box: 7 / 10</b>
+
+        <div class="progress">
+          <i style="width:70%"></i>
+        </div>
+
+        <button class="btn">Reservar</button>
+      </div>
+
+      <div class="product">
+        <h3>TIRZEPATIDE 60MG</h3>
+        <p>Uther • Box com 10 unidades</p>
+        <b>Progresso do box: 5 / 10</b>
+
+        <div class="progress">
+          <i style="width:50%"></i>
+        </div>
+
+        <button class="btn">Reservar</button>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="footer">
+    FOREVER COLLECTIVE • Collective Ordering System
+  </div>
+
+</div>
+
+<script>
+  const userName = localStorage.getItem("user_name");
+  const loggedUser = localStorage.getItem("user_id");
+  const loginButton = document.getElementById("loginButton");
+  const userGreeting = document.getElementById("userGreeting");
+
+  if (loggedUser && userName) {
+    userGreeting.textContent = userName + "!";
+  }
+
+  if (loggedUser) {
+    loginButton.textContent = "Sair";
+
+    loginButton.onclick = function () {
+      localStorage.removeItem("access_token");
+      localStorage.removeItem("user_id");
+      localStorage.removeItem("user_email");
+      localStorage.removeItem("user_name");
+
+      window.location.href = "index.html";
+    };
+  }
+</script>
+
+</body>
+</html>
