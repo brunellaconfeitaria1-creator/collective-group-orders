@@ -325,7 +325,7 @@ if (loginForm) {
       localStorage.setItem("access_token", data.access_token);
       localStorage.setItem("user_id", data.user.id);
       localStorage.setItem("user_email", data.user.email);
-
+localStorage.setItem("user_name", data.user.user_metadata?.nome || data.user.email.split("@")[0]);
       message.textContent = "Login realizado com sucesso!";
       window.location.href = "index.html";
 
