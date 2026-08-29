@@ -420,7 +420,7 @@ if (cadastroForm) {
   cadastroForm.addEventListener("submit", async function (e) {
     e.preventDefault();
 
-    const nome = document.getElementById("nome").value.trim();
+    const nome = document.getElementById("name").value.trim();
     const email = document.getElementById("email").value.trim();
     const password = document.getElementById("password").value;
     const message = document.getElementById("cadastroMessage");
