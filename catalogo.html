@@ -14,243 +14,395 @@
 
     body {
       margin: 0;
-      background: #03050a;
-      color: #f7f7fb;
+      background: #020613;
+      color: #f7f9ff;
       font-family: Arial, sans-serif;
     }
 
     .wrap {
-      width: min(100% - 24px, 980px);
+      width: min(100% - 22px, 850px);
       margin: auto;
-      padding: 20px 0 50px;
+      padding: 18px 0 50px;
     }
 
     .top {
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      gap: 15px;
-      background: #070a11;
-      border: 1px solid #202637;
-      border-radius: 18px;
+      align-items: center;
+      gap: 12px;
       padding: 18px;
-      margin-bottom: 20px;
-    }
-
-    .logo {
-      font-weight: 800;
-      letter-spacing: 2px;
-      font-size: 20px;
-    }
-
-    .logo span {
-      color: #8b35ff;
-    }
-
-    .back {
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-      padding: 10px 14px;
-      border-radius: 10px;
-      background: linear-gradient(90deg,#1676ff,#8c25f7);
-    }
-
-    .intro,
-    .cart,
-    .customer-form {
-      background: #080b12;
-      border: 1px solid #202637;
-      border-radius: 18px;
-      padding: 20px;
+      border: 1px solid #152b48;
+      background: #07101e;
+      border-radius: 22px;
       margin-bottom: 18px;
     }
 
-    .intro h1 {
-      margin: 10px 0;
-      font-size: 32px;
+    .logo {
+      font-size: 18px;
+      font-weight: 900;
+      letter-spacing: 1.5px;
     }
 
-    .intro p {
-      color: #aab0bf;
-      line-height: 1.5;
+    .logo span {
+      color: #7c45ff;
     }
 
-    .notice {
-      background: #101526;
-      border: 1px solid #393f5c;
+    .back {
+      border: 0;
+      color: white;
+      text-decoration: none;
+      font-weight: 800;
       border-radius: 12px;
-      padding: 14px;
-      margin-top: 15px;
-      color: #d9ddea;
-      font-weight: bold;
+      padding: 11px 15px;
+      background: linear-gradient(90deg,#16a8f7,#2868ff);
     }
 
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(2,1fr);
-      gap: 16px;
+    .intro {
+      border: 1px solid #12355c;
+      background: #07101e;
+      border-radius: 24px;
+      padding: 22px;
       margin-bottom: 20px;
     }
 
-    .card {
-      background: #080b12;
-      border: 1px solid #202637;
-      border-radius: 18px;
-      padding: 20px;
+    .intro h1 {
+      margin: 8px 0;
+      font-size: 30px;
+    }
+
+    .intro p {
+      color: #9da9bd;
+      line-height: 1.5;
+      margin-bottom: 0;
+    }
+
+    .product-card {
+      background: #091321;
+      border: 1px solid #1c3048;
+      border-radius: 26px;
+      padding: 22px;
+      margin-bottom: 20px;
+      box-shadow: 0 8px 30px rgba(0,0,0,.18);
+    }
+
+    .badges {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
     }
 
     .badge {
-      display: inline-block;
-      color: #d39bff;
-      border: 1px solid #7d2cff;
+      border: 1px solid #00a7e8;
+      color: #42c6ff;
       border-radius: 18px;
-      padding: 5px 10px;
+      padding: 6px 10px;
       font-size: 12px;
+      font-weight: 800;
     }
 
-    .card h3 {
-      font-size: 22px;
-      margin: 18px 0 8px;
+    .badge.green {
+      border-color: #159a57;
+      color: #45dc80;
     }
 
-    .price {
-      font-size: 28px;
-      font-weight: bold;
-      color: #61b0ff;
-      margin: 10px 0;
-    }
-
-    .stock {
-      color: #b8becc;
-      margin: 10px 0 18px;
-    }
-
-    .qty {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      margin-bottom: 16px;
-    }
-
-    .qty button {
-      width: 46px;
-      height: 46px;
-      border: 0;
-      border-radius: 12px;
-      color: white;
-      font-size: 23px;
-      background: #171d2b;
-    }
-
-    .qty span {
-      min-width: 30px;
-      text-align: center;
-      font-size: 18px;
-      font-weight: bold;
-    }
-
-    .add,
-    #finish {
-      width: 100%;
-      border: 0;
-      border-radius: 12px;
-      padding: 15px;
-      color: white;
-      font-size: 16px;
-      font-weight: bold;
-      background: linear-gradient(90deg,#1676ff,#8c25f7);
-      cursor: pointer;
-    }
-
-    .add:disabled,
-    #finish:disabled {
-      opacity: .45;
-    }
-
-    .cart h2,
-    .customer-form h2 {
-      margin-top: 0;
-    }
-
-    .cart-row {
+    .product-title-row {
       display: flex;
       justify-content: space-between;
       gap: 15px;
-      padding: 12px 0;
-      border-bottom: 1px solid #202637;
+      align-items: center;
+      margin-bottom: 22px;
+    }
+
+    .product-title {
+      font-size: 24px;
+      font-weight: 900;
+      margin: 0;
+    }
+
+    .price {
+      color: #45bfff;
+      font-size: 24px;
+      font-weight: 900;
+      border: 1px solid #263b54;
+      padding: 10px 13px;
+      border-radius: 16px;
+      white-space: nowrap;
+    }
+
+    .numbers {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 22px;
+    }
+
+    .number-box {
+      border: 1px solid #20334a;
+      background: #07101e;
+      border-radius: 18px;
+      padding: 15px;
+    }
+
+    .number-label {
+      display: block;
+      color: #8593a9;
+      font-size: 13px;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+    }
+
+    .number-value {
+      font-size: 25px;
+      font-weight: 900;
+    }
+
+    .progress-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      color: #9eaabd;
+      margin-bottom: 10px;
+      font-size: 15px;
+    }
+
+    .progress-header strong {
+      color: white;
+    }
+
+    .progress {
+      height: 10px;
+      background: #07101e;
+      border: 1px solid #1c3048;
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    .progress-bar {
+      height: 100%;
+      border-radius: 20px;
+      background: linear-gradient(90deg,#13b1f7,#2868ff);
+      width: 0%;
+    }
+
+    .progress-text {
+      margin: 10px 0 20px;
+      color: #8997ad;
+      font-size: 14px;
+    }
+
+    .progress-text strong {
+      color: #f4a51c;
+    }
+
+    .mode-selector {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border: 1px solid #20334a;
+      border-radius: 18px;
+      padding: 6px;
+      gap: 5px;
+      margin-bottom: 15px;
+      background: #07101e;
+    }
+
+    .mode-button {
+      padding: 13px 8px;
+      border: 0;
+      border-radius: 14px;
+      background: transparent;
+      color: #8d9ab0;
+      font-size: 16px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .mode-button.active {
+      color: white;
+      background: linear-gradient(90deg,#14b5f4,#2868ff);
+    }
+
+    .reserve-row {
+      display: grid;
+      grid-template-columns: 115px 1fr;
+      gap: 12px;
+    }
+
+    .quantity {
+      width: 100%;
+      border: 1px solid #20334a;
+      background: #07101e;
+      color: white;
+      border-radius: 18px;
+      text-align: center;
+      font-size: 20px;
+      font-weight: 800;
+      padding: 15px 5px;
+    }
+
+    .reserve-button {
+      border: 0;
+      border-radius: 18px;
+      padding: 15px;
+      background: linear-gradient(90deg,#13b4f4,#2868ff);
+      color: white;
+      font-size: 17px;
+      font-weight: 900;
+      cursor: pointer;
+    }
+
+    .reserve-button:disabled {
+      opacity: .45;
+    }
+
+    .cart {
+      background: #091321;
+      border: 1px solid #1c3048;
+      border-radius: 26px;
+      padding: 22px;
+      margin-top: 28px;
+    }
+
+    .cart h2 {
+      margin-top: 0;
+    }
+
+    .cart-empty {
+      color: #8794aa;
+    }
+
+    .cart-item {
+      padding: 13px 0;
+      border-bottom: 1px solid #1b2e44;
+    }
+
+    .cart-item-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      font-weight: 800;
+    }
+
+    .cart-item small {
+      display: block;
+      color: #8895aa;
+      margin-top: 5px;
+    }
+
+    .remove {
+      border: 0;
+      background: transparent;
+      color: #ff7474;
+      font-weight: 800;
+      margin-top: 8px;
+      padding: 0;
     }
 
     .totals {
       margin-top: 18px;
     }
 
-    .totals p {
+    .total-row {
       display: flex;
       justify-content: space-between;
-      gap: 15px;
+      gap: 10px;
+      margin: 9px 0;
     }
 
-    .grand {
-      font-size: 20px;
-      font-weight: bold;
-      color: #61b0ff;
+    .grand-total {
+      color: #45bfff;
+      font-size: 21px;
+      font-weight: 900;
     }
 
-    .customer-form label {
+    .customer {
+      margin-top: 20px;
+      background: #091321;
+      border: 1px solid #1c3048;
+      border-radius: 26px;
+      padding: 22px;
+    }
+
+    .customer h2 {
+      margin-top: 0;
+    }
+
+    label {
       display: block;
+      font-weight: 700;
       margin: 14px 0 6px;
-      font-weight: bold;
     }
 
-    .customer-form input {
+    input.customer-input {
       width: 100%;
       padding: 14px;
-      background: #0b1019;
+      border: 1px solid #233a54;
+      border-radius: 12px;
+      background: #07101e;
       color: white;
-      border: 1px solid #30394d;
-      border-radius: 10px;
       font-size: 16px;
       outline: none;
     }
 
-    .customer-form input:focus {
-      border-color: #7c32ff;
-    }
-
-    .row {
+    .two {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
+      grid-template-columns: 1fr 110px;
+      gap: 10px;
     }
 
-    #status {
+    .confirm {
+      width: 100%;
+      border: 0;
+      border-radius: 15px;
+      padding: 16px;
+      margin-top: 22px;
+      color: white;
+      font-size: 17px;
+      font-weight: 900;
+      background: linear-gradient(90deg,#13b4f4,#2868ff);
+    }
+
+    .confirm:disabled {
+      opacity: .45;
+    }
+
+    #message {
       margin-top: 15px;
-      font-weight: bold;
-      line-height: 1.5;
+      font-weight: 700;
+      line-height: 1.4;
     }
 
-    .ok {
-      color: #54e39e;
+    .success {
+      color: #43d87d;
     }
 
     .error {
-      color: #ff7676;
+      color: #ff7373;
     }
 
-    @media(max-width:650px) {
+    @media(max-width:600px) {
+      .wrap {
+        width: calc(100% - 20px);
+      }
 
-      .grid,
-      .row {
+      .product-card {
+        padding: 18px;
+      }
+
+      .product-title {
+        font-size: 20px;
+      }
+
+      .price {
+        font-size: 20px;
+      }
+
+      .reserve-row {
+        grid-template-columns: 105px 1fr;
+      }
+
+      .two {
         grid-template-columns: 1fr;
-      }
-
-      .intro h1 {
-        font-size: 27px;
-      }
-
-      .top {
-        align-items: flex-start;
       }
     }
   </style>
@@ -260,8 +412,7 @@
 
   <main class="wrap">
 
-    <div class="top">
-
+    <header class="top">
       <div class="logo">
         🧬 FOREVER <span>COLLECTIVE</span>
       </div>
@@ -269,132 +420,118 @@
       <a class="back" href="index.html">
         ← Voltar
       </a>
-
-    </div>
-
+    </header>
 
     <section class="intro">
-
-      <span class="badge">
-        UTHER
-      </span>
-
-      <h1>Catálogo</h1>
+      <h1>Catálogo UTHER</h1>
 
       <p>
-        Escolha o produto e a quantidade que deseja reservar.
+        Escolha entre unidade ou caixa com 10 unidades
+        e adicione os produtos à sua reserva.
       </p>
-
-      <div class="notice">
-        Taxa de separação: R$ 50,00 + envio para sua casa.
-      </div>
-
     </section>
 
-
-    <div id="products" class="grid">
+    <div id="products">
       <p>Carregando produtos...</p>
     </div>
 
-
     <section class="cart">
 
-      <h2>Seu pedido</h2>
+      <h2>Sua reserva</h2>
 
       <div id="cartItems">
-        <p>Nenhum item adicionado.</p>
+        <p class="cart-empty">
+          Nenhum produto adicionado.
+        </p>
       </div>
 
       <div class="totals">
 
-        <p>
-          <span>Produtos:</span>
+        <div class="total-row">
+          <span>Produtos</span>
           <strong id="subtotal">
             R$ 0,00
           </strong>
-        </p>
+        </div>
 
-        <p>
-          <span>Taxa de separação:</span>
-          <strong>R$ 50,00</strong>
-        </p>
+        <div class="total-row">
+          <span>Taxa de separação</span>
+          <strong>
+            R$ 50,00
+          </strong>
+        </div>
 
-        <p class="grand">
-          <span>Total:</span>
+        <div class="total-row grand-total">
+          <span>Total</span>
           <strong id="total">
             R$ 50,00
           </strong>
-        </p>
+        </div>
 
       </div>
 
     </section>
 
+    <section class="customer">
 
-    <section class="customer-form">
-
-      <h2>Dados para o pedido</h2>
+      <h2>Dados do cliente</h2>
 
       <label for="customerName">
         Nome completo
       </label>
 
       <input
-        type="text"
+        class="customer-input"
         id="customerName"
-        placeholder="Seu nome completo"
+        type="text"
         required
       >
-
 
       <label for="customerPhone">
         Telefone / WhatsApp
       </label>
 
       <input
-        type="tel"
+        class="customer-input"
         id="customerPhone"
-        placeholder="(00) 00000-0000"
+        type="tel"
         required
       >
-
 
       <label for="customerEmail">
         E-mail
       </label>
 
       <input
-        type="email"
+        class="customer-input"
         id="customerEmail"
-        placeholder="seuemail@email.com"
+        type="email"
       >
-
 
       <label for="customerCep">
         CEP
       </label>
 
       <input
-        type="text"
+        class="customer-input"
         id="customerCep"
-        placeholder="00000-000"
+        type="text"
         required
       >
-
 
       <label for="customerAddress">
         Endereço
       </label>
 
       <input
-        type="text"
+        class="customer-input"
         id="customerAddress"
+        type="text"
         placeholder="Rua, número e complemento"
         required
       >
 
-
-      <div class="row">
+      <div class="two">
 
         <div>
           <label for="customerCity">
@@ -402,9 +539,9 @@
           </label>
 
           <input
-            type="text"
+            class="customer-input"
             id="customerCity"
-            placeholder="Cidade"
+            type="text"
             required
           >
         </div>
@@ -415,9 +552,9 @@
           </label>
 
           <input
-            type="text"
+            class="customer-input"
             id="customerState"
-            placeholder="MG"
+            type="text"
             maxlength="2"
             required
           >
@@ -425,16 +562,16 @@
 
       </div>
 
-
       <button
+        id="confirmButton"
+        class="confirm"
         type="button"
-        id="finish"
         disabled
       >
-        CONFIRMAR PEDIDO
+        CONFIRMAR RESERVA
       </button>
 
-      <div id="status"></div>
+      <div id="message"></div>
 
     </section>
 
@@ -442,40 +579,877 @@
 
 
   <script>
-    if (!localStorage.getItem("user_id")) {
-      window.location.href = "login.html";
-    }
 
-    const savedName =
-      localStorage.getItem("user_name") || "";
+    const SUPABASE_URL =
+      "https://ygulvirkzwvdyfgqsbjj.supabase.co";
+
+    const SUPABASE_KEY =
+      "sb_publishable_2u7B7_ZvZuKc-e3UPxx3rg_5oEN83x5";
+
+    const INITIAL_STOCK = 200;
+
+    const accessToken =
+      localStorage.getItem("access_token");
+
+    const userId =
+      localStorage.getItem("user_id");
 
     const savedEmail =
       localStorage.getItem("user_email") || "";
 
-    window.addEventListener(
-      "DOMContentLoaded",
-      function() {
+    const savedName =
+      localStorage.getItem("user_name") || "";
 
-        const name =
-          document.getElementById("customerName");
+    if (!accessToken || !userId) {
+      window.location.href = "login.html";
+    }
 
-        const email =
-          document.getElementById("customerEmail");
+    let products = [];
+    let cart = {};
 
-        if (name && savedName) {
-          name.value = savedName;
-        }
+    function money(value) {
 
-        if (email && savedEmail) {
-          email.value = savedEmail;
-        }
+      return Number(value || 0)
+        .toLocaleString(
+          "pt-BR",
+          {
+            style: "currency",
+            currency: "BRL"
+          }
+        );
+
+    }
+
+    async function api(path, options = {}) {
+
+      const response =
+        await fetch(
+          SUPABASE_URL + path,
+          {
+            ...options,
+
+            headers: {
+              apikey: SUPABASE_KEY,
+
+              Authorization:
+                "Bearer " + accessToken,
+
+              "Content-Type":
+                "application/json",
+
+              ...(options.headers || {})
+            }
+          }
+        );
+
+      if (response.status === 401) {
+
+        localStorage.clear();
+
+        window.location.href =
+          "login.html";
+
+        throw new Error(
+          "Sua sessão expirou."
+        );
 
       }
+
+      if (!response.ok) {
+
+        const text =
+          await response.text();
+
+        throw new Error(text);
+
+      }
+
+      if (response.status === 204) {
+        return null;
+      }
+
+      return response.json();
+
+    }
+
+    async function loadUserData() {
+
+      try {
+
+        const user =
+          await api("/auth/v1/user");
+
+        const metadata =
+          user.user_metadata || {};
+
+        document.getElementById(
+          "customerName"
+        ).value =
+          metadata.nome ||
+          savedName ||
+          "";
+
+        document.getElementById(
+          "customerPhone"
+        ).value =
+          metadata.telefone ||
+          "";
+
+        document.getElementById(
+          "customerEmail"
+        ).value =
+          user.email ||
+          savedEmail ||
+          "";
+
+      } catch(error) {
+
+        console.log(error);
+
+      }
+
+    }
+
+    async function loadProducts() {
+
+      try {
+
+        const rows =
+          await api(
+            "/rest/v1/products" +
+            "?select=id,nameName,price_brl,stock_available,box_size" +
+            "&id=in.(42,45)" +
+            "&order=id.asc"
+          );
+
+        products =
+          rows.map(function(row) {
+
+            const stock =
+              Number(
+                row.stock_available || 0
+              );
+
+            const reserved =
+              Math.max(
+                0,
+                INITIAL_STOCK - stock
+              );
+
+            return {
+              id: row.id,
+              name: row.nameName,
+              price:
+                Number(row.price_brl),
+              stock: stock,
+              boxSize:
+                Number(row.box_size || 10),
+              reserved: reserved,
+              mode: "unit"
+            };
+
+          });
+
+        renderProducts();
+
+      } catch(error) {
+
+        document.getElementById(
+          "products"
+        ).innerHTML =
+          "<p>Não foi possível carregar os produtos.</p>";
+
+        console.error(error);
+
+      }
+
+    }
+
+    function getMostReservedId() {
+
+      if (!products.length) {
+        return null;
+      }
+
+      const sorted =
+        [...products]
+        .sort(
+          (a,b) =>
+            b.reserved - a.reserved
+        );
+
+      return sorted[0].id;
+
+    }
+
+    function setMode(
+      productId,
+      mode
+    ) {
+
+      const product =
+        products.find(
+          p => p.id === productId
+        );
+
+      if (!product) return;
+
+      product.mode = mode;
+
+      renderProducts();
+
+    }
+
+    function renderProducts() {
+
+      const container =
+        document.getElementById(
+          "products"
+        );
+
+      const mostReserved =
+        getMostReservedId();
+
+      container.innerHTML = "";
+
+      products.forEach(
+        function(product) {
+
+          const boxSize =
+            product.boxSize || 10;
+
+          const fullBoxes =
+            Math.floor(
+              product.reserved /
+              boxSize
+            );
+
+          const currentLot =
+            product.reserved %
+            boxSize;
+
+          const missing =
+            currentLot === 0
+              ? boxSize
+              : boxSize - currentLot;
+
+          const progress =
+            Math.min(
+              100,
+              (currentLot / boxSize)
+              * 100
+            );
+
+          const card =
+            document.createElement(
+              "article"
+            );
+
+          card.className =
+            "product-card";
+
+          card.innerHTML = `
+
+            <div class="badges">
+
+              ${
+                fullBoxes > 0
+                ? `
+                <span class="badge">
+                  📦 LOTE FECHADO
+                </span>
+                `
+                : `
+                <span class="badge">
+                  📦 NOVO LOTE
+                </span>
+                `
+              }
+
+              ${
+                mostReserved ===
+                product.id &&
+                product.reserved > 0
+                ? `
+                <span class="badge green">
+                  🏆 MAIS RESERVADO
+                </span>
+                `
+                : ""
+              }
+
+            </div>
+
+
+            <div class="product-title-row">
+
+              <h2 class="product-title">
+                ${product.name}
+              </h2>
+
+              <div class="price">
+                ${money(product.price)}
+              </div>
+
+            </div>
+
+
+            <div class="numbers">
+
+              <div class="number-box">
+
+                <span class="number-label">
+                  Boxes
+                </span>
+
+                <strong class="number-value">
+                  ${fullBoxes}
+                </strong>
+
+              </div>
+
+
+              <div class="number-box">
+
+                <span class="number-label">
+                  Reservado
+                </span>
+
+                <strong class="number-value">
+                  ${product.reserved}u
+                </strong>
+
+              </div>
+
+            </div>
+
+
+            <div class="progress-header">
+
+              <span>
+                Próximo lote
+              </span>
+
+              <strong>
+                ${currentLot} / ${boxSize}
+                unidades
+              </strong>
+
+            </div>
+
+
+            <div class="progress">
+
+              <div
+                class="progress-bar"
+                style="
+                  width:${progress}%
+                "
+              ></div>
+
+            </div>
+
+
+            <div class="progress-text">
+
+              ${Math.round(progress)}%
+              preenchido
+              ·
+              <strong>
+                faltam ${missing}
+              </strong>
+
+            </div>
+
+
+            <div class="mode-selector">
+
+              <button
+                class="
+                  mode-button
+                  ${
+                    product.mode ===
+                    "unit"
+                    ? "active"
+                    : ""
+                  }
+                "
+                onclick="
+                  setMode(
+                    ${product.id},
+                    'unit'
+                  )
+                "
+              >
+                Unidade
+              </button>
+
+
+              <button
+                class="
+                  mode-button
+                  ${
+                    product.mode ===
+                    "box"
+                    ? "active"
+                    : ""
+                  }
+                "
+                onclick="
+                  setMode(
+                    ${product.id},
+                    'box'
+                  )
+                "
+              >
+                Caixa (x${boxSize})
+              </button>
+
+            </div>
+
+
+            <div class="reserve-row">
+
+              <input
+                type="number"
+                class="quantity"
+                id="qty-${product.id}"
+                value="1"
+                min="1"
+                max="999"
+              >
+
+              <button
+                class="reserve-button"
+                ${
+                  product.stock <= 0
+                  ? "disabled"
+                  : ""
+                }
+                onclick="
+                  addToCart(
+                    ${product.id}
+                  )
+                "
+              >
+                + Adicionar à Reserva
+              </button>
+
+            </div>
+
+          `;
+
+          container.appendChild(card);
+
+        }
+      );
+
+    }
+
+    function addToCart(productId) {
+
+      const product =
+        products.find(
+          p => p.id === productId
+        );
+
+      if (!product) return;
+
+      const input =
+        document.getElementById(
+          "qty-" + productId
+        );
+
+      let amount =
+        Math.max(
+          1,
+          Number(input.value || 1)
+        );
+
+      if (
+        product.mode === "box"
+      ) {
+
+        amount *=
+          product.boxSize;
+
+      }
+
+      const existing =
+        cart[productId]?.quantity ||
+        0;
+
+      const totalQuantity =
+        existing + amount;
+
+      if (
+        totalQuantity >
+        product.stock
+      ) {
+
+        alert(
+          "Quantidade maior que o estoque disponível."
+        );
+
+        return;
+
+      }
+
+      cart[productId] = {
+        product: product,
+        quantity: totalQuantity
+      };
+
+      renderCart();
+
+      document
+        .querySelector(".cart")
+        .scrollIntoView({
+          behavior: "smooth"
+        });
+
+    }
+
+    function removeFromCart(
+      productId
+    ) {
+
+      delete cart[productId];
+
+      renderCart();
+
+    }
+
+    function renderCart() {
+
+      const container =
+        document.getElementById(
+          "cartItems"
+        );
+
+      const items =
+        Object.values(cart);
+
+      if (!items.length) {
+
+        container.innerHTML =
+          `
+          <p class="cart-empty">
+            Nenhum produto adicionado.
+          </p>
+          `;
+
+      } else {
+
+        container.innerHTML =
+          items.map(
+            function(item) {
+
+              const subtotal =
+                item.product.price *
+                item.quantity;
+
+              return `
+                <div class="cart-item">
+
+                  <div class="cart-item-top">
+
+                    <span>
+                      ${item.product.name}
+                    </span>
+
+                    <strong>
+                      ${money(subtotal)}
+                    </strong>
+
+                  </div>
+
+                  <small>
+                    ${item.quantity}
+                    unidade(s)
+                    ×
+                    ${money(
+                      item.product.price
+                    )}
+                  </small>
+
+                  <button
+                    class="remove"
+                    onclick="
+                      removeFromCart(
+                        ${item.product.id}
+                      )
+                    "
+                  >
+                    Remover
+                  </button>
+
+                </div>
+              `;
+
+            }
+          ).join("");
+
+      }
+
+      const subtotal =
+        items.reduce(
+          function(sum,item) {
+
+            return (
+              sum +
+              item.product.price *
+              item.quantity
+            );
+
+          },
+          0
+        );
+
+      document.getElementById(
+        "subtotal"
+      ).textContent =
+        money(subtotal);
+
+      document.getElementById(
+        "total"
+      ).textContent =
+        money(
+          items.length
+          ? subtotal + 50
+          : 50
+        );
+
+      document.getElementById(
+        "confirmButton"
+      ).disabled =
+        items.length === 0;
+
+    }
+
+    async function confirmOrder() {
+
+      const button =
+        document.getElementById(
+          "confirmButton"
+        );
+
+      const message =
+        document.getElementById(
+          "message"
+        );
+
+      const name =
+        document.getElementById(
+          "customerName"
+        ).value.trim();
+
+      const phone =
+        document.getElementById(
+          "customerPhone"
+        ).value.trim();
+
+      const email =
+        document.getElementById(
+          "customerEmail"
+        ).value.trim();
+
+      const cep =
+        document.getElementById(
+          "customerCep"
+        ).value.trim();
+
+      const address =
+        document.getElementById(
+          "customerAddress"
+        ).value.trim();
+
+      const city =
+        document.getElementById(
+          "customerCity"
+        ).value.trim();
+
+      const state =
+        document.getElementById(
+          "customerState"
+        ).value.trim();
+
+      if (
+        !name ||
+        !phone ||
+        !cep ||
+        !address ||
+        !city ||
+        !state
+      ) {
+
+        message.className =
+          "error";
+
+        message.textContent =
+          "Preencha todos os campos obrigatórios.";
+
+        return;
+
+      }
+
+      const items =
+        Object.values(cart);
+
+      if (!items.length) {
+        return;
+      }
+
+      const subtotal =
+        items.reduce(
+          function(sum,item) {
+
+            return (
+              sum +
+              item.product.price *
+              item.quantity
+            );
+
+          },
+          0
+        );
+
+      button.disabled = true;
+
+      message.className = "";
+
+      message.textContent =
+        "Confirmando reserva...";
+
+      try {
+
+        const orderData = {
+          customer_name: name,
+          customer_phone: phone,
+          customer_email: email,
+          customer_cep: cep,
+
+          customer_address:
+            address +
+            " - " +
+            city +
+            "/" +
+            state,
+
+          freight: 0,
+
+          total:
+            subtotal + 50,
+
+          status:
+            "novo",
+
+          user_id:
+            userId,
+
+          items:
+            items.map(
+              function(item) {
+
+                return {
+                  product_id:
+                    item.product.id,
+
+                  name:
+                    item.product.name,
+
+                  quantity:
+                    item.quantity,
+
+                  price:
+                    item.product.price
+                };
+
+              }
+            )
+        };
+
+        await api(
+          "/rest/v1/orders",
+          {
+            method: "POST",
+
+            headers: {
+              Prefer:
+                "return=minimal"
+            },
+
+            body:
+              JSON.stringify(
+                orderData
+              )
+          }
+        );
+
+        for (
+          const item of items
+        ) {
+
+          await api(
+            "/rest/v1/rpc/decrement_stock",
+            {
+              method: "POST",
+
+              body:
+                JSON.stringify({
+                  p_product_id:
+                    item.product.id,
+
+                  p_quantity:
+                    item.quantity
+                })
+            }
+          );
+
+        }
+
+        message.className =
+          "success";
+
+        message.textContent =
+          "Reserva realizada com sucesso!";
+
+        cart = {};
+
+        renderCart();
+
+        await loadProducts();
+
+      } catch(error) {
+
+        console.error(error);
+
+        button.disabled = false;
+
+        message.className =
+          "error";
+
+        message.textContent =
+          "Não foi possível confirmar a reserva.";
+
+      }
+
+    }
+
+    document.getElementById(
+      "confirmButton"
+    ).addEventListener(
+      "click",
+      confirmOrder
     );
+
+    loadUserData();
+
+    loadProducts();
+
+    renderCart();
+
   </script>
 
-  <script src="app.js?v=5"></script>
-
 </body>
-
-  </html>
+</html>
