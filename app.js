@@ -413,3 +413,55 @@ async function loadAdminOrders() {
 }
 
 loadAdminOrders();
+// CADASTRO DO CLIENTE
+const cadastroForm = document.getElementById("cadastroForm");
+
+if (cadastroForm) {
+  cadastroForm.addEventListener("submit", async function (e) {
+    e.preventDefault();
+
+    const nome = document.getElementById("nome").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value;
+    const message = document.getElementById("cadastroMessage");
+
+    message.textContent = "Criando cadastro...";
+
+    try {
+      const response = await fetch(`${SUPABASE_URL}/auth/v1/signup`, {
+        method: "POST",
+        headers: {
+          "apikey": SUPABASE_ANON_KEY,
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          email: email,
+          password: password,
+          data: {
+            nome: nome
+          }
+        })
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(
+          data.msg ||
+          data.message ||
+          data.error_description ||
+          "Não foi possível criar o cadastro."
+        );
+      }
+
+      message.textContent = "Cadastro criado com sucesso!";
+
+      setTimeout(function () {
+        window.location.href = "login.html";
+      }, 1500);
+
+    } catch (error) {
+      message.textContent = "Erro: " + error.message;
+    }
+  });
+}
