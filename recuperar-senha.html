@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Recuperar senha | Forever Collective</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: #03050a;
+      color: white;
+      font-family: Arial, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .box {
+      width: 100%;
+      max-width: 430px;
+      background: #070a11;
+      border: 1px solid #252c3d;
+      border-radius: 24px;
+      padding: 32px 25px;
+      box-shadow: 0 0 45px rgba(111,32,255,.18);
+    }
+
+    .logo {
+      font-size: 27px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      margin-bottom: 8px;
+    }
+
+    .logo span {
+      color: #8b35ff;
+    }
+
+    .subtitle {
+      color: #aab0bf;
+      line-height: 1.5;
+      margin-bottom: 25px;
+    }
+
+    label {
+      display: block;
+      margin: 15px 0 7px;
+      font-weight: bold;
+    }
+
+    input {
+      width: 100%;
+      padding: 15px;
+      background: #0b1019;
+      color: white;
+      border: 1px solid #30394d;
+      border-radius: 12px;
+      font-size: 16px;
+      outline: none;
+    }
+
+    input:focus {
+      border-color: #7c32ff;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 22px;
+      padding: 15px;
+      border: 0;
+      border-radius: 12px;
+      color: white;
+      font-size: 17px;
+      font-weight: bold;
+      background: linear-gradient(90deg,#1676ff,#8c25f7);
+      cursor: pointer;
+    }
+
+    #message {
+      text-align: center;
+      margin-top: 18px;
+      line-height: 1.5;
+      min-height: 22px;
+    }
+
+    .back {
+      display: block;
+      text-align: center;
+      margin-top: 22px;
+      color: #8b35ff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="box">
+
+    <div class="logo">
+      🧬 FOREVER <span>COLLECTIVE</span>
+    </div>
+
+    <div class="subtitle">
+      Digite seu e-mail. Você receberá um link para criar uma nova senha.
+    </div>
+
+    <form id="resetForm">
+
+      <label for="email">E-mail</label>
+
+      <input
+        type="email"
+        id="email"
+        placeholder="Digite seu e-mail"
+        required
+      >
+
+      <button type="submit">
+        ENVIAR LINK
+      </button>
+
+    </form>
+
+    <p id="message"></p>
+
+    <a class="back" href="login.html">
+      ← Voltar para o login
+    </a>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <script>
+    const SUPABASE_URL =
+      "https://ygulvirkzwvdyfgqsbjj.supabase.co";
+
+    const SUPABASE_KEY =
+      "sb_publishable_2u7B7_ZvZuKc-e3UPxx3rg_5oEN83x5";
+
+    const client =
+      supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
+      );
+
+    const form =
+      document.getElementById("resetForm");
+
+    const message =
+      document.getElementById("message");
+
+    form.addEventListener(
+      "submit",
+      async function(e) {
+
+        e.preventDefault();
+
+        const email =
+          document.getElementById("email")
+          .value
+          .trim();
+
+        message.style.color = "#aab0bf";
+        message.textContent =
+          "Enviando link...";
+
+        const redirectUrl =
+          new URL(
+            "nova-senha.html",
+            window.location.href
+          ).href;
+
+        const { error } =
+          await client.auth
+          .resetPasswordForEmail(
+            email,
+            {
+              redirectTo: redirectUrl
+            }
+          );
+
+        if (error) {
+
+          message.style.color =
+            "#ff6b6b";
+
+          message.textContent =
+            "Erro: " + error.message;
+
+          return;
+        }
+
+        message.style.color =
+          "#54e39e";
+
+        message.textContent =
+          "Link enviado! Confira seu e-mail e também a caixa de spam.";
+
+      }
+    );
+  </script>
+
+</body>
+</html>
