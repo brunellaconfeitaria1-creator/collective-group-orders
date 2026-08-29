@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Catálogo | Forever Collective</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: #03050a;
+      color: #f7f7fb;
+      font-family: Arial, sans-serif;
+    }
+
+    .wrap {
+      width: min(100% - 24px, 980px);
+      margin: auto;
+      padding: 20px 0 50px;
+    }
+
+    .top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+      background: #070a11;
+      border: 1px solid #202637;
+      border-radius: 18px;
+      padding: 18px;
+      margin-bottom: 20px;
+    }
+
+    .logo {
+      font-weight: 800;
+      letter-spacing: 2px;
+      font-size: 20px;
+    }
+
+    .logo span {
+      color: #8b35ff;
+    }
+
+    .back {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 10px 14px;
+      border-radius: 10px;
+      background: linear-gradient(90deg,#1676ff,#8c25f7);
+    }
+
+    .intro,
+    .cart,
+    .customer-form {
+      background: #080b12;
+      border: 1px solid #202637;
+      border-radius: 18px;
+      padding: 20px;
+      margin-bottom: 18px;
+    }
+
+    .intro h1 {
+      margin: 10px 0;
+      font-size: 32px;
+    }
+
+    .intro p {
+      color: #aab0bf;
+      line-height: 1.5;
+    }
+
+    .notice {
+      background: #101526;
+      border: 1px solid #393f5c;
+      border-radius: 12px;
+      padding: 14px;
+      margin-top: 15px;
+      color: #d9ddea;
+      font-weight: bold;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2,1fr);
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .card {
+      background: #080b12;
+      border: 1px solid #202637;
+      border-radius: 18px;
+      padding: 20px;
+    }
+
+    .badge {
+      display: inline-block;
+      color: #d39bff;
+      border: 1px solid #7d2cff;
+      border-radius: 18px;
+      padding: 5px 10px;
+      font-size: 12px;
+    }
+
+    .card h3 {
+      font-size: 22px;
+      margin: 18px 0 8px;
+    }
+
+    .price {
+      font-size: 28px;
+      font-weight: bold;
+      color: #61b0ff;
+      margin: 10px 0;
+    }
+
+    .stock {
+      color: #b8becc;
+      margin: 10px 0 18px;
+    }
+
+    .qty {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 16px;
+    }
+
+    .qty button {
+      width: 46px;
+      height: 46px;
+      border: 0;
+      border-radius: 12px;
+      color: white;
+      font-size: 23px;
+      background: #171d2b;
+    }
+
+    .qty span {
+      min-width: 30px;
+      text-align: center;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .add,
+    #finish {
+      width: 100%;
+      border: 0;
+      border-radius: 12px;
+      padding: 15px;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      background: linear-gradient(90deg,#1676ff,#8c25f7);
+      cursor: pointer;
+    }
+
+    .add:disabled,
+    #finish:disabled {
+      opacity: .45;
+    }
+
+    .cart h2,
+    .customer-form h2 {
+      margin-top: 0;
+    }
+
+    .cart-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      padding: 12px 0;
+      border-bottom: 1px solid #202637;
+    }
+
+    .totals {
+      margin-top: 18px;
+    }
+
+    .totals p {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+    }
+
+    .grand {
+      font-size: 20px;
+      font-weight: bold;
+      color: #61b0ff;
+    }
+
+    .customer-form label {
+      display: block;
+      margin: 14px 0 6px;
+      font-weight: bold;
+    }
+
+    .customer-form input {
+      width: 100%;
+      padding: 14px;
+      background: #0b1019;
+      color: white;
+      border: 1px solid #30394d;
+      border-radius: 10px;
+      font-size: 16px;
+      outline: none;
+    }
+
+    .customer-form input:focus {
+      border-color: #7c32ff;
+    }
+
+    .row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    #status {
+      margin-top: 15px;
+      font-weight: bold;
+      line-height: 1.5;
+    }
+
+    .ok {
+      color: #54e39e;
+    }
+
+    .error {
+      color: #ff7676;
+    }
+
+    @media(max-width:650px) {
+
+      .grid,
+      .row {
+        grid-template-columns: 1fr;
+      }
+
+      .intro h1 {
+        font-size: 27px;
+      }
+
+      .top {
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="wrap">
+
+    <div class="top">
+
+      <div class="logo">
+        🧬 FOREVER <span>COLLECTIVE</span>
+      </div>
+
+      <a class="back" href="index.html">
+        ← Voltar
+      </a>
+
+    </div>
+
+
+    <section class="intro">
+
+      <span class="badge">
+        UTHER
+      </span>
+
+      <h1>Catálogo</h1>
+
+      <p>
+        Escolha o produto e a quantidade que deseja reservar.
+      </p>
+
+      <div class="notice">
+        Taxa de separação: R$ 50,00 + envio para sua casa.
+      </div>
+
+    </section>
+
+
+    <div id="products" class="grid">
+      <p>Carregando produtos...</p>
+    </div>
+
+
+    <section class="cart">
+
+      <h2>Seu pedido</h2>
+
+      <div id="cartItems">
+        <p>Nenhum item adicionado.</p>
+      </div>
+
+      <div class="totals">
+
+        <p>
+          <span>Produtos:</span>
+          <strong id="subtotal">
+            R$ 0,00
+          </strong>
+        </p>
+
+        <p>
+          <span>Taxa de separação:</span>
+          <strong>R$ 50,00</strong>
+        </p>
+
+        <p class="grand">
+          <span>Total:</span>
+          <strong id="total">
+            R$ 50,00
+          </strong>
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <section class="customer-form">
+
+      <h2>Dados para o pedido</h2>
+
+      <label for="customerName">
+        Nome completo
+      </label>
+
+      <input
+        type="text"
+        id="customerName"
+        placeholder="Seu nome completo"
+        required
+      >
+
+
+      <label for="customerPhone">
+        Telefone / WhatsApp
+      </label>
+
+      <input
+        type="tel"
+        id="customerPhone"
+        placeholder="(00) 00000-0000"
+        required
+      >
+
+
+      <label for="customerEmail">
+        E-mail
+      </label>
+
+      <input
+        type="email"
+        id="customerEmail"
+        placeholder="seuemail@email.com"
+      >
+
+
+      <label for="customerCep">
+        CEP
+      </label>
+
+      <input
+        type="text"
+        id="customerCep"
+        placeholder="00000-000"
+        required
+      >
+
+
+      <label for="customerAddress">
+        Endereço
+      </label>
+
+      <input
+        type="text"
+        id="customerAddress"
+        placeholder="Rua, número e complemento"
+        required
+      >
+
+
+      <div class="row">
+
+        <div>
+          <label for="customerCity">
+            Cidade
+          </label>
+
+          <input
+            type="text"
+            id="customerCity"
+            placeholder="Cidade"
+            required
+          >
+        </div>
+
+        <div>
+          <label for="customerState">
+            Estado
+          </label>
+
+          <input
+            type="text"
+            id="customerState"
+            placeholder="MG"
+            maxlength="2"
+            required
+          >
+        </div>
+
+      </div>
+
+
+      <button
+        type="button"
+        id="finish"
+        disabled
+      >
+        CONFIRMAR PEDIDO
+      </button>
+
+      <div id="status"></div>
+
+    </section>
+
+  </main>
+
+
+  <script>
+    if (!localStorage.getItem("user_id")) {
+      window.location.href = "login.html";
+    }
+
+    const savedName =
+      localStorage.getItem("user_name") || "";
+
+    const savedEmail =
+      localStorage.getItem("user_email") || "";
+
+    window.addEventListener(
+      "DOMContentLoaded",
+      function() {
+
+        const name =
+          document.getElementById("customerName");
+
+        const email =
+          document.getElementById("customerEmail");
+
+        if (name && savedName) {
+          name.value = savedName;
+        }
+
+        if (email && savedEmail) {
+          email.value = savedEmail;
+        }
+
+      }
+    );
+  </script>
+
+  <script src="app.js?v=5"></script>
+
+</body>
+
+  </html>
