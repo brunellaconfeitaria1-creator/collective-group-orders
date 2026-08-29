@@ -1,95 +1,156 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Criar cadastro</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Criar cadastro | Forever Collective</title>
+
+<style>
+*{box-sizing:border-box}
+
+body{
+ margin:0;
+ min-height:100vh;
+ background:#03050a;
+ color:#fff;
+ font-family:Arial,sans-serif;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ padding:20px;
+}
+
+.box{
+ width:100%;
+ max-width:430px;
+ background:#070a11;
+ border:1px solid #252c3d;
+ border-radius:24px;
+ padding:32px 25px;
+ box-shadow:0 0 45px rgba(111,32,255,.18);
+}
+
+.logo{
+ font-size:28px;
+ font-weight:800;
+ letter-spacing:2px;
+ margin-bottom:8px;
+}
+
+.logo span{color:#8b35ff}
+
+.subtitle{
+ color:#aab0bf;
+ margin-bottom:28px;
+ font-size:16px;
+}
+
+label{
+ display:block;
+ margin:15px 0 7px;
+ color:#d9dce5;
+ font-weight:bold;
+}
+
+input{
+ width:100%;
+ padding:15px;
+ background:#0b1019;
+ color:white;
+ border:1px solid #293246;
+ border-radius:12px;
+ outline:none;
+ font-size:16px;
+}
+
+input:focus{border-color:#7c32ff}
+
+button{
+ width:100%;
+ margin-top:22px;
+ padding:15px;
+ border:0;
+ border-radius:12px;
+ color:white;
+ font-size:17px;
+ font-weight:bold;
+ background:linear-gradient(90deg,#1676ff,#8c25f7);
+ cursor:pointer;
+}
+
+#cadastroMessage{
+ text-align:center;
+ margin-top:15px;
+}
+
+.login{
+ text-align:center;
+ margin-top:25px;
+ color:#aab0bf;
+}
+
+.login a{
+ color:#8b35ff;
+ font-weight:bold;
+ text-decoration:none;
+}
+</style>
 </head>
 
 <body>
 
-<main class="wrap">
-  <section class="card">
+<div class="box">
 
-    <h2>Criar cadastro</h2>
-    <p>Crie seu acesso para fazer e acompanhar seus pedidos.</p>
+ <div class="logo">
+ 🧬 FOREVER <span>COLLECTIVE</span>
+ </div>
 
-    <form id="cadastroForm">
+ <div class="subtitle">
+ Crie sua conta para fazer e acompanhar seus pedidos.
+ </div>
 
-      <label>Nome completo</label>
-      <input id="nome" type="text" required>
+ <form id="cadastroForm">
 
-      <label>E-mail</label>
-      <input id="email" type="email" required>
+  <label for="name">Nome completo</label>
+  <input
+   type="text"
+   id="name"
+   placeholder="Digite seu nome"
+   required
+  >
 
-      <label>Senha</label>
-      <input id="senha" type="password" minlength="6" required>
+  <label for="email">E-mail</label>
+  <input
+   type="email"
+   id="email"
+   placeholder="Digite seu e-mail"
+   required
+  >
 
-      <button type="submit">CRIAR CADASTRO</button>
+  <label for="password">Senha</label>
+  <input
+   type="password"
+   id="password"
+   placeholder="Crie uma senha"
+   required
+  >
 
-    </form>
+  <button type="submit">
+   CRIAR CADASTRO
+  </button>
 
-    <p id="mensagem"></p>
+ </form>
 
-    <p>
-      Já possui cadastro?
-      <a href="login.html">Entrar</a>
-    </p>
+ <p id="cadastroMessage"></p>
 
-  </section>
-</main>
+ <div class="login">
+ Já possui cadastro?
+ <a href="login.html">Entrar</a>
+ </div>
 
-<script>
-const SUPABASE_URL = "https://mghspixakxqwozclqekp.supabase.co";
-const SUPABASE_ANON_KEY =" sb_publishable_2u7B7_ZvZuKc-e3UPxx3rg_5oEN83x5";
+</div>
 
-document.getElementById("cadastroForm").addEventListener("submit", async (e) => {
-  e.preventDefault();
-
-  const nome = document.getElementById("nome").value.trim();
-  const email = document.getElementById("email").value.trim();
-  const senha = document.getElementById("senha").value;
-  const mensagem = document.getElementById("mensagem");
-
-  mensagem.textContent = "Criando cadastro...";
-
-  try {
-    const response = await fetch(
-      `${SUPABASE_URL}/auth/v1/signup`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "apikey": SUPABASE_ANON_KEY
-        },
-        body: JSON.stringify({
-          email: email,
-          password: senha,
-          data: {
-            nome: nome
-          }
-        })
-      }
-    );
-
-    const data = await response.json();
-
-    if (!response.ok) {
-      throw new Error(data.msg || data.message || "Não foi possível criar o cadastro.");
-    }
-
-    mensagem.textContent = "Cadastro criado! Agora você pode entrar.";
-    
-    setTimeout(() => {
-      window.location.href = "login.html";
-    }, 1500);
-
-  } catch (error) {
-    mensagem.textContent = error.message;
-  }
-});
-</script>
+<script src="app.js"></script>
 
 </body>
 </html>
