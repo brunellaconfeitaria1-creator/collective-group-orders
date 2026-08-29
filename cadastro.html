@@ -88,11 +88,11 @@
       cursor: pointer;
     }
 
-    button:active {
-      transform: scale(0.99);
+    button:disabled {
+      opacity: 0.6;
     }
 
-    #signupMessage {
+    #cadastroMessage {
       text-align: center;
       margin-top: 15px;
       min-height: 20px;
@@ -125,9 +125,9 @@
       Crie sua conta para fazer e acompanhar seus pedidos.
     </div>
 
-  <form id="cadastroForm">
+    <form id="cadastroForm">
 
-      <label for="signupName">Nome completo</label>
+      <label for="name">Nome completo</label>
 
       <input
         type="text"
@@ -136,7 +136,17 @@
         required
       >
 
-      <label for="signupEmail">E-mail</label>
+      <label for="phone">Telefone / WhatsApp</label>
+
+      <input
+        type="tel"
+        id="phone"
+        placeholder="Ex: (35) 99999-9999"
+        inputmode="tel"
+        required
+      >
+
+      <label for="email">E-mail</label>
 
       <input
         type="email"
@@ -145,7 +155,7 @@
         required
       >
 
-      <label for="signupPassword">Senha</label>
+      <label for="password">Senha</label>
 
       <input
         type="password"
@@ -155,7 +165,7 @@
         required
       >
 
-      <button type="submit">
+      <button type="submit" id="signupButton">
         CRIAR CADASTRO
       </button>
 
@@ -171,7 +181,124 @@
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="app.js?v=3"></script>
+
+  <script>
+    const SUPABASE_URL =
+      "https://ygulvirkzwvdyfgqsbjj.supabase.co";
+
+    const SUPABASE_KEY =
+      "sb_publishable_2u7B7_ZvZuKc-e3UPxx3rg_5oEN83x5";
+
+    const client =
+      supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
+      );
+
+    const form =
+      document.getElementById("cadastroForm");
+
+    const message =
+      document.getElementById("cadastroMessage");
+
+    const button =
+      document.getElementById("signupButton");
+
+
+    form.addEventListener(
+      "submit",
+      async function(e) {
+
+        e.preventDefault();
+
+        const nome =
+          document.getElementById("name")
+          .value.trim();
+
+        const telefone =
+          document.getElementById("phone")
+          .value.trim();
+
+        const email =
+          document.getElementById("email")
+          .value.trim();
+
+        const password =
+          document.getElementById("password")
+          .value;
+
+
+        const numerosTelefone =
+          telefone.replace(/\D/g, "");
+
+        if (numerosTelefone.length < 10) {
+
+          message.style.color = "#ff6b6b";
+
+          message.textContent =
+            "Digite um telefone válido.";
+
+          return;
+        }
+
+
+        button.disabled = true;
+
+        message.style.color = "#aab0bf";
+
+        message.textContent =
+          "Criando cadastro...";
+
+
+        const { data, error } =
+          await client.auth.signUp({
+
+            email: email,
+
+            password: password,
+
+            options: {
+              data: {
+                nome: nome,
+                telefone: telefone
+              }
+            }
+
+          });
+
+
+        if (error) {
+
+          button.disabled = false;
+
+          message.style.color = "#ff6b6b";
+
+          message.textContent =
+            "Erro: " + error.message;
+
+          return;
+        }
+
+
+        message.style.color = "#54e39e";
+
+        message.textContent =
+          "Cadastro criado com sucesso!";
+
+
+        setTimeout(
+          function() {
+
+            window.location.href =
+              "login.html";
+
+          },
+          1500
+        );
+
+      }
+    );
+  </script>
 
 </body>
 
