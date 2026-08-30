@@ -1,892 +1,2330 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Painel Administrativo | Forever Collective</title>
+<title>Painel Administrativo | Forever Collective</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+<style>
+*{box-sizing:border-box}
 
-    body {
-      margin: 0;
-      background: #03050a;
-      color: #f7f7fb;
-      font-family: Arial, sans-serif;
-    }
+body{
+  margin:0;
+  background:#020613;
+  color:#f7f9ff;
+  font-family:Arial,sans-serif
+}
 
-    .wrap {
-      max-width: 1100px;
-      margin: auto;
-      padding: 20px;
-    }
+.wrap{
+  width:min(100% - 22px,1100px);
+  margin:auto;
+  padding:18px 0 50px
+}
 
-    .top {
-      background: #070a11;
-      border: 1px solid #202637;
-      border-radius: 18px;
-      padding: 22px;
-      margin-bottom: 20px;
-    }
+.top,.section{
+  background:#07101e;
+  border:1px solid #1b3049;
+  border-radius:22px;
+  padding:20px;
+  margin-bottom:18px
+}
 
-    .logo {
-      font-weight: 800;
-      letter-spacing: 2px;
-      font-size: 22px;
-    }
+.logo{
+  font-size:20px;
+  font-weight:900;
+  letter-spacing:2px
+}
 
-    .logo span {
-      color: #8b35ff;
-    }
+.logo span{color:#8b45ff}
 
-    .top h1 {
-      margin: 18px 0 7px;
-      font-size: 30px;
-    }
+h1{margin:18px 0 6px}
+h2{margin-top:0}
 
-    .top p {
-      color: #aab0bf;
-      margin: 0;
-    }
+.muted{
+  color:#929fb4;
+  line-height:1.5
+}
 
-    .summary {
-      display: grid;
-      grid-template-columns: repeat(3,1fr);
-      gap: 12px;
-      margin-bottom: 22px;
-    }
+.summary{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  margin-bottom:18px
+}
 
-    .summary-card {
-      background: #080b12;
-      border: 1px solid #202637;
-      border-radius: 15px;
-      padding: 18px;
-    }
+.summary-card{
+  background:#091321;
+  border:1px solid #1c3048;
+  border-radius:18px;
+  padding:18px
+}
 
-    .summary-card strong {
-      display: block;
-      font-size: 28px;
-      color: #9c55ff;
-      margin-bottom: 5px;
-    }
+.summary-card strong{
+  display:block;
+  font-size:27px;
+  color:#53baff;
+  margin-bottom:5px
+}
 
-    .summary-card span {
-      color: #aab0bf;
-    }
+.rateios{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px
+}
 
-    .customer {
-      background: #080b12;
-      border: 1px solid #292f40;
-      border-radius: 18px;
-      margin-bottom: 18px;
-      overflow: hidden;
-    }
+.rateio{
+  background:#091321;
+  border:1px solid #1c3048;
+  border-radius:18px;
+  padding:18px
+}
 
-    .customer-header {
-      padding: 20px;
-      background:
-        linear-gradient(
-          120deg,
-          rgba(22,118,255,.12),
-          rgba(140,37,247,.12)
-        );
-      border-bottom: 1px solid #292f40;
-    }
+.rateio-name{
+  font-size:22px;
+  font-weight:900;
+  margin-bottom:12px
+}
 
-    .customer-header h2 {
-      margin: 0 0 12px;
-      font-size: 23px;
-      color: white;
-    }
+.rateio-status{
+  display:inline-block;
+  padding:7px 11px;
+  border-radius:20px;
+  font-size:12px;
+  font-weight:900;
+  margin-bottom:14px
+}
 
-    .customer-info {
-      display: grid;
-      grid-template-columns: repeat(2,1fr);
-      gap: 8px 16px;
-      color: #c4c8d4;
-      font-size: 14px;
-    }
+.rateio-status.open{
+  color:#4ae38a;
+  border:1px solid #16864d;
+  background:#09261a
+}
 
-    .customer-total {
-      margin-top: 15px;
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
+.rateio-status.closed{
+  color:#ff7777;
+  border:1px solid #8a3131;
+  background:#2a1015
+}
 
-    .tag {
-      background: #111725;
-      border: 1px solid #303a50;
-      border-radius: 20px;
-      padding: 7px 11px;
-      font-size: 13px;
-      color: #d8dcE7;
-    }
+button{cursor:pointer}
 
-    .orders {
-      padding: 14px;
-    }
+.btn{
+  border:0;
+  border-radius:12px;
+  padding:12px 15px;
+  color:white;
+  font-weight:900;
+  background:linear-gradient(90deg,#13b4f4,#6d35ff)
+}
 
-    .order {
-      border: 1px solid #242b3c;
-      border-radius: 14px;
-      margin-bottom: 12px;
-      background: #050810;
-      overflow: hidden;
-    }
+.btn-green{background:#168b55}
+.btn-red{background:#93333d}
+.btn-gray{background:#26364b}
 
-    .order:last-child {
-      margin-bottom: 0;
-    }
+input,select{
+  width:100%;
+  background:#07101e;
+  color:white;
+  border:1px solid #263c57;
+  border-radius:11px;
+  padding:12px;
+  font-size:16px
+}
 
-    .order summary {
-      cursor: pointer;
-      list-style: none;
-      padding: 16px;
-    }
+label{
+  display:block;
+  color:#aab4c5;
+  font-size:13px;
+  margin-bottom:5px
+}
 
-    .order summary::-webkit-details-marker {
-      display: none;
-    }
+.toolbar{
+  display:flex;
+  gap:10px;
+  margin-bottom:15px;
+  flex-wrap:wrap
+}
 
-    .order-top {
-      display: flex;
-      justify-content: space-between;
-      gap: 15px;
-      align-items: center;
-    }
+.toolbar select{max-width:280px}
 
-    .order-number {
-      font-weight: bold;
-      font-size: 17px;
-    }
+.new-product{
+  display:grid;
+  grid-template-columns:1.5fr 1fr 1fr auto;
+  gap:10px;
+  padding:15px;
+  background:#091321;
+  border:1px solid #1c3048;
+  border-radius:16px;
+  margin-bottom:16px
+}
 
-    .order-total {
-      font-weight: bold;
-      color: #61b0ff;
-      font-size: 17px;
-    }
+.product-row{
+  display:grid;
+  grid-template-columns:1.6fr 1fr 1fr auto auto;
+  gap:9px;
+  align-items:center;
+  background:#091321;
+  border:1px solid #1c3048;
+  border-radius:15px;
+  padding:11px;
+  margin-bottom:9px
+}
 
-    .order-date {
-      margin-top: 7px;
-      color: #8f96a8;
-      font-size: 13px;
-    }
+.checkbox{
+  display:flex;
+  align-items:center;
+  gap:7px;
+  color:white
+}
 
-    .order-body {
-      padding: 0 16px 16px;
-      border-top: 1px solid #1d2330;
-    }
+.checkbox input{
+  width:auto;
+  transform:scale(1.2)
+}
 
-    .order-body p {
-      margin: 12px 0;
-      color: #c5c9d4;
-    }
+.message{
+  min-height:20px;
+  margin:10px 0;
+  font-weight:800
+}
 
-    .items {
-      margin-top: 15px;
-    }
+.success{color:#4ae38a}
+.error{color:#ff7777}
 
-    .items-title {
-      font-weight: bold;
-      margin-bottom: 8px;
-    }
+.customer{
+  background:#091321;
+  border:1px solid #1c3048;
+  border-radius:20px;
+  overflow:hidden;
+  margin-bottom:17px
+}
 
-    .item {
-      display: flex;
-      justify-content: space-between;
-      gap: 12px;
-      padding: 10px 0;
-      border-bottom: 1px solid #1c2230;
-      color: #c8ccd6;
-    }
+.customer-header{
+  padding:18px;
+  background:linear-gradient(
+    120deg,
+    rgba(18,164,244,.09),
+    rgba(118,53,255,.11)
+  )
+}
 
-    .item:last-child {
-      border-bottom: 0;
-    }
+.customer-header h3{
+  margin:0 0 10px;
+  font-size:22px
+}
 
-    .status {
-      display: inline-block;
-      padding: 5px 9px;
-      border-radius: 15px;
-      background: #161d2a;
-      border: 1px solid #30394d;
-    }
+.customer-info{
+  color:#a6b0c0;
+  line-height:1.7;
+  font-size:14px
+}
 
-    .loading,
-    .error,
-    .empty {
-      background: #080b12;
-      border: 1px solid #202637;
-      border-radius: 15px;
-      padding: 25px;
-      text-align: center;
-      color: #aab0bf;
-    }
+.tags{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-top:12px
+}
 
-    .error {
-      color: #ff7676;
-    }
+.tag{
+  border:1px solid #30415a;
+  border-radius:18px;
+  padding:6px 10px;
+  font-size:12px
+}
 
-    .back {
-      display: inline-block;
-      margin-top: 10px;
-      margin-bottom: 30px;
-      color: #8b55ff;
-      font-weight: bold;
-      text-decoration: none;
-    }
+.orders{padding:12px}
 
-    @media(max-width:700px) {
+.order{
+  background:#050b15;
+  border:1px solid #1e3148;
+  border-radius:15px;
+  margin-bottom:10px;
+  overflow:hidden
+}
 
-      .summary {
-        grid-template-columns: 1fr;
-      }
+.order summary{
+  cursor:pointer;
+  padding:15px;
+  font-weight:900
+}
 
-      .customer-info {
-        grid-template-columns: 1fr;
-      }
+.order-body{
+  padding:15px;
+  border-top:1px solid #1e3148
+}
 
-      .order-top {
-        align-items: flex-start;
-        flex-direction: column;
-        gap: 5px;
-      }
-    }
-  </style>
+.order-brand{
+  display:inline-block;
+  color:#53baff;
+  margin-bottom:12px;
+  font-weight:900
+}
+
+.item{
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  padding:9px 0;
+  border-bottom:1px solid #19283a
+}
+
+.payment-area{
+  margin-top:18px;
+  padding-top:16px;
+  border-top:1px solid #24364c
+}
+
+.payment-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px
+}
+
+.payment-box{
+  background:#091321;
+  border:1px solid #243a55;
+  border-radius:15px;
+  padding:14px
+}
+
+.payment-box h4{
+  margin:0 0 10px
+}
+
+.payment-value{
+  color:#53baff;
+  font-size:18px;
+  font-weight:900;
+  margin:7px 0
+}
+
+.paid{
+  color:#4ae38a;
+  font-weight:900;
+  margin:8px 0
+}
+
+.pending{
+  color:#f5b84d;
+  font-weight:900;
+  margin:8px 0
+}
+
+.payment-edit{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;
+  margin:15px 0
+}
+
+.field span{
+  display:block;
+  color:#9ba8bb;
+  font-size:12px;
+  margin-bottom:5px
+}
+
+.full{grid-column:1/-1}
+
+.loading,.empty{
+  background:#07101e;
+  border:1px solid #1c3048;
+  border-radius:18px;
+  padding:24px;
+  text-align:center;
+  color:#9aa6b8
+}
+
+.back{
+  display:inline-block;
+  margin-top:8px;
+  color:#63baff;
+  font-weight:900;
+  text-decoration:none
+}
+
+@media(max-width:800px){
+  .summary,.rateios{
+    grid-template-columns:1fr
+  }
+
+  .new-product,.product-row{
+    grid-template-columns:1fr
+  }
+
+  .payment-grid,.payment-edit{
+    grid-template-columns:1fr
+  }
+
+  .full{grid-column:auto}
+
+  .btn{width:100%}
+}
+</style>
 </head>
 
 <body>
 
-  <main class="wrap">
+<main class="wrap">
 
-    <section class="top">
+<section class="top">
+  <div class="logo">
+    🧬 FOREVER <span>COLLECTIVE</span>
+  </div>
 
-      <div class="logo">
-        🧬 FOREVER <span>COLLECTIVE</span>
-      </div>
+  <h1>Painel Administrativo</h1>
 
-      <h1>Painel administrativo</h1>
-
-      <p>
-        Todos os pedidos organizados por cliente.
-      </p>
-
-    </section>
+  <p class="muted">
+    Controle rateios, produtos, valores, clientes e pagamentos.
+  </p>
+</section>
 
 
-    <section class="summary">
+<section class="section">
 
-      <div class="summary-card">
-        <strong id="totalClients">0</strong>
-        <span>Clientes</span>
-      </div>
+  <h2>Rateios</h2>
 
-      <div class="summary-card">
-        <strong id="totalOrders">0</strong>
-        <span>Pedidos</span>
-      </div>
+  <p class="muted">
+    Abra ou feche cada rateio.
+  </p>
 
-      <div class="summary-card">
-        <strong id="totalValue">R$ 0,00</strong>
-        <span>Valor total</span>
-      </div>
+  <div id="rateiosList" class="rateios">
+    Carregando...
+  </div>
 
-    </section>
+  <div id="rateioMessage" class="message"></div>
+
+</section>
 
 
-    <div id="adminOrdersList">
+<section class="section">
 
-      <div class="loading">
-        Carregando pedidos...
-      </div>
+  <h2>Gerenciar produtos</h2>
 
+  <p class="muted">
+    Você pode alterar nome, marca, valor da ampola e ativar ou desativar produtos.
+  </p>
+
+  <div class="toolbar">
+    <select id="brandFilter">
+      <option value="ALL">Todos os rateios</option>
+    </select>
+  </div>
+
+
+  <div class="new-product">
+
+    <input
+      id="newProductName"
+      type="text"
+      placeholder="Nome do produto"
+    >
+
+    <input
+      id="newProductBrand"
+      type="text"
+      placeholder="Marca: JEEP"
+    >
+
+    <input
+      id="newProductPrice"
+      type="number"
+      min="0"
+      step="0.01"
+      placeholder="Valor R$"
+    >
+
+    <button
+      id="addProductButton"
+      class="btn"
+      type="button"
+    >
+      + Adicionar
+    </button>
+
+  </div>
+
+  <div id="productMessage" class="message"></div>
+
+  <div id="productsList">
+    Carregando...
+  </div>
+
+</section>
+
+
+<section class="summary">
+
+  <div class="summary-card">
+    <strong id="totalClients">0</strong>
+    Clientes
+  </div>
+
+  <div class="summary-card">
+    <strong id="totalOrders">0</strong>
+    Pedidos
+  </div>
+
+  <div class="summary-card">
+    <strong id="totalValue">R$ 0,00</strong>
+    Total dos pedidos
+  </div>
+
+</section>
+
+
+<section class="section">
+
+  <h2>Pedidos por cliente</h2>
+
+  <p class="muted">
+    Todos os pedidos da mesma pessoa aparecem juntos.
+  </p>
+
+  <div id="ordersList">
+    <div class="loading">
+      Carregando pedidos...
     </div>
+  </div>
+
+</section>
 
 
-    <a class="back" href="index.html">
-      ← Voltar para o início
-    </a>
+<a href="index.html" class="back">
+  ← Voltar para o site
+</a>
 
-  </main>
-
-
-  <script>
-
-    const SUPABASE_URL =
-      "https://ygulvirkzwvdyfgqsbjj.supabase.co";
-
-    const SUPABASE_KEY =
-      "sb_publishable_2u7B7_ZvZuKc-e3UPxx3rg_5oEN83x5";
-
-    const ADMIN_EMAIL =
-      "nuuna102@gmail.com";
+</main>
 
 
-    function money(value) {
+<script>
 
-      return Number(value || 0)
-        .toLocaleString(
-          "pt-BR",
-          {
-            style: "currency",
-            currency: "BRL"
-          }
-        );
+const SUPABASE_URL =
+  "https://ygulvirkzwvdyfgqsbjj.supabase.co";
 
-    }
+const SUPABASE_KEY =
+  "sb_publishable_2u7B7_ZvZuKc-e3UPxx3rg_5oEN83x5";
 
+const ADMIN_EMAIL =
+  "nuuna102@gmail.com";
 
-    function escapeHtml(value) {
-
-      return String(value ?? "")
-        .replaceAll("&", "&amp;")
-        .replaceAll("<", "&lt;")
-        .replaceAll(">", "&gt;")
-        .replaceAll('"', "&quot;")
-        .replaceAll("'", "&#039;");
-
-    }
+const token =
+  localStorage.getItem("access_token");
 
 
-    function formatDate(value) {
+let rateios = [];
+let products = [];
+let orders = [];
 
-      if (!value) return "-";
-
-      return new Date(value)
-        .toLocaleString("pt-BR");
-
-    }
+let productBrands = {};
 
 
-    async function verifyAdmin(token) {
+/* UTILIDADES */
 
-      const response =
-        await fetch(
-          SUPABASE_URL + "/auth/v1/user",
-          {
-            headers: {
-              apikey: SUPABASE_KEY,
-              Authorization:
-                "Bearer " + token
-            }
-          }
-        );
+function escapeHtml(value){
+
+  return String(value ?? "")
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
+
+}
 
 
-      if (!response.ok) {
+function money(value){
 
-        return false;
+  if(
+    value === null ||
+    value === undefined ||
+    value === ""
+  ){
+    return "A definir";
+  }
 
+  return Number(value)
+    .toLocaleString(
+      "pt-BR",
+      {
+        style:"currency",
+        currency:"BRL"
       }
+    );
+
+}
 
 
-      const user =
-        await response.json();
+function crypto(value){
+
+  if(
+    value === null ||
+    value === undefined ||
+    value === ""
+  ){
+    return "A definir";
+  }
+
+  return Number(value).toFixed(2) + " USDT";
+
+}
 
 
-      return (
-        user.email &&
-        user.email.toLowerCase() ===
-        ADMIN_EMAIL.toLowerCase()
+function dateBR(value){
+
+  if(!value){
+    return "A definir";
+  }
+
+  const p =
+    String(value).split("-");
+
+  if(p.length === 3){
+    return p[2] + "/" + p[1] + "/" + p[0];
+  }
+
+  return value;
+
+}
+
+
+function dateTimeBR(value){
+
+  if(!value) return "-";
+
+  return new Date(value)
+    .toLocaleString("pt-BR");
+
+}
+
+
+function numOrNull(value){
+
+  if(
+    value === "" ||
+    value === null ||
+    value === undefined
+  ){
+    return null;
+  }
+
+  const n = Number(value);
+
+  return Number.isNaN(n)
+    ? null
+    : n;
+
+}
+
+
+/* API */
+
+async function api(path,options={}){
+
+  const response =
+    await fetch(
+      SUPABASE_URL + path,
+      {
+        ...options,
+
+        headers:{
+          apikey:SUPABASE_KEY,
+
+          Authorization:
+            "Bearer " + token,
+
+          "Content-Type":
+            "application/json",
+
+          ...(options.headers || {})
+        }
+      }
+    );
+
+
+  if(response.status === 401){
+
+    localStorage.clear();
+
+    window.location.href =
+      "login.html";
+
+    throw new Error(
+      "Sessão expirada"
+    );
+  }
+
+
+  if(!response.ok){
+
+    const text =
+      await response.text();
+
+    throw new Error(text);
+  }
+
+
+  if(response.status === 204){
+    return null;
+  }
+
+
+  const text =
+    await response.text();
+
+
+  if(!text){
+    return null;
+  }
+
+
+  return JSON.parse(text);
+
+}
+
+
+/* ADMIN */
+
+async function verifyAdmin(){
+
+  if(!token){
+
+    window.location.href =
+      "login.html";
+
+    return false;
+  }
+
+
+  try{
+
+    const user =
+      await api(
+        "/auth/v1/user"
       );
 
+
+    if(
+      !user.email ||
+      user.email.toLowerCase() !==
+      ADMIN_EMAIL.toLowerCase()
+    ){
+
+      alert(
+        "Acesso permitido somente para administradora."
+      );
+
+      window.location.href =
+        "index.html";
+
+      return false;
     }
 
 
-    async function getOrders(token) {
+    return true;
 
-      const response =
-        await fetch(
-          SUPABASE_URL +
-          "/rest/v1/orders?select=*&order=created_at.desc",
-          {
-            headers: {
-              apikey: SUPABASE_KEY,
-              Authorization:
-                "Bearer " + token
-            }
-          }
-        );
+  }catch(error){
+
+    window.location.href =
+      "login.html";
+
+    return false;
+  }
+
+}
 
 
-      if (!response.ok) {
+/* RATEIOS */
 
-        const text =
-          await response.text();
+async function loadRateios(){
 
-        throw new Error(text);
+  rateios =
+    await api(
+      "/rest/v1/rateios" +
+      "?select=*" +
+      "&order=sort_order.asc,brand.asc"
+    );
 
-      }
+  renderRateios();
+  updateBrandFilter();
 
-
-      return response.json();
-
-    }
-
-
-    function customerKey(order) {
-
-      if (order.user_id) {
-
-        return "USER:" + order.user_id;
-
-      }
+}
 
 
-      if (order.customer_email) {
+function renderRateios(){
 
-        return "EMAIL:" +
-          order.customer_email
-          .trim()
-          .toLowerCase();
-
-      }
+  const container =
+    document.getElementById(
+      "rateiosList"
+    );
 
 
-      if (order.customer_phone) {
+  if(!rateios.length){
 
-        return "PHONE:" +
-          order.customer_phone
-          .replace(/\D/g, "");
+    container.innerHTML =
+      "Nenhum rateio cadastrado.";
 
-      }
-
-
-      return "NAME:" +
-        String(order.customer_name || "Sem nome")
-        .trim()
-        .toLowerCase();
-
-    }
+    return;
+  }
 
 
-    function groupOrders(orders) {
+  container.innerHTML =
+    rateios.map(
+      function(rateio){
 
-      const groups = {};
+        const open =
+          rateio.is_open === true;
 
-
-      orders.forEach(function(order) {
-
-        const key =
-          customerKey(order);
-
-
-        if (!groups[key]) {
-
-          groups[key] = {
-            name:
-              order.customer_name ||
-              "Cliente sem nome",
-
-            phone:
-              order.customer_phone ||
-              "",
-
-            email:
-              order.customer_email ||
-              "",
-
-            orders: []
-          };
-
-        }
-
-
-        if (
-          !groups[key].phone &&
-          order.customer_phone
-        ) {
-
-          groups[key].phone =
-            order.customer_phone;
-
-        }
-
-
-        if (
-          !groups[key].email &&
-          order.customer_email
-        ) {
-
-          groups[key].email =
-            order.customer_email;
-
-        }
-
-
-        groups[key].orders.push(order);
-
-      });
-
-
-      return Object.values(groups)
-        .sort(function(a,b) {
-
-          return a.name.localeCompare(
-            b.name,
-            "pt-BR"
-          );
-
-        });
-
-    }
-
-
-    function renderItems(items) {
-
-      if (
-        !items ||
-        !Array.isArray(items) ||
-        items.length === 0
-      ) {
 
         return `
-          <div class="items">
-            <div class="items-title">
-              Produtos
+
+          <article class="rateio">
+
+            <div class="rateio-name">
+              ${escapeHtml(rateio.brand)}
             </div>
 
-            <p>
-              Itens não informados.
-            </p>
-          </div>
+            <div
+              class="
+                rateio-status
+                ${open ? "open" : "closed"}
+              "
+            >
+
+              ${open
+                ? "● RATEIO ABERTO"
+                : "● RATEIO FECHADO"
+              }
+
+            </div>
+
+            <br>
+
+            <button
+              class="
+                btn
+                ${open
+                  ? "btn-red"
+                  : "btn-green"
+                }
+              "
+              type="button"
+              onclick="
+                toggleRateio(
+                  '${escapeHtml(rateio.brand)}',
+                  ${open}
+                )
+              "
+            >
+
+              ${open
+                ? "FECHAR RATEIO"
+                : "ABRIR RATEIO"
+              }
+
+            </button>
+
+          </article>
+
         `;
 
       }
+    ).join("");
+
+}
 
 
-      return `
-        <div class="items">
+async function toggleRateio(
+  brand,
+  current
+){
 
-          <div class="items-title">
-            Produtos
+  const message =
+    document.getElementById(
+      "rateioMessage"
+    );
+
+
+  message.className =
+    "message";
+
+  message.textContent =
+    "Salvando...";
+
+
+  try{
+
+    await api(
+      "/rest/v1/rateios" +
+      "?brand=eq." +
+      encodeURIComponent(brand),
+      {
+        method:"PATCH",
+
+        headers:{
+          Prefer:"return=minimal"
+        },
+
+        body:JSON.stringify({
+          is_open:!current,
+          updated_at:
+            new Date().toISOString()
+        })
+      }
+    );
+
+
+    message.className =
+      "message success";
+
+    message.textContent =
+      "Status atualizado.";
+
+
+    await loadRateios();
+    await loadOrders();
+
+  }catch(error){
+
+    console.error(error);
+
+    message.className =
+      "message error";
+
+    message.textContent =
+      "Não foi possível alterar o rateio.";
+  }
+
+}
+
+
+/* PRODUTOS */
+
+async function loadProducts(){
+
+  products =
+    await api(
+      "/rest/v1/products" +
+      "?select=id,nameName,brand,price_brl,active,box_size,sort_order" +
+      "&order=brand.asc,sort_order.asc,id.asc"
+    );
+
+
+  productBrands = {};
+
+
+  products.forEach(
+    function(product){
+
+      productBrands[
+        product.id
+      ] =
+        product.brand;
+
+    }
+  );
+
+
+  updateBrandFilter();
+  renderProducts();
+
+}
+
+
+function updateBrandFilter(){
+
+  const select =
+    document.getElementById(
+      "brandFilter"
+    );
+
+
+  const current =
+    select.value || "ALL";
+
+
+  const brands =
+    new Set();
+
+
+  rateios.forEach(
+    r => brands.add(r.brand)
+  );
+
+
+  products.forEach(
+    p => brands.add(
+      p.brand || "UTHER"
+    )
+  );
+
+
+  select.innerHTML =
+    `
+      <option value="ALL">
+        Todos os rateios
+      </option>
+    ` +
+    [...brands]
+      .sort()
+      .map(
+        brand => `
+          <option
+            value="${escapeHtml(brand)}"
+          >
+            ${escapeHtml(brand)}
+          </option>
+        `
+      )
+      .join("");
+
+
+  if(
+    [...select.options]
+      .some(
+        option =>
+          option.value === current
+      )
+  ){
+    select.value = current;
+  }
+
+}
+
+
+function renderProducts(){
+
+  const container =
+    document.getElementById(
+      "productsList"
+    );
+
+
+  const filter =
+    document.getElementById(
+      "brandFilter"
+    ).value;
+
+
+  const visible =
+    products.filter(
+      p =>
+        filter === "ALL" ||
+        p.brand === filter
+    );
+
+
+  if(!visible.length){
+
+    container.innerHTML =
+      "<p>Nenhum produto neste rateio.</p>";
+
+    return;
+  }
+
+
+  container.innerHTML =
+    visible.map(
+      function(product){
+
+        return `
+
+          <div class="product-row">
+
+            <input
+              id="name-${product.id}"
+              value="${escapeHtml(product.nameName || "")}"
+            >
+
+            <input
+              id="brand-${product.id}"
+              value="${escapeHtml(product.brand || "")}"
+            >
+
+            <input
+              id="price-${product.id}"
+              type="number"
+              min="0"
+              step="0.01"
+              value="${Number(product.price_brl || 0).toFixed(2)}"
+            >
+
+            <label class="checkbox">
+
+              <input
+                id="active-${product.id}"
+                type="checkbox"
+                ${product.active
+                  ? "checked"
+                  : ""
+                }
+              >
+
+              Ativo
+
+            </label>
+
+            <button
+              class="btn"
+              type="button"
+              onclick="
+                saveProduct(
+                  ${product.id}
+                )
+              "
+            >
+              Salvar
+            </button>
+
           </div>
 
-          ${items.map(function(item) {
+        `;
 
-            const name =
+      }
+    ).join("");
+
+}
+
+
+async function ensureRateio(brand){
+
+  const exists =
+    rateios.some(
+      r =>
+        String(r.brand)
+          .toUpperCase() ===
+        String(brand)
+          .toUpperCase()
+    );
+
+
+  if(exists) return;
+
+
+  await api(
+    "/rest/v1/rateios",
+    {
+      method:"POST",
+
+      headers:{
+        Prefer:"return=minimal"
+      },
+
+      body:JSON.stringify({
+        brand:brand,
+        is_open:true,
+        active:true,
+        sort_order:
+          rateios.length + 1
+      })
+    }
+  );
+
+
+  await loadRateios();
+
+}
+
+
+async function saveProduct(id){
+
+  const message =
+    document.getElementById(
+      "productMessage"
+    );
+
+
+  const name =
+    document.getElementById(
+      "name-" + id
+    ).value.trim();
+
+
+  const brand =
+    document.getElementById(
+      "brand-" + id
+    ).value
+    .trim()
+    .toUpperCase();
+
+
+  const price =
+    Number(
+      document.getElementById(
+        "price-" + id
+      ).value
+    );
+
+
+  const active =
+    document.getElementById(
+      "active-" + id
+    ).checked;
+
+
+  if(
+    !name ||
+    !brand ||
+    Number.isNaN(price) ||
+    price < 0
+  ){
+
+    message.className =
+      "message error";
+
+    message.textContent =
+      "Confira nome, marca e valor.";
+
+    return;
+  }
+
+
+  message.textContent =
+    "Salvando produto...";
+
+
+  try{
+
+    await ensureRateio(brand);
+
+
+    await api(
+      "/rest/v1/products?id=eq." +
+      id,
+      {
+        method:"PATCH",
+
+        headers:{
+          Prefer:"return=minimal"
+        },
+
+        body:JSON.stringify({
+          nameName:name,
+          brand:brand,
+          price_brl:price,
+          active:active
+        })
+      }
+    );
+
+
+    message.className =
+      "message success";
+
+    message.textContent =
+      "Produto atualizado.";
+
+
+    await loadProducts();
+
+  }catch(error){
+
+    console.error(error);
+
+    message.className =
+      "message error";
+
+    message.textContent =
+      "Erro ao atualizar produto.";
+  }
+
+}
+
+
+async function addProduct(){
+
+  const message =
+    document.getElementById(
+      "productMessage"
+    );
+
+
+  const name =
+    document.getElementById(
+      "newProductName"
+    ).value.trim();
+
+
+  const brand =
+    document.getElementById(
+      "newProductBrand"
+    ).value
+    .trim()
+    .toUpperCase();
+
+
+  const price =
+    Number(
+      document.getElementById(
+        "newProductPrice"
+      ).value
+    );
+
+
+  if(
+    !name ||
+    !brand ||
+    Number.isNaN(price) ||
+    price < 0
+  ){
+
+    message.className =
+      "message error";
+
+    message.textContent =
+      "Preencha nome, marca e valor.";
+
+    return;
+  }
+
+
+  try{
+
+    await ensureRateio(brand);
+
+
+    await api(
+      "/rest/v1/products",
+      {
+        method:"POST",
+
+        headers:{
+          Prefer:"return=minimal"
+        },
+
+        body:JSON.stringify({
+          nameName:name,
+          brand:brand,
+          price_brl:price,
+          active:true,
+          reserved:0,
+          stock_available:0,
+          box_size:10,
+          sort_order:0
+        })
+      }
+    );
+
+
+    document.getElementById(
+      "newProductName"
+    ).value = "";
+
+
+    document.getElementById(
+      "newProductBrand"
+    ).value = "";
+
+
+    document.getElementById(
+      "newProductPrice"
+    ).value = "";
+
+
+    message.className =
+      "message success";
+
+    message.textContent =
+      "Produto adicionado.";
+
+
+    await loadProducts();
+
+  }catch(error){
+
+    console.error(error);
+
+    message.className =
+      "message error";
+
+    message.textContent =
+      "Não foi possível adicionar.";
+  }
+
+}
+
+
+/* PEDIDOS */
+
+async function loadOrders(){
+
+  orders =
+    await api(
+      "/rest/v1/orders" +
+      "?select=*" +
+      "&order=created_at.desc"
+    );
+
+
+  renderOrders();
+
+}
+
+
+function inferBrand(order){
+
+  if(order.rateio_brand){
+    return order.rateio_brand;
+  }
+
+
+  const items =
+    Array.isArray(order.items)
+    ? order.items
+    : [];
+
+
+  const brands =
+    new Set();
+
+
+  items.forEach(
+    function(item){
+
+      const brand =
+        productBrands[
+          item.product_id
+        ];
+
+      if(brand){
+        brands.add(brand);
+      }
+
+    }
+  );
+
+
+  if(brands.size === 1){
+    return [...brands][0];
+  }
+
+
+  return "Não identificado";
+
+}
+
+
+function customerKey(order){
+
+  if(order.user_id){
+    return "USER:" + order.user_id;
+  }
+
+
+  if(order.customer_email){
+
+    return (
+      "EMAIL:" +
+      order.customer_email
+        .trim()
+        .toLowerCase()
+    );
+  }
+
+
+  if(order.customer_phone){
+
+    return (
+      "PHONE:" +
+      order.customer_phone
+        .replace(/\D/g,"")
+    );
+  }
+
+
+  return (
+    "NAME:" +
+    String(
+      order.customer_name ||
+      "Sem nome"
+    )
+    .trim()
+    .toLowerCase()
+  );
+
+}
+
+
+function paymentStatus(
+  confirmed,
+  confirmedAt
+){
+
+  if(confirmed){
+
+    return `
+
+      <div class="paid">
+        ✅ PAGO
+      </div>
+
+      ${
+        confirmedAt
+        ? `
+          <small>
+            Confirmado:
+            ${dateTimeBR(confirmedAt)}
+          </small>
+        `
+        : ""
+      }
+
+    `;
+  }
+
+
+  return `
+    <div class="pending">
+      ⏳ PENDENTE
+    </div>
+  `;
+
+}
+
+
+function paymentButton(
+  orderId,
+  type,
+  confirmed
+){
+
+  let text = "";
+
+  if(type === "fee"){
+
+    text =
+      confirmed
+      ? "Desfazer confirmação"
+      : "Confirmar taxa";
+
+  }else{
+
+    text =
+      confirmed
+      ? "Desfazer confirmação"
+      : "Confirmar pagamento";
+  }
+
+
+  return `
+
+    <button
+      type="button"
+      class="
+        btn
+        ${confirmed
+          ? "btn-gray"
+          : "btn-green"
+        }
+      "
+      onclick="
+        togglePayment(
+          ${orderId},
+          '${type}',
+          ${confirmed}
+        )
+      "
+    >
+      ${text}
+    </button>
+
+  `;
+
+}
+
+
+function renderItems(items){
+
+  if(
+    !Array.isArray(items) ||
+    !items.length
+  ){
+
+    return `
+      <p class="muted">
+        Itens não informados.
+      </p>
+    `;
+  }
+
+
+  return items.map(
+    function(item){
+
+      return `
+
+        <div class="item">
+
+          <span>
+            ${escapeHtml(
               item.name ||
-              item.product_name ||
-              "Produto";
+              "Produto"
+            )}
+          </span>
 
-            const quantity =
-              Number(
-                item.quantity ||
-                item.qty ||
-                0
-              );
-
-            const price =
-              Number(
-                item.price ||
-                item.unit_price ||
-                0
-              );
-
-            return `
-              <div class="item">
-
-                <span>
-                  ${escapeHtml(name)}
-                </span>
-
-                <strong>
-                  ${quantity} un.
-                  ${price
-                    ? " • " + money(price)
-                    : ""
-                  }
-                </strong>
-
-              </div>
-            `;
-
-          }).join("")}
+          <strong>
+            ${Number(
+              item.quantity || 0
+            )}
+            un.
+          </strong>
 
         </div>
+
       `;
 
     }
+  ).join("");
+
+}
 
 
-    function renderCustomers(groups) {
+function renderOrders(){
 
-      const container =
-        document.getElementById(
-          "adminOrdersList"
-        );
+  const container =
+    document.getElementById(
+      "ordersList"
+    );
 
 
-      if (!groups.length) {
+  const groups = {};
 
-        container.innerHTML =
-          `
-          <div class="empty">
-            Nenhum pedido encontrado.
-          </div>
-          `;
 
-        return;
+  orders.forEach(
+    function(order){
+
+      const key =
+        customerKey(order);
+
+
+      if(!groups[key]){
+
+        groups[key] = {
+
+          name:
+            order.customer_name ||
+            "Cliente",
+
+          phone:
+            order.customer_phone ||
+            "",
+
+          email:
+            order.customer_email ||
+            "",
+
+          orders:[]
+        };
 
       }
 
 
-      container.innerHTML =
-        groups.map(
-          function(customer) {
-
-            const customerTotal =
-              customer.orders.reduce(
-                function(sum, order) {
-
-                  return sum +
-                    Number(order.total || 0);
-
-                },
-                0
-              );
-
-
-            return `
-              <section class="customer">
-
-                <div class="customer-header">
-
-                  <h2>
-                    ${escapeHtml(customer.name)}
-                  </h2>
-
-                  <div class="customer-info">
-
-                    <div>
-                      <strong>📱 Telefone:</strong>
-                      ${escapeHtml(
-                        customer.phone || "-"
-                      )}
-                    </div>
-
-                    <div>
-                      <strong>✉️ E-mail:</strong>
-                      ${escapeHtml(
-                        customer.email || "-"
-                      )}
-                    </div>
-
-                  </div>
-
-
-                  <div class="customer-total">
-
-                    <span class="tag">
-                      ${customer.orders.length}
-                      pedido(s)
-                    </span>
-
-                    <span class="tag">
-                      Total:
-                      ${money(customerTotal)}
-                    </span>
-
-                  </div>
-
-                </div>
-
-
-                <div class="orders">
-
-                  ${customer.orders.map(
-                    function(order) {
-
-                      return `
-                        <details class="order">
-
-                          <summary>
-
-                            <div class="order-top">
-
-                              <span class="order-number">
-                                Pedido #${escapeHtml(order.id)}
-                              </span>
-
-                              <span class="order-total">
-                                ${money(order.total)}
-                              </span>
-
-                            </div>
-
-                            <div class="order-date">
-                              ${formatDate(
-                                order.created_at
-                              )}
-                            </div>
-
-                          </summary>
-
-
-                          <div class="order-body">
-
-                            <p>
-                              <strong>Status:</strong>
-                              <span class="status">
-                                ${escapeHtml(
-                                  order.status ||
-                                  "novo"
-                                )}
-                              </span>
-                            </p>
-
-                            <p>
-                              <strong>CEP:</strong>
-                              ${escapeHtml(
-                                order.customer_cep ||
-                                "-"
-                              )}
-                            </p>
-
-                            <p>
-                              <strong>Endereço:</strong>
-                              ${escapeHtml(
-                                order.customer_address ||
-                                "-"
-                              )}
-                            </p>
-
-                            ${renderItems(
-                              order.items
-                            )}
-
-                          </div>
-
-                        </details>
-                      `;
-
-                    }
-                  ).join("")}
-
-                </div>
-
-              </section>
-            `;
-
-          }
-        ).join("");
+      groups[key].orders.push(order);
 
     }
+  );
 
 
-    async function loadAdmin() {
-
-      const container =
-        document.getElementById(
-          "adminOrdersList"
-        );
-
-
-      const token =
-        localStorage.getItem(
-          "access_token"
-        );
+  const customers =
+    Object.values(groups)
+      .sort(
+        (a,b) =>
+          a.name.localeCompare(
+            b.name,
+            "pt-BR"
+          )
+      );
 
 
-      if (!token) {
-
-        window.location.href =
-          "login.html";
-
-        return;
-
-      }
+  document.getElementById(
+    "totalClients"
+  ).textContent =
+    customers.length;
 
 
-      try {
-
-        const allowed =
-          await verifyAdmin(token);
-
-
-        if (!allowed) {
-
-          alert(
-            "Acesso permitido somente para administradora."
-          );
-
-          window.location.href =
-            "index.html";
-
-          return;
-
-        }
+  document.getElementById(
+    "totalOrders"
+  ).textContent =
+    orders.length;
 
 
-        const orders =
-          await getOrders(token);
+  document.getElementById(
+    "totalValue"
+  ).textContent =
+    money(
+      orders.reduce(
+        (sum,order) =>
+          sum +
+          Number(order.total || 0),
+        0
+      )
+    );
 
 
-        const groups =
-          groupOrders(orders);
+  if(!customers.length){
+
+    container.innerHTML =
+      `
+        <div class="empty">
+          Nenhum pedido encontrado.
+        </div>
+      `;
+
+    return;
+  }
 
 
-        document.getElementById(
-          "totalClients"
-        ).textContent =
-          groups.length;
+  container.innerHTML =
+    customers.map(
+      function(customer){
 
-
-        document.getElementById(
-          "totalOrders"
-        ).textContent =
-          orders.length;
-
-
-        const totalValue =
-          orders.reduce(
-            function(sum, order) {
-
-              return sum +
-                Number(order.total || 0);
-
-            },
+        const customerTotal =
+          customer.orders.reduce(
+            (sum,order) =>
+              sum +
+              Number(order.total || 0),
             0
           );
 
 
-        document.getElementById(
-          "totalValue"
-        ).textContent =
-          money(totalValue);
+        return `
+
+          <article class="customer">
+
+            <div class="customer-header">
+
+              <h3>
+                ${escapeHtml(customer.name)}
+              </h3>
+
+              <div class="customer-info">
+
+                📱
+                ${escapeHtml(
+                  customer.phone || "-"
+                )}
+
+                <br>
+
+                ✉️
+                ${escapeHtml(
+                  customer.email || "-"
+                )}
+
+              </div>
+
+              <div class="tags">
+
+                <span class="tag">
+                  ${customer.orders.length}
+                  pedido(s)
+                </span>
+
+                <span class="tag">
+                  ${money(customerTotal)}
+                </span>
+
+              </div>
+
+            </div>
 
 
-        renderCustomers(groups);
+            <div class="orders">
+
+            ${customer.orders.map(
+              function(order){
+
+                const brand =
+                  inferBrand(order);
 
 
-      } catch(error) {
+                return `
 
-        console.error(error);
+                  <details class="order">
 
-        container.innerHTML =
-          `
-          <div class="error">
-            Não foi possível carregar
-            os pedidos.
-            <br><br>
-            Saia e entre novamente
-            na conta administrativa.
-          </div>
-          `;
+                    <summary>
+
+                      Pedido #${order.id}
+
+                      • ${escapeHtml(brand)}
+
+                      • ${dateTimeBR(
+                        order.created_at
+                      )}
+
+                    </summary>
+
+
+                    <div class="order-body">
+
+                      <span class="order-brand">
+                        Rateio:
+                        ${escapeHtml(brand)}
+                      </span>
+
+
+                      <p>
+                        <strong>Endereço:</strong>
+                        ${escapeHtml(
+                          order.customer_address ||
+                          "-"
+                        )}
+                      </p>
+
+
+                      <p>
+                        <strong>CEP:</strong>
+                        ${escapeHtml(
+                          order.customer_cep ||
+                          "-"
+                        )}
+                      </p>
+
+
+                      <h4>Produtos</h4>
+
+                      ${renderItems(
+                        order.items
+                      )}
+
+
+                      <div class="payment-area">
+
+                        <h3>
+                          Controle de pagamentos
+                        </h3>
+
+
+                        <div class="payment-edit">
+
+                          <div class="field">
+
+                            <span>
+                              Data pagamento atual
+                            </span>
+
+                            <input
+                              type="date"
+                              id="due-now-${order.id}"
+                              value="${
+                                order.payment_due_date ||
+                                ""
+                              }"
+                            >
+
+                          </div>
+
+
+                          <div class="field">
+
+                            <span>
+                              Data próximo pagamento
+                            </span>
+
+                            <input
+                              type="date"
+                              id="due-next-${order.id}"
+                              value="${
+                                order.next_payment_due_date ||
+                                ""
+                              }"
+                            >
+
+                          </div>
+
+
+                          <div class="field">
+
+                            <span>
+                              Pagamento atual — Cripto USDT
+                            </span>
+
+                            <input
+                              type="number"
+                              min="0"
+                              step="0.01"
+                              id="crypto-${order.id}"
+                              value="${
+                                order.payment_now_crypto ??
+                                ""
+                              }"
+                            >
+
+                          </div>
+
+
+                          <div class="field">
+
+                            <span>
+                              Pagamento atual — Pix R$
+                            </span>
+
+                            <input
+                              type="number"
+                              min="0"
+                              step="0.01"
+                              id="pix-${order.id}"
+                              value="${
+                                order.payment_now_pix ??
+                                ""
+                              }"
+                            >
+
+                          </div>
+
+
+                          <div class="field full">
+
+                            <span>
+                              Próximo pagamento R$
+                            </span>
+
+                            <input
+                              type="number"
+                              min="0"
+                              step="0.01"
+                              id="next-${order.id}"
+                              value="${
+                                order.next_payment_brl ??
+                                ""
+                              }"
+                            >
+
+                          </div>
+
+                        </div>
+
+
+                        <button
+                          class="btn"
+                          type="button"
+                          onclick="
+                            savePaymentData(
+                              ${order.id}
+                            )
+                          "
+                        >
+                          SALVAR VALORES E DATAS
+                        </button>
+
+
+                        <div
+                          id="payment-message-${order.id}"
+                          class="message"
+                        ></div>
+
+
+                        <div class="payment-grid">
+
+
+                          <div class="payment-box">
+
+                            <h4>
+                              💰 Pagar até
+                              ${dateBR(
+                                order.payment_due_date
+                              )}
+                            </h4>
+
+                            <div class="payment-value">
+                              Cripto:
+                              ${crypto(
+                                order.payment_now_crypto
+                              )}
+                            </div>
+
+                            <div class="payment-value">
+                              Pix (+5%):
+                              ${money(
+                                order.payment_now_pix
+                              )}
+                            </div>
+
+                            ${paymentStatus(
+                              order.payment_now_confirmed,
+                              order.payment_now_confirmed_at
+                            )}
+
+                            ${paymentButton(
+                              order.id,
+                              "now",
+                              order.payment_now_confirmed
+                            )}
+
+                          </div>
+
+
+                          <div class="payment-box">
+
+                            <h4>
+                              📅 Próximo pagamento
+                              ${dateBR(
+                                order.next_payment_due_date
+                              )}
+                            </h4>
+
+                            <div class="payment-value">
+                              ${money(
+                                order.next_payment_brl
+                              )}
+                            </div>
+
+                            ${paymentStatus(
+                              order.next_payment_confirmed,
+                              order.next_payment_confirmed_at
+                            )}
+
+                            ${paymentButton(
+                              order.id,
+                              "next",
+                              order.next_payment_confirmed
+                            )}
+
+                          </div>
+
+
+                          <div class="payment-box">
+
+                            <h4>
+                              Taxa administrativa
+                              e separação
+                            </h4>
+
+                            <div class="payment-value">
+                              ${money(
+                                order.admin_fee_brl ??
+                                50
+                              )}
+                            </div>
+
+                            ${paymentStatus(
+                              order.admin_fee_confirmed,
+                              order.admin_fee_confirmed_at
+                            )}
+
+                            ${paymentButton(
+                              order.id,
+                              "fee",
+                              order.admin_fee_confirmed
+                            )}
+
+                          </div>
+
+
+                          <div class="payment-box">
+
+                            <h4>
+                              🚚 Frete
+                            </h4>
+
+                            <div class="payment-value">
+                              ${escapeHtml(
+                                order.freight_note ||
+                                "Frete à parte"
+                              )}
+                            </div>
+
+                          </div>
+
+                        </div>
+
+                      </div>
+
+                    </div>
+
+                  </details>
+
+                `;
+
+              }
+            ).join("")}
+
+            </div>
+
+          </article>
+
+        `;
 
       }
+    ).join("");
 
-    }
+}
 
 
-    loadAdmin();
+/* SALVAR DATAS E VALORES */
 
-  </script>
+async function savePaymentData(
+  orderId
+){
+
+  const message =
+    document.getElementById(
+      "payment-message-" +
+      orderId
+    );
+
+
+  const paymentDue =
+    document.getElementById(
+      "due-now-" +
+      orderId
+    ).value;
+
+
+  const nextDue =
+    document.getElementById(
+      "due-next-" +
+      orderId
+    ).value;
+
+
+  const cryptoValue =
+    document.getElementById(
+      "crypto-" +
+      orderId
+    ).value;
+
+
+  const pixValue =
+    document.getElementById(
+      "pix-" +
+      orderId
+    ).value;
+
+
+  const nextValue =
+    document.getElementById(
+      "next-" +
+      orderId
+    ).value;
+
+
+  message.className =
+    "message";
+
+  message.textContent =
+    "Salvando...";
+
+
+  try{
+
+    await api(
+      "/rest/v1/orders?id=eq." +
+      orderId,
+      {
+        method:"PATCH",
+
+        headers:{
+          Prefer:"return=minimal"
+        },
+
+        body:JSON.stringify({
+
+          payment_due_date:
+            paymentDue || null,
+
+          next_payment_due_date:
+            nextDue || null,
+
+          payment_now_crypto:
+            numOrNull(
+              cryptoValue
+            ),
+
+          payment_now_pix:
+            numOrNull(
+              pixValue
+            ),
+
+          next_payment_brl:
+            numOrNull(
+              nextValue
+            ),
+
+          admin_fee_brl:50,
+
+          freight_note:
+            "Frete à parte",
+
+          updated_at:
+            new Date().toISOString()
+
+        })
+      }
+    );
+
+
+    message.className =
+      "message success";
+
+    message.textContent =
+      "✅ Valores e datas salvos.";
+
+
+    await loadOrders();
+
+  }catch(error){
+
+    console.error(error);
+
+    message.className =
+      "message error";
+
+    message.textContent =
+      "Erro ao salvar.";
+  }
+
+}
+
+
+/* CONFIRMAR / DESFAZER PAGAMENTOS */
+
+async function togglePayment(
+  orderId,
+  type,
+  current
+){
+
+  const confirmed =
+    !current;
+
+
+  const body = {};
+
+
+  if(type === "now"){
+
+    body.payment_now_confirmed =
+      confirmed;
+
+    body.payment_now_confirmed_at =
+      confirmed
+      ? new Date().toISOString()
+      : null;
+
+  }
+
+
+  if(type === "next"){
+
+    body.next_payment_confirmed =
+      confirmed;
+
+    body.next_payment_confirmed_at =
+      confirmed
+      ? new Date().toISOString()
+      : null;
+
+  }
+
+
+  if(type === "fee"){
+
+    body.admin_fee_confirmed =
+      confirmed;
+
+    body.admin_fee_confirmed_at =
+      confirmed
+      ? new Date().toISOString()
+      : null;
+
+  }
+
+
+  body.updated_at =
+    new Date().toISOString();
+
+
+  try{
+
+    await api(
+      "/rest/v1/orders?id=eq." +
+      orderId,
+      {
+        method:"PATCH",
+
+        headers:{
+          Prefer:"return=minimal"
+        },
+
+        body:
+          JSON.stringify(body)
+      }
+    );
+
+
+    await loadOrders();
+
+  }catch(error){
+
+    console.error(error);
+
+    alert(
+      "Não foi possível atualizar o pagamento."
+    );
+  }
+
+}
+
+
+/* EVENTOS */
+
+document.getElementById(
+  "brandFilter"
+).addEventListener(
+  "change",
+  renderProducts
+);
+
+
+document.getElementById(
+  "addProductButton"
+).addEventListener(
+  "click",
+  addProduct
+);
+
+
+/* INICIAR */
+
+async function start(){
+
+  const allowed =
+    await verifyAdmin();
+
+
+  if(!allowed){
+    return;
+  }
+
+
+  try{
+
+    await loadRateios();
+
+    await loadProducts();
+
+    await loadOrders();
+
+  }catch(error){
+
+    console.error(error);
+
+    alert(
+      "Não foi possível carregar o painel."
+    );
+  }
+
+}
+
+
+start();
+
+</script>
 
 </body>
-  </html>
+</html>
