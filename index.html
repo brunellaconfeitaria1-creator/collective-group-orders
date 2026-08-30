@@ -2,546 +2,1217 @@
 <html lang="pt-BR">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
 
-  <title>Forever Collective</title>
+<meta charset="utf-8">
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+<meta
+  name="viewport"
+  content="width=device-width,initial-scale=1"
+>
 
-    body {
-      margin: 0;
-      background: #03050a;
-      color: #f7f7fb;
-      font-family: Inter, Arial, sans-serif;
-    }
+<title>
+  Forever Collective
+</title>
 
-    .wrap {
-      max-width: 1180px;
-      margin: auto;
-      padding: 24px;
-    }
 
-    .nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border: 1px solid #202637;
-      border-radius: 18px;
-      padding: 16px 20px;
-      background: #070a11;
-    }
+<style>
 
-    .logo {
-      font-weight: 800;
-      letter-spacing: 2px;
-    }
+*{
+  box-sizing:border-box;
+}
 
-    .logo b {
-      color: #8b35ff;
-    }
+body{
 
-    .links {
-      display: flex;
-      gap: 24px;
-      color: #bfc4d2;
-      font-size: 14px;
-    }
+  margin:0;
 
-    .hero {
-      margin-top: 18px;
-      border: 1px solid #202637;
-      border-radius: 22px;
-      padding: 42px;
-      background:
-        radial-gradient(
-          circle at 85% 30%,
-          #38107a 0,
-          #0a0b16 30%,
-          #06080e 65%
-        );
-      min-height: 300px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+  background:#03050a;
 
-    .hero h1 {
-      font-size: 46px;
-      margin: 10px 0;
-    }
+  color:#f7f7fb;
 
-    .hero h1 span {
-      color: #8b35ff;
-    }
+  font-family:
+    Arial,
+    sans-serif;
 
-    .badge {
-      display: inline-block;
-      border: 1px solid #1678ff;
-      border-radius: 20px;
-      padding: 7px 12px;
-      color: #53a7ff;
-      font-size: 12px;
-    }
+}
 
-    .vial {
-      width: 170px;
-      height: 220px;
-      border: 2px solid #7c32ff;
-      border-radius: 35px 35px 22px 22px;
-      background:
-        linear-gradient(
-          #07132a,
-          #5c12c8 45%,
-          #090716
-        );
-      box-shadow: 0 0 55px #6d20ff;
-      display: grid;
-      place-items: center;
-      font-weight: 800;
-      letter-spacing: 2px;
-    }
 
-    .stats,
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-      margin-top: 18px;
-    }
+.wrap{
 
-    .stat,
-    .card {
-      border: 1px solid #202637;
-      border-radius: 16px;
-      padding: 20px;
-      background: #080b12;
-    }
+  max-width:1180px;
 
-    .stat strong {
-      font-size: 28px;
-      display: block;
-    }
+  margin:auto;
 
-    .section {
-      margin-top: 28px;
-    }
+  padding:24px;
 
-    .card .tag {
-      display: inline-block;
-      padding: 5px 10px;
-      border: 1px solid #7d2cff;
-      border-radius: 16px;
-      color: #d39bff;
-      font-size: 12px;
-    }
+}
 
-    .card h3 {
-      font-size: 22px;
-    }
 
-    .card p {
-      color: #aab0bf;
-      line-height: 1.5;
-      min-height: 48px;
-    }
+/* TOPO */
 
-    .btn {
-      border: 0;
-      border-radius: 10px;
-      padding: 12px 16px;
-      color: white;
-      font-weight: 700;
-      background:
-        linear-gradient(
-          90deg,
-          #1676ff,
-          #8c25f7
-        );
-      cursor: pointer;
-    }
+.nav{
 
-    .products {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-    }
+  display:flex;
 
-    .product {
-      border: 1px solid #202637;
-      border-radius: 16px;
-      padding: 20px;
-      background: #080b12;
-    }
+  align-items:center;
 
-    .progress {
-      height: 8px;
-      background: #171b27;
-      border-radius: 9px;
-      overflow: hidden;
-      margin: 12px 0;
-    }
+  justify-content:
+    space-between;
 
-    .progress i {
-      display: block;
-      height: 100%;
-      background:
-        linear-gradient(
-          90deg,
-          #7c22ff,
-          #2376ff
-        );
-    }
+  gap:15px;
 
-    .footer {
-      color: #6f7688;
-      text-align: center;
-      padding: 30px;
-    }
+  border:
+    1px solid #202637;
 
-    @media(max-width:760px) {
+  border-radius:18px;
 
-      .links {
-        display: none;
-      }
+  padding:16px 20px;
 
-      .hero {
-        padding: 28px;
-      }
+  background:#070a11;
 
-      .hero h1 {
-        font-size: 34px;
-      }
+}
 
-      .vial {
-        width: 100px;
-        height: 150px;
-      }
 
-      .stats,
-      .cards,
-      .products {
-        grid-template-columns: 1fr;
-      }
+.logo{
 
-      .wrap {
-        padding: 12px;
-      }
-    }
-  </style>
+  font-weight:900;
+
+  letter-spacing:2px;
+
+}
+
+
+.logo b{
+
+  color:#8b35ff;
+
+}
+
+
+.links{
+
+  display:flex;
+
+  gap:23px;
+
+  color:#bfc4d2;
+
+  font-size:14px;
+
+}
+
+
+.links span{
+
+  cursor:pointer;
+
+}
+
+
+.btn{
+
+  border:0;
+
+  border-radius:11px;
+
+  padding:12px 16px;
+
+  color:white;
+
+  font-weight:900;
+
+  background:
+    linear-gradient(
+      90deg,
+      #1676ff,
+      #8c25f7
+    );
+
+  cursor:pointer;
+
+}
+
+
+/* HERO */
+
+.hero{
+
+  margin-top:18px;
+
+  border:
+    1px solid #202637;
+
+  border-radius:22px;
+
+  padding:42px;
+
+  background:
+
+    radial-gradient(
+
+      circle at 85% 30%,
+
+      #38107a 0,
+
+      #0a0b16 30%,
+
+      #06080e 65%
+
+    );
+
+  min-height:300px;
+
+  display:flex;
+
+  justify-content:
+    space-between;
+
+  align-items:center;
+
+  gap:25px;
+
+}
+
+
+.hero h1{
+
+  font-size:46px;
+
+  margin:10px 0;
+
+}
+
+
+.hero h1 span{
+
+  color:#8b35ff;
+
+}
+
+
+.hero p{
+
+  color:#adb4c3;
+
+  line-height:1.6;
+
+  max-width:560px;
+
+}
+
+
+.badge{
+
+  display:inline-block;
+
+  border:
+    1px solid #1678ff;
+
+  border-radius:20px;
+
+  padding:7px 12px;
+
+  color:#53a7ff;
+
+  font-size:12px;
+
+  font-weight:900;
+
+}
+
+
+.vial{
+
+  width:170px;
+
+  height:220px;
+
+  border:
+    2px solid #7c32ff;
+
+  border-radius:
+    35px 35px 22px 22px;
+
+  background:
+
+    linear-gradient(
+
+      #07132a,
+
+      #5c12c8 45%,
+
+      #090716
+
+    );
+
+  box-shadow:
+    0 0 55px #6d20ff;
+
+  display:grid;
+
+  place-items:center;
+
+  text-align:center;
+
+  font-weight:900;
+
+  letter-spacing:2px;
+
+  font-size:20px;
+
+}
+
+
+/* ESTATÍSTICAS */
+
+.stats{
+
+  display:grid;
+
+  grid-template-columns:
+    repeat(3,1fr);
+
+  gap:14px;
+
+  margin-top:18px;
+
+}
+
+
+.stat{
+
+  border:
+    1px solid #202637;
+
+  border-radius:16px;
+
+  padding:20px;
+
+  background:#080b12;
+
+}
+
+
+.stat strong{
+
+  font-size:28px;
+
+  display:block;
+
+  color:#61baff;
+
+  margin-bottom:5px;
+
+}
+
+
+.stat span{
+
+  color:#abb2c1;
+
+}
+
+
+/* SEÇÕES */
+
+.section{
+
+  margin-top:28px;
+
+}
+
+
+.section h2{
+
+  font-size:26px;
+
+  margin-bottom:15px;
+
+}
+
+
+.cards{
+
+  display:grid;
+
+  grid-template-columns:
+    repeat(3,1fr);
+
+  gap:14px;
+
+}
+
+
+.card{
+
+  border:
+    1px solid #202637;
+
+  border-radius:18px;
+
+  padding:20px;
+
+  background:#080b12;
+
+}
+
+
+.card .tag{
+
+  display:inline-block;
+
+  padding:5px 10px;
+
+  border:
+    1px solid #7d2cff;
+
+  border-radius:16px;
+
+  color:#d39bff;
+
+  font-size:12px;
+
+  font-weight:900;
+
+}
+
+
+.card h3{
+
+  font-size:22px;
+
+  margin:
+    16px 0 10px;
+
+}
+
+
+.card p{
+
+  color:#aab0bf;
+
+  line-height:1.6;
+
+  min-height:75px;
+
+}
+
+
+/* COMO FUNCIONA */
+
+.steps{
+
+  display:grid;
+
+  grid-template-columns:
+    repeat(3,1fr);
+
+  gap:14px;
+
+}
+
+
+.step{
+
+  border:
+    1px solid #202637;
+
+  border-radius:18px;
+
+  padding:20px;
+
+  background:#080b12;
+
+}
+
+
+.step-number{
+
+  width:40px;
+
+  height:40px;
+
+  display:grid;
+
+  place-items:center;
+
+  border-radius:50%;
+
+  background:
+    linear-gradient(
+      90deg,
+      #1676ff,
+      #8c25f7
+    );
+
+  font-weight:900;
+
+  margin-bottom:14px;
+
+}
+
+
+.step h3{
+
+  margin:0 0 9px;
+
+}
+
+
+.step p{
+
+  color:#aab0bf;
+
+  line-height:1.6;
+
+  margin:0;
+
+}
+
+
+/* AVISO */
+
+.notice{
+
+  margin-top:28px;
+
+  border:
+    1px solid #263a53;
+
+  border-radius:18px;
+
+  background:#07101e;
+
+  padding:20px;
+
+  color:#abb5c5;
+
+  line-height:1.6;
+
+}
+
+
+.notice strong{
+
+  color:#fff;
+
+}
+
+
+/* RODAPÉ */
+
+.footer{
+
+  color:#6f7688;
+
+  text-align:center;
+
+  padding:35px 10px 15px;
+
+}
+
+
+/* CELULAR */
+
+@media(max-width:760px){
+
+  .links{
+
+    display:none;
+
+  }
+
+
+  .hero{
+
+    padding:27px;
+
+  }
+
+
+  .hero h1{
+
+    font-size:34px;
+
+  }
+
+
+  .vial{
+
+    width:105px;
+
+    height:150px;
+
+    font-size:14px;
+
+  }
+
+
+  .stats,
+  .cards,
+  .steps{
+
+    grid-template-columns:1fr;
+
+  }
+
+
+  .wrap{
+
+    padding:12px;
+
+  }
+
+}
+
+
+@media(max-width:520px){
+
+  .hero{
+
+    align-items:flex-start;
+
+  }
+
+
+  .vial{
+
+    width:80px;
+
+    height:125px;
+
+    font-size:11px;
+
+  }
+
+
+  .nav{
+
+    padding:14px;
+
+  }
+
+
+  .logo{
+
+    font-size:14px;
+
+  }
+
+}
+
+</style>
+
 </head>
+
 
 <body>
 
+
 <div class="wrap">
 
-  <div class="nav">
 
-    <div class="logo">
-      🧬 FOREVER <b>COLLECTIVE</b>
-    </div>
+<!-- MENU -->
 
-    <div class="links">
-      <span>Início</span>
-      <span>Catálogos</span>
-      <span>Como comprar</span>
-      <span>Meus pedidos</span>
-    </div>
+<div class="nav">
+
+
+  <div class="logo">
+
+    🧬 FOREVER
+    <b>COLLECTIVE</b>
+
+  </div>
+
+
+  <div class="links">
+
+    <span
+      onclick="
+        window.scrollTo({
+          top:0,
+          behavior:'smooth'
+        })
+      "
+    >
+      Início
+    </span>
+
+
+    <span
+      onclick="
+        window.location.href=
+        'catalogo.html'
+      "
+    >
+      Rateios
+    </span>
+
+
+    <span
+      onclick="
+        document
+        .getElementById('comoFunciona')
+        .scrollIntoView({
+          behavior:'smooth'
+        })
+      "
+    >
+      Como comprar
+    </span>
+
+
+    <span
+      onclick="
+        window.location.href=
+        'meus-pedidos.html'
+      "
+    >
+      Meus pedidos
+    </span>
+
+  </div>
+
+
+  <button
+    class="btn"
+    id="loginButton"
+    onclick="
+      window.location.href=
+      'login.html'
+    "
+  >
+    Entrar
+  </button>
+
+
+</div>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+
+  <div>
+
+
+    <span class="badge">
+
+      ● SISTEMA ATIVO
+
+    </span>
+
+
+    <h1>
+
+      Bem-vinda,
+
+      <span id="userGreeting">
+
+        Cliente!
+
+      </span>
+
+    </h1>
+
+
+    <p>
+
+      Escolha um dos rateios abertos,
+      reserve seus produtos e acompanhe
+      seus pedidos em um só lugar.
+
+    </p>
+
 
     <button
       class="btn"
-      id="loginButton"
-      onclick="window.location.href='login.html'"
+      onclick="
+        window.location.href=
+        'catalogo.html'
+      "
     >
-      Entrar
+
+      Ver rateios abertos →
+
     </button>
 
+
   </div>
 
 
-  <section class="hero">
+  <div class="vial">
 
-    <div>
+    RATEIOS<br>
+    ABERTOS
 
-      <span class="badge">
-        ● SISTEMA ATIVO
+  </div>
+
+
+</section>
+
+
+<!-- NÚMEROS -->
+
+<div class="stats">
+
+
+  <div class="stat">
+
+    <strong>
+      3
+    </strong>
+
+    <span>
+      Rateios disponíveis
+    </span>
+
+  </div>
+
+
+  <div class="stat">
+
+    <strong>
+      10
+    </strong>
+
+    <span>
+      Unidades por box
+    </span>
+
+  </div>
+
+
+  <div class="stat">
+
+    <strong>
+      24h
+    </strong>
+
+    <span>
+      Acesso aos seus pedidos
+    </span>
+
+  </div>
+
+
+</div>
+
+
+<!-- CARDS PRINCIPAIS -->
+
+<section class="section">
+
+
+  <h2>
+    Nossos catálogos
+  </h2>
+
+
+  <div class="cards">
+
+
+    <!-- RATEIOS -->
+
+    <div class="card">
+
+
+      <span class="tag">
+
+        RATEIOS
+
       </span>
 
-      <h1>
-        Bem-vinda,
-        <span id="userGreeting">
-          Cliente!
-        </span>
-      </h1>
+
+      <h3>
+
+        Rateios abertos
+
+      </h3>
+
 
       <p>
-        Uma forma simples e organizada
-        de acompanhar pedidos coletivos.
+
+        Aperte aqui para ver os
+        rateios abertos, escolher
+        a marca e fazer sua reserva.
+
       </p>
 
-    </div>
 
-    <div class="vial">
-      UTHER<br>
-      60MG
-    </div>
-
-  </section>
-
-
-  <div class="stats">
-
-    <div class="stat">
-      <strong>2</strong>
-      Catálogos ativos
-    </div>
-
-    <div class="stat">
-      <strong>2</strong>
-      Produtos disponíveis
-    </div>
-
-    <div class="stat">
-      <strong>10</strong>
-      Unidades por box
-    </div>
-
-  </div>
-
-
-  <section class="section">
-
-    <h2>Nossos catálogos</h2>
-
-    <div class="cards">
-
-      <div class="card">
-
-        <span class="tag">
-          UTHER
-        </span>
-
-        <h3>UTHER</h3>
-
-        <p>
-          Catálogo principal com acompanhamento
-          de fechamento de boxes.
-        </p>
-
-        <button
-          class="btn"
-          onclick="window.location.href='catalogo.html'"
-        >
-          Ver catálogo →
-        </button>
-
-      </div>
-
-
-      <div class="card">
-
-        <span class="tag">
-          PEDIDOS
-        </span>
-
-        <h3>Meus pedidos</h3>
-
-        <p>
-          Cada cliente acompanha apenas
-          os próprios pedidos e reservas.
-        </p>
-
-        <button
-          class="btn"
-          onclick="window.location.href='meus-pedidos.html'"
-        >
-          Acessar →
-        </button>
-
-      </div>
-
-
-      <div
-        class="card"
-        id="adminCard"
-        hidden
+      <button
+        class="btn"
+        onclick="
+          window.location.href=
+          'catalogo.html'
+        "
       >
 
-        <span class="tag">
-          ADMIN
-        </span>
+        Ver rateios →
 
-        <h3>
-          Painel administrativo
-        </h3>
+      </button>
 
-        <p>
-          Área restrita para gerenciamento
-          de clientes, produtos e pedidos.
-        </p>
-
-        <button
-          class="btn"
-          onclick="window.location.href='admin.html'"
-        >
-          Administrar →
-        </button>
-
-      </div>
 
     </div>
 
-  </section>
 
 
-  <section class="section">
+    <!-- PEDIDOS -->
 
-    <h2>Produtos</h2>
-
-    <div class="products">
-
-      <div class="product">
-
-        <h3>
-          RETATRUTIDE 60MG
-        </h3>
-
-        <p>
-          Uther • Box com 10 unidades
-        </p>
-
-        <b>
-          Progresso do box: 7 / 10
-        </b>
-
-        <div class="progress">
-          <i style="width:70%"></i>
-        </div>
-
-        <button
-          class="btn"
-          onclick="window.location.href='catalogo.html'"
-        >
-          Reservar
-        </button>
-
-      </div>
+    <div class="card">
 
 
-      <div class="product">
+      <span class="tag">
 
-        <h3>
-          TIRZEPATIDE 60MG
-        </h3>
+        PEDIDOS
 
-        <p>
-          Uther • Box com 10 unidades
-        </p>
+      </span>
 
-        <b>
-          Progresso do box: 5 / 10
-        </b>
 
-        <div class="progress">
-          <i style="width:50%"></i>
-        </div>
+      <h3>
 
-        <button
-          class="btn"
-          onclick="window.location.href='catalogo.html'"
-        >
-          Reservar
-        </button>
+        Meus pedidos
 
-      </div>
+      </h3>
+
+
+      <p>
+
+        Acompanhe suas reservas,
+        quantidades e pagamentos
+        dentro da sua conta.
+
+      </p>
+
+
+      <button
+        class="btn"
+        onclick="
+          window.location.href=
+          'meus-pedidos.html'
+        "
+      >
+
+        Acessar →
+
+      </button>
+
 
     </div>
 
-  </section>
 
 
-  <div class="footer">
-    FOREVER COLLECTIVE
-    • Collective Ordering System
+    <!-- ADMIN -->
+
+    <div
+      class="card"
+      id="adminCard"
+      hidden
+    >
+
+
+      <span class="tag">
+
+        ADMIN
+
+      </span>
+
+
+      <h3>
+
+        Painel administrativo
+
+      </h3>
+
+
+      <p>
+
+        Gerencie pedidos,
+        pagamentos, produtos
+        e abertura dos rateios.
+
+      </p>
+
+
+      <button
+        class="btn"
+        onclick="
+          window.location.href=
+          'admin.html'
+        "
+      >
+
+        Administrar →
+
+      </button>
+
+
+    </div>
+
+
   </div>
+
+
+</section>
+
+
+<!-- COMO FUNCIONA -->
+
+<section
+  class="section"
+  id="comoFunciona"
+>
+
+
+  <h2>
+
+    Como funciona
+
+  </h2>
+
+
+  <div class="steps">
+
+
+    <div class="step">
+
+
+      <div class="step-number">
+
+        1
+
+      </div>
+
+
+      <h3>
+
+        Escolha o rateio
+
+      </h3>
+
+
+      <p>
+
+        Entre nos rateios abertos
+        e escolha entre as marcas
+        disponíveis.
+
+      </p>
+
+
+    </div>
+
+
+
+    <div class="step">
+
+
+      <div class="step-number">
+
+        2
+
+      </div>
+
+
+      <h3>
+
+        Faça sua reserva
+
+      </h3>
+
+
+      <p>
+
+        Escolha os produtos e a
+        quantidade que deseja
+        reservar.
+
+      </p>
+
+
+    </div>
+
+
+
+    <div class="step">
+
+
+      <div class="step-number">
+
+        3
+
+      </div>
+
+
+      <h3>
+
+        Acompanhe seu pedido
+
+      </h3>
+
+
+      <p>
+
+        Entre em Meus pedidos para
+        acompanhar sua reserva e
+        os pagamentos.
+
+      </p>
+
+
+    </div>
+
+
+  </div>
+
+
+</section>
+
+
+<div class="notice">
+
+  📦 Cada produto mostra o andamento
+  das reservas e quantas unidades
+  faltam para fechar o próximo box.
+
+  <br><br>
+
+  <strong>
+    Enquanto o rateio estiver aberto,
+    você poderá alterar a quantidade
+    do seu pedido.
+  </strong>
+
+</div>
+
+
+<div class="footer">
+
+  FOREVER COLLECTIVE
+  • Collective Ordering System
+
+</div>
+
 
 </div>
 
 
 <script>
 
-  const adminEmail =
-    "nuuna102@gmail.com";
 
-  const userName =
-    localStorage.getItem("user_name");
-
-  const loggedUser =
-    localStorage.getItem("user_id");
-
-  const loggedEmail =
-    localStorage.getItem("user_email");
-
-  const loginButton =
-    document.getElementById("loginButton");
-
-  const userGreeting =
-    document.getElementById("userGreeting");
-
-  const adminCard =
-    document.getElementById("adminCard");
+const adminEmail =
+  "nuuna102@gmail.com";
 
 
-  if (loggedUser && userName) {
-
-    userGreeting.textContent =
-      userName + "!";
-
-  }
+const userName =
+  localStorage.getItem(
+    "user_name"
+  );
 
 
-  if (loggedEmail === adminEmail) {
+const loggedUser =
+  localStorage.getItem(
+    "user_id"
+  );
 
-    adminCard.hidden = false;
 
-  }
+const loggedEmail =
+  localStorage.getItem(
+    "user_email"
+  );
 
 
-  if (loggedUser) {
+const loginButton =
+  document.getElementById(
+    "loginButton"
+  );
 
-    loginButton.textContent =
-      "Sair";
 
-    loginButton.onclick =
-      function () {
+const userGreeting =
+  document.getElementById(
+    "userGreeting"
+  );
 
-        localStorage.removeItem(
-          "access_token"
-        );
 
-        localStorage.removeItem(
-          "user_id"
-        );
+const adminCard =
+  document.getElementById(
+    "adminCard"
+  );
 
-        localStorage.removeItem(
-          "user_email"
-        );
 
-        localStorage.removeItem(
-          "user_name"
-        );
 
-        window.location.href =
-          "index.html";
+/* NOME DO CLIENTE */
 
-      };
+if(
+  loggedUser &&
+  userName
+){
 
-  }
+  userGreeting.textContent =
+    userName + "!";
+
+}
+
+
+
+/* ADMIN */
+
+if(
+  loggedEmail &&
+  loggedEmail.toLowerCase() ===
+  adminEmail.toLowerCase()
+){
+
+  adminCard.hidden =
+    false;
+
+}
+
+
+
+/* LOGIN / LOGOUT */
+
+if(loggedUser){
+
+  loginButton.textContent =
+    "Sair";
+
+
+  loginButton.onclick =
+    function(){
+
+
+      localStorage.removeItem(
+        "access_token"
+      );
+
+
+      localStorage.removeItem(
+        "user_id"
+      );
+
+
+      localStorage.removeItem(
+        "user_email"
+      );
+
+
+      localStorage.removeItem(
+        "user_name"
+      );
+
+
+      window.location.href =
+        "index.html";
+
+    };
+
+}
+
 
 </script>
 
+
 </body>
-  </html>
+
+</html>
