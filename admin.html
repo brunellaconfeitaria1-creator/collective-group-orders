@@ -24,11 +24,11 @@ body{
   padding:15px 0 50px
 }
 
-.top{
+.top,.section{
   background:#07101e;
   border:1px solid #1c3048;
   border-radius:20px;
-  padding:20px;
+  padding:18px;
   margin-bottom:15px
 }
 
@@ -68,7 +68,8 @@ h1{margin:15px 0 5px}
   border-radius:15px;
   padding:15px 8px;
   font-weight:900;
-  font-size:15px
+  font-size:15px;
+  cursor:pointer
 }
 
 .menu-btn.active{
@@ -80,13 +81,7 @@ h1{margin:15px 0 5px}
 .page{display:none}
 .page.active{display:block}
 
-.section{
-  background:#07101e;
-  border:1px solid #1c3048;
-  border-radius:20px;
-  padding:18px;
-  margin-bottom:15px
-}
+/* RESUMO */
 
 .summary{
   display:grid;
@@ -175,13 +170,59 @@ h1{margin:15px 0 5px}
   border-top:1px solid #21364f
 }
 
-.item{
-  display:flex;
-  justify-content:space-between;
-  gap:10px;
-  padding:9px 0;
+/* QUANTIDADES */
+
+.items-edit{
+  margin:12px 0 16px
+}
+
+.item-edit{
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:12px;
+  align-items:center;
+  padding:13px 0;
   border-bottom:1px solid #172a3e
 }
+
+.item-name{
+  font-weight:800;
+  line-height:1.4
+}
+
+.qty-control{
+  display:flex;
+  align-items:center;
+  gap:6px
+}
+
+.qty-btn{
+  width:40px;
+  height:40px;
+  border:0;
+  border-radius:10px;
+  background:#263a55;
+  color:white;
+  font-size:22px;
+  font-weight:900;
+  cursor:pointer
+}
+
+.qty-input{
+  width:65px !important;
+  height:40px;
+  padding:5px !important;
+  text-align:center;
+  font-weight:900;
+  font-size:17px !important
+}
+
+.qty-save{
+  margin-top:13px;
+  width:100%
+}
+
+/* PAGAMENTOS */
 
 .payment-grid{
   display:grid;
@@ -367,10 +408,7 @@ input,select{
 @media(max-width:750px){
 
   .summary,
-  .rateios{
-    grid-template-columns:1fr
-  }
-
+  .rateios,
   .payment-grid,
   .payment-edit{
     grid-template-columns:1fr
@@ -379,6 +417,14 @@ input,select{
   .new-product,
   .product-row{
     grid-template-columns:1fr
+  }
+
+  .item-edit{
+    grid-template-columns:1fr
+  }
+
+  .qty-control{
+    justify-content:flex-start
   }
 
   .btn{width:100%}
@@ -455,13 +501,12 @@ Total
 
 </div>
 
-
 <section class="section">
 
 <h2>📦 Pedidos dos clientes</h2>
 
 <p class="muted">
-Clique no pedido para abrir os produtos, pagamentos ou excluir o pedido.
+Abra um pedido para alterar quantidades, pagamentos ou excluir.
 </p>
 
 <div id="ordersList">
@@ -549,10 +594,7 @@ class="btn">
 
 </div>
 
-<div
-id="productMessage"
-class="message">
-</div>
+<div id="productMessage" class="message"></div>
 
 <div id="productsList">
 Carregando produtos...
@@ -597,58 +639,33 @@ function openPage(page){
 document
 .querySelectorAll(".page")
 .forEach(el=>{
-el.classList.remove("active");
+  el.classList.remove("active");
 });
 
 document
 .querySelectorAll(".menu-btn")
 .forEach(el=>{
-el.classList.remove("active");
+  el.classList.remove("active");
 });
 
-
 if(page==="orders"){
-
-document
-.getElementById("pageOrders")
-.classList.add("active");
-
-document
-.getElementById("menuOrders")
-.classList.add("active");
-
+  document.getElementById("pageOrders").classList.add("active");
+  document.getElementById("menuOrders").classList.add("active");
 }
-
 
 if(page==="rateios"){
-
-document
-.getElementById("pageRateios")
-.classList.add("active");
-
-document
-.getElementById("menuRateios")
-.classList.add("active");
-
+  document.getElementById("pageRateios").classList.add("active");
+  document.getElementById("menuRateios").classList.add("active");
 }
-
 
 if(page==="products"){
-
-document
-.getElementById("pageProducts")
-.classList.add("active");
-
-document
-.getElementById("menuProducts")
-.classList.add("active");
-
+  document.getElementById("pageProducts").classList.add("active");
+  document.getElementById("menuProducts").classList.add("active");
 }
 
-
 window.scrollTo({
-top:0,
-behavior:"smooth"
+  top:0,
+  behavior:"smooth"
 });
 
 }
@@ -670,20 +687,15 @@ return String(v??"")
 
 function money(v){
 
-if(
-v===null ||
-v===undefined ||
-v===""
-){
-return "A definir";
+if(v===null || v===undefined || v===""){
+  return "A definir";
 }
 
-return Number(v)
-.toLocaleString(
+return Number(v).toLocaleString(
 "pt-BR",
 {
-style:"currency",
-currency:"BRL"
+  style:"currency",
+  currency:"BRL"
 }
 );
 
@@ -692,31 +704,11 @@ currency:"BRL"
 
 function crypto(v){
 
-if(
-v===null ||
-v===undefined
-){
-return "A definir";
+if(v===null || v===undefined){
+  return "A definir";
 }
 
-return Number(v)
-.toFixed(2)+" USDT";
-
-}
-
-
-function dateBR(v){
-
-if(!v){
-return "A definir";
-}
-
-const p=
-String(v).split("-");
-
-return p.length===3
-? p[2]+"/"+p[1]+"/"+p[0]
-: v;
+return Number(v).toFixed(2)+" USDT";
 
 }
 
@@ -746,59 +738,52 @@ return Number.isNaN(n)
 
 /* API */
 
-async function api(
-path,
-options={}
-){
+async function api(path,options={}){
 
 const response=
 await fetch(
 SUPABASE_URL+path,
 {
-...options,
+  ...options,
 
-headers:{
-apikey:SUPABASE_KEY,
+  headers:{
+    apikey:SUPABASE_KEY,
 
-Authorization:
-"Bearer "+token,
+    Authorization:
+    "Bearer "+token,
 
-"Content-Type":
-"application/json",
+    "Content-Type":
+    "application/json",
 
-...(options.headers||{})
-}
+    ...(options.headers||{})
+  }
 }
 );
-
 
 if(response.status===401){
 
-localStorage.clear();
+  localStorage.clear();
 
-window.location.href=
-"login.html";
+  window.location.href=
+  "login.html";
 
-throw new Error(
-"Sessão expirada"
-);
+  throw new Error(
+    "Sessão expirada"
+  );
 
 }
-
 
 if(!response.ok){
 
-throw new Error(
-await response.text()
-);
+  throw new Error(
+    await response.text()
+  );
 
 }
-
 
 if(response.status===204){
-return null;
+  return null;
 }
-
 
 const text=
 await response.text();
@@ -816,46 +801,41 @@ async function verifyAdmin(){
 
 if(!token){
 
-window.location.href=
-"login.html";
+  window.location.href=
+  "login.html";
 
-return false;
-
+  return false;
 }
-
 
 try{
 
-const user=
-await api("/auth/v1/user");
+  const user=
+  await api("/auth/v1/user");
 
+  if(
+    !user.email ||
+    user.email.toLowerCase()!==
+    ADMIN_EMAIL.toLowerCase()
+  ){
 
-if(
-!user.email ||
-user.email.toLowerCase()!==
-ADMIN_EMAIL.toLowerCase()
-){
+    alert(
+      "Acesso somente para administradora."
+    );
 
-alert(
-"Acesso somente para administradora."
-);
+    window.location.href=
+    "index.html";
 
-window.location.href=
-"index.html";
+    return false;
+  }
 
-return false;
-
-}
-
-return true;
+  return true;
 
 }catch{
 
-window.location.href=
-"login.html";
+  window.location.href=
+  "login.html";
 
-return false;
-
+  return false;
 }
 
 }
@@ -884,7 +864,6 @@ const container=
 document.getElementById(
 "rateiosList"
 );
-
 
 container.innerHTML=
 rateios.map(r=>{
@@ -945,7 +924,6 @@ document.getElementById(
 msg.textContent=
 "Salvando...";
 
-
 try{
 
 await api(
@@ -953,20 +931,19 @@ await api(
 "?brand=eq."+
 encodeURIComponent(brand),
 {
-method:"PATCH",
+  method:"PATCH",
 
-headers:{
-Prefer:"return=minimal"
-},
+  headers:{
+    Prefer:"return=minimal"
+  },
 
-body:JSON.stringify({
-is_open:!current,
-updated_at:
-new Date().toISOString()
-})
+  body:JSON.stringify({
+    is_open:!current,
+    updated_at:
+    new Date().toISOString()
+  })
 }
 );
-
 
 msg.className=
 "message success";
@@ -975,7 +952,6 @@ msg.textContent=
 "✅ Rateio atualizado.";
 
 await loadRateios();
-
 
 }catch(error){
 
@@ -1003,17 +979,11 @@ await api(
 "&order=brand.asc,sort_order.asc,id.asc"
 );
 
-
 productBrands={};
 
-
 products.forEach(p=>{
-
-productBrands[p.id]=
-p.brand;
-
+  productBrands[p.id]=p.brand;
 });
-
 
 updateBrandFilter();
 renderProducts();
@@ -1034,7 +1004,6 @@ select.value||"ALL";
 const brands=
 new Set();
 
-
 rateios.forEach(r=>
 brands.add(r.brand)
 );
@@ -1042,7 +1011,6 @@ brands.add(r.brand)
 products.forEach(p=>
 brands.add(p.brand)
 );
-
 
 select.innerHTML=
 `
@@ -1060,7 +1028,6 @@ ${escapeHtml(b)}
 </option>
 `)
 .join("");
-
 
 select.value=
 [...select.options]
@@ -1085,12 +1052,9 @@ document.getElementById(
 
 const visible=
 products.filter(p=>
-
-filter==="ALL" ||
-p.brand===filter
-
+  filter==="ALL" ||
+  p.brand===filter
 );
-
 
 if(!visible.length){
 
@@ -1102,9 +1066,7 @@ Nenhum produto encontrado.
 `;
 
 return;
-
 }
-
 
 container.innerHTML=
 visible.map(p=>`
@@ -1149,42 +1111,34 @@ Salvar
 }
 
 
-async function ensureRateio(
-brand
-){
+async function ensureRateio(brand){
 
 const exists=
 rateios.some(r=>
-
-String(r.brand)
-.toUpperCase()===
-String(brand)
-.toUpperCase()
-
+  String(r.brand).toUpperCase()===
+  String(brand).toUpperCase()
 );
 
 if(exists)return;
 
-
 await api(
 "/rest/v1/rateios",
 {
-method:"POST",
+  method:"POST",
 
-headers:{
-Prefer:"return=minimal"
-},
+  headers:{
+    Prefer:"return=minimal"
+  },
 
-body:JSON.stringify({
-brand,
-is_open:true,
-active:true,
-sort_order:
-rateios.length+1
-})
+  body:JSON.stringify({
+    brand,
+    is_open:true,
+    active:true,
+    sort_order:
+    rateios.length+1
+  })
 }
 );
-
 
 await loadRateios();
 
@@ -1220,47 +1174,42 @@ document.getElementById(
 "active-"+id
 ).checked;
 
-
 if(
-!name ||
-!brand ||
-Number.isNaN(price)
+  !name ||
+  !brand ||
+  Number.isNaN(price)
 ){
 
-msg.className=
-"message error";
+  msg.className=
+  "message error";
 
-msg.textContent=
-"Confira os dados.";
+  msg.textContent=
+  "Confira os dados.";
 
-return;
-
+  return;
 }
-
 
 try{
 
 await ensureRateio(brand);
 
-
 await api(
 "/rest/v1/products?id=eq."+id,
 {
-method:"PATCH",
+  method:"PATCH",
 
-headers:{
-Prefer:"return=minimal"
-},
+  headers:{
+    Prefer:"return=minimal"
+  },
 
-body:JSON.stringify({
-nameName:name,
-brand,
-price_brl:price,
-active
-})
+  body:JSON.stringify({
+    nameName:name,
+    brand,
+    price_brl:price,
+    active
+  })
 }
 );
-
 
 msg.className=
 "message success";
@@ -1269,7 +1218,6 @@ msg.textContent=
 "✅ Produto salvo.";
 
 await loadProducts();
-
 
 }catch(error){
 
@@ -1310,58 +1258,52 @@ document.getElementById(
 ).value
 );
 
-
 if(
-!name ||
-!brand ||
-Number.isNaN(price)
+  !name ||
+  !brand ||
+  Number.isNaN(price)
 ){
 
-msg.className=
-"message error";
+  msg.className=
+  "message error";
 
-msg.textContent=
-"Preencha todos os dados.";
+  msg.textContent=
+  "Preencha todos os dados.";
 
-return;
-
+  return;
 }
-
 
 try{
 
 await ensureRateio(brand);
 
-
 await api(
 "/rest/v1/products",
 {
-method:"POST",
+  method:"POST",
 
-headers:{
-Prefer:"return=minimal"
-},
+  headers:{
+    Prefer:"return=minimal"
+  },
 
-body:JSON.stringify({
-nameName:name,
-brand,
-price_brl:price,
-active:true,
-reserved:0,
-stock_available:0,
-box_size:10,
-sort_order:0
-})
+  body:JSON.stringify({
+    nameName:name,
+    brand,
+    price_brl:price,
+    active:true,
+    reserved:0,
+    stock_available:0,
+    box_size:10,
+    sort_order:0
+  })
 }
 );
-
 
 msg.className=
 "message success";
 
 msg.textContent=
 "✅ Produto adicionado.";
-
 
 document.getElementById(
 "newProductName"
@@ -1375,9 +1317,7 @@ document.getElementById(
 "newProductPrice"
 ).value="";
 
-
 await loadProducts();
-
 
 }catch(error){
 
@@ -1413,19 +1353,16 @@ renderOrders();
 function inferBrand(order){
 
 if(order.rateio_brand){
-return order.rateio_brand;
+  return order.rateio_brand;
 }
-
 
 const items=
 Array.isArray(order.items)
 ? order.items
 : [];
 
-
 const brands=
 new Set();
-
 
 items.forEach(item=>{
 
@@ -1435,11 +1372,10 @@ item.product_id
 ];
 
 if(brand){
-brands.add(brand);
+  brands.add(brand);
 }
 
 });
-
 
 return brands.size===1
 ? [...brands][0]
@@ -1451,19 +1387,19 @@ return brands.size===1
 function customerKey(order){
 
 if(order.user_id){
-return "U:"+order.user_id;
+  return "U:"+order.user_id;
 }
 
 if(order.customer_email){
-return "E:"+
-order.customer_email
-.toLowerCase();
+
+  return "E:"+
+  order.customer_email.toLowerCase();
 }
 
 if(order.customer_phone){
-return "P:"+
-order.customer_phone
-.replace(/\D/g,"");
+
+  return "P:"+
+  order.customer_phone.replace(/\D/g,"");
 }
 
 return "N:"+
@@ -1474,11 +1410,16 @@ order.customer_name||"Cliente"
 }
 
 
-function renderItems(items){
+/* EDITAR ITENS */
+
+function renderEditableItems(
+items,
+orderId
+){
 
 if(
-!Array.isArray(items) ||
-!items.length
+  !Array.isArray(items) ||
+  !items.length
 ){
 
 return `
@@ -1489,22 +1430,277 @@ Itens não informados.
 
 }
 
+return `
 
-return items.map(i=>`
+<div class="items-edit">
 
-<div class="item">
+${items.map(i=>{
 
-<span>
-${escapeHtml(i.name||"Produto")}
-</span>
+const productId=
+Number(i.product_id||0);
 
-<strong>
-${Number(i.quantity||0)} un.
-</strong>
+const qty=
+Math.max(
+0,
+Number(i.quantity||0)
+);
+
+if(!productId){
+
+return `
+
+<div class="item-edit">
+
+<div class="item-name">
+${escapeHtml(
+i.name||"Produto"
+)}
+</div>
+
+<div>
+${qty} un.
+</div>
 
 </div>
 
-`).join("");
+`;
+
+}
+
+return `
+
+<div class="item-edit">
+
+<div class="item-name">
+
+${escapeHtml(
+i.name||"Produto"
+)}
+
+</div>
+
+
+<div class="qty-control">
+
+<button
+type="button"
+class="qty-btn"
+onclick="
+changeQty(
+${orderId},
+${productId},
+-1
+)
+">
+−
+</button>
+
+
+<input
+class="qty-input"
+id="qty-${orderId}-${productId}"
+data-order-id="${orderId}"
+data-product-id="${productId}"
+type="number"
+min="0"
+max="999"
+step="1"
+value="${qty}"
+>
+
+
+<button
+type="button"
+class="qty-btn"
+onclick="
+changeQty(
+${orderId},
+${productId},
+1
+)
+">
++
+</button>
+
+</div>
+
+</div>
+
+`;
+
+}).join("")}
+
+
+<button
+class="btn qty-save"
+onclick="
+saveOrderQuantities(
+${orderId}
+)
+">
+
+💾 SALVAR QUANTIDADES
+
+</button>
+
+
+<div
+id="quantity-message-${orderId}"
+class="message">
+</div>
+
+</div>
+
+`;
+
+}
+
+
+function changeQty(
+orderId,
+productId,
+change
+){
+
+const input=
+document.getElementById(
+`qty-${orderId}-${productId}`
+);
+
+if(!input)return;
+
+let value=
+Number(input.value||0);
+
+value+=change;
+
+if(value<0){
+  value=0;
+}
+
+if(value>999){
+  value=999;
+}
+
+input.value=value;
+
+}
+
+
+/* SALVAR QUANTIDADES */
+
+async function saveOrderQuantities(
+orderId
+){
+
+const msg=
+document.getElementById(
+"quantity-message-"+orderId
+);
+
+const inputs=
+document.querySelectorAll(
+`.qty-input[data-order-id="${orderId}"]`
+);
+
+const quantities=
+[...inputs].map(input=>({
+
+product_id:
+Number(
+input.dataset.productId
+),
+
+quantity:
+Math.max(
+0,
+Math.min(
+999,
+Number(input.value||0)
+)
+)
+
+}));
+
+const totalQuantity=
+quantities.reduce(
+(sum,item)=>
+sum+item.quantity,
+0
+);
+
+if(totalQuantity<=0){
+
+msg.className=
+"message error";
+
+msg.textContent=
+"⚠️ O pedido precisa ficar com pelo menos 1 produto.";
+
+return;
+}
+
+
+const confirmed=
+confirm(
+"Salvar as novas quantidades do pedido #"+
+orderId+
+"?"
+);
+
+if(!confirmed){
+  return;
+}
+
+
+msg.className=
+"message";
+
+msg.textContent=
+"Salvando quantidades...";
+
+
+try{
+
+await api(
+"/rest/v1/rpc/admin_update_order_quantities",
+{
+  method:"POST",
+
+  headers:{
+    Prefer:"return=representation"
+  },
+
+  body:JSON.stringify({
+    p_order_id:orderId,
+    p_quantities:quantities
+  })
+}
+);
+
+
+msg.className=
+"message success";
+
+msg.textContent=
+"✅ Quantidades atualizadas.";
+
+
+await loadProducts();
+await loadOrders();
+
+
+}catch(error){
+
+console.error(error);
+
+msg.className=
+"message error";
+
+msg.textContent=
+"Não foi possível alterar as quantidades.";
+
+}
 
 }
 
@@ -1531,7 +1727,6 @@ ${confirmedAt
 `;
 
 }
-
 
 return `
 <div class="pending">
@@ -1577,33 +1772,30 @@ function renderOrders(){
 
 const groups={};
 
-
 orders.forEach(order=>{
 
 const key=
 customerKey(order);
 
-
 if(!groups[key]){
 
 groups[key]={
-name:
-order.customer_name||
-"Cliente",
+  name:
+  order.customer_name||
+  "Cliente",
 
-phone:
-order.customer_phone||
-"",
+  phone:
+  order.customer_phone||
+  "",
 
-email:
-order.customer_email||
-"",
+  email:
+  order.customer_email||
+  "",
 
-orders:[]
+  orders:[]
 };
 
 }
-
 
 groups[key].orders.push(
 order
@@ -1664,7 +1856,6 @@ Nenhum pedido encontrado.
 `;
 
 return;
-
 }
 
 
@@ -1692,8 +1883,10 @@ ${escapeHtml(c.name)}
 <div class="tags">
 
 <span class="tag">
+
 ${c.orders.length}
 pedido(s)
+
 </span>
 
 </div>
@@ -1719,10 +1912,13 @@ Pedido #${o.id}
 <br>
 
 <span style="color:#58c6ff">
+
 ${escapeHtml(brand)}
+
 </span>
 
 •
+
 ${dateTimeBR(o.created_at)}
 
 </summary>
@@ -1730,9 +1926,16 @@ ${dateTimeBR(o.created_at)}
 
 <div class="order-body">
 
-<h4>Produtos</h4>
 
-${renderItems(o.items)}
+<h4>
+🧪 Produtos e quantidades
+</h4>
+
+
+${renderEditableItems(
+o.items,
+o.id
+)}
 
 
 <div class="payment-edit">
@@ -1814,8 +2017,12 @@ value="${o.next_payment_brl??""}">
 
 <button
 class="btn"
-onclick="savePaymentData(${o.id})">
+onclick="
+savePaymentData(${o.id})
+">
+
 SALVAR VALORES E DATAS
+
 </button>
 
 
@@ -1835,17 +2042,21 @@ class="message">
 </h4>
 
 <div class="value">
+
 Cripto:
 ${crypto(
 o.payment_now_crypto
 )}
+
 </div>
 
 <div class="value">
+
 Pix:
 ${money(
 o.payment_now_pix
 )}
+
 </div>
 
 ${paymentStatus(
@@ -1869,9 +2080,11 @@ o.payment_now_confirmed
 </h4>
 
 <div class="value">
+
 ${money(
 o.next_payment_brl
 )}
+
 </div>
 
 ${paymentStatus(
@@ -1895,9 +2108,11 @@ Taxa administrativa
 </h4>
 
 <div class="value">
+
 ${money(
 o.admin_fee_brl??50
 )}
+
 </div>
 
 ${paymentStatus(
@@ -1938,7 +2153,9 @@ o.freight_note||
 
 <button
 class="btn delete-btn"
-onclick="deleteOrder(${o.id})">
+onclick="
+deleteOrder(${o.id})
+">
 
 🗑 EXCLUIR PEDIDO
 
@@ -1973,63 +2190,61 @@ document.getElementById(
 "payment-message-"+id
 );
 
-
 try{
 
 await api(
 "/rest/v1/orders?id=eq."+id,
 {
-method:"PATCH",
+  method:"PATCH",
 
-headers:{
-Prefer:"return=minimal"
-},
+  headers:{
+    Prefer:"return=minimal"
+  },
 
-body:JSON.stringify({
+  body:JSON.stringify({
 
-payment_due_date:
-document.getElementById(
-"due-now-"+id
-).value||null,
+    payment_due_date:
+    document.getElementById(
+    "due-now-"+id
+    ).value||null,
 
-next_payment_due_date:
-document.getElementById(
-"due-next-"+id
-).value||null,
+    next_payment_due_date:
+    document.getElementById(
+    "due-next-"+id
+    ).value||null,
 
-payment_now_crypto:
-numOrNull(
-document.getElementById(
-"crypto-"+id
-).value
-),
+    payment_now_crypto:
+    numOrNull(
+    document.getElementById(
+    "crypto-"+id
+    ).value
+    ),
 
-payment_now_pix:
-numOrNull(
-document.getElementById(
-"pix-"+id
-).value
-),
+    payment_now_pix:
+    numOrNull(
+    document.getElementById(
+    "pix-"+id
+    ).value
+    ),
 
-next_payment_brl:
-numOrNull(
-document.getElementById(
-"next-"+id
-).value
-),
+    next_payment_brl:
+    numOrNull(
+    document.getElementById(
+    "next-"+id
+    ).value
+    ),
 
-admin_fee_brl:50,
+    admin_fee_brl:50,
 
-freight_note:
-"Frete à parte",
+    freight_note:
+    "Frete à parte",
 
-updated_at:
-new Date().toISOString()
+    updated_at:
+    new Date().toISOString()
 
-})
+  })
 }
 );
-
 
 msg.className=
 "message success";
@@ -2038,7 +2253,6 @@ msg.textContent=
 "✅ Salvo.";
 
 await loadOrders();
-
 
 }catch(error){
 
@@ -2066,70 +2280,60 @@ current
 const confirmed=
 !current;
 
-
 const body={
-updated_at:
-new Date().toISOString()
+  updated_at:
+  new Date().toISOString()
 };
-
 
 if(type==="now"){
 
-body.payment_now_confirmed=
-confirmed;
+  body.payment_now_confirmed=
+  confirmed;
 
-body.payment_now_confirmed_at=
-confirmed
-? new Date().toISOString()
-: null;
-
+  body.payment_now_confirmed_at=
+  confirmed
+  ? new Date().toISOString()
+  : null;
 }
-
 
 if(type==="next"){
 
-body.next_payment_confirmed=
-confirmed;
+  body.next_payment_confirmed=
+  confirmed;
 
-body.next_payment_confirmed_at=
-confirmed
-? new Date().toISOString()
-: null;
-
+  body.next_payment_confirmed_at=
+  confirmed
+  ? new Date().toISOString()
+  : null;
 }
-
 
 if(type==="fee"){
 
-body.admin_fee_confirmed=
-confirmed;
+  body.admin_fee_confirmed=
+  confirmed;
 
-body.admin_fee_confirmed_at=
-confirmed
-? new Date().toISOString()
-: null;
-
+  body.admin_fee_confirmed_at=
+  confirmed
+  ? new Date().toISOString()
+  : null;
 }
-
 
 try{
 
 await api(
 "/rest/v1/orders?id=eq."+id,
 {
-method:"PATCH",
+  method:"PATCH",
 
-headers:{
-Prefer:"return=minimal"
-},
+  headers:{
+    Prefer:"return=minimal"
+  },
 
-body:JSON.stringify(body)
+  body:JSON.stringify(body)
 }
 );
 
-
 await loadOrders();
-
 
 }catch(error){
 
@@ -2153,14 +2357,12 @@ confirm(
 "Tem certeza que deseja excluir o pedido #"+
 id+
 "?\n\n"+
-"Essa ação vai remover o pedido e retirar as unidades dele da contagem dos boxes."
+"As unidades deste pedido também sairão da contagem dos boxes."
 );
 
-
 if(!confirmacao){
-return;
+  return;
 }
-
 
 const confirmacaoFinal=
 confirm(
@@ -2170,40 +2372,35 @@ id+
 " será apagado."
 );
 
-
 if(!confirmacaoFinal){
-return;
+  return;
 }
-
 
 try{
 
 await api(
 "/rest/v1/rpc/admin_delete_order",
 {
-method:"POST",
+  method:"POST",
 
-headers:{
-Prefer:"return=representation"
-},
+  headers:{
+    Prefer:"return=representation"
+  },
 
-body:JSON.stringify({
-p_order_id:id
-})
+  body:JSON.stringify({
+    p_order_id:id
+  })
 }
 );
-
 
 alert(
 "✅ Pedido #"+
 id+
-" excluído com sucesso."
+" excluído."
 );
-
 
 await loadProducts();
 await loadOrders();
-
 
 }catch(error){
 
@@ -2227,7 +2424,6 @@ document.getElementById(
 renderProducts
 );
 
-
 document.getElementById(
 "addProductButton"
 ).addEventListener(
@@ -2245,15 +2441,11 @@ await verifyAdmin();
 
 if(!allowed)return;
 
-
 try{
 
 await loadRateios();
-
 await loadProducts();
-
 await loadOrders();
-
 
 }catch(error){
 
@@ -2266,7 +2458,6 @@ alert(
 }
 
 }
-
 
 start();
 
