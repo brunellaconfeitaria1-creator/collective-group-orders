@@ -1,35 +1,1366 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Meus Pedidos | Collective Group Orders</title>
-  <link rel="stylesheet" href="style.css">
+
+  <title>Meus Pedidos | Forever Collective</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: #020613;
+      color: #f7f9ff;
+      font-family: Arial, sans-serif;
+    }
+
+    .wrap {
+      width: min(100% - 22px, 900px);
+      margin: auto;
+      padding: 18px 0 50px;
+    }
+
+    .top {
+      background: #07101e;
+      border: 1px solid #1c3048;
+      border-radius: 22px;
+      padding: 20px;
+      margin-bottom: 18px;
+    }
+
+    .logo {
+      font-size: 20px;
+      font-weight: 900;
+      letter-spacing: 2px;
+    }
+
+    .logo span {
+      color: #8b45ff;
+    }
+
+    h1 {
+      margin: 18px 0 6px;
+    }
+
+    .muted {
+      color: #929fb4;
+      line-height: 1.5;
+    }
+
+    .order {
+      background: #091321;
+      border: 1px solid #1c3048;
+      border-radius: 22px;
+      padding: 18px;
+      margin-bottom: 18px;
+    }
+
+    .order-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: flex-start;
+      flex-wrap: wrap;
+    }
+
+    .order-number {
+      font-size: 20px;
+      font-weight: 900;
+    }
+
+    .brand {
+      color: #53baff;
+      font-weight: 900;
+      margin-top: 6px;
+    }
+
+    .status {
+      display: inline-block;
+      padding: 7px 11px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .open {
+      color: #4ae38a;
+      border: 1px solid #16864d;
+      background: #09261a;
+    }
+
+    .closed {
+      color: #ff7777;
+      border: 1px solid #8a3131;
+      background: #2a1015;
+    }
+
+    .date {
+      color: #8d99ac;
+      font-size: 13px;
+      margin: 8px 0 18px;
+    }
+
+    .items-title {
+      font-weight: 900;
+      margin-bottom: 10px;
+    }
+
+    .item {
+      border: 1px solid #1d3149;
+      border-radius: 15px;
+      padding: 14px;
+      margin-bottom: 10px;
+      background: #060d18;
+    }
+
+    .item-name {
+      font-weight: 900;
+      margin-bottom: 10px;
+    }
+
+    .item-price {
+      color: #9aa7ba;
+      font-size: 13px;
+      margin-bottom: 12px;
+    }
+
+    .qty-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .qty-button {
+      width: 44px;
+      height: 44px;
+      border: 0;
+      border-radius: 11px;
+      background: #172438;
+      color: white;
+      font-size: 21px;
+      font-weight: 900;
+    }
+
+    .qty-input {
+      width: 76px;
+      height: 44px;
+      text-align: center;
+      background: #07101e;
+      border: 1px solid #2a415d;
+      color: white;
+      border-radius: 11px;
+      font-size: 17px;
+      font-weight: 900;
+    }
+
+    .remove {
+      border: 0;
+      background: transparent;
+      color: #ff7777;
+      font-weight: 800;
+      padding: 10px;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    button:disabled,
+    input:disabled {
+      opacity: .45;
+      cursor: not-allowed;
+    }
+
+    .save {
+      width: 100%;
+      padding: 15px;
+      border: 0;
+      border-radius: 13px;
+      color: white;
+      font-size: 16px;
+      font-weight: 900;
+      background: linear-gradient(90deg,#13b4f4,#6d35ff);
+      margin-top: 8px;
+    }
+
+    .locked {
+      padding: 13px;
+      border: 1px solid #70323a;
+      background: #261016;
+      color: #ff8c8c;
+      border-radius: 13px;
+      margin-top: 12px;
+      font-weight: 800;
+    }
+
+    .payments {
+      margin-top: 20px;
+      padding-top: 18px;
+      border-top: 1px solid #20334a;
+    }
+
+    .payments h3 {
+      margin-top: 0;
+    }
+
+    .payment-card {
+      background: #07101e;
+      border: 1px solid #1e334d;
+      border-radius: 15px;
+      padding: 15px;
+      margin-bottom: 11px;
+    }
+
+    .payment-title {
+      font-weight: 900;
+      margin-bottom: 8px;
+    }
+
+    .payment-value {
+      font-size: 19px;
+      font-weight: 900;
+      color: #53baff;
+      margin: 5px 0;
+    }
+
+    .paid {
+      color: #4ae38a;
+      font-weight: 900;
+    }
+
+    .pending {
+      color: #f5b84d;
+      font-weight: 900;
+    }
+
+    .message {
+      min-height: 20px;
+      margin-top: 12px;
+      font-weight: 800;
+    }
+
+    .success {
+      color: #4ae38a;
+    }
+
+    .error {
+      color: #ff7777;
+    }
+
+    .empty {
+      background: #07101e;
+      border: 1px solid #1c3048;
+      border-radius: 20px;
+      padding: 25px;
+      text-align: center;
+      color: #9aa6b8;
+    }
+
+    .back {
+      display: inline-block;
+      margin-top: 8px;
+      color: #63baff;
+      font-weight: 900;
+      text-decoration: none;
+    }
+
+    @media(max-width:600px) {
+      .order {
+        padding: 15px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-  <main class="wrap">
+<main class="wrap">
 
-    <section class="intro">
-      <span>Área do cliente</span>
-      <h2>Meus pedidos</h2>
-      <p>Acompanhe aqui os pedidos feitos por você.</p>
-    </section>
+  <section class="top">
 
-    <section class="card">
-      <div id="ordersList">
-        <p>Carregando seus pedidos...</p>
+    <div class="logo">
+      🧬 FOREVER <span>COLLECTIVE</span>
+    </div>
+
+    <h1>Meus pedidos</h1>
+
+    <p class="muted">
+      Acompanhe seus pedidos e altere as quantidades enquanto o rateio estiver aberto.
+    </p>
+
+  </section>
+
+
+  <div id="ordersList">
+    <div class="empty">
+      Carregando seus pedidos...
+    </div>
+  </div>
+
+
+  <a class="back" href="index.html">
+    ← Voltar
+  </a>
+
+</main>
+
+
+<script>
+
+const SUPABASE_URL =
+  "https://ygulvirkzwvdyfgqsbjj.supabase.co";
+
+const SUPABASE_KEY =
+  "sb_publishable_2u7B7_ZvZuKc-e3UPxx3rg_5oEN83x5";
+
+const token =
+  localStorage.getItem("access_token");
+
+const userId =
+  localStorage.getItem("user_id");
+
+
+let orders = [];
+let rateios = [];
+let productBrands = {};
+
+
+if (!token || !userId) {
+
+  window.location.href =
+    "login.html";
+
+}
+
+
+function escapeHtml(value) {
+
+  return String(value ?? "")
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+
+}
+
+
+function money(value) {
+
+  if (
+    value === null ||
+    value === undefined ||
+    value === ""
+  ) {
+
+    return "A definir";
+
+  }
+
+
+  return Number(value)
+    .toLocaleString(
+      "pt-BR",
+      {
+        style: "currency",
+        currency: "BRL"
+      }
+    );
+
+}
+
+
+function crypto(value) {
+
+  if (
+    value === null ||
+    value === undefined
+  ) {
+
+    return "A definir";
+
+  }
+
+
+  return (
+    Number(value)
+      .toFixed(2) +
+    " USDT"
+  );
+
+}
+
+
+function dateBR(value) {
+
+  if (!value) {
+    return "A definir";
+  }
+
+
+  const parts =
+    value.split("-");
+
+
+  if (parts.length === 3) {
+
+    return (
+      parts[2] +
+      "/" +
+      parts[1] +
+      "/" +
+      parts[0]
+    );
+
+  }
+
+
+  return value;
+
+}
+
+
+function dateTimeBR(value) {
+
+  if (!value) return "-";
+
+  return new Date(value)
+    .toLocaleString("pt-BR");
+
+}
+
+
+async function api(
+  path,
+  options = {}
+) {
+
+  const response =
+    await fetch(
+      SUPABASE_URL + path,
+      {
+        ...options,
+
+        headers: {
+
+          apikey:
+            SUPABASE_KEY,
+
+          Authorization:
+            "Bearer " + token,
+
+          "Content-Type":
+            "application/json",
+
+          ...(options.headers || {})
+
+        }
+      }
+    );
+
+
+  if (response.status === 401) {
+
+    localStorage.clear();
+
+    window.location.href =
+      "login.html";
+
+    throw new Error(
+      "Sessão expirada"
+    );
+
+  }
+
+
+  if (!response.ok) {
+
+    const text =
+      await response.text();
+
+    throw new Error(text);
+
+  }
+
+
+  if (
+    response.status === 204
+  ) {
+
+    return null;
+
+  }
+
+
+  return response.json();
+
+}
+
+
+async function loadRateios() {
+
+  rateios =
+    await api(
+      "/rest/v1/rateios" +
+      "?select=brand,is_open,active"
+    );
+
+}
+
+
+async function loadProductBrands() {
+
+  const products =
+    await api(
+      "/rest/v1/products" +
+      "?select=id,brand"
+    );
+
+
+  productBrands = {};
+
+
+  products.forEach(
+    function(product) {
+
+      productBrands[
+        product.id
+      ] =
+        product.brand;
+
+    }
+  );
+
+}
+
+
+function inferBrand(order) {
+
+  if (order.rateio_brand) {
+
+    return order.rateio_brand;
+
+  }
+
+
+  const items =
+    Array.isArray(order.items)
+    ? order.items
+    : [];
+
+
+  const brands =
+    new Set();
+
+
+  items.forEach(
+    function(item) {
+
+      const brand =
+        productBrands[
+          item.product_id
+        ];
+
+
+      if (brand) {
+
+        brands.add(brand);
+
+      }
+
+    }
+  );
+
+
+  if (brands.size === 1) {
+
+    return [...brands][0];
+
+  }
+
+
+  return null;
+
+}
+
+
+function rateioIsOpen(brand) {
+
+  if (!brand) return false;
+
+
+  const rateio =
+    rateios.find(
+      function(item) {
+
+        return (
+          String(item.brand)
+            .toUpperCase() ===
+          String(brand)
+            .toUpperCase()
+        );
+
+      }
+    );
+
+
+  return !!(
+    rateio &&
+    rateio.active &&
+    rateio.is_open
+  );
+
+}
+
+
+async function loadOrders() {
+
+  orders =
+    await api(
+      "/rest/v1/orders" +
+      "?select=*" +
+      "&user_id=eq." +
+      encodeURIComponent(userId) +
+      "&order=created_at.desc"
+    );
+
+
+  renderOrders();
+
+}
+
+
+function quantityControls(
+  order,
+  item,
+  index,
+  canEdit
+) {
+
+  const quantity =
+    Math.max(
+      1,
+      Number(item.quantity || 1)
+    );
+
+
+  if (!canEdit) {
+
+    return `
+      <strong>
+        Quantidade:
+        ${quantity}
+      </strong>
+    `;
+
+  }
+
+
+  return `
+
+    <div class="qty-row">
+
+      <button
+        class="qty-button"
+        type="button"
+        onclick="
+          changeQty(
+            ${order.id},
+            ${index},
+            -1
+          )
+        "
+      >
+        −
+      </button>
+
+
+      <input
+        class="qty-input"
+        id="qty-${order.id}-${index}"
+        type="number"
+        min="0"
+        max="999"
+        value="${quantity}"
+      >
+
+
+      <button
+        class="qty-button"
+        type="button"
+        onclick="
+          changeQty(
+            ${order.id},
+            ${index},
+            1
+          )
+        "
+      >
+        +
+      </button>
+
+
+      <button
+        class="remove"
+        type="button"
+        onclick="
+          removeItem(
+            ${order.id},
+            ${index}
+          )
+        "
+      >
+        Remover
+      </button>
+
+    </div>
+
+  `;
+
+}
+
+
+function paymentStatus(
+  confirmed,
+  confirmedAt
+) {
+
+  if (confirmed) {
+
+    return `
+      <div class="paid">
+        ✅ PAGAMENTO CONFIRMADO
       </div>
-    </section>
 
-    <section class="card">
-      <a href="index.html">← Voltar para produtos</a>
-    </section>
+      ${
+        confirmedAt
+        ? `
+          <small>
+            ${dateTimeBR(
+              confirmedAt
+            )}
+          </small>
+        `
+        : ""
+      }
+    `;
 
-  </main>
+  }
 
-  <script src="app.js"></script>
+
+  return `
+    <div class="pending">
+      ⏳ PENDENTE
+    </div>
+  `;
+
+}
+
+
+function renderOrders() {
+
+  const container =
+    document.getElementById(
+      "ordersList"
+    );
+
+
+  if (!orders.length) {
+
+    container.innerHTML =
+      `
+      <div class="empty">
+        Você ainda não possui pedidos.
+      </div>
+      `;
+
+    return;
+
+  }
+
+
+  container.innerHTML =
+    orders.map(
+      function(order) {
+
+        const brand =
+          inferBrand(order);
+
+        const open =
+          rateioIsOpen(brand);
+
+        const items =
+          Array.isArray(order.items)
+          ? order.items
+          : [];
+
+        const canEdit =
+          open &&
+          items.length > 0 &&
+          items.every(
+            item =>
+              item.product_id
+          );
+
+
+        return `
+
+          <article
+            class="order"
+            id="order-${order.id}"
+          >
+
+            <div class="order-top">
+
+              <div>
+
+                <div class="order-number">
+                  Pedido #${order.id}
+                </div>
+
+                <div class="brand">
+                  Rateio:
+                  ${escapeHtml(
+                    brand ||
+                    "Não identificado"
+                  )}
+                </div>
+
+              </div>
+
+
+              <span
+                class="
+                  status
+                  ${open
+                    ? "open"
+                    : "closed"
+                  }
+                "
+              >
+
+                ${open
+                  ? "● RATEIO ABERTO"
+                  : "● RATEIO FECHADO"
+                }
+
+              </span>
+
+            </div>
+
+
+            <div class="date">
+
+              Pedido realizado em:
+
+              ${dateTimeBR(
+                order.created_at
+              )}
+
+            </div>
+
+
+            <div class="items-title">
+              Produtos
+            </div>
+
+
+            ${
+              items.length
+              ? items.map(
+                  function(
+                    item,
+                    index
+                  ) {
+
+                    return `
+
+                      <div class="item">
+
+                        <div class="item-name">
+
+                          ${escapeHtml(
+                            item.name ||
+                            "Produto"
+                          )}
+
+                        </div>
+
+
+                        <div class="item-price">
+
+                          Valor unitário:
+                          ${money(
+                            item.price
+                          )}
+
+                        </div>
+
+
+                        ${quantityControls(
+                          order,
+                          item,
+                          index,
+                          canEdit
+                        )}
+
+                      </div>
+
+                    `;
+
+                  }
+                ).join("")
+              : `
+                <p class="muted">
+                  Este pedido não possui itens editáveis.
+                </p>
+              `
+            }
+
+
+            ${
+              canEdit
+              ? `
+
+                <button
+                  class="save"
+                  id="save-${order.id}"
+                  type="button"
+                  onclick="
+                    saveQuantities(
+                      ${order.id}
+                    )
+                  "
+                >
+                  SALVAR ALTERAÇÕES
+                </button>
+
+              `
+              : `
+                <div class="locked">
+
+                  ${
+                    open
+                    ? "Este pedido antigo não possui itens editáveis."
+                    : "Rateio fechado — não é mais possível alterar as quantidades."
+                  }
+
+                </div>
+              `
+            }
+
+
+            <div
+              id="message-${order.id}"
+              class="message"
+            ></div>
+
+
+            <section class="payments">
+
+              <h3>
+                Pagamentos
+              </h3>
+
+
+              <div class="payment-card">
+
+                <div class="payment-title">
+
+                  💰 Pagar até
+
+                  ${dateBR(
+                    order.payment_due_date
+                  )}
+
+                </div>
+
+
+                <div class="payment-value">
+
+                  Cripto:
+                  ${crypto(
+                    order.payment_now_crypto
+                  )}
+
+                </div>
+
+
+                <div class="payment-value">
+
+                  Pix (+5%):
+                  ${money(
+                    order.payment_now_pix
+                  )}
+
+                </div>
+
+
+                ${paymentStatus(
+                  order.payment_now_confirmed,
+                  order.payment_now_confirmed_at
+                )}
+
+              </div>
+
+
+              <div class="payment-card">
+
+                <div class="payment-title">
+
+                  📅 Próximo pagamento
+
+                  ${dateBR(
+                    order.next_payment_due_date
+                  )}
+
+                </div>
+
+
+                <div class="payment-value">
+
+                  ${money(
+                    order.next_payment_brl
+                  )}
+
+                </div>
+
+
+                ${paymentStatus(
+                  order.next_payment_confirmed,
+                  order.next_payment_confirmed_at
+                )}
+
+              </div>
+
+
+              <div class="payment-card">
+
+                <div class="payment-title">
+
+                  Taxa administrativa
+                  e separação
+
+                </div>
+
+
+                <div class="payment-value">
+
+                  ${money(
+                    order.admin_fee_brl ??
+                    50
+                  )}
+
+                </div>
+
+
+                ${paymentStatus(
+                  order.admin_fee_confirmed,
+                  order.admin_fee_confirmed_at
+                )}
+
+              </div>
+
+
+              <div class="payment-card">
+
+                <div class="payment-title">
+                  🚚 Frete
+                </div>
+
+                <strong>
+                  ${escapeHtml(
+                    order.freight_note ||
+                    "Frete à parte"
+                  )}
+                </strong>
+
+              </div>
+
+            </section>
+
+          </article>
+
+        `;
+
+      }
+    ).join("");
+
+}
+
+
+function changeQty(
+  orderId,
+  index,
+  amount
+) {
+
+  const input =
+    document.getElementById(
+      `qty-${orderId}-${index}`
+    );
+
+
+  if (!input) return;
+
+
+  let value =
+    Number(input.value || 0);
+
+
+  value += amount;
+
+
+  value =
+    Math.max(
+      0,
+      Math.min(
+        999,
+        value
+      )
+    );
+
+
+  input.value =
+    value;
+
+}
+
+
+function removeItem(
+  orderId,
+  index
+) {
+
+  const input =
+    document.getElementById(
+      `qty-${orderId}-${index}`
+    );
+
+
+  if (!input) return;
+
+
+  input.value = 0;
+
+}
+
+
+async function saveQuantities(
+  orderId
+) {
+
+  const order =
+    orders.find(
+      item =>
+        item.id === orderId
+    );
+
+
+  if (!order) return;
+
+
+  const brand =
+    inferBrand(order);
+
+
+  if (
+    !rateioIsOpen(brand)
+  ) {
+
+    alert(
+      "Este rateio já foi fechado."
+    );
+
+    await loadOrders();
+
+    return;
+
+  }
+
+
+  const items =
+    Array.isArray(order.items)
+    ? order.items
+    : [];
+
+
+  const quantities =
+    items.map(
+      function(item,index) {
+
+        const input =
+          document.getElementById(
+            `qty-${orderId}-${index}`
+          );
+
+
+        return {
+          product_id:
+            Number(
+              item.product_id
+            ),
+
+          quantity:
+            Math.max(
+              0,
+              Number(
+                input?.value || 0
+              )
+            )
+        };
+
+      }
+    );
+
+
+  const totalUnits =
+    quantities.reduce(
+      (sum,item) =>
+        sum + item.quantity,
+      0
+    );
+
+
+  if (totalUnits <= 0) {
+
+    alert(
+      "O pedido precisa ter pelo menos 1 produto."
+    );
+
+    return;
+
+  }
+
+
+  const button =
+    document.getElementById(
+      "save-" + orderId
+    );
+
+
+  const message =
+    document.getElementById(
+      "message-" + orderId
+    );
+
+
+  button.disabled = true;
+
+  message.className =
+    "message";
+
+  message.textContent =
+    "Salvando alterações...";
+
+
+  try {
+
+    await api(
+      "/rest/v1/rpc/update_my_order_quantities",
+
+      {
+        method: "POST",
+
+        body:
+          JSON.stringify({
+            p_order_id:
+              orderId,
+
+            p_quantities:
+              quantities
+          })
+      }
+    );
+
+
+    message.className =
+      "message success";
+
+    message.textContent =
+      "✅ Pedido atualizado com sucesso.";
+
+
+    await loadOrders();
+
+
+  } catch(error) {
+
+    console.error(error);
+
+
+    message.className =
+      "message error";
+
+
+    if (
+      String(error.message)
+        .toLowerCase()
+        .includes(
+          "rateio fechado"
+        )
+    ) {
+
+      message.textContent =
+        "Rateio fechado — alterações encerradas.";
+
+    } else {
+
+      message.textContent =
+        "Não foi possível alterar o pedido.";
+
+    }
+
+
+    button.disabled = false;
+
+  }
+
+}
+
+
+async function start() {
+
+  try {
+
+    await Promise.all([
+      loadRateios(),
+      loadProductBrands()
+    ]);
+
+
+    await loadOrders();
+
+
+  } catch(error) {
+
+    console.error(error);
+
+
+    document.getElementById(
+      "ordersList"
+    ).innerHTML =
+      `
+      <div class="empty">
+        Não foi possível carregar seus pedidos.
+        Saia da conta e entre novamente.
+      </div>
+      `;
+
+  }
+
+}
+
+
+start();
+
+</script>
 
 </body>
 </html>
