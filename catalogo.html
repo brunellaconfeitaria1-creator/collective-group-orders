@@ -3,24 +3,28 @@
 
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 
 <title>Catálogo | Forever Collective</title>
 
 <style>
-*{box-sizing:border-box}
+
+*{
+  box-sizing:border-box;
+}
 
 body{
   margin:0;
   background:#020613;
   color:#f7f9ff;
-  font-family:Arial,sans-serif
+  font-family:Arial,sans-serif;
+  padding-bottom:110px;
 }
 
 .wrap{
   width:min(100% - 22px,900px);
   margin:auto;
-  padding:18px 0 50px
+  padding:18px 0 50px;
 }
 
 .top{
@@ -32,16 +36,18 @@ body{
   border:1px solid #1c3048;
   border-radius:20px;
   padding:17px;
-  margin-bottom:18px
+  margin-bottom:18px;
 }
 
 .logo{
   font-size:18px;
   font-weight:900;
-  letter-spacing:1.5px
+  letter-spacing:1.5px;
 }
 
-.logo span{color:#8b45ff}
+.logo span{
+  color:#8b45ff;
+}
 
 .top a{
   color:white;
@@ -49,7 +55,7 @@ body{
   font-weight:900;
   background:#17283e;
   border-radius:11px;
-  padding:10px 13px
+  padding:10px 13px;
 }
 
 .hero{
@@ -57,25 +63,26 @@ body{
   border:1px solid #1c3048;
   border-radius:24px;
   padding:22px;
-  margin-bottom:18px
+  margin-bottom:18px;
 }
 
 .hero h1{
   margin:0 0 8px;
-  font-size:29px
+  font-size:29px;
 }
 
 .muted{
   color:#97a4b8;
-  line-height:1.5
+  line-height:1.5;
 }
+
 
 /* RATEIOS */
 
 .rateio-grid{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:14px
+  gap:14px;
 }
 
 .rateio-card{
@@ -84,18 +91,12 @@ body{
   border-radius:22px;
   padding:22px;
   cursor:pointer;
-  transition:.2s
-}
-
-.rateio-card:hover{
-  border-color:#596cff;
-  transform:translateY(-2px)
 }
 
 .rateio-name{
   font-size:27px;
   font-weight:900;
-  margin-bottom:13px
+  margin-bottom:13px;
 }
 
 .rateio-status{
@@ -103,38 +104,39 @@ body{
   padding:6px 10px;
   border-radius:20px;
   font-size:11px;
-  font-weight:900
+  font-weight:900;
 }
 
 .open{
   background:#09261a;
   border:1px solid #16864d;
-  color:#4ae38a
+  color:#4ae38a;
 }
 
 .closed{
   background:#2b1116;
   border:1px solid #8b3138;
-  color:#ff7777
+  color:#ff7777;
 }
 
 .rateio-count{
   color:#919fb4;
-  margin-top:14px
+  margin-top:14px;
 }
 
-/* CATÁLOGO */
+
+/* CABEÇALHO CATÁLOGO */
 
 .catalog-header{
   display:flex;
   justify-content:space-between;
   align-items:center;
   gap:12px;
-  margin-bottom:18px
+  margin-bottom:18px;
 }
 
 .catalog-header h1{
-  margin:0
+  margin:0;
 }
 
 .change-rateio{
@@ -143,22 +145,25 @@ body{
   color:white;
   border-radius:12px;
   padding:11px 13px;
-  font-weight:900
+  font-weight:900;
 }
+
+
+/* PRODUTOS */
 
 .product-card{
   background:#091321;
   border:1px solid #1c3048;
   border-radius:25px;
   padding:20px;
-  margin-bottom:17px
+  margin-bottom:17px;
 }
 
 .badges{
   display:flex;
   gap:7px;
   flex-wrap:wrap;
-  margin-bottom:14px
+  margin-bottom:14px;
 }
 
 .badge{
@@ -167,64 +172,64 @@ body{
   border-radius:18px;
   padding:6px 9px;
   font-size:11px;
-  font-weight:900
+  font-weight:900;
 }
 
 .product-name{
   font-size:23px;
   font-weight:900;
-  margin-bottom:18px
+  margin-bottom:18px;
 }
 
 .payment-preview{
   display:grid;
   grid-template-columns:repeat(3,1fr);
   gap:9px;
-  margin-bottom:18px
+  margin-bottom:18px;
 }
 
 .payment-mini{
   background:#07101e;
   border:1px solid #20364e;
   border-radius:15px;
-  padding:13px
+  padding:13px;
 }
 
 .payment-mini span{
   display:block;
   color:#8998ad;
   font-size:11px;
-  margin-bottom:6px
+  margin-bottom:6px;
 }
 
 .payment-mini strong{
   color:#57c5ff;
-  font-size:17px
+  font-size:17px;
 }
 
 .numbers{
   display:grid;
   grid-template-columns:repeat(2,1fr);
   gap:10px;
-  margin-bottom:17px
+  margin-bottom:17px;
 }
 
 .number-box{
   background:#07101e;
   border:1px solid #20364e;
   border-radius:15px;
-  padding:13px
+  padding:13px;
 }
 
 .number-box span{
   display:block;
   color:#8796ab;
   font-size:11px;
-  margin-bottom:6px
+  margin-bottom:6px;
 }
 
 .number-box strong{
-  font-size:23px
+  font-size:23px;
 }
 
 .progress-title{
@@ -232,29 +237,34 @@ body{
   justify-content:space-between;
   color:#9aa8ba;
   font-size:13px;
-  margin-bottom:7px
+  margin-bottom:7px;
 }
 
-.progress-title strong{color:white}
+.progress-title strong{
+  color:white;
+}
 
 .progress{
   height:10px;
   background:#07101e;
   border:1px solid #22374f;
   border-radius:20px;
-  overflow:hidden
+  overflow:hidden;
 }
 
 .progress-bar{
   height:100%;
-  background:linear-gradient(90deg,#13b4f4,#6b36ff)
+  background:linear-gradient(90deg,#13b4f4,#6b36ff);
 }
 
 .missing{
   color:#f5b84d;
   font-size:13px;
-  margin:8px 0 17px
+  margin:8px 0 17px;
 }
+
+
+/* UNIDADE / BOX */
 
 .mode-selector{
   display:grid;
@@ -264,7 +274,7 @@ body{
   border:1px solid #20364e;
   border-radius:15px;
   padding:5px;
-  margin-bottom:11px
+  margin-bottom:11px;
 }
 
 .mode-btn{
@@ -273,18 +283,21 @@ body{
   padding:11px;
   background:transparent;
   color:#8997ac;
-  font-weight:900
+  font-weight:900;
 }
 
 .mode-btn.active{
   color:white;
-  background:linear-gradient(90deg,#14b1f4,#5d40ff)
+  background:linear-gradient(90deg,#14b1f4,#5d40ff);
 }
+
+
+/* ADICIONAR */
 
 .reserve-row{
   display:grid;
   grid-template-columns:100px 1fr;
-  gap:9px
+  gap:9px;
 }
 
 .quantity{
@@ -296,20 +309,25 @@ body{
   border:1px solid #263c56;
   border-radius:14px;
   font-size:18px;
-  font-weight:900
+  font-weight:900;
 }
 
 .reserve-btn{
   border:0;
   border-radius:14px;
+  min-height:53px;
   background:linear-gradient(90deg,#13b4f4,#693aff);
   color:white;
   font-weight:900;
-  font-size:15px
+  font-size:15px;
+}
+
+.reserve-btn.added{
+  background:#168b55;
 }
 
 .reserve-btn:disabled{
-  opacity:.4
+  opacity:.4;
 }
 
 .closed-notice{
@@ -319,8 +337,9 @@ body{
   border-radius:13px;
   padding:12px;
   font-weight:900;
-  margin-top:12px
+  margin-top:12px;
 }
+
 
 /* CARRINHO */
 
@@ -330,62 +349,70 @@ body{
   border:1px solid #1c3048;
   border-radius:24px;
   padding:20px;
-  margin-top:18px
+  margin-top:18px;
 }
 
 .cart h2,
 .customer h2{
-  margin-top:0
+  margin-top:0;
 }
 
 .cart-item{
-  padding:12px 0;
-  border-bottom:1px solid #1d3046
+  padding:14px 0;
+  border-bottom:1px solid #1d3046;
 }
 
 .cart-item-top{
   display:flex;
   justify-content:space-between;
   gap:10px;
-  font-weight:900
+  font-weight:900;
 }
 
 .cart-item small{
   display:block;
   color:#909db0;
-  margin-top:5px
+  margin-top:6px;
+  line-height:1.5;
+}
+
+.cart-values{
+  margin-top:7px;
+  color:#56c7ff;
+  font-size:13px;
+  line-height:1.5;
 }
 
 .remove{
   border:0;
   background:none;
   color:#ff7777;
-  padding:7px 0 0;
-  font-weight:900
+  padding:9px 0 0;
+  font-weight:900;
 }
 
 .payment-summary{
-  margin-top:18px
+  margin-top:18px;
 }
 
 .summary-row{
   display:flex;
   justify-content:space-between;
   gap:10px;
-  padding:10px 0;
-  border-bottom:1px solid #1d3046
+  padding:11px 0;
+  border-bottom:1px solid #1d3046;
 }
 
 .summary-row strong{
-  text-align:right
+  text-align:right;
 }
 
 .highlight{
-  color:#56c7ff
+  color:#56c7ff;
 }
 
 .next{
-  color:#bb8cff
+  color:#bb8cff;
 }
 
 .notice{
@@ -395,8 +422,78 @@ body{
   padding:13px;
   color:#a7b2c2;
   line-height:1.5;
-  margin-top:13px
+  margin-top:13px;
 }
+
+
+/* BARRA FIXA */
+
+.floating-cart{
+  display:none;
+  position:fixed;
+  z-index:999;
+  left:10px;
+  right:10px;
+  bottom:10px;
+  max-width:880px;
+  margin:auto;
+  background:#081527;
+  border:1px solid #3b5d87;
+  border-radius:18px;
+  padding:12px;
+  box-shadow:0 0 30px rgba(0,0,0,.7);
+}
+
+.floating-cart.show{
+  display:block;
+}
+
+.float-top{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  margin-bottom:8px;
+  font-weight:900;
+}
+
+.float-total{
+  color:#55c8ff;
+}
+
+.float-values{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:5px;
+  font-size:11px;
+  margin-bottom:9px;
+}
+
+.float-box{
+  background:#050d18;
+  border-radius:9px;
+  padding:7px;
+}
+
+.float-box span{
+  display:block;
+  color:#8292aa;
+  margin-bottom:3px;
+}
+
+.float-box strong{
+  color:white;
+}
+
+.float-btn{
+  width:100%;
+  border:0;
+  border-radius:10px;
+  padding:9px;
+  background:linear-gradient(90deg,#13b4f4,#693aff);
+  color:white;
+  font-weight:900;
+}
+
 
 /* CLIENTE */
 
@@ -404,7 +501,7 @@ label{
   display:block;
   margin:13px 0 6px;
   font-size:13px;
-  font-weight:900
+  font-weight:900;
 }
 
 .customer-input{
@@ -414,13 +511,13 @@ label{
   border:1px solid #273d57;
   background:#07101e;
   color:white;
-  font-size:16px
+  font-size:16px;
 }
 
 .two{
   display:grid;
   grid-template-columns:1fr 100px;
-  gap:9px
+  gap:9px;
 }
 
 .confirm{
@@ -432,19 +529,26 @@ label{
   background:linear-gradient(90deg,#13b4f4,#693aff);
   color:white;
   font-size:16px;
-  font-weight:900
+  font-weight:900;
 }
 
-.confirm:disabled{opacity:.4}
+.confirm:disabled{
+  opacity:.4;
+}
 
 .message{
   margin-top:14px;
   line-height:1.5;
-  font-weight:800
+  font-weight:800;
 }
 
-.success{color:#4ae38a}
-.error{color:#ff7777}
+.success{
+  color:#4ae38a;
+}
+
+.error{
+  color:#ff7777;
+}
 
 .empty{
   background:#07101e;
@@ -452,320 +556,456 @@ label{
   border-radius:18px;
   padding:23px;
   text-align:center;
-  color:#9ba8ba
+  color:#9ba8ba;
 }
 
-.hidden{display:none}
+.hidden{
+  display:none;
+}
+
 
 @media(max-width:700px){
 
   .rateio-grid,
   .payment-preview{
-    grid-template-columns:1fr
+    grid-template-columns:1fr;
   }
 
   .catalog-header{
     align-items:flex-start;
-    flex-direction:column
+    flex-direction:column;
   }
 
   .change-rateio{
-    width:100%
+    width:100%;
   }
 
   .two{
-    grid-template-columns:1fr
+    grid-template-columns:1fr;
+  }
+
+  .float-values{
+    grid-template-columns:repeat(3,1fr);
   }
 }
+
 </style>
 </head>
+
 
 <body>
 
 <main class="wrap">
 
+
 <header class="top">
 
-  <div class="logo">
-    🧬 FOREVER <span>COLLECTIVE</span>
-  </div>
+<div class="logo">
+🧬 FOREVER <span>COLLECTIVE</span>
+</div>
 
-  <a href="meus-pedidos.html">
-    Meus pedidos
-  </a>
+<a href="meus-pedidos.html">
+Meus pedidos
+</a>
 
 </header>
 
 
+<!-- ESCOLHER RATEIO -->
+
 <section id="rateioScreen">
 
-  <section class="hero">
+<section class="hero">
 
-    <h1>Escolha seu rateio</h1>
+<h1>Escolha seu rateio</h1>
 
-    <p class="muted">
-      Escolha a marca para visualizar os produtos disponíveis
-      e fazer sua reserva.
-    </p>
+<p class="muted">
+Escolha a marca para visualizar os produtos disponíveis e fazer sua reserva.
+</p>
 
-  </section>
+</section>
 
-  <div id="rateioList" class="rateio-grid">
+<div id="rateioList" class="rateio-grid">
 
-    <div class="empty">
-      Carregando rateios...
-    </div>
+<div class="empty">
+Carregando rateios...
+</div>
 
-  </div>
+</div>
 
 </section>
 
 
+<!-- CATÁLOGO -->
+
 <section id="catalogScreen" class="hidden">
 
-  <div class="catalog-header">
 
-    <div>
-      <h1 id="catalogTitle">
-        Rateio
-      </h1>
+<div class="catalog-header">
 
-      <div id="catalogStatus"></div>
-    </div>
+<div>
 
-    <button
-      type="button"
-      class="change-rateio"
-      onclick="showRateios()"
-    >
-      ← Trocar de rateio
-    </button>
+<h1 id="catalogTitle">
+Rateio
+</h1>
 
-  </div>
+<div id="catalogStatus"></div>
+
+</div>
 
 
-  <div id="productsList"></div>
+<button
+type="button"
+class="change-rateio"
+onclick="showRateios()">
+
+← Trocar de rateio
+
+</button>
+
+</div>
 
 
-  <section class="cart">
-
-    <h2>Sua reserva</h2>
-
-    <div id="cartItems">
-      <p class="muted">
-        Nenhum produto adicionado.
-      </p>
-    </div>
+<div id="productsList"></div>
 
 
-    <div class="payment-summary">
+<!-- RESUMO -->
 
-      <div class="summary-row">
-        <span>Pagamento atual em Cripto</span>
-        <strong
-          class="highlight"
-          id="cryptoTotal"
-        >
-          0,00 USDT
-        </strong>
-      </div>
+<section
+class="cart"
+id="cartSection">
 
-      <div class="summary-row">
-        <span>Pagamento atual em Pix (+5%)</span>
-        <strong
-          class="highlight"
-          id="pixTotal"
-        >
-          R$ 0,00
-        </strong>
-      </div>
+<h2>🛒 Sua reserva</h2>
 
-      <div class="summary-row">
-        <span>Próximo pagamento</span>
-        <strong
-          class="next"
-          id="nextTotal"
-        >
-          R$ 0,00
-        </strong>
-      </div>
+<div id="cartItems">
 
-      <div class="summary-row">
-        <span>
-          Taxa administrativa e separação
-        </span>
-        <strong>
-          R$ 50,00
-        </strong>
-      </div>
+<p class="muted">
+Nenhum produto adicionado.
+</p>
 
-      <div class="summary-row">
-        <span>Frete</span>
-        <strong>
-          À parte
-        </strong>
-      </div>
-
-    </div>
+</div>
 
 
-    <div class="notice">
-      O próximo pagamento corresponde a
-      <strong>R$ 77,00 por unidade reservada</strong>.
-      As datas de pagamento aparecerão no seu pedido.
-    </div>
+<div class="payment-summary">
 
-  </section>
+<div class="summary-row">
 
+<span>
+Pagamento atual em Cripto
+</span>
 
-  <section class="customer">
+<strong
+class="highlight"
+id="cryptoTotal">
 
-    <h2>Dados do cliente</h2>
+0,00 USDT
 
-    <label for="customerName">
-      Nome completo
-    </label>
+</strong>
 
-    <input
-      class="customer-input"
-      id="customerName"
-      type="text"
-    >
+</div>
 
 
-    <label for="customerPhone">
-      Telefone / WhatsApp
-    </label>
+<div class="summary-row">
 
-    <input
-      class="customer-input"
-      id="customerPhone"
-      type="tel"
-    >
+<span>
+Pagamento atual em Pix (+5%)
+</span>
 
+<strong
+class="highlight"
+id="pixTotal">
 
-    <label for="customerEmail">
-      E-mail
-    </label>
+R$ 0,00
 
-    <input
-      class="customer-input"
-      id="customerEmail"
-      type="email"
-    >
+</strong>
+
+</div>
 
 
-    <label for="customerCep">
-      CEP
-    </label>
+<div class="summary-row">
 
-    <input
-      class="customer-input"
-      id="customerCep"
-      type="text"
-    >
+<span>
+Próximo pagamento
+</span>
 
+<strong
+class="next"
+id="nextTotal">
 
-    <label for="customerAddress">
-      Rua, número e complemento
-    </label>
+R$ 0,00
 
-    <input
-      class="customer-input"
-      id="customerAddress"
-      type="text"
-    >
+</strong>
+
+</div>
 
 
-    <div class="two">
+<div class="summary-row">
 
-      <div>
+<span>
+Taxa administrativa e separação
+</span>
 
-        <label for="customerCity">
-          Cidade
-        </label>
+<strong>
+R$ 50,00
+</strong>
 
-        <input
-          class="customer-input"
-          id="customerCity"
-          type="text"
-        >
-
-      </div>
+</div>
 
 
-      <div>
+<div class="summary-row">
 
-        <label for="customerState">
-          Estado
-        </label>
+<span>
+Frete
+</span>
 
-        <input
-          class="customer-input"
-          id="customerState"
-          maxlength="2"
-          type="text"
-        >
+<strong>
+À parte
+</strong>
 
-      </div>
+</div>
 
-    </div>
+</div>
 
 
-    <button
-      id="confirmButton"
-      class="confirm"
-      type="button"
-      onclick="confirmReservation()"
-      disabled
-    >
-      CONFIRMAR RESERVA
-    </button>
+<div class="notice">
 
-    <div
-      id="message"
-      class="message"
-    ></div>
+O próximo pagamento corresponde a
+<strong>
+R$ 77,00 por unidade reservada
+</strong>.
 
-  </section>
+<br><br>
+
+Os valores são atualizados automaticamente assim que você adiciona ou remove um produto.
+
+</div>
+
+</section>
+
+
+<!-- DADOS CLIENTE -->
+
+<section class="customer">
+
+<h2>Dados do cliente</h2>
+
+
+<label for="customerName">
+Nome completo
+</label>
+
+<input
+class="customer-input"
+id="customerName"
+type="text">
+
+
+<label for="customerPhone">
+Telefone / WhatsApp
+</label>
+
+<input
+class="customer-input"
+id="customerPhone"
+type="tel">
+
+
+<label for="customerEmail">
+E-mail
+</label>
+
+<input
+class="customer-input"
+id="customerEmail"
+type="email">
+
+
+<label for="customerCep">
+CEP
+</label>
+
+<input
+class="customer-input"
+id="customerCep"
+type="text">
+
+
+<label for="customerAddress">
+Rua, número e complemento
+</label>
+
+<input
+class="customer-input"
+id="customerAddress"
+type="text">
+
+
+<div class="two">
+
+<div>
+
+<label for="customerCity">
+Cidade
+</label>
+
+<input
+class="customer-input"
+id="customerCity"
+type="text">
+
+</div>
+
+
+<div>
+
+<label for="customerState">
+Estado
+</label>
+
+<input
+class="customer-input"
+id="customerState"
+maxlength="2"
+type="text">
+
+</div>
+
+</div>
+
+
+<button
+id="confirmButton"
+class="confirm"
+type="button"
+onclick="confirmReservation()"
+disabled>
+
+CONFIRMAR RESERVA
+
+</button>
+
+
+<div
+id="message"
+class="message">
+</div>
+
+</section>
 
 </section>
 
 </main>
 
 
+<!-- BARRA FIXA -->
+
+<div
+id="floatingCart"
+class="floating-cart">
+
+
+<div class="float-top">
+
+<span>
+🛒 Sua reserva
+</span>
+
+<span
+id="floatQuantity"
+class="float-total">
+0 un.
+</span>
+
+</div>
+
+
+<div class="float-values">
+
+<div class="float-box">
+
+<span>Cripto</span>
+
+<strong id="floatCrypto">
+0,00
+</strong>
+
+</div>
+
+
+<div class="float-box">
+
+<span>Pix</span>
+
+<strong id="floatPix">
+R$ 0
+</strong>
+
+</div>
+
+
+<div class="float-box">
+
+<span>Próximo</span>
+
+<strong id="floatNext">
+R$ 0
+</strong>
+
+</div>
+
+</div>
+
+
+<button
+type="button"
+class="float-btn"
+onclick="goToCart()">
+
+VER RESERVA →
+
+</button>
+
+</div>
+
+
 <script>
 
+
 const SUPABASE_URL =
-  "https://ygulvirkzwvdyfgqsbjj.supabase.co";
+"https://ygulvirkzwvdyfgqsbjj.supabase.co";
+
 
 const SUPABASE_KEY =
-  "sb_publishable_2u7B7_ZvZuKc-e3UPxx3rg_5oEN83x5";
+"sb_publishable_2u7B7_ZvZuKc-e3UPxx3rg_5oEN83x5";
+
 
 const DOLLAR =
-  5.50;
+5.50;
+
 
 const NEXT_PAYMENT_UNIT =
-  77.00;
+77.00;
+
 
 const accessToken =
-  localStorage.getItem(
-    "access_token"
-  );
+localStorage.getItem(
+"access_token"
+);
+
 
 const userId =
-  localStorage.getItem(
-    "user_id"
-  );
+localStorage.getItem(
+"user_id"
+);
 
 
 if(
-  !accessToken ||
-  !userId
+!accessToken ||
+!userId
 ){
 
-  window.location.href =
-    "login.html";
+window.location.href =
+"login.html";
 
 }
 
@@ -782,1395 +1022,1744 @@ let productModes = {};
 
 /* UTILIDADES */
 
+
 function escapeHtml(value){
 
-  return String(value ?? "")
-    .replaceAll("&","&amp;")
-    .replaceAll("<","&lt;")
-    .replaceAll(">","&gt;")
-    .replaceAll('"',"&quot;")
-    .replaceAll("'","&#039;");
+return String(value ?? "")
+.replaceAll("&","&amp;")
+.replaceAll("<","&lt;")
+.replaceAll(">","&gt;")
+.replaceAll('"',"&quot;")
+.replaceAll("'","&#039;");
 
 }
 
 
 function money(value){
 
-  return Number(value || 0)
-    .toLocaleString(
-      "pt-BR",
-      {
-        style:"currency",
-        currency:"BRL"
-      }
-    );
+return Number(value || 0)
+.toLocaleString(
+"pt-BR",
+{
+style:"currency",
+currency:"BRL"
+}
+);
 
 }
 
 
 function usdt(value){
 
-  return (
-    Number(value || 0)
-      .toFixed(2)
-      .replace(".",",") +
-    " USDT"
-  );
+return Number(value || 0)
+.toFixed(2)
+.replace(".",",") +
+" USDT";
 
 }
 
 
 function unitCrypto(product){
 
-  return (
-    Number(product.price_brl || 0) /
-    DOLLAR
-  );
+return Number(
+product.price_brl || 0
+) / DOLLAR;
 
 }
 
 
 function unitPix(product){
 
-  return (
-    Number(product.price_brl || 0) *
-    1.05
-  );
+return Number(
+product.price_brl || 0
+) * 1.05;
 
 }
+
+
+/* API */
 
 
 async function api(
-  path,
-  options={}
+path,
+options={}
 ){
 
-  const response =
-    await fetch(
-      SUPABASE_URL + path,
-      {
-        ...options,
+const response =
+await fetch(
+SUPABASE_URL + path,
+{
+...options,
 
-        headers:{
+headers:{
 
-          apikey:
-            SUPABASE_KEY,
+apikey:
+SUPABASE_KEY,
 
-          Authorization:
-            "Bearer " +
-            accessToken,
+Authorization:
+"Bearer " +
+accessToken,
 
-          "Content-Type":
-            "application/json",
+"Content-Type":
+"application/json",
 
-          ...(options.headers || {})
-        }
-      }
-    );
+...(options.headers || {})
 
-
-  if(
-    response.status === 401
-  ){
-
-    localStorage.clear();
-
-    window.location.href =
-      "login.html";
-
-    throw new Error(
-      "Sessão expirada."
-    );
-
-  }
+}
+}
+);
 
 
-  if(!response.ok){
+if(response.status === 401){
 
-    const text =
-      await response.text();
+localStorage.clear();
 
-    throw new Error(text);
+window.location.href =
+"login.html";
 
-  }
-
-
-  if(
-    response.status === 204
-  ){
-
-    return null;
-
-  }
-
-
-  const text =
-    await response.text();
-
-
-  if(!text){
-    return null;
-  }
-
-
-  return JSON.parse(text);
+throw new Error(
+"Sessão expirada."
+);
 
 }
 
 
-/* CARREGAR DADOS */
+if(!response.ok){
+
+const text =
+await response.text();
+
+throw new Error(text);
+
+}
+
+
+if(response.status === 204){
+return null;
+}
+
+
+const text =
+await response.text();
+
+
+if(!text){
+return null;
+}
+
+
+return JSON.parse(text);
+
+}
+
+
+/* CARREGAR */
+
 
 async function loadRateios(){
 
-  rateios =
-    await api(
-      "/rest/v1/rateios" +
-      "?select=brand,is_open,active,sort_order" +
-      "&active=eq.true" +
-      "&order=sort_order.asc,brand.asc"
-    );
+rateios =
+await api(
+
+"/rest/v1/rateios" +
+"?select=brand,is_open,active,sort_order" +
+"&active=eq.true" +
+"&order=sort_order.asc,brand.asc"
+
+);
 
 }
 
 
 async function loadProducts(){
 
-  products =
-    await api(
-      "/rest/v1/products" +
-      "?select=id,nameName,brand,price_brl,reserved,box_size,description,active,sort_order" +
-      "&active=eq.true" +
-      "&price_brl=gt.0" +
-      "&order=sort_order.asc,id.asc"
-    );
+products =
+await api(
+
+"/rest/v1/products" +
+"?select=id,nameName,brand,price_brl,reserved,box_size,description,active,sort_order" +
+"&active=eq.true" +
+"&price_brl=gt.0" +
+"&order=sort_order.asc,id.asc"
+
+);
 
 }
 
 
 async function loadUser(){
 
-  try{
+try{
 
-    const user =
-      await api(
-        "/auth/v1/user"
-      );
-
-
-    const meta =
-      user.user_metadata ||
-      {};
+const user =
+await api(
+"/auth/v1/user"
+);
 
 
-    document.getElementById(
-      "customerName"
-    ).value =
-      meta.nome ||
-      meta.name ||
-      localStorage.getItem(
-        "user_name"
-      ) ||
-      "";
+const meta =
+user.user_metadata || {};
 
 
-    document.getElementById(
-      "customerPhone"
-    ).value =
-      meta.telefone ||
-      meta.phone ||
-      "";
+document.getElementById(
+"customerName"
+).value =
+
+meta.nome ||
+meta.name ||
+localStorage.getItem(
+"user_name"
+) ||
+"";
 
 
-    document.getElementById(
-      "customerEmail"
-    ).value =
-      user.email ||
-      localStorage.getItem(
-        "user_email"
-      ) ||
-      "";
+document.getElementById(
+"customerPhone"
+).value =
 
-  }catch(error){
+meta.telefone ||
+meta.phone ||
+"";
 
-    console.error(error);
 
-  }
+document.getElementById(
+"customerEmail"
+).value =
+
+user.email ||
+localStorage.getItem(
+"user_email"
+) ||
+"";
+
+
+}catch(error){
+
+console.error(error);
+
+}
 
 }
 
 
 /* RATEIOS */
 
+
 function renderRateios(){
 
-  const container =
-    document.getElementById(
-      "rateioList"
-    );
+const container =
+document.getElementById(
+"rateioList"
+);
 
 
-  if(!rateios.length){
+if(!rateios.length){
 
-    container.innerHTML =
-      `
-      <div class="empty">
-        Nenhum rateio disponível.
-      </div>
-      `;
+container.innerHTML =
+`
+<div class="empty">
+Nenhum rateio disponível.
+</div>
+`;
 
-    return;
+return;
 
-  }
-
-
-  container.innerHTML =
-    rateios.map(
-      function(rateio){
-
-        const totalProducts =
-          products.filter(
-            product =>
-              String(product.brand)
-                .toUpperCase() ===
-              String(rateio.brand)
-                .toUpperCase()
-          ).length;
+}
 
 
-        const open =
-          rateio.is_open === true;
+container.innerHTML =
+
+rateios.map(
+function(rateio){
+
+const totalProducts =
+
+products.filter(
+product =>
+
+String(product.brand)
+.toUpperCase() ===
+
+String(rateio.brand)
+.toUpperCase()
+
+).length;
 
 
-        return `
-
-          <article
-            class="rateio-card"
-            onclick="selectRateio(
-              '${escapeHtml(rateio.brand)}'
-            )"
-          >
-
-            <div class="rateio-name">
-              ${escapeHtml(
-                rateio.brand
-              )}
-            </div>
+const open =
+rateio.is_open === true;
 
 
-            <span
-              class="
-                rateio-status
-                ${open
-                  ? "open"
-                  : "closed"
-                }
-              "
-            >
+return `
 
-              ${open
-                ? "● RATEIO ABERTO"
-                : "● RATEIO FECHADO"
-              }
+<article
+class="rateio-card"
+data-brand="${escapeHtml(rateio.brand)}">
 
-            </span>
+<div class="rateio-name">
+
+${escapeHtml(
+rateio.brand
+)}
+
+</div>
 
 
-            <div class="rateio-count">
+<span
+class="
+rateio-status
+${open ? "open" : "closed"}
+">
 
-              ${totalProducts}
-              produto(s) disponível(is)
+${open
+? "● RATEIO ABERTO"
+: "● RATEIO FECHADO"
+}
 
-            </div>
+</span>
 
-          </article>
 
-        `;
+<div class="rateio-count">
 
-      }
-    ).join("");
+${totalProducts}
+produto(s) disponível(is)
+
+</div>
+
+</article>
+
+`;
+
+}
+).join("");
+
+
+document
+.querySelectorAll(
+".rateio-card"
+)
+.forEach(card=>{
+
+card.addEventListener(
+"click",
+()=>{
+
+selectRateio(
+card.dataset.brand
+);
+
+}
+);
+
+});
 
 }
 
 
 function selectRateio(brand){
 
-  selectedBrand =
-    brand;
+selectedBrand =
+brand;
 
 
-  selectedRateio =
-    rateios.find(
-      rateio =>
-        String(rateio.brand)
-          .toUpperCase() ===
-        String(brand)
-          .toUpperCase()
-    );
+selectedRateio =
+rateios.find(
+
+rateio =>
+
+String(rateio.brand)
+.toUpperCase() ===
+
+String(brand)
+.toUpperCase()
+
+);
 
 
-  cart = {};
+cart = {};
 
 
-  document.getElementById(
-    "rateioScreen"
-  ).classList.add(
-    "hidden"
-  );
+document
+.getElementById(
+"rateioScreen"
+)
+.classList.add(
+"hidden"
+);
 
 
-  document.getElementById(
-    "catalogScreen"
-  ).classList.remove(
-    "hidden"
-  );
+document
+.getElementById(
+"catalogScreen"
+)
+.classList.remove(
+"hidden"
+);
 
 
-  document.getElementById(
-    "catalogTitle"
-  ).textContent =
-    "Rateio " + brand;
+document
+.getElementById(
+"catalogTitle"
+)
+.textContent =
+"Rateio " + brand;
 
 
-  renderCatalogStatus();
-  renderProducts();
-  renderCart();
+renderCatalogStatus();
+renderProducts();
+renderCart();
 
 
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
-  });
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
 
 }
 
 
 function showRateios(){
 
-  selectedBrand = null;
-  selectedRateio = null;
-  cart = {};
+selectedBrand = null;
+selectedRateio = null;
+cart = {};
 
 
-  document.getElementById(
-    "catalogScreen"
-  ).classList.add(
-    "hidden"
-  );
+document
+.getElementById(
+"catalogScreen"
+)
+.classList.add(
+"hidden"
+);
 
 
-  document.getElementById(
-    "rateioScreen"
-  ).classList.remove(
-    "hidden"
-  );
+document
+.getElementById(
+"rateioScreen"
+)
+.classList.remove(
+"hidden"
+);
 
 
-  renderRateios();
+renderRateios();
+renderCart();
 
 
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
-  });
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
 
 }
 
 
 function renderCatalogStatus(){
 
-  const container =
-    document.getElementById(
-      "catalogStatus"
-    );
+const container =
+document.getElementById(
+"catalogStatus"
+);
 
 
-  const open =
-    selectedRateio &&
-    selectedRateio.is_open;
+const open =
+
+selectedRateio &&
+selectedRateio.is_open;
 
 
-  container.innerHTML =
-    `
-      <span
-        class="
-          rateio-status
-          ${open
-            ? "open"
-            : "closed"
-          }
-        "
-      >
+container.innerHTML =
+`
 
-        ${open
-          ? "● RATEIO ABERTO"
-          : "● RATEIO FECHADO"
-        }
+<span
+class="
+rateio-status
+${open ? "open" : "closed"}
+">
 
-      </span>
-    `;
+${open
+? "● RATEIO ABERTO"
+: "● RATEIO FECHADO"
+}
+
+</span>
+
+`;
 
 }
 
 
 /* PRODUTOS */
 
+
 function renderProducts(){
 
-  const container =
-    document.getElementById(
-      "productsList"
-    );
+const container =
+document.getElementById(
+"productsList"
+);
 
 
-  const list =
-    products.filter(
-      product =>
-        String(product.brand)
-          .toUpperCase() ===
-        String(selectedBrand)
-          .toUpperCase()
-    );
+const list =
 
+products.filter(
+product =>
 
-  if(!list.length){
+String(product.brand)
+.toUpperCase() ===
 
-    container.innerHTML =
-      `
-      <div class="empty">
-        Ainda não há produtos liberados
-        neste rateio.
-      </div>
-      `;
+String(selectedBrand)
+.toUpperCase()
 
-    return;
+);
 
-  }
 
+if(!list.length){
 
-  const open =
-    selectedRateio &&
-    selectedRateio.is_open;
+container.innerHTML =
+`
+<div class="empty">
+Ainda não há produtos liberados neste rateio.
+</div>
+`;
 
-
-  container.innerHTML =
-    list.map(
-      function(product){
-
-        const reserved =
-          Number(
-            product.reserved || 0
-          );
-
-
-        const boxSize =
-          Number(
-            product.box_size || 10
-          );
-
-
-        const boxes =
-          Math.floor(
-            reserved / boxSize
-          );
-
-
-        const remainder =
-          reserved % boxSize;
-
-
-        const missing =
-          remainder === 0
-          ? boxSize
-          : boxSize - remainder;
-
-
-        const percent =
-          (
-            remainder /
-            boxSize
-          ) * 100;
-
-
-        const mode =
-          productModes[
-            product.id
-          ] || "unit";
-
-
-        return `
-
-          <article class="product-card">
-
-
-            <div class="badges">
-
-              <span class="badge">
-                ${escapeHtml(
-                  product.brand
-                )}
-              </span>
-
-              <span
-                class="
-                  rateio-status
-                  ${open
-                    ? "open"
-                    : "closed"
-                  }
-                "
-              >
-
-                ${open
-                  ? "ABERTO"
-                  : "FECHADO"
-                }
-
-              </span>
-
-            </div>
-
-
-            <div class="product-name">
-
-              ${escapeHtml(
-                product.nameName
-              )}
-
-            </div>
-
-
-            <div class="payment-preview">
-
-              <div class="payment-mini">
-
-                <span>
-                  PAGAMENTO CRIPTO
-                </span>
-
-                <strong>
-                  ${usdt(
-                    unitCrypto(
-                      product
-                    )
-                  )}
-                </strong>
-
-              </div>
-
-
-              <div class="payment-mini">
-
-                <span>
-                  PIX (+5%)
-                </span>
-
-                <strong>
-                  ${money(
-                    unitPix(
-                      product
-                    )
-                  )}
-                </strong>
-
-              </div>
-
-
-              <div class="payment-mini">
-
-                <span>
-                  PRÓXIMO PAGAMENTO
-                </span>
-
-                <strong>
-                  ${money(
-                    NEXT_PAYMENT_UNIT
-                  )}
-                </strong>
-
-              </div>
-
-            </div>
-
-
-            <div class="numbers">
-
-              <div class="number-box">
-
-                <span>
-                  BOXES FECHADOS
-                </span>
-
-                <strong>
-                  ${boxes}
-                </strong>
-
-              </div>
-
-
-              <div class="number-box">
-
-                <span>
-                  RESERVADO
-                </span>
-
-                <strong>
-                  ${reserved}
-                </strong>
-
-              </div>
-
-            </div>
-
-
-            <div class="progress-title">
-
-              <span>
-                Próximo box
-              </span>
-
-              <strong>
-                ${remainder}/${boxSize}
-              </strong>
-
-            </div>
-
-
-            <div class="progress">
-
-              <div
-                class="progress-bar"
-                style="
-                  width:${percent}%
-                "
-              ></div>
-
-            </div>
-
-
-            <div class="missing">
-
-              Faltam
-              <strong>
-                ${missing}
-              </strong>
-              unidade(s) para fechar
-              o próximo box.
-
-            </div>
-
-
-            <div class="mode-selector">
-
-              <button
-                type="button"
-                class="
-                  mode-btn
-                  ${mode === "unit"
-                    ? "active"
-                    : ""
-                  }
-                "
-                onclick="
-                  setMode(
-                    ${product.id},
-                    'unit'
-                  )
-                "
-              >
-                Unidade
-              </button>
-
-
-              <button
-                type="button"
-                class="
-                  mode-btn
-                  ${mode === "box"
-                    ? "active"
-                    : ""
-                  }
-                "
-                onclick="
-                  setMode(
-                    ${product.id},
-                    'box'
-                  )
-                "
-              >
-                Box com ${boxSize}
-              </button>
-
-            </div>
-
-
-            <div class="reserve-row">
-
-              <input
-                class="quantity"
-                id="qty-${product.id}"
-                type="number"
-                min="1"
-                max="99"
-                value="1"
-                ${open
-                  ? ""
-                  : "disabled"
-                }
-              >
-
-
-              <button
-                class="reserve-btn"
-                type="button"
-                onclick="
-                  addToCart(
-                    ${product.id}
-                  )
-                "
-                ${open
-                  ? ""
-                  : "disabled"
-                }
-              >
-
-                + ADICIONAR À RESERVA
-
-              </button>
-
-            </div>
-
-
-            ${
-              !open
-              ? `
-                <div class="closed-notice">
-                  Rateio fechado —
-                  novas reservas encerradas.
-                </div>
-              `
-              : ""
-            }
-
-          </article>
-
-        `;
-
-      }
-    ).join("");
+return;
 
 }
 
 
-function setMode(
-  productId,
-  mode
-){
+const open =
 
-  productModes[
-    productId
-  ] =
-    mode;
+selectedRateio &&
+selectedRateio.is_open;
 
 
-  renderProducts();
+container.innerHTML =
+
+list.map(
+function(product){
+
+
+const productId =
+Number(product.id);
+
+
+const reserved =
+Number(
+product.reserved || 0
+);
+
+
+const boxSize =
+Number(
+product.box_size || 10
+);
+
+
+const boxes =
+Math.floor(
+reserved / boxSize
+);
+
+
+const remainder =
+reserved % boxSize;
+
+
+const missing =
+
+remainder === 0
+? boxSize
+: boxSize - remainder;
+
+
+const percent =
+
+(
+remainder /
+boxSize
+) * 100;
+
+
+const mode =
+
+productModes[
+productId
+] || "unit";
+
+
+return `
+
+<article class="product-card">
+
+
+<div class="badges">
+
+<span class="badge">
+
+${escapeHtml(
+product.brand
+)}
+
+</span>
+
+
+<span
+class="
+rateio-status
+${open ? "open" : "closed"}
+">
+
+${open
+? "ABERTO"
+: "FECHADO"
+}
+
+</span>
+
+</div>
+
+
+<div class="product-name">
+
+${escapeHtml(
+product.nameName
+)}
+
+</div>
+
+
+<div class="payment-preview">
+
+
+<div class="payment-mini">
+
+<span>
+PAGAMENTO CRIPTO
+</span>
+
+<strong>
+
+${usdt(
+unitCrypto(product)
+)}
+
+</strong>
+
+</div>
+
+
+<div class="payment-mini">
+
+<span>
+PIX (+5%)
+</span>
+
+<strong>
+
+${money(
+unitPix(product)
+)}
+
+</strong>
+
+</div>
+
+
+<div class="payment-mini">
+
+<span>
+PRÓXIMO PAGAMENTO
+</span>
+
+<strong>
+
+${money(
+NEXT_PAYMENT_UNIT
+)}
+
+</strong>
+
+</div>
+
+</div>
+
+
+<div class="numbers">
+
+
+<div class="number-box">
+
+<span>
+BOXES FECHADOS
+</span>
+
+<strong>
+${boxes}
+</strong>
+
+</div>
+
+
+<div class="number-box">
+
+<span>
+RESERVADO
+</span>
+
+<strong>
+${reserved}
+</strong>
+
+</div>
+
+</div>
+
+
+<div class="progress-title">
+
+<span>
+Próximo box
+</span>
+
+<strong>
+
+${remainder}/${boxSize}
+
+</strong>
+
+</div>
+
+
+<div class="progress">
+
+<div
+class="progress-bar"
+style="width:${percent}%">
+</div>
+
+</div>
+
+
+<div class="missing">
+
+Faltam
+
+<strong>
+${missing}
+</strong>
+
+unidade(s) para fechar o próximo box.
+
+</div>
+
+
+<div class="mode-selector">
+
+
+<button
+type="button"
+class="mode-btn ${mode==="unit" ? "active" : ""}"
+data-action="mode"
+data-id="${productId}"
+data-mode="unit">
+
+Unidade
+
+</button>
+
+
+<button
+type="button"
+class="mode-btn ${mode==="box" ? "active" : ""}"
+data-action="mode"
+data-id="${productId}"
+data-mode="box">
+
+Box com ${boxSize}
+
+</button>
+
+</div>
+
+
+<div class="reserve-row">
+
+
+<input
+class="quantity"
+id="qty-${productId}"
+type="number"
+inputmode="numeric"
+min="1"
+max="99"
+step="1"
+value="1"
+${open ? "" : "disabled"}
+>
+
+
+<button
+class="reserve-btn"
+id="add-${productId}"
+type="button"
+data-action="add"
+data-id="${productId}"
+${open ? "" : "disabled"}>
+
++ ADICIONAR À RESERVA
+
+</button>
+
+</div>
+
+
+${!open
+? `
+<div class="closed-notice">
+Rateio fechado — novas reservas encerradas.
+</div>
+`
+: ""
+}
+
+</article>
+
+`;
 
 }
+).join("");
+
+}
+
+
+/* CLIQUES DOS PRODUTOS */
+
+
+document
+.getElementById(
+"productsList"
+)
+.addEventListener(
+"click",
+function(event){
+
+
+const button =
+event.target.closest(
+"button[data-action]"
+);
+
+
+if(!button){
+return;
+}
+
+
+const action =
+button.dataset.action;
+
+
+const productId =
+Number(
+button.dataset.id
+);
+
+
+if(action === "mode"){
+
+productModes[
+productId
+] =
+button.dataset.mode;
+
+
+renderProducts();
+
+return;
+
+}
+
+
+if(action === "add"){
+
+addToCart(
+productId,
+button
+);
+
+}
+
+}
+);
+
+
+/* ADICIONAR */
 
 
 function addToCart(
-  productId
+productId,
+button
 ){
 
-  if(
-    !selectedRateio ||
-    !selectedRateio.is_open
-  ){
+if(
+!selectedRateio ||
+!selectedRateio.is_open
+){
 
-    alert(
-      "Este rateio está fechado."
-    );
+alert(
+"Este rateio está fechado."
+);
 
-    return;
+return;
 
-  }
-
-
-  const product =
-    products.find(
-      item =>
-        item.id === productId
-    );
+}
 
 
-  if(!product) return;
+const product =
+
+products.find(
+item =>
+
+Number(item.id) ===
+Number(productId)
+
+);
 
 
-  const input =
-    document.getElementById(
-      "qty-" + productId
-    );
+if(!product){
+
+alert(
+"Produto não encontrado."
+);
+
+return;
+
+}
 
 
-  let quantity =
-    Math.max(
-      1,
-      Number(
-        input.value || 1
-      )
-    );
+const input =
+document.getElementById(
+"qty-" + productId
+);
 
 
-  const mode =
-    productModes[
-      productId
-    ] || "unit";
+let quantity =
+parseInt(
+input?.value,
+10
+);
 
 
-  if(mode === "box"){
+if(
+!Number.isFinite(quantity) ||
+quantity < 1
+){
 
-    quantity *=
-      Number(
-        product.box_size || 10
-      );
+quantity = 1;
 
-  }
-
-
-  cart[productId] =
-    (
-      cart[productId] ||
-      0
-    ) +
-    quantity;
+}
 
 
-  renderCart();
+const mode =
+
+productModes[
+productId
+] || "unit";
+
+
+if(mode === "box"){
+
+quantity *=
+Number(
+product.box_size || 10
+);
+
+}
+
+
+cart[
+String(productId)
+] =
+
+Number(
+cart[
+String(productId)
+] || 0
+) +
+
+quantity;
+
+
+renderCart();
+
+
+if(button){
+
+const oldText =
+button.textContent;
+
+
+button.classList.add(
+"added"
+);
+
+button.textContent =
+"✓ ADICIONADO";
+
+
+setTimeout(
+()=>{
+
+button.classList.remove(
+"added"
+);
+
+button.textContent =
+"+ ADICIONAR À RESERVA";
+
+},
+900
+);
+
+}
+
+}
+
+
+/* REMOVER */
+
+
+function removeFromCart(
+productId
+){
+
+delete cart[
+String(productId)
+];
+
+renderCart();
 
 }
 
 
 /* CARRINHO */
 
-function removeFromCart(
-  productId
-){
-
-  delete cart[
-    productId
-  ];
-
-
-  renderCart();
-
-}
-
 
 function renderCart(){
 
-  const container =
-    document.getElementById(
-      "cartItems"
-    );
+const container =
+document.getElementById(
+"cartItems"
+);
 
 
-  const entries =
-    Object.entries(cart);
+const entries =
+Object.entries(cart)
+.filter(
+([,quantity]) =>
+Number(quantity) > 0
+);
 
 
-  let cryptoTotal = 0;
-  let pixTotal = 0;
-  let nextTotal = 0;
+let cryptoTotal = 0;
+let pixTotal = 0;
+let nextTotal = 0;
+let quantityTotal = 0;
 
 
-  if(!entries.length){
+if(!entries.length){
 
-    container.innerHTML =
-      `
-      <p class="muted">
-        Nenhum produto adicionado.
-      </p>
-      `;
+container.innerHTML =
+`
+<p class="muted">
+Nenhum produto adicionado.
+</p>
+`;
 
-  }else{
-
-    container.innerHTML =
-      entries.map(
-        function([
-          productId,
-          quantity
-        ]){
-
-          const product =
-            products.find(
-              item =>
-                item.id ===
-                Number(productId)
-            );
+}else{
 
 
-          if(!product){
-            return "";
-          }
+container.innerHTML =
+
+entries.map(
+function([
+productId,
+quantity
+]){
 
 
-          const itemCrypto =
-            unitCrypto(product) *
-            quantity;
+quantity =
+Number(quantity);
 
 
-          const itemPix =
-            unitPix(product) *
-            quantity;
+const product =
+
+products.find(
+item =>
+
+Number(item.id) ===
+Number(productId)
+
+);
 
 
-          const itemNext =
-            NEXT_PAYMENT_UNIT *
-            quantity;
+if(!product){
+return "";
+}
 
 
-          cryptoTotal +=
-            itemCrypto;
+const itemCrypto =
 
-          pixTotal +=
-            itemPix;
-
-          nextTotal +=
-            itemNext;
+unitCrypto(product) *
+quantity;
 
 
-          const boxes =
-            Math.floor(
-              quantity /
-              Number(
-                product.box_size ||
-                10
-              )
-            );
+const itemPix =
+
+unitPix(product) *
+quantity;
 
 
-          const loose =
-            quantity %
-            Number(
-              product.box_size ||
-              10
-            );
+const itemNext =
+
+NEXT_PAYMENT_UNIT *
+quantity;
 
 
-          return `
-
-            <div class="cart-item">
-
-              <div class="cart-item-top">
-
-                <span>
-                  ${escapeHtml(
-                    product.nameName
-                  )}
-                </span>
-
-                <strong>
-                  ${quantity} un.
-                </strong>
-
-              </div>
+cryptoTotal +=
+itemCrypto;
 
 
-              <small>
-
-                ${boxes}
-                box(es)
-
-                ${loose
-                  ? " + " +
-                    loose +
-                    " avulsa(s)"
-                  : ""
-                }
-
-              </small>
+pixTotal +=
+itemPix;
 
 
-              <button
-                type="button"
-                class="remove"
-                onclick="
-                  removeFromCart(
-                    ${product.id}
-                  )
-                "
-              >
-                Remover
-              </button>
-
-            </div>
-
-          `;
-
-        }
-      ).join("");
-
-  }
+nextTotal +=
+itemNext;
 
 
-  document.getElementById(
-    "cryptoTotal"
-  ).textContent =
-    usdt(cryptoTotal);
+quantityTotal +=
+quantity;
 
 
-  document.getElementById(
-    "pixTotal"
-  ).textContent =
-    money(pixTotal);
+const boxSize =
+
+Number(
+product.box_size || 10
+);
 
 
-  document.getElementById(
-    "nextTotal"
-  ).textContent =
-    money(nextTotal);
+const boxes =
+
+Math.floor(
+quantity / boxSize
+);
 
 
-  document.getElementById(
-    "confirmButton"
-  ).disabled =
-    entries.length === 0 ||
-    !selectedRateio ||
-    !selectedRateio.is_open;
+const loose =
+
+quantity %
+boxSize;
+
+
+return `
+
+<div class="cart-item">
+
+
+<div class="cart-item-top">
+
+<span>
+
+${escapeHtml(
+product.nameName
+)}
+
+</span>
+
+<strong>
+
+${quantity} un.
+
+</strong>
+
+</div>
+
+
+<small>
+
+${boxes} box(es)
+
+${loose
+? " + " +
+loose +
+" avulsa(s)"
+: ""
+}
+
+</small>
+
+
+<div class="cart-values">
+
+Cripto:
+<strong>
+${usdt(itemCrypto)}
+</strong>
+
+<br>
+
+Pix:
+<strong>
+${money(itemPix)}
+</strong>
+
+<br>
+
+Próximo:
+<strong>
+${money(itemNext)}
+</strong>
+
+</div>
+
+
+<button
+type="button"
+class="remove"
+onclick="removeFromCart(${Number(productId)})">
+
+Remover produto
+
+</button>
+
+</div>
+
+`;
+
+}
+).join("");
 
 }
 
 
-/* CONFIRMAR PEDIDO */
+/* TOTAIS PRINCIPAIS */
+
+document
+.getElementById(
+"cryptoTotal"
+)
+.textContent =
+usdt(
+cryptoTotal
+);
+
+
+document
+.getElementById(
+"pixTotal"
+)
+.textContent =
+money(
+pixTotal
+);
+
+
+document
+.getElementById(
+"nextTotal"
+)
+.textContent =
+money(
+nextTotal
+);
+
+
+/* BARRA FIXA */
+
+document
+.getElementById(
+"floatQuantity"
+)
+.textContent =
+quantityTotal +
+" un.";
+
+
+document
+.getElementById(
+"floatCrypto"
+)
+.textContent =
+usdt(
+cryptoTotal
+);
+
+
+document
+.getElementById(
+"floatPix"
+)
+.textContent =
+money(
+pixTotal
+);
+
+
+document
+.getElementById(
+"floatNext"
+)
+.textContent =
+money(
+nextTotal
+);
+
+
+const floating =
+document.getElementById(
+"floatingCart"
+);
+
+
+if(entries.length){
+
+floating.classList.add(
+"show"
+);
+
+}else{
+
+floating.classList.remove(
+"show"
+);
+
+}
+
+
+/* BOTÃO CONFIRMAR */
+
+document
+.getElementById(
+"confirmButton"
+)
+.disabled =
+
+entries.length === 0 ||
+!selectedRateio ||
+!selectedRateio.is_open;
+
+}
+
+
+function goToCart(){
+
+document
+.getElementById(
+"cartSection"
+)
+.scrollIntoView({
+behavior:"smooth",
+block:"start"
+});
+
+}
+
+
+/* CONFIRMAR RESERVA */
+
 
 async function confirmReservation(){
 
-  const button =
-    document.getElementById(
-      "confirmButton"
-    );
+const button =
+document.getElementById(
+"confirmButton"
+);
 
 
-  const message =
-    document.getElementById(
-      "message"
-    );
+const message =
+document.getElementById(
+"message"
+);
 
 
-  const name =
-    document.getElementById(
-      "customerName"
-    ).value.trim();
+const name =
+document.getElementById(
+"customerName"
+).value.trim();
 
 
-  const phone =
-    document.getElementById(
-      "customerPhone"
-    ).value.trim();
+const phone =
+document.getElementById(
+"customerPhone"
+).value.trim();
 
 
-  const email =
-    document.getElementById(
-      "customerEmail"
-    ).value.trim();
+const email =
+document.getElementById(
+"customerEmail"
+).value.trim();
 
 
-  const cep =
-    document.getElementById(
-      "customerCep"
-    ).value.trim();
+const cep =
+document.getElementById(
+"customerCep"
+).value.trim();
 
 
-  const address =
-    document.getElementById(
-      "customerAddress"
-    ).value.trim();
+const address =
+document.getElementById(
+"customerAddress"
+).value.trim();
 
 
-  const city =
-    document.getElementById(
-      "customerCity"
-    ).value.trim();
+const city =
+document.getElementById(
+"customerCity"
+).value.trim();
 
 
-  const state =
-    document.getElementById(
-      "customerState"
-    ).value
-    .trim()
-    .toUpperCase();
+const state =
+document.getElementById(
+"customerState"
+)
+.value
+.trim()
+.toUpperCase();
 
 
-  if(
-    !name ||
-    !phone ||
-    !email ||
-    !cep ||
-    !address ||
-    !city ||
-    !state
-  ){
+if(
+!name ||
+!phone ||
+!email ||
+!cep ||
+!address ||
+!city ||
+!state
+){
 
-    message.className =
-      "message error";
+message.className =
+"message error";
 
-    message.textContent =
-      "Preencha todos os seus dados.";
+message.textContent =
+"Preencha todos os seus dados.";
 
-    return;
+return;
 
-  }
+}
 
 
-  const entries =
-    Object.entries(cart);
+const entries =
 
+Object.entries(cart)
+.filter(
+([,quantity]) =>
+Number(quantity) > 0
+);
 
-  if(!entries.length){
 
-    message.className =
-      "message error";
+if(!entries.length){
 
-    message.textContent =
-      "Adicione pelo menos um produto.";
+message.className =
+"message error";
 
-    return;
+message.textContent =
+"Adicione pelo menos um produto.";
 
-  }
+return;
 
+}
 
-  button.disabled = true;
 
-  button.textContent =
-    "CONFIRMANDO...";
+button.disabled =
+true;
 
 
-  message.className =
-    "message";
+button.textContent =
+"CONFIRMANDO...";
 
-  message.textContent =
-    "Enviando sua reserva...";
 
+message.className =
+"message";
 
-  try{
 
-    await loadRateios();
+message.textContent =
+"Enviando sua reserva...";
 
 
-    selectedRateio =
-      rateios.find(
-        rateio =>
-          String(rateio.brand)
-            .toUpperCase() ===
-          String(selectedBrand)
-            .toUpperCase()
-      );
+try{
 
 
-    if(
-      !selectedRateio ||
-      !selectedRateio.is_open
-    ){
+await loadRateios();
 
-      throw new Error(
-        "Rateio fechado"
-      );
 
-    }
+selectedRateio =
 
+rateios.find(
+rateio =>
 
-    const items =
-      entries.map(
-        function([
-          productId,
-          quantity
-        ]){
+String(rateio.brand)
+.toUpperCase() ===
 
-          return {
-            product_id:
-              Number(productId),
+String(selectedBrand)
+.toUpperCase()
 
-            quantity:
-              Number(quantity)
-          };
+);
 
-        }
-      );
 
+if(
+!selectedRateio ||
+!selectedRateio.is_open
+){
 
-    const fullAddress =
-      address +
-      ", " +
-      city +
-      " - " +
-      state;
+throw new Error(
+"Rateio fechado"
+);
 
+}
 
-    const result =
-      await api(
-        "/rest/v1/rpc/create_my_order",
-        {
-          method:"POST",
 
-          body:
-            JSON.stringify({
+const items =
 
-              p_rateio_brand:
-                selectedBrand,
+entries.map(
+function([
+productId,
+quantity
+]){
 
-              p_items:
-                items,
+return {
 
-              p_customer_name:
-                name,
+product_id:
+Number(productId),
 
-              p_customer_phone:
-                phone,
+quantity:
+Number(quantity)
 
-              p_customer_email:
-                email,
+};
 
-              p_customer_cep:
-                cep,
+}
+);
 
-              p_customer_address:
-                fullAddress
 
-            })
-        }
-      );
+const fullAddress =
 
+address +
+", " +
+city +
+" - " +
+state;
 
-    message.className =
-      "message success";
 
+const result =
 
-    message.innerHTML =
-      `
-        ✅ Reserva
-        <strong>
-          #${result.order_id}
-        </strong>
-        confirmada com sucesso.<br><br>
+await api(
+"/rest/v1/rpc/create_my_order",
+{
 
-        Pagamento atual em Cripto:
-        <strong>
-          ${usdt(
-            result.payment_now_crypto
-          )}
-        </strong><br>
+method:"POST",
 
-        Pagamento atual em Pix:
-        <strong>
-          ${money(
-            result.payment_now_pix
-          )}
-        </strong><br>
+body:
+JSON.stringify({
 
-        Próximo pagamento:
-        <strong>
-          ${money(
-            result.next_payment_brl
-          )}
-        </strong><br>
+p_rateio_brand:
+selectedBrand,
 
-        Taxa administrativa e separação:
-        <strong>R$ 50,00</strong><br>
+p_items:
+items,
 
-        Frete:
-        <strong>à parte</strong><br><br>
+p_customer_name:
+name,
 
-        <a
-          href="meus-pedidos.html"
-          style="
-            color:#59c6ff;
-            font-weight:900
-          "
-        >
-          Ver meus pedidos →
-        </a>
-      `;
+p_customer_phone:
+phone,
 
+p_customer_email:
+email,
 
-    cart = {};
+p_customer_cep:
+cep,
 
+p_customer_address:
+fullAddress
 
-    await loadProducts();
+})
 
-    renderProducts();
-    renderCart();
+}
+);
 
 
-  }catch(error){
+message.className =
+"message success";
 
-    console.error(error);
 
+message.innerHTML =
+`
 
-    message.className =
-      "message error";
+✅ Reserva
+<strong>
+#${result.order_id}
+</strong>
+confirmada com sucesso.
 
+<br><br>
 
-    if(
-      String(error.message)
-        .toLowerCase()
-        .includes(
-          "rateio fechado"
-        )
-    ){
+Pagamento atual em Cripto:
 
-      message.textContent =
-        "Este rateio foi fechado e não aceita mais reservas.";
+<strong>
+${usdt(
+result.payment_now_crypto
+)}
+</strong>
 
-    }else{
+<br>
 
-      message.textContent =
-        "Não foi possível confirmar a reserva.";
+Pagamento atual em Pix:
 
-    }
+<strong>
+${money(
+result.payment_now_pix
+)}
+</strong>
 
-  }finally{
+<br>
 
-    button.textContent =
-      "CONFIRMAR RESERVA";
+Próximo pagamento:
 
+<strong>
+${money(
+result.next_payment_brl
+)}
+</strong>
 
-    renderCart();
+<br>
 
-  }
+Taxa administrativa e separação:
+
+<strong>
+R$ 50,00
+</strong>
+
+<br>
+
+Frete:
+
+<strong>
+à parte
+</strong>
+
+<br><br>
+
+<a
+href="meus-pedidos.html"
+style="
+color:#59c6ff;
+font-weight:900;
+">
+
+Ver meus pedidos →
+
+</a>
+
+`;
+
+
+cart = {};
+
+
+await loadProducts();
+
+
+renderProducts();
+renderCart();
+
+
+message.scrollIntoView({
+behavior:"smooth",
+block:"center"
+});
+
+
+}catch(error){
+
+console.error(error);
+
+
+message.className =
+"message error";
+
+
+if(
+String(error.message)
+.toLowerCase()
+.includes(
+"rateio fechado"
+)
+){
+
+message.textContent =
+"Este rateio foi fechado e não aceita mais reservas.";
+
+}else{
+
+message.textContent =
+"Não foi possível confirmar a reserva.";
+
+}
+
+}finally{
+
+button.textContent =
+"CONFIRMAR RESERVA";
+
+renderCart();
+
+}
 
 }
 
 
 /* INICIAR */
 
+
 async function start(){
 
-  try{
+try{
 
-    await Promise.all([
-      loadRateios(),
-      loadProducts(),
-      loadUser()
-    ]);
+await Promise.all([
 
+loadRateios(),
+loadProducts(),
+loadUser()
 
-    renderRateios();
-
-  }catch(error){
-
-    console.error(error);
+]);
 
 
-    document.getElementById(
-      "rateioList"
-    ).innerHTML =
-      `
-      <div class="empty">
-        Não foi possível carregar
-        o catálogo.
-      </div>
-      `;
+renderRateios();
 
-  }
+
+}catch(error){
+
+console.error(error);
+
+
+document
+.getElementById(
+"rateioList"
+)
+.innerHTML =
+`
+
+<div class="empty">
+
+Não foi possível carregar o catálogo.
+
+</div>
+
+`;
+
+}
 
 }
 
@@ -2180,4 +2769,5 @@ start();
 </script>
 
 </body>
-      </html>
+
+  </html>
