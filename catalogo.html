@@ -2,893 +2,1391 @@
 <html lang="pt-BR">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Catálogo | Forever Collective</title>
+<title>Catálogo | Forever Collective</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+<style>
+*{box-sizing:border-box}
 
-    body {
-      margin: 0;
-      background: #020613;
-      color: #f7f9ff;
-      font-family: Arial, sans-serif;
-    }
+body{
+  margin:0;
+  background:#020613;
+  color:#f7f9ff;
+  font-family:Arial,sans-serif
+}
 
-    .wrap {
-      width: min(100% - 22px, 850px);
-      margin: auto;
-      padding: 18px 0 50px;
-    }
+.wrap{
+  width:min(100% - 22px,900px);
+  margin:auto;
+  padding:18px 0 50px
+}
 
-    .top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 12px;
-      padding: 18px;
-      border: 1px solid #152b48;
-      background: #07101e;
-      border-radius: 22px;
-      margin-bottom: 18px;
-    }
+.top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  background:#07101e;
+  border:1px solid #1c3048;
+  border-radius:20px;
+  padding:17px;
+  margin-bottom:18px
+}
 
-    .logo {
-      font-size: 18px;
-      font-weight: 900;
-      letter-spacing: 1.5px;
-    }
+.logo{
+  font-size:18px;
+  font-weight:900;
+  letter-spacing:1.5px
+}
 
-    .logo span {
-      color: #7c45ff;
-    }
+.logo span{color:#8b45ff}
 
-    .back {
-      border: 0;
-      color: white;
-      text-decoration: none;
-      font-weight: 800;
-      border-radius: 12px;
-      padding: 11px 15px;
-      background: linear-gradient(90deg,#16a8f7,#2868ff);
-    }
+.top a{
+  color:white;
+  text-decoration:none;
+  font-weight:900;
+  background:#17283e;
+  border-radius:11px;
+  padding:10px 13px
+}
 
-    .intro {
-      border: 1px solid #12355c;
-      background: #07101e;
-      border-radius: 24px;
-      padding: 22px;
-      margin-bottom: 20px;
-    }
+.hero{
+  background:#07101e;
+  border:1px solid #1c3048;
+  border-radius:24px;
+  padding:22px;
+  margin-bottom:18px
+}
 
-    .intro h1 {
-      margin: 8px 0;
-      font-size: 30px;
-    }
+.hero h1{
+  margin:0 0 8px;
+  font-size:29px
+}
 
-    .intro p {
-      color: #9da9bd;
-      line-height: 1.5;
-      margin-bottom: 0;
-    }
+.muted{
+  color:#97a4b8;
+  line-height:1.5
+}
 
-    .product-card {
-      background: #091321;
-      border: 1px solid #1c3048;
-      border-radius: 26px;
-      padding: 22px;
-      margin-bottom: 20px;
-      box-shadow: 0 8px 30px rgba(0,0,0,.18);
-    }
+/* RATEIOS */
 
-    .badges {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin-bottom: 18px;
-    }
+.rateio-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px
+}
 
-    .badge {
-      border: 1px solid #00a7e8;
-      color: #42c6ff;
-      border-radius: 18px;
-      padding: 6px 10px;
-      font-size: 12px;
-      font-weight: 800;
-    }
+.rateio-card{
+  background:#091321;
+  border:1px solid #203751;
+  border-radius:22px;
+  padding:22px;
+  cursor:pointer;
+  transition:.2s
+}
 
-    .badge.green {
-      border-color: #159a57;
-      color: #45dc80;
-    }
+.rateio-card:hover{
+  border-color:#596cff;
+  transform:translateY(-2px)
+}
 
-    .product-title-row {
-      display: flex;
-      justify-content: space-between;
-      gap: 15px;
-      align-items: center;
-      margin-bottom: 22px;
-    }
+.rateio-name{
+  font-size:27px;
+  font-weight:900;
+  margin-bottom:13px
+}
 
-    .product-title {
-      font-size: 24px;
-      font-weight: 900;
-      margin: 0;
-    }
+.rateio-status{
+  display:inline-block;
+  padding:6px 10px;
+  border-radius:20px;
+  font-size:11px;
+  font-weight:900
+}
 
-    .price {
-      color: #45bfff;
-      font-size: 24px;
-      font-weight: 900;
-      border: 1px solid #263b54;
-      padding: 10px 13px;
-      border-radius: 16px;
-      white-space: nowrap;
-    }
+.open{
+  background:#09261a;
+  border:1px solid #16864d;
+  color:#4ae38a
+}
 
-    .numbers {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin-bottom: 22px;
-    }
+.closed{
+  background:#2b1116;
+  border:1px solid #8b3138;
+  color:#ff7777
+}
 
-    .number-box {
-      border: 1px solid #20334a;
-      background: #07101e;
-      border-radius: 18px;
-      padding: 15px;
-    }
+.rateio-count{
+  color:#919fb4;
+  margin-top:14px
+}
 
-    .number-label {
-      display: block;
-      color: #8593a9;
-      font-size: 13px;
-      margin-bottom: 8px;
-      text-transform: uppercase;
-    }
+/* CATÁLOGO */
 
-    .number-value {
-      font-size: 25px;
-      font-weight: 900;
-    }
+.catalog-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  margin-bottom:18px
+}
 
-    .progress-header {
-      display: flex;
-      justify-content: space-between;
-      gap: 10px;
-      color: #9eaabd;
-      margin-bottom: 10px;
-      font-size: 15px;
-    }
+.catalog-header h1{
+  margin:0
+}
 
-    .progress-header strong {
-      color: white;
-    }
+.change-rateio{
+  border:1px solid #344961;
+  background:#0b1726;
+  color:white;
+  border-radius:12px;
+  padding:11px 13px;
+  font-weight:900
+}
 
-    .progress {
-      height: 10px;
-      background: #07101e;
-      border: 1px solid #1c3048;
-      border-radius: 20px;
-      overflow: hidden;
-    }
+.product-card{
+  background:#091321;
+  border:1px solid #1c3048;
+  border-radius:25px;
+  padding:20px;
+  margin-bottom:17px
+}
 
-    .progress-bar {
-      height: 100%;
-      border-radius: 20px;
-      background: linear-gradient(90deg,#13b1f7,#2868ff);
-      width: 0%;
-    }
+.badges{
+  display:flex;
+  gap:7px;
+  flex-wrap:wrap;
+  margin-bottom:14px
+}
 
-    .progress-text {
-      margin: 10px 0 20px;
-      color: #8997ad;
-      font-size: 14px;
-    }
+.badge{
+  border:1px solid #168fc6;
+  color:#4bc8ff;
+  border-radius:18px;
+  padding:6px 9px;
+  font-size:11px;
+  font-weight:900
+}
 
-    .progress-text strong {
-      color: #f4a51c;
-    }
+.product-name{
+  font-size:23px;
+  font-weight:900;
+  margin-bottom:18px
+}
 
-    .mode-selector {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      border: 1px solid #20334a;
-      border-radius: 18px;
-      padding: 6px;
-      gap: 5px;
-      margin-bottom: 15px;
-      background: #07101e;
-    }
+.payment-preview{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:9px;
+  margin-bottom:18px
+}
 
-    .mode-button {
-      padding: 13px 8px;
-      border: 0;
-      border-radius: 14px;
-      background: transparent;
-      color: #8d9ab0;
-      font-size: 16px;
-      font-weight: 800;
-      cursor: pointer;
-    }
+.payment-mini{
+  background:#07101e;
+  border:1px solid #20364e;
+  border-radius:15px;
+  padding:13px
+}
 
-    .mode-button.active {
-      color: white;
-      background: linear-gradient(90deg,#14b5f4,#2868ff);
-    }
+.payment-mini span{
+  display:block;
+  color:#8998ad;
+  font-size:11px;
+  margin-bottom:6px
+}
 
-    .reserve-row {
-      display: grid;
-      grid-template-columns: 115px 1fr;
-      gap: 12px;
-    }
+.payment-mini strong{
+  color:#57c5ff;
+  font-size:17px
+}
 
-    .quantity {
-      width: 100%;
-      border: 1px solid #20334a;
-      background: #07101e;
-      color: white;
-      border-radius: 18px;
-      text-align: center;
-      font-size: 20px;
-      font-weight: 800;
-      padding: 15px 5px;
-    }
+.numbers{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;
+  margin-bottom:17px
+}
 
-    .reserve-button {
-      border: 0;
-      border-radius: 18px;
-      padding: 15px;
-      background: linear-gradient(90deg,#13b4f4,#2868ff);
-      color: white;
-      font-size: 17px;
-      font-weight: 900;
-      cursor: pointer;
-    }
+.number-box{
+  background:#07101e;
+  border:1px solid #20364e;
+  border-radius:15px;
+  padding:13px
+}
 
-    .reserve-button:disabled {
-      opacity: .45;
-    }
+.number-box span{
+  display:block;
+  color:#8796ab;
+  font-size:11px;
+  margin-bottom:6px
+}
 
-    .cart {
-      background: #091321;
-      border: 1px solid #1c3048;
-      border-radius: 26px;
-      padding: 22px;
-      margin-top: 28px;
-    }
+.number-box strong{
+  font-size:23px
+}
 
-    .cart h2 {
-      margin-top: 0;
-    }
+.progress-title{
+  display:flex;
+  justify-content:space-between;
+  color:#9aa8ba;
+  font-size:13px;
+  margin-bottom:7px
+}
 
-    .cart-empty {
-      color: #8794aa;
-    }
+.progress-title strong{color:white}
 
-    .cart-item {
-      padding: 13px 0;
-      border-bottom: 1px solid #1b2e44;
-    }
+.progress{
+  height:10px;
+  background:#07101e;
+  border:1px solid #22374f;
+  border-radius:20px;
+  overflow:hidden
+}
 
-    .cart-item-top {
-      display: flex;
-      justify-content: space-between;
-      gap: 10px;
-      font-weight: 800;
-    }
+.progress-bar{
+  height:100%;
+  background:linear-gradient(90deg,#13b4f4,#6b36ff)
+}
 
-    .cart-item small {
-      display: block;
-      color: #8895aa;
-      margin-top: 5px;
-    }
+.missing{
+  color:#f5b84d;
+  font-size:13px;
+  margin:8px 0 17px
+}
 
-    .remove {
-      border: 0;
-      background: transparent;
-      color: #ff7474;
-      font-weight: 800;
-      margin-top: 8px;
-      padding: 0;
-    }
+.mode-selector{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:5px;
+  background:#07101e;
+  border:1px solid #20364e;
+  border-radius:15px;
+  padding:5px;
+  margin-bottom:11px
+}
 
-    .totals {
-      margin-top: 18px;
-    }
+.mode-btn{
+  border:0;
+  border-radius:11px;
+  padding:11px;
+  background:transparent;
+  color:#8997ac;
+  font-weight:900
+}
 
-    .total-row {
-      display: flex;
-      justify-content: space-between;
-      gap: 10px;
-      margin: 9px 0;
-    }
+.mode-btn.active{
+  color:white;
+  background:linear-gradient(90deg,#14b1f4,#5d40ff)
+}
 
-    .grand-total {
-      color: #45bfff;
-      font-size: 21px;
-      font-weight: 900;
-    }
+.reserve-row{
+  display:grid;
+  grid-template-columns:100px 1fr;
+  gap:9px
+}
 
-    .customer {
-      margin-top: 20px;
-      background: #091321;
-      border: 1px solid #1c3048;
-      border-radius: 26px;
-      padding: 22px;
-    }
+.quantity{
+  width:100%;
+  padding:14px 5px;
+  text-align:center;
+  background:#07101e;
+  color:white;
+  border:1px solid #263c56;
+  border-radius:14px;
+  font-size:18px;
+  font-weight:900
+}
 
-    .customer h2 {
-      margin-top: 0;
-    }
+.reserve-btn{
+  border:0;
+  border-radius:14px;
+  background:linear-gradient(90deg,#13b4f4,#693aff);
+  color:white;
+  font-weight:900;
+  font-size:15px
+}
 
-    label {
-      display: block;
-      font-weight: 700;
-      margin: 14px 0 6px;
-    }
+.reserve-btn:disabled{
+  opacity:.4
+}
 
-    input.customer-input {
-      width: 100%;
-      padding: 14px;
-      border: 1px solid #233a54;
-      border-radius: 12px;
-      background: #07101e;
-      color: white;
-      font-size: 16px;
-      outline: none;
-    }
+.closed-notice{
+  background:#291116;
+  border:1px solid #74323a;
+  color:#ff8b8b;
+  border-radius:13px;
+  padding:12px;
+  font-weight:900;
+  margin-top:12px
+}
 
-    .two {
-      display: grid;
-      grid-template-columns: 1fr 110px;
-      gap: 10px;
-    }
+/* CARRINHO */
 
-    .confirm {
-      width: 100%;
-      border: 0;
-      border-radius: 15px;
-      padding: 16px;
-      margin-top: 22px;
-      color: white;
-      font-size: 17px;
-      font-weight: 900;
-      background: linear-gradient(90deg,#13b4f4,#2868ff);
-    }
+.cart,
+.customer{
+  background:#091321;
+  border:1px solid #1c3048;
+  border-radius:24px;
+  padding:20px;
+  margin-top:18px
+}
 
-    .confirm:disabled {
-      opacity: .45;
-    }
+.cart h2,
+.customer h2{
+  margin-top:0
+}
 
-    #message {
-      margin-top: 15px;
-      font-weight: 700;
-      line-height: 1.4;
-    }
+.cart-item{
+  padding:12px 0;
+  border-bottom:1px solid #1d3046
+}
 
-    .success {
-      color: #43d87d;
-    }
+.cart-item-top{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  font-weight:900
+}
 
-    .error {
-      color: #ff7373;
-    }
+.cart-item small{
+  display:block;
+  color:#909db0;
+  margin-top:5px
+}
 
-    @media(max-width:600px) {
-      .wrap {
-        width: calc(100% - 20px);
-      }
+.remove{
+  border:0;
+  background:none;
+  color:#ff7777;
+  padding:7px 0 0;
+  font-weight:900
+}
 
-      .product-card {
-        padding: 18px;
-      }
+.payment-summary{
+  margin-top:18px
+}
 
-      .product-title {
-        font-size: 20px;
-      }
+.summary-row{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  padding:10px 0;
+  border-bottom:1px solid #1d3046
+}
 
-      .price {
-        font-size: 20px;
-      }
+.summary-row strong{
+  text-align:right
+}
 
-      .reserve-row {
-        grid-template-columns: 105px 1fr;
-      }
+.highlight{
+  color:#56c7ff
+}
 
-      .two {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
+.next{
+  color:#bb8cff
+}
+
+.notice{
+  background:#07101e;
+  border:1px solid #20364e;
+  border-radius:13px;
+  padding:13px;
+  color:#a7b2c2;
+  line-height:1.5;
+  margin-top:13px
+}
+
+/* CLIENTE */
+
+label{
+  display:block;
+  margin:13px 0 6px;
+  font-size:13px;
+  font-weight:900
+}
+
+.customer-input{
+  width:100%;
+  padding:13px;
+  border-radius:11px;
+  border:1px solid #273d57;
+  background:#07101e;
+  color:white;
+  font-size:16px
+}
+
+.two{
+  display:grid;
+  grid-template-columns:1fr 100px;
+  gap:9px
+}
+
+.confirm{
+  width:100%;
+  margin-top:20px;
+  padding:15px;
+  border:0;
+  border-radius:14px;
+  background:linear-gradient(90deg,#13b4f4,#693aff);
+  color:white;
+  font-size:16px;
+  font-weight:900
+}
+
+.confirm:disabled{opacity:.4}
+
+.message{
+  margin-top:14px;
+  line-height:1.5;
+  font-weight:800
+}
+
+.success{color:#4ae38a}
+.error{color:#ff7777}
+
+.empty{
+  background:#07101e;
+  border:1px solid #1c3048;
+  border-radius:18px;
+  padding:23px;
+  text-align:center;
+  color:#9ba8ba
+}
+
+.hidden{display:none}
+
+@media(max-width:700px){
+
+  .rateio-grid,
+  .payment-preview{
+    grid-template-columns:1fr
+  }
+
+  .catalog-header{
+    align-items:flex-start;
+    flex-direction:column
+  }
+
+  .change-rateio{
+    width:100%
+  }
+
+  .two{
+    grid-template-columns:1fr
+  }
+}
+</style>
 </head>
 
 <body>
 
-  <main class="wrap">
+<main class="wrap">
 
-    <header class="top">
-      <div class="logo">
-        🧬 FOREVER <span>COLLECTIVE</span>
-      </div>
+<header class="top">
 
-      <a class="back" href="index.html">
-        ← Voltar
-      </a>
-    </header>
+  <div class="logo">
+    🧬 FOREVER <span>COLLECTIVE</span>
+  </div>
 
-    <section class="intro">
-      <h1>Catálogo UTHER</h1>
+  <a href="meus-pedidos.html">
+    Meus pedidos
+  </a>
 
-      <p>
-        Escolha entre unidade ou caixa com 10 unidades
-        e adicione os produtos à sua reserva.
-      </p>
-    </section>
+</header>
 
-    <div id="products">
-      <p>Carregando produtos...</p>
+
+<section id="rateioScreen">
+
+  <section class="hero">
+
+    <h1>Escolha seu rateio</h1>
+
+    <p class="muted">
+      Escolha a marca para visualizar os produtos disponíveis
+      e fazer sua reserva.
+    </p>
+
+  </section>
+
+  <div id="rateioList" class="rateio-grid">
+
+    <div class="empty">
+      Carregando rateios...
     </div>
 
-    <section class="cart">
+  </div>
 
-      <h2>Sua reserva</h2>
+</section>
 
-      <div id="cartItems">
-        <p class="cart-empty">
-          Nenhum produto adicionado.
-        </p>
+
+<section id="catalogScreen" class="hidden">
+
+  <div class="catalog-header">
+
+    <div>
+      <h1 id="catalogTitle">
+        Rateio
+      </h1>
+
+      <div id="catalogStatus"></div>
+    </div>
+
+    <button
+      type="button"
+      class="change-rateio"
+      onclick="showRateios()"
+    >
+      ← Trocar de rateio
+    </button>
+
+  </div>
+
+
+  <div id="productsList"></div>
+
+
+  <section class="cart">
+
+    <h2>Sua reserva</h2>
+
+    <div id="cartItems">
+      <p class="muted">
+        Nenhum produto adicionado.
+      </p>
+    </div>
+
+
+    <div class="payment-summary">
+
+      <div class="summary-row">
+        <span>Pagamento atual em Cripto</span>
+        <strong
+          class="highlight"
+          id="cryptoTotal"
+        >
+          0,00 USDT
+        </strong>
       </div>
 
-      <div class="totals">
+      <div class="summary-row">
+        <span>Pagamento atual em Pix (+5%)</span>
+        <strong
+          class="highlight"
+          id="pixTotal"
+        >
+          R$ 0,00
+        </strong>
+      </div>
 
-        <div class="total-row">
-          <span>Produtos</span>
-          <strong id="subtotal">
-            R$ 0,00
-          </strong>
-        </div>
+      <div class="summary-row">
+        <span>Próximo pagamento</span>
+        <strong
+          class="next"
+          id="nextTotal"
+        >
+          R$ 0,00
+        </strong>
+      </div>
 
-        <div class="total-row">
-          <span>Taxa de separação</span>
-          <strong>
-            R$ 50,00
-          </strong>
-        </div>
+      <div class="summary-row">
+        <span>
+          Taxa administrativa e separação
+        </span>
+        <strong>
+          R$ 50,00
+        </strong>
+      </div>
 
-        <div class="total-row grand-total">
-          <span>Total</span>
-          <strong id="total">
-            R$ 50,00
-          </strong>
-        </div>
+      <div class="summary-row">
+        <span>Frete</span>
+        <strong>
+          À parte
+        </strong>
+      </div>
+
+    </div>
+
+
+    <div class="notice">
+      O próximo pagamento corresponde a
+      <strong>R$ 77,00 por unidade reservada</strong>.
+      As datas de pagamento aparecerão no seu pedido.
+    </div>
+
+  </section>
+
+
+  <section class="customer">
+
+    <h2>Dados do cliente</h2>
+
+    <label for="customerName">
+      Nome completo
+    </label>
+
+    <input
+      class="customer-input"
+      id="customerName"
+      type="text"
+    >
+
+
+    <label for="customerPhone">
+      Telefone / WhatsApp
+    </label>
+
+    <input
+      class="customer-input"
+      id="customerPhone"
+      type="tel"
+    >
+
+
+    <label for="customerEmail">
+      E-mail
+    </label>
+
+    <input
+      class="customer-input"
+      id="customerEmail"
+      type="email"
+    >
+
+
+    <label for="customerCep">
+      CEP
+    </label>
+
+    <input
+      class="customer-input"
+      id="customerCep"
+      type="text"
+    >
+
+
+    <label for="customerAddress">
+      Rua, número e complemento
+    </label>
+
+    <input
+      class="customer-input"
+      id="customerAddress"
+      type="text"
+    >
+
+
+    <div class="two">
+
+      <div>
+
+        <label for="customerCity">
+          Cidade
+        </label>
+
+        <input
+          class="customer-input"
+          id="customerCity"
+          type="text"
+        >
 
       </div>
 
-    </section>
 
-    <section class="customer">
+      <div>
 
-      <h2>Dados do cliente</h2>
+        <label for="customerState">
+          Estado
+        </label>
 
-      <label for="customerName">
-        Nome completo
-      </label>
+        <input
+          class="customer-input"
+          id="customerState"
+          maxlength="2"
+          type="text"
+        >
 
-      <input
-        class="customer-input"
-        id="customerName"
-        type="text"
-        required
-      >
+      </div>
 
-      <label for="customerPhone">
-        Telefone / WhatsApp
-      </label>
+    </div>
 
-      <input
-        class="customer-input"
-        id="customerPhone"
-        type="tel"
-        required
-      >
 
-      <label for="customerEmail">
-        E-mail
-      </label>
+    <button
+      id="confirmButton"
+      class="confirm"
+      type="button"
+      onclick="confirmReservation()"
+      disabled
+    >
+      CONFIRMAR RESERVA
+    </button>
 
-      <input
-        class="customer-input"
-        id="customerEmail"
-        type="email"
-      >
+    <div
+      id="message"
+      class="message"
+    ></div>
 
-      <label for="customerCep">
-        CEP
-      </label>
+  </section>
 
-      <input
-        class="customer-input"
-        id="customerCep"
-        type="text"
-        required
-      >
+</section>
 
-      <label for="customerAddress">
-        Endereço
-      </label>
+</main>
 
-      <input
-        class="customer-input"
-        id="customerAddress"
-        type="text"
-        placeholder="Rua, número e complemento"
-        required
-      >
 
-      <div class="two">
+<script>
 
-        <div>
-          <label for="customerCity">
-            Cidade
-          </label>
+const SUPABASE_URL =
+  "https://ygulvirkzwvdyfgqsbjj.supabase.co";
 
-          <input
-            class="customer-input"
-            id="customerCity"
-            type="text"
-            required
+const SUPABASE_KEY =
+  "sb_publishable_2u7B7_ZvZuKc-e3UPxx3rg_5oEN83x5";
+
+const DOLLAR =
+  5.50;
+
+const NEXT_PAYMENT_UNIT =
+  77.00;
+
+const accessToken =
+  localStorage.getItem(
+    "access_token"
+  );
+
+const userId =
+  localStorage.getItem(
+    "user_id"
+  );
+
+
+if(
+  !accessToken ||
+  !userId
+){
+
+  window.location.href =
+    "login.html";
+
+}
+
+
+let rateios = [];
+let products = [];
+
+let selectedBrand = null;
+let selectedRateio = null;
+
+let cart = {};
+let productModes = {};
+
+
+/* UTILIDADES */
+
+function escapeHtml(value){
+
+  return String(value ?? "")
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
+
+}
+
+
+function money(value){
+
+  return Number(value || 0)
+    .toLocaleString(
+      "pt-BR",
+      {
+        style:"currency",
+        currency:"BRL"
+      }
+    );
+
+}
+
+
+function usdt(value){
+
+  return (
+    Number(value || 0)
+      .toFixed(2)
+      .replace(".",",") +
+    " USDT"
+  );
+
+}
+
+
+function unitCrypto(product){
+
+  return (
+    Number(product.price_brl || 0) /
+    DOLLAR
+  );
+
+}
+
+
+function unitPix(product){
+
+  return (
+    Number(product.price_brl || 0) *
+    1.05
+  );
+
+}
+
+
+async function api(
+  path,
+  options={}
+){
+
+  const response =
+    await fetch(
+      SUPABASE_URL + path,
+      {
+        ...options,
+
+        headers:{
+
+          apikey:
+            SUPABASE_KEY,
+
+          Authorization:
+            "Bearer " +
+            accessToken,
+
+          "Content-Type":
+            "application/json",
+
+          ...(options.headers || {})
+        }
+      }
+    );
+
+
+  if(
+    response.status === 401
+  ){
+
+    localStorage.clear();
+
+    window.location.href =
+      "login.html";
+
+    throw new Error(
+      "Sessão expirada."
+    );
+
+  }
+
+
+  if(!response.ok){
+
+    const text =
+      await response.text();
+
+    throw new Error(text);
+
+  }
+
+
+  if(
+    response.status === 204
+  ){
+
+    return null;
+
+  }
+
+
+  const text =
+    await response.text();
+
+
+  if(!text){
+    return null;
+  }
+
+
+  return JSON.parse(text);
+
+}
+
+
+/* CARREGAR DADOS */
+
+async function loadRateios(){
+
+  rateios =
+    await api(
+      "/rest/v1/rateios" +
+      "?select=brand,is_open,active,sort_order" +
+      "&active=eq.true" +
+      "&order=sort_order.asc,brand.asc"
+    );
+
+}
+
+
+async function loadProducts(){
+
+  products =
+    await api(
+      "/rest/v1/products" +
+      "?select=id,nameName,brand,price_brl,reserved,box_size,description,active,sort_order" +
+      "&active=eq.true" +
+      "&price_brl=gt.0" +
+      "&order=sort_order.asc,id.asc"
+    );
+
+}
+
+
+async function loadUser(){
+
+  try{
+
+    const user =
+      await api(
+        "/auth/v1/user"
+      );
+
+
+    const meta =
+      user.user_metadata ||
+      {};
+
+
+    document.getElementById(
+      "customerName"
+    ).value =
+      meta.nome ||
+      meta.name ||
+      localStorage.getItem(
+        "user_name"
+      ) ||
+      "";
+
+
+    document.getElementById(
+      "customerPhone"
+    ).value =
+      meta.telefone ||
+      meta.phone ||
+      "";
+
+
+    document.getElementById(
+      "customerEmail"
+    ).value =
+      user.email ||
+      localStorage.getItem(
+        "user_email"
+      ) ||
+      "";
+
+  }catch(error){
+
+    console.error(error);
+
+  }
+
+}
+
+
+/* RATEIOS */
+
+function renderRateios(){
+
+  const container =
+    document.getElementById(
+      "rateioList"
+    );
+
+
+  if(!rateios.length){
+
+    container.innerHTML =
+      `
+      <div class="empty">
+        Nenhum rateio disponível.
+      </div>
+      `;
+
+    return;
+
+  }
+
+
+  container.innerHTML =
+    rateios.map(
+      function(rateio){
+
+        const totalProducts =
+          products.filter(
+            product =>
+              String(product.brand)
+                .toUpperCase() ===
+              String(rateio.brand)
+                .toUpperCase()
+          ).length;
+
+
+        const open =
+          rateio.is_open === true;
+
+
+        return `
+
+          <article
+            class="rateio-card"
+            onclick="selectRateio(
+              '${escapeHtml(rateio.brand)}'
+            )"
           >
-        </div>
 
-        <div>
-          <label for="customerState">
-            Estado
-          </label>
+            <div class="rateio-name">
+              ${escapeHtml(
+                rateio.brand
+              )}
+            </div>
 
-          <input
-            class="customer-input"
-            id="customerState"
-            type="text"
-            maxlength="2"
-            required
-          >
-        </div>
 
-      </div>
+            <span
+              class="
+                rateio-status
+                ${open
+                  ? "open"
+                  : "closed"
+                }
+              "
+            >
 
-      <button
-        id="confirmButton"
-        class="confirm"
-        type="button"
-        disabled
+              ${open
+                ? "● RATEIO ABERTO"
+                : "● RATEIO FECHADO"
+              }
+
+            </span>
+
+
+            <div class="rateio-count">
+
+              ${totalProducts}
+              produto(s) disponível(is)
+
+            </div>
+
+          </article>
+
+        `;
+
+      }
+    ).join("");
+
+}
+
+
+function selectRateio(brand){
+
+  selectedBrand =
+    brand;
+
+
+  selectedRateio =
+    rateios.find(
+      rateio =>
+        String(rateio.brand)
+          .toUpperCase() ===
+        String(brand)
+          .toUpperCase()
+    );
+
+
+  cart = {};
+
+
+  document.getElementById(
+    "rateioScreen"
+  ).classList.add(
+    "hidden"
+  );
+
+
+  document.getElementById(
+    "catalogScreen"
+  ).classList.remove(
+    "hidden"
+  );
+
+
+  document.getElementById(
+    "catalogTitle"
+  ).textContent =
+    "Rateio " + brand;
+
+
+  renderCatalogStatus();
+  renderProducts();
+  renderCart();
+
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+
+}
+
+
+function showRateios(){
+
+  selectedBrand = null;
+  selectedRateio = null;
+  cart = {};
+
+
+  document.getElementById(
+    "catalogScreen"
+  ).classList.add(
+    "hidden"
+  );
+
+
+  document.getElementById(
+    "rateioScreen"
+  ).classList.remove(
+    "hidden"
+  );
+
+
+  renderRateios();
+
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+
+}
+
+
+function renderCatalogStatus(){
+
+  const container =
+    document.getElementById(
+      "catalogStatus"
+    );
+
+
+  const open =
+    selectedRateio &&
+    selectedRateio.is_open;
+
+
+  container.innerHTML =
+    `
+      <span
+        class="
+          rateio-status
+          ${open
+            ? "open"
+            : "closed"
+          }
+        "
       >
-        CONFIRMAR RESERVA
-      </button>
 
-      <div id="message"></div>
+        ${open
+          ? "● RATEIO ABERTO"
+          : "● RATEIO FECHADO"
+        }
 
-    </section>
+      </span>
+    `;
 
-  </main>
+}
 
 
-  <script>
+/* PRODUTOS */
 
-    const SUPABASE_URL =
-      "https://ygulvirkzwvdyfgqsbjj.supabase.co";
+function renderProducts(){
 
-    const SUPABASE_KEY =
-      "sb_publishable_2u7B7_ZvZuKc-e3UPxx3rg_5oEN83x5";
+  const container =
+    document.getElementById(
+      "productsList"
+    );
 
-    const INITIAL_STOCK = 200;
 
-    const accessToken =
-      localStorage.getItem("access_token");
+  const list =
+    products.filter(
+      product =>
+        String(product.brand)
+          .toUpperCase() ===
+        String(selectedBrand)
+          .toUpperCase()
+    );
 
-    const userId =
-      localStorage.getItem("user_id");
 
-    const savedEmail =
-      localStorage.getItem("user_email") || "";
+  if(!list.length){
 
-    const savedName =
-      localStorage.getItem("user_name") || "";
+    container.innerHTML =
+      `
+      <div class="empty">
+        Ainda não há produtos liberados
+        neste rateio.
+      </div>
+      `;
 
-    if (!accessToken || !userId) {
-      window.location.href = "login.html";
-    }
+    return;
 
-    let products = [];
-    let cart = {};
+  }
 
-    function money(value) {
 
-      return Number(value || 0)
-        .toLocaleString(
-          "pt-BR",
-          {
-            style: "currency",
-            currency: "BRL"
-          }
-        );
+  const open =
+    selectedRateio &&
+    selectedRateio.is_open;
 
-    }
 
-    async function api(path, options = {}) {
+  container.innerHTML =
+    list.map(
+      function(product){
 
-      const response =
-        await fetch(
-          SUPABASE_URL + path,
-          {
-            ...options,
-
-            headers: {
-              apikey: SUPABASE_KEY,
-
-              Authorization:
-                "Bearer " + accessToken,
-
-              "Content-Type":
-                "application/json",
-
-              ...(options.headers || {})
-            }
-          }
-        );
-
-      if (response.status === 401) {
-
-        localStorage.clear();
-
-        window.location.href =
-          "login.html";
-
-        throw new Error(
-          "Sua sessão expirou."
-        );
-
-      }
-
-      if (!response.ok) {
-
-        const text =
-          await response.text();
-
-        throw new Error(text);
-
-      }
-
-      if (response.status === 204) {
-        return null;
-      }
-
-      return response.json();
-
-    }
-
-    async function loadUserData() {
-
-      try {
-
-        const user =
-          await api("/auth/v1/user");
-
-        const metadata =
-          user.user_metadata || {};
-
-        document.getElementById(
-          "customerName"
-        ).value =
-          metadata.nome ||
-          savedName ||
-          "";
-
-        document.getElementById(
-          "customerPhone"
-        ).value =
-          metadata.telefone ||
-          "";
-
-        document.getElementById(
-          "customerEmail"
-        ).value =
-          user.email ||
-          savedEmail ||
-          "";
-
-      } catch(error) {
-
-        console.log(error);
-
-      }
-
-    }
-
-    async function loadProducts() {
-
-      try {
-
-        const rows =
-          await api(
-            "/rest/v1/products" +
-            "?select=id,nameName,price_brl,stock_available,box_size" +
-            "&id=in.(42,45)" +
-            "&order=id.asc"
+        const reserved =
+          Number(
+            product.reserved || 0
           );
 
-        products =
-          rows.map(function(row) {
 
-            const stock =
-              Number(
-                row.stock_available || 0
-              );
+        const boxSize =
+          Number(
+            product.box_size || 10
+          );
 
-            const reserved =
-              Math.max(
-                0,
-                INITIAL_STOCK - stock
-              );
 
-            return {
-              id: row.id,
-              name: row.nameName,
-              price:
-                Number(row.price_brl),
-              stock: stock,
-              boxSize:
-                Number(row.box_size || 10),
-              reserved: reserved,
-              mode: "unit"
-            };
+        const boxes =
+          Math.floor(
+            reserved / boxSize
+          );
 
-          });
 
-        renderProducts();
+        const remainder =
+          reserved % boxSize;
 
-      } catch(error) {
 
-        document.getElementById(
-          "products"
-        ).innerHTML =
-          "<p>Não foi possível carregar os produtos.</p>";
+        const missing =
+          remainder === 0
+          ? boxSize
+          : boxSize - remainder;
 
-        console.error(error);
 
-      }
+        const percent =
+          (
+            remainder /
+            boxSize
+          ) * 100;
 
-    }
 
-    function getMostReservedId() {
+        const mode =
+          productModes[
+            product.id
+          ] || "unit";
 
-      if (!products.length) {
-        return null;
-      }
 
-      const sorted =
-        [...products]
-        .sort(
-          (a,b) =>
-            b.reserved - a.reserved
-        );
+        return `
 
-      return sorted[0].id;
+          <article class="product-card">
 
-    }
-
-    function setMode(
-      productId,
-      mode
-    ) {
-
-      const product =
-        products.find(
-          p => p.id === productId
-        );
-
-      if (!product) return;
-
-      product.mode = mode;
-
-      renderProducts();
-
-    }
-
-    function renderProducts() {
-
-      const container =
-        document.getElementById(
-          "products"
-        );
-
-      const mostReserved =
-        getMostReservedId();
-
-      container.innerHTML = "";
-
-      products.forEach(
-        function(product) {
-
-          const boxSize =
-            product.boxSize || 10;
-
-          const fullBoxes =
-            Math.floor(
-              product.reserved /
-              boxSize
-            );
-
-          const currentLot =
-            product.reserved %
-            boxSize;
-
-          const missing =
-            currentLot === 0
-              ? boxSize
-              : boxSize - currentLot;
-
-          const progress =
-            Math.min(
-              100,
-              (currentLot / boxSize)
-              * 100
-            );
-
-          const card =
-            document.createElement(
-              "article"
-            );
-
-          card.className =
-            "product-card";
-
-          card.innerHTML = `
 
             <div class="badges">
 
-              ${
-                fullBoxes > 0
-                ? `
-                <span class="badge">
-                  📦 LOTE FECHADO
-                </span>
-                `
-                : `
-                <span class="badge">
-                  📦 NOVO LOTE
-                </span>
-                `
-              }
+              <span class="badge">
+                ${escapeHtml(
+                  product.brand
+                )}
+              </span>
 
-              ${
-                mostReserved ===
-                product.id &&
-                product.reserved > 0
-                ? `
-                <span class="badge green">
-                  🏆 MAIS RESERVADO
-                </span>
-                `
-                : ""
-              }
+              <span
+                class="
+                  rateio-status
+                  ${open
+                    ? "open"
+                    : "closed"
+                  }
+                "
+              >
+
+                ${open
+                  ? "ABERTO"
+                  : "FECHADO"
+                }
+
+              </span>
 
             </div>
 
 
-            <div class="product-title-row">
+            <div class="product-name">
 
-              <h2 class="product-title">
-                ${product.name}
-              </h2>
+              ${escapeHtml(
+                product.nameName
+              )}
 
-              <div class="price">
-                ${money(product.price)}
+            </div>
+
+
+            <div class="payment-preview">
+
+              <div class="payment-mini">
+
+                <span>
+                  PAGAMENTO CRIPTO
+                </span>
+
+                <strong>
+                  ${usdt(
+                    unitCrypto(
+                      product
+                    )
+                  )}
+                </strong>
+
+              </div>
+
+
+              <div class="payment-mini">
+
+                <span>
+                  PIX (+5%)
+                </span>
+
+                <strong>
+                  ${money(
+                    unitPix(
+                      product
+                    )
+                  )}
+                </strong>
+
+              </div>
+
+
+              <div class="payment-mini">
+
+                <span>
+                  PRÓXIMO PAGAMENTO
+                </span>
+
+                <strong>
+                  ${money(
+                    NEXT_PAYMENT_UNIT
+                  )}
+                </strong>
+
               </div>
 
             </div>
@@ -898,12 +1396,12 @@
 
               <div class="number-box">
 
-                <span class="number-label">
-                  Boxes
+                <span>
+                  BOXES FECHADOS
                 </span>
 
-                <strong class="number-value">
-                  ${fullBoxes}
+                <strong>
+                  ${boxes}
                 </strong>
 
               </div>
@@ -911,12 +1409,12 @@
 
               <div class="number-box">
 
-                <span class="number-label">
-                  Reservado
+                <span>
+                  RESERVADO
                 </span>
 
-                <strong class="number-value">
-                  ${product.reserved}u
+                <strong>
+                  ${reserved}
                 </strong>
 
               </div>
@@ -924,15 +1422,14 @@
             </div>
 
 
-            <div class="progress-header">
+            <div class="progress-title">
 
               <span>
-                Próximo lote
+                Próximo box
               </span>
 
               <strong>
-                ${currentLot} / ${boxSize}
-                unidades
+                ${remainder}/${boxSize}
               </strong>
 
             </div>
@@ -943,21 +1440,21 @@
               <div
                 class="progress-bar"
                 style="
-                  width:${progress}%
+                  width:${percent}%
                 "
               ></div>
 
             </div>
 
 
-            <div class="progress-text">
+            <div class="missing">
 
-              ${Math.round(progress)}%
-              preenchido
-              ·
+              Faltam
               <strong>
-                faltam ${missing}
+                ${missing}
               </strong>
+              unidade(s) para fechar
+              o próximo box.
 
             </div>
 
@@ -965,11 +1462,10 @@
             <div class="mode-selector">
 
               <button
+                type="button"
                 class="
-                  mode-button
-                  ${
-                    product.mode ===
-                    "unit"
+                  mode-btn
+                  ${mode === "unit"
                     ? "active"
                     : ""
                   }
@@ -986,11 +1482,10 @@
 
 
               <button
+                type="button"
                 class="
-                  mode-button
-                  ${
-                    product.mode ===
-                    "box"
+                  mode-btn
+                  ${mode === "box"
                     ? "active"
                     : ""
                   }
@@ -1002,7 +1497,7 @@
                   )
                 "
               >
-                Caixa (x${boxSize})
+                Box com ${boxSize}
               </button>
 
             </div>
@@ -1011,445 +1506,678 @@
             <div class="reserve-row">
 
               <input
-                type="number"
                 class="quantity"
                 id="qty-${product.id}"
-                value="1"
+                type="number"
                 min="1"
-                max="999"
+                max="99"
+                value="1"
+                ${open
+                  ? ""
+                  : "disabled"
+                }
               >
 
+
               <button
-                class="reserve-button"
-                ${
-                  product.stock <= 0
-                  ? "disabled"
-                  : ""
-                }
+                class="reserve-btn"
+                type="button"
                 onclick="
                   addToCart(
                     ${product.id}
                   )
                 "
+                ${open
+                  ? ""
+                  : "disabled"
+                }
               >
-                + Adicionar à Reserva
+
+                + ADICIONAR À RESERVA
+
+              </button>
+
+            </div>
+
+
+            ${
+              !open
+              ? `
+                <div class="closed-notice">
+                  Rateio fechado —
+                  novas reservas encerradas.
+                </div>
+              `
+              : ""
+            }
+
+          </article>
+
+        `;
+
+      }
+    ).join("");
+
+}
+
+
+function setMode(
+  productId,
+  mode
+){
+
+  productModes[
+    productId
+  ] =
+    mode;
+
+
+  renderProducts();
+
+}
+
+
+function addToCart(
+  productId
+){
+
+  if(
+    !selectedRateio ||
+    !selectedRateio.is_open
+  ){
+
+    alert(
+      "Este rateio está fechado."
+    );
+
+    return;
+
+  }
+
+
+  const product =
+    products.find(
+      item =>
+        item.id === productId
+    );
+
+
+  if(!product) return;
+
+
+  const input =
+    document.getElementById(
+      "qty-" + productId
+    );
+
+
+  let quantity =
+    Math.max(
+      1,
+      Number(
+        input.value || 1
+      )
+    );
+
+
+  const mode =
+    productModes[
+      productId
+    ] || "unit";
+
+
+  if(mode === "box"){
+
+    quantity *=
+      Number(
+        product.box_size || 10
+      );
+
+  }
+
+
+  cart[productId] =
+    (
+      cart[productId] ||
+      0
+    ) +
+    quantity;
+
+
+  renderCart();
+
+}
+
+
+/* CARRINHO */
+
+function removeFromCart(
+  productId
+){
+
+  delete cart[
+    productId
+  ];
+
+
+  renderCart();
+
+}
+
+
+function renderCart(){
+
+  const container =
+    document.getElementById(
+      "cartItems"
+    );
+
+
+  const entries =
+    Object.entries(cart);
+
+
+  let cryptoTotal = 0;
+  let pixTotal = 0;
+  let nextTotal = 0;
+
+
+  if(!entries.length){
+
+    container.innerHTML =
+      `
+      <p class="muted">
+        Nenhum produto adicionado.
+      </p>
+      `;
+
+  }else{
+
+    container.innerHTML =
+      entries.map(
+        function([
+          productId,
+          quantity
+        ]){
+
+          const product =
+            products.find(
+              item =>
+                item.id ===
+                Number(productId)
+            );
+
+
+          if(!product){
+            return "";
+          }
+
+
+          const itemCrypto =
+            unitCrypto(product) *
+            quantity;
+
+
+          const itemPix =
+            unitPix(product) *
+            quantity;
+
+
+          const itemNext =
+            NEXT_PAYMENT_UNIT *
+            quantity;
+
+
+          cryptoTotal +=
+            itemCrypto;
+
+          pixTotal +=
+            itemPix;
+
+          nextTotal +=
+            itemNext;
+
+
+          const boxes =
+            Math.floor(
+              quantity /
+              Number(
+                product.box_size ||
+                10
+              )
+            );
+
+
+          const loose =
+            quantity %
+            Number(
+              product.box_size ||
+              10
+            );
+
+
+          return `
+
+            <div class="cart-item">
+
+              <div class="cart-item-top">
+
+                <span>
+                  ${escapeHtml(
+                    product.nameName
+                  )}
+                </span>
+
+                <strong>
+                  ${quantity} un.
+                </strong>
+
+              </div>
+
+
+              <small>
+
+                ${boxes}
+                box(es)
+
+                ${loose
+                  ? " + " +
+                    loose +
+                    " avulsa(s)"
+                  : ""
+                }
+
+              </small>
+
+
+              <button
+                type="button"
+                class="remove"
+                onclick="
+                  removeFromCart(
+                    ${product.id}
+                  )
+                "
+              >
+                Remover
               </button>
 
             </div>
 
           `;
 
-          container.appendChild(card);
-
         }
+      ).join("");
+
+  }
+
+
+  document.getElementById(
+    "cryptoTotal"
+  ).textContent =
+    usdt(cryptoTotal);
+
+
+  document.getElementById(
+    "pixTotal"
+  ).textContent =
+    money(pixTotal);
+
+
+  document.getElementById(
+    "nextTotal"
+  ).textContent =
+    money(nextTotal);
+
+
+  document.getElementById(
+    "confirmButton"
+  ).disabled =
+    entries.length === 0 ||
+    !selectedRateio ||
+    !selectedRateio.is_open;
+
+}
+
+
+/* CONFIRMAR PEDIDO */
+
+async function confirmReservation(){
+
+  const button =
+    document.getElementById(
+      "confirmButton"
+    );
+
+
+  const message =
+    document.getElementById(
+      "message"
+    );
+
+
+  const name =
+    document.getElementById(
+      "customerName"
+    ).value.trim();
+
+
+  const phone =
+    document.getElementById(
+      "customerPhone"
+    ).value.trim();
+
+
+  const email =
+    document.getElementById(
+      "customerEmail"
+    ).value.trim();
+
+
+  const cep =
+    document.getElementById(
+      "customerCep"
+    ).value.trim();
+
+
+  const address =
+    document.getElementById(
+      "customerAddress"
+    ).value.trim();
+
+
+  const city =
+    document.getElementById(
+      "customerCity"
+    ).value.trim();
+
+
+  const state =
+    document.getElementById(
+      "customerState"
+    ).value
+    .trim()
+    .toUpperCase();
+
+
+  if(
+    !name ||
+    !phone ||
+    !email ||
+    !cep ||
+    !address ||
+    !city ||
+    !state
+  ){
+
+    message.className =
+      "message error";
+
+    message.textContent =
+      "Preencha todos os seus dados.";
+
+    return;
+
+  }
+
+
+  const entries =
+    Object.entries(cart);
+
+
+  if(!entries.length){
+
+    message.className =
+      "message error";
+
+    message.textContent =
+      "Adicione pelo menos um produto.";
+
+    return;
+
+  }
+
+
+  button.disabled = true;
+
+  button.textContent =
+    "CONFIRMANDO...";
+
+
+  message.className =
+    "message";
+
+  message.textContent =
+    "Enviando sua reserva...";
+
+
+  try{
+
+    await loadRateios();
+
+
+    selectedRateio =
+      rateios.find(
+        rateio =>
+          String(rateio.brand)
+            .toUpperCase() ===
+          String(selectedBrand)
+            .toUpperCase()
+      );
+
+
+    if(
+      !selectedRateio ||
+      !selectedRateio.is_open
+    ){
+
+      throw new Error(
+        "Rateio fechado"
       );
 
     }
 
-    function addToCart(productId) {
 
-      const product =
-        products.find(
-          p => p.id === productId
-        );
-
-      if (!product) return;
-
-      const input =
-        document.getElementById(
-          "qty-" + productId
-        );
-
-      let amount =
-        Math.max(
-          1,
-          Number(input.value || 1)
-        );
-
-      if (
-        product.mode === "box"
-      ) {
-
-        amount *=
-          product.boxSize;
-
-      }
-
-      const existing =
-        cart[productId]?.quantity ||
-        0;
-
-      const totalQuantity =
-        existing + amount;
-
-      if (
-        totalQuantity >
-        product.stock
-      ) {
-
-        alert(
-          "Quantidade maior que o estoque disponível."
-        );
-
-        return;
-
-      }
-
-      cart[productId] = {
-        product: product,
-        quantity: totalQuantity
-      };
-
-      renderCart();
-
-      document
-        .querySelector(".cart")
-        .scrollIntoView({
-          behavior: "smooth"
-        });
-
-    }
-
-    function removeFromCart(
-      productId
-    ) {
-
-      delete cart[productId];
-
-      renderCart();
-
-    }
-
-    function renderCart() {
-
-      const container =
-        document.getElementById(
-          "cartItems"
-        );
-
-      const items =
-        Object.values(cart);
-
-      if (!items.length) {
-
-        container.innerHTML =
-          `
-          <p class="cart-empty">
-            Nenhum produto adicionado.
-          </p>
-          `;
-
-      } else {
-
-        container.innerHTML =
-          items.map(
-            function(item) {
-
-              const subtotal =
-                item.product.price *
-                item.quantity;
-
-              return `
-                <div class="cart-item">
-
-                  <div class="cart-item-top">
-
-                    <span>
-                      ${item.product.name}
-                    </span>
-
-                    <strong>
-                      ${money(subtotal)}
-                    </strong>
-
-                  </div>
-
-                  <small>
-                    ${item.quantity}
-                    unidade(s)
-                    ×
-                    ${money(
-                      item.product.price
-                    )}
-                  </small>
-
-                  <button
-                    class="remove"
-                    onclick="
-                      removeFromCart(
-                        ${item.product.id}
-                      )
-                    "
-                  >
-                    Remover
-                  </button>
-
-                </div>
-              `;
-
-            }
-          ).join("");
-
-      }
-
-      const subtotal =
-        items.reduce(
-          function(sum,item) {
-
-            return (
-              sum +
-              item.product.price *
-              item.quantity
-            );
-
-          },
-          0
-        );
-
-      document.getElementById(
-        "subtotal"
-      ).textContent =
-        money(subtotal);
-
-      document.getElementById(
-        "total"
-      ).textContent =
-        money(
-          items.length
-          ? subtotal + 50
-          : 50
-        );
-
-      document.getElementById(
-        "confirmButton"
-      ).disabled =
-        items.length === 0;
-
-    }
-
-    async function confirmOrder() {
-
-      const button =
-        document.getElementById(
-          "confirmButton"
-        );
-
-      const message =
-        document.getElementById(
-          "message"
-        );
-
-      const name =
-        document.getElementById(
-          "customerName"
-        ).value.trim();
-
-      const phone =
-        document.getElementById(
-          "customerPhone"
-        ).value.trim();
-
-      const email =
-        document.getElementById(
-          "customerEmail"
-        ).value.trim();
-
-      const cep =
-        document.getElementById(
-          "customerCep"
-        ).value.trim();
-
-      const address =
-        document.getElementById(
-          "customerAddress"
-        ).value.trim();
-
-      const city =
-        document.getElementById(
-          "customerCity"
-        ).value.trim();
-
-      const state =
-        document.getElementById(
-          "customerState"
-        ).value.trim();
-
-      if (
-        !name ||
-        !phone ||
-        !cep ||
-        !address ||
-        !city ||
-        !state
-      ) {
-
-        message.className =
-          "error";
-
-        message.textContent =
-          "Preencha todos os campos obrigatórios.";
-
-        return;
-
-      }
-
-      const items =
-        Object.values(cart);
-
-      if (!items.length) {
-        return;
-      }
-
-      const subtotal =
-        items.reduce(
-          function(sum,item) {
-
-            return (
-              sum +
-              item.product.price *
-              item.quantity
-            );
-
-          },
-          0
-        );
-
-      button.disabled = true;
-
-      message.className = "";
-
-      message.textContent =
-        "Confirmando reserva...";
-
-      try {
-
-        const orderData = {
-          customer_name: name,
-          customer_phone: phone,
-          customer_email: email,
-          customer_cep: cep,
-
-          customer_address:
-            address +
-            " - " +
-            city +
-            "/" +
-            state,
-
-          freight: 0,
-
-          total:
-            subtotal + 50,
-
-          status:
-            "novo",
-
-          user_id:
-            userId,
-
-          items:
-            items.map(
-              function(item) {
-
-                return {
-                  product_id:
-                    item.product.id,
-
-                  name:
-                    item.product.name,
-
-                  quantity:
-                    item.quantity,
-
-                  price:
-                    item.product.price
-                };
-
-              }
-            )
-        };
-
-        await api(
-          "/rest/v1/orders",
-          {
-            method: "POST",
-
-            headers: {
-              Prefer:
-                "return=minimal"
-            },
-
-            body:
-              JSON.stringify(
-                orderData
-              )
-          }
-        );
-
-        for (
-          const item of items
-        ) {
-
-          await api(
-            "/rest/v1/rpc/decrement_stock",
-            {
-              method: "POST",
-
-              body:
-                JSON.stringify({
-                  p_product_id:
-                    item.product.id,
-
-                  p_quantity:
-                    item.quantity
-                })
-            }
-          );
+    const items =
+      entries.map(
+        function([
+          productId,
+          quantity
+        ]){
+
+          return {
+            product_id:
+              Number(productId),
+
+            quantity:
+              Number(quantity)
+          };
 
         }
+      );
 
-        message.className =
-          "success";
 
-        message.textContent =
-          "Reserva realizada com sucesso!";
+    const fullAddress =
+      address +
+      ", " +
+      city +
+      " - " +
+      state;
 
-        cart = {};
 
-        renderCart();
+    const result =
+      await api(
+        "/rest/v1/rpc/create_my_order",
+        {
+          method:"POST",
 
-        await loadProducts();
+          body:
+            JSON.stringify({
 
-      } catch(error) {
+              p_rateio_brand:
+                selectedBrand,
 
-        console.error(error);
+              p_items:
+                items,
 
-        button.disabled = false;
+              p_customer_name:
+                name,
 
-        message.className =
-          "error";
+              p_customer_phone:
+                phone,
 
-        message.textContent =
-          "Não foi possível confirmar a reserva.";
+              p_customer_email:
+                email,
 
-      }
+              p_customer_cep:
+                cep,
+
+              p_customer_address:
+                fullAddress
+
+            })
+        }
+      );
+
+
+    message.className =
+      "message success";
+
+
+    message.innerHTML =
+      `
+        ✅ Reserva
+        <strong>
+          #${result.order_id}
+        </strong>
+        confirmada com sucesso.<br><br>
+
+        Pagamento atual em Cripto:
+        <strong>
+          ${usdt(
+            result.payment_now_crypto
+          )}
+        </strong><br>
+
+        Pagamento atual em Pix:
+        <strong>
+          ${money(
+            result.payment_now_pix
+          )}
+        </strong><br>
+
+        Próximo pagamento:
+        <strong>
+          ${money(
+            result.next_payment_brl
+          )}
+        </strong><br>
+
+        Taxa administrativa e separação:
+        <strong>R$ 50,00</strong><br>
+
+        Frete:
+        <strong>à parte</strong><br><br>
+
+        <a
+          href="meus-pedidos.html"
+          style="
+            color:#59c6ff;
+            font-weight:900
+          "
+        >
+          Ver meus pedidos →
+        </a>
+      `;
+
+
+    cart = {};
+
+
+    await loadProducts();
+
+    renderProducts();
+    renderCart();
+
+
+  }catch(error){
+
+    console.error(error);
+
+
+    message.className =
+      "message error";
+
+
+    if(
+      String(error.message)
+        .toLowerCase()
+        .includes(
+          "rateio fechado"
+        )
+    ){
+
+      message.textContent =
+        "Este rateio foi fechado e não aceita mais reservas.";
+
+    }else{
+
+      message.textContent =
+        "Não foi possível confirmar a reserva.";
 
     }
 
-    document.getElementById(
-      "confirmButton"
-    ).addEventListener(
-      "click",
-      confirmOrder
-    );
+  }finally{
 
-    loadUserData();
+    button.textContent =
+      "CONFIRMAR RESERVA";
 
-    loadProducts();
 
     renderCart();
 
-  </script>
+  }
+
+}
+
+
+/* INICIAR */
+
+async function start(){
+
+  try{
+
+    await Promise.all([
+      loadRateios(),
+      loadProducts(),
+      loadUser()
+    ]);
+
+
+    renderRateios();
+
+  }catch(error){
+
+    console.error(error);
+
+
+    document.getElementById(
+      "rateioList"
+    ).innerHTML =
+      `
+      <div class="empty">
+        Não foi possível carregar
+        o catálogo.
+      </div>
+      `;
+
+  }
+
+}
+
+
+start();
+
+</script>
 
 </body>
-</html>
+      </html>
