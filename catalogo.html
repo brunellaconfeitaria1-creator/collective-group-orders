@@ -611,8 +611,6 @@ Meus pedidos
 </header>
 
 
-<!-- ESCOLHER RATEIO -->
-
 <section id="rateioScreen">
 
 <section class="hero">
@@ -635,8 +633,6 @@ Carregando rateios...
 
 </section>
 
-
-<!-- CATÁLOGO -->
 
 <section id="catalogScreen" class="hidden">
 
@@ -668,8 +664,6 @@ onclick="showRateios()">
 
 <div id="productsList"></div>
 
-
-<!-- RESUMO -->
 
 <section
 class="cart"
@@ -771,7 +765,7 @@ Frete
 
 O próximo pagamento corresponde a
 <strong>
-R$ 77,00 por unidade reservada
+R$ 73,71 por unidade reservada
 </strong>.
 
 <br><br>
@@ -782,8 +776,6 @@ Os valores são atualizados automaticamente assim que você adiciona ou remove u
 
 </section>
 
-
-<!-- DADOS CLIENTE -->
 
 <section class="customer">
 
@@ -897,8 +889,6 @@ class="message">
 </main>
 
 
-<!-- BARRA FIXA -->
-
 <div
 id="floatingCart"
 class="floating-cart">
@@ -984,7 +974,7 @@ const DOLLAR =
 
 
 const NEXT_PAYMENT_UNIT =
-77.00;
+73.71;
 
 
 const accessToken =
@@ -1018,9 +1008,6 @@ let selectedRateio = null;
 
 let cart = {};
 let productModes = {};
-
-
-/* UTILIDADES */
 
 
 function escapeHtml(value){
@@ -1075,9 +1062,6 @@ product.price_brl || 0
 ) * 1.05;
 
 }
-
-
-/* API */
 
 
 async function api(
@@ -1151,9 +1135,6 @@ return null;
 return JSON.parse(text);
 
 }
-
-
-/* CARREGAR */
 
 
 async function loadRateios(){
@@ -1240,9 +1221,6 @@ console.error(error);
 }
 
 }
-
-
-/* RATEIOS */
 
 
 function renderRateios(){
@@ -1488,9 +1466,6 @@ ${open
 `;
 
 }
-
-
-/* PRODUTOS */
 
 
 function renderProducts(){
@@ -1834,9 +1809,6 @@ Rateio fechado — novas reservas encerradas.
 }
 
 
-/* CLIQUES DOS PRODUTOS */
-
-
 document
 .getElementById(
 "productsList"
@@ -1893,9 +1865,6 @@ button
 
 }
 );
-
-
-/* ADICIONAR */
 
 
 function addToCart(
@@ -1997,10 +1966,6 @@ renderCart();
 
 if(button){
 
-const oldText =
-button.textContent;
-
-
 button.classList.add(
 "added"
 );
@@ -2028,9 +1993,6 @@ button.textContent =
 }
 
 
-/* REMOVER */
-
-
 function removeFromCart(
 productId
 ){
@@ -2042,9 +2004,6 @@ String(productId)
 renderCart();
 
 }
-
-
-/* CARRINHO */
 
 
 function renderCart(){
@@ -2245,8 +2204,6 @@ Remover produto
 }
 
 
-/* TOTAIS PRINCIPAIS */
-
 document
 .getElementById(
 "cryptoTotal"
@@ -2276,8 +2233,6 @@ money(
 nextTotal
 );
 
-
-/* BARRA FIXA */
 
 document
 .getElementById(
@@ -2339,8 +2294,6 @@ floating.classList.remove(
 }
 
 
-/* BOTÃO CONFIRMAR */
-
 document
 .getElementById(
 "confirmButton"
@@ -2366,9 +2319,6 @@ block:"start"
 });
 
 }
-
-
-/* CONFIRMAR RESERVA */
 
 
 async function confirmReservation(){
@@ -2718,9 +2668,6 @@ renderCart();
 }
 
 }
-
-
-/* INICIAR */
 
 
 async function start(){
