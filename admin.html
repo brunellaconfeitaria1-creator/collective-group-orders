@@ -1,0 +1,2618 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>Painel Administrativo | Forever Collective</title>
+
+<style>
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  background:#020613;
+  color:#fff;
+  font-family:Arial,sans-serif
+}
+
+.wrap{
+  width:min(100% - 20px,1100px);
+  margin:auto;
+  padding:15px 0 50px
+}
+
+.top,.section{
+  background:#07101e;
+  border:1px solid #1c3048;
+  border-radius:20px;
+  padding:18px;
+  margin-bottom:15px
+}
+
+.logo{
+  font-weight:900;
+  letter-spacing:2px;
+  font-size:19px
+}
+
+.logo span{color:#8b45ff}
+
+h1{margin:15px 0 5px}
+
+.muted{
+  color:#95a2b5;
+  line-height:1.5
+}
+
+/* MENU */
+
+.admin-menu{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+  margin-bottom:18px;
+  position:sticky;
+  top:5px;
+  z-index:20;
+  background:#020613;
+  padding:7px 0
+}
+
+.menu-btn{
+  border:1px solid #263d5a;
+  background:#0a1625;
+  color:#aeb9c9;
+  border-radius:15px;
+  padding:15px 8px;
+  font-weight:900;
+  font-size:15px;
+  cursor:pointer
+}
+
+.menu-btn.active{
+  color:white;
+  border-color:#6f40ff;
+  background:linear-gradient(90deg,#168cff,#7238ff)
+}
+
+.page{display:none}
+.page.active{display:block}
+
+/* RESUMO */
+
+.summary{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+  margin-bottom:15px
+}
+
+.summary-card{
+  background:#091321;
+  border:1px solid #1c3048;
+  border-radius:16px;
+  padding:15px
+}
+
+.summary-card strong{
+  display:block;
+  font-size:25px;
+  color:#57c4ff;
+  margin-bottom:5px
+}
+
+/* PEDIDOS */
+
+.customer{
+  background:#091321;
+  border:1px solid #1e344e;
+  border-radius:18px;
+  overflow:hidden;
+  margin-bottom:14px
+}
+
+.customer-header{
+  padding:17px;
+  background:linear-gradient(
+    120deg,
+    rgba(20,160,255,.10),
+    rgba(116,56,255,.12)
+  )
+}
+
+.customer-header h3{
+  margin:0 0 8px;
+  font-size:21px
+}
+
+.customer-info{
+  color:#a1adbd;
+  font-size:14px;
+  line-height:1.6
+}
+
+.tags{
+  display:flex;
+  gap:7px;
+  flex-wrap:wrap;
+  margin-top:10px
+}
+
+.tag{
+  border:1px solid #304561;
+  border-radius:18px;
+  padding:6px 10px;
+  font-size:12px
+}
+
+.orders{padding:10px}
+
+.order{
+  background:#050b15;
+  border:1px solid #21364f;
+  border-radius:14px;
+  margin-bottom:9px;
+  overflow:hidden
+}
+
+.order summary{
+  padding:15px;
+  cursor:pointer;
+  font-weight:900;
+  line-height:1.5
+}
+
+.order-body{
+  padding:15px;
+  border-top:1px solid #21364f
+}
+
+/* QUANTIDADES */
+
+.items-edit{
+  margin:12px 0 16px
+}
+
+.item-edit{
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:12px;
+  align-items:center;
+  padding:13px 0;
+  border-bottom:1px solid #172a3e
+}
+
+.item-name{
+  font-weight:800;
+  line-height:1.4
+}
+
+.qty-control{
+  display:flex;
+  align-items:center;
+  gap:6px
+}
+
+.qty-btn{
+  width:40px;
+  height:40px;
+  border:0;
+  border-radius:10px;
+  background:#263a55;
+  color:white;
+  font-size:22px;
+  font-weight:900;
+  cursor:pointer
+}
+
+.qty-input{
+  width:65px !important;
+  height:40px;
+  padding:5px !important;
+  text-align:center;
+  font-weight:900;
+  font-size:17px !important
+}
+
+.qty-save{
+  margin-top:13px;
+  width:100%
+}
+
+/* PAGAMENTOS */
+
+.payment-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;
+  margin-top:15px
+}
+
+.payment-box{
+  background:#091321;
+  border:1px solid #263f5c;
+  border-radius:14px;
+  padding:13px
+}
+
+.payment-box h4{margin:0 0 8px}
+
+.value{
+  color:#58c6ff;
+  font-size:18px;
+  font-weight:900;
+  margin:7px 0
+}
+
+.paid{
+  color:#4ae38a;
+  font-weight:900;
+  margin:8px 0
+}
+
+.pending{
+  color:#f5b84d;
+  font-weight:900;
+  margin:8px 0
+}
+
+.payment-edit{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:9px;
+  margin-top:15px
+}
+
+.field label{
+  display:block;
+  color:#9aa7b9;
+  font-size:12px;
+  margin-bottom:5px
+}
+
+/* RATEIOS */
+
+.rateios{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px
+}
+
+.rateio{
+  background:#091321;
+  border:1px solid #21364f;
+  border-radius:17px;
+  padding:16px
+}
+
+.rateio-name{
+  font-size:21px;
+  font-weight:900;
+  margin-bottom:10px
+}
+
+.rateio-dates{
+  margin-top:14px;
+  padding-top:14px;
+  border-top:1px solid #20354d
+}
+
+.rateio-dates label{
+  display:block;
+  color:#9aa7b9;
+  font-size:12px;
+  font-weight:800;
+  margin:10px 0 5px
+}
+
+.rateio-dates .btn{
+  width:100%;
+  margin-top:12px
+}
+
+.status{
+  display:inline-block;
+  border-radius:18px;
+  padding:6px 10px;
+  font-size:11px;
+  font-weight:900;
+  margin-bottom:12px
+}
+
+.open{
+  color:#4ae38a;
+  border:1px solid #16864d;
+  background:#09261a
+}
+
+.closed{
+  color:#ff7777;
+  border:1px solid #87323a;
+  background:#291116
+}
+
+/* PRODUTOS */
+
+.toolbar{margin-bottom:12px}
+
+.new-product{
+  display:grid;
+  grid-template-columns:1.5fr 1fr 1fr auto;
+  gap:8px;
+  margin-bottom:15px
+}
+
+.product-row{
+  display:grid;
+  grid-template-columns:1.6fr 1fr 1fr auto auto;
+  gap:8px;
+  align-items:center;
+  padding:10px;
+  background:#091321;
+  border:1px solid #21364f;
+  border-radius:13px;
+  margin-bottom:8px
+}
+
+input,select{
+  width:100%;
+  background:#07101e;
+  color:white;
+  border:1px solid #29415f;
+  border-radius:10px;
+  padding:11px;
+  font-size:15px
+}
+
+.check{
+  display:flex;
+  align-items:center;
+  gap:5px
+}
+
+.check input{width:auto}
+
+.btn{
+  border:0;
+  border-radius:11px;
+  padding:11px 13px;
+  color:#fff;
+  font-weight:900;
+  background:linear-gradient(90deg,#168cff,#7139ff);
+  cursor:pointer
+}
+
+.green{background:#158c55}
+.red{background:#96343e}
+.gray{background:#29384b}
+
+.delete-area{
+  margin-top:18px;
+  padding-top:16px;
+  border-top:1px solid #3d2027
+}
+
+.delete-btn{
+  width:100%;
+  background:#a02f3a
+}
+
+.message{
+  min-height:18px;
+  margin:10px 0;
+  font-weight:800
+}
+
+.success{color:#4ae38a}
+.error{color:#ff7777}
+
+.empty{
+  background:#091321;
+  border:1px solid #1c3048;
+  border-radius:16px;
+  padding:20px;
+  text-align:center;
+  color:#9aa6b8
+}
+
+.back{
+  color:#60c4ff;
+  font-weight:900;
+  text-decoration:none
+}
+
+@media(max-width:750px){
+
+  .summary,
+  .rateios,
+  .payment-grid,
+  .payment-edit{
+    grid-template-columns:1fr
+  }
+
+  .new-product,
+  .product-row{
+    grid-template-columns:1fr
+  }
+
+  .item-edit{
+    grid-template-columns:1fr
+  }
+
+  .qty-control{
+    justify-content:flex-start
+  }
+
+  .btn{width:100%}
+}
+
+</style>
+</head>
+
+<body>
+
+<main class="wrap">
+
+<section class="top">
+
+<div class="logo">
+🧬 FOREVER <span>COLLECTIVE</span>
+</div>
+
+<h1>Painel Administrativo</h1>
+
+<p class="muted">
+Escolha abaixo o que deseja administrar.
+</p>
+
+</section>
+
+
+<div class="admin-menu">
+
+<button
+id="menuOrders"
+class="menu-btn active"
+onclick="openPage('orders')">
+📦 Pedidos
+</button>
+
+<button
+id="menuRateios"
+class="menu-btn"
+onclick="openPage('rateios')">
+📋 Rateios
+</button>
+
+<button
+id="menuProducts"
+class="menu-btn"
+onclick="openPage('products')">
+🧪 Produtos
+</button>
+
+</div>
+
+
+<!-- PEDIDOS -->
+
+<div id="pageOrders" class="page active">
+
+<div class="summary">
+
+<div class="summary-card">
+<strong id="totalClients">0</strong>
+Clientes
+</div>
+
+<div class="summary-card">
+<strong id="totalOrders">0</strong>
+Pedidos
+</div>
+
+<div class="summary-card">
+<strong id="totalValue">R$ 0,00</strong>
+Total
+</div>
+
+</div>
+
+<section class="section">
+
+<h2>📦 Pedidos dos clientes</h2>
+
+<p class="muted">
+Abra um pedido para alterar quantidades, pagamentos ou excluir.
+</p>
+
+<div id="ordersList">
+
+<div class="empty">
+Carregando pedidos...
+</div>
+
+</div>
+
+</section>
+
+</div>
+
+
+<!-- RATEIOS -->
+
+<div id="pageRateios" class="page">
+
+<section class="section">
+
+<h2>📋 Rateios</h2>
+
+<p class="muted">
+Abra ou feche os rateios.
+</p>
+
+<div id="rateiosList" class="rateios">
+Carregando...
+</div>
+
+<div id="rateioMessage" class="message"></div>
+
+</section>
+
+</div>
+
+
+<!-- PRODUTOS -->
+
+<div id="pageProducts" class="page">
+
+<section class="section">
+
+<h2>🧪 Produtos</h2>
+
+<p class="muted">
+Gerencie os produtos de cada fornecedor.
+</p>
+
+<div class="toolbar">
+
+<select id="brandFilter">
+
+<option value="ALL">
+Todos os rateios
+</option>
+
+</select>
+
+</div>
+
+
+<div class="new-product">
+
+<input
+id="newProductName"
+placeholder="Nome do produto">
+
+<input
+id="newProductBrand"
+placeholder="Marca: UTHER">
+
+<input
+id="newProductPrice"
+type="number"
+step="0.01"
+placeholder="Valor R$">
+
+<button
+id="addProductButton"
+class="btn">
++ Adicionar
+</button>
+
+</div>
+
+<div id="productMessage" class="message"></div>
+
+<div id="productsList">
+Carregando produtos...
+</div>
+
+</section>
+
+</div>
+
+
+<a class="back" href="index.html">
+← Voltar para o site
+</a>
+
+</main>
+
+
+<script>
+
+const SUPABASE_URL =
+"https://ygulvirkzwvdyfgqsbjj.supabase.co";
+
+const SUPABASE_KEY =
+"sb_publishable_2u7B7_ZvZuKc-e3UPxx3rg_5oEN83x5";
+
+const ADMIN_EMAIL =
+"nuuna102@gmail.com";
+
+const token =
+localStorage.getItem("access_token");
+
+let rateios=[];
+let products=[];
+let orders=[];
+let productBrands={};
+
+
+/* MENU */
+
+function openPage(page){
+
+document
+.querySelectorAll(".page")
+.forEach(el=>{
+  el.classList.remove("active");
+});
+
+document
+.querySelectorAll(".menu-btn")
+.forEach(el=>{
+  el.classList.remove("active");
+});
+
+if(page==="orders"){
+  document.getElementById("pageOrders").classList.add("active");
+  document.getElementById("menuOrders").classList.add("active");
+}
+
+if(page==="rateios"){
+  document.getElementById("pageRateios").classList.add("active");
+  document.getElementById("menuRateios").classList.add("active");
+}
+
+if(page==="products"){
+  document.getElementById("pageProducts").classList.add("active");
+  document.getElementById("menuProducts").classList.add("active");
+}
+
+window.scrollTo({
+  top:0,
+  behavior:"smooth"
+});
+
+}
+
+
+/* UTILIDADES */
+
+function escapeHtml(v){
+
+return String(v??"")
+.replaceAll("&","&amp;")
+.replaceAll("<","&lt;")
+.replaceAll(">","&gt;")
+.replaceAll('"',"&quot;")
+.replaceAll("'","&#039;");
+
+}
+
+
+function money(v){
+
+if(v===null || v===undefined || v===""){
+  return "A definir";
+}
+
+return Number(v).toLocaleString(
+"pt-BR",
+{
+  style:"currency",
+  currency:"BRL"
+}
+);
+
+}
+
+
+function crypto(v){
+
+if(v===null || v===undefined){
+  return "A definir";
+}
+
+return Number(v).toFixed(2)+" USDT";
+
+}
+
+
+function dateTimeBR(v){
+
+if(!v)return "-";
+
+return new Date(v)
+.toLocaleString("pt-BR");
+
+}
+
+
+function numOrNull(v){
+
+if(v==="")return null;
+
+const n=Number(v);
+
+return Number.isNaN(n)
+? null
+: n;
+
+}
+
+
+/* API */
+
+async function api(path,options={}){
+
+const response=
+await fetch(
+SUPABASE_URL+path,
+{
+  ...options,
+
+  headers:{
+    apikey:SUPABASE_KEY,
+
+    Authorization:
+    "Bearer "+token,
+
+    "Content-Type":
+    "application/json",
+
+    ...(options.headers||{})
+  }
+}
+);
+
+if(response.status===401){
+
+  localStorage.clear();
+
+  window.location.href=
+  "login.html";
+
+  throw new Error(
+    "Sessão expirada"
+  );
+
+}
+
+if(!response.ok){
+
+  throw new Error(
+    await response.text()
+  );
+
+}
+
+if(response.status===204){
+  return null;
+}
+
+const text=
+await response.text();
+
+return text
+? JSON.parse(text)
+: null;
+
+}
+
+
+/* ADMIN */
+
+async function verifyAdmin(){
+
+if(!token){
+
+  window.location.href=
+  "login.html";
+
+  return false;
+}
+
+try{
+
+  const user=
+  await api("/auth/v1/user");
+
+  if(
+    !user.email ||
+    user.email.toLowerCase()!==
+    ADMIN_EMAIL.toLowerCase()
+  ){
+
+    alert(
+      "Acesso somente para administradora."
+    );
+
+    window.location.href=
+    "index.html";
+
+    return false;
+  }
+
+  return true;
+
+}catch{
+
+  window.location.href=
+  "login.html";
+
+  return false;
+}
+
+}
+
+
+/* RATEIOS */
+
+async function loadRateios(){
+
+rateios=
+await api(
+"/rest/v1/rateios"+
+"?select=*"+
+"&order=sort_order.asc,brand.asc"
+);
+
+renderRateios();
+updateBrandFilter();
+
+}
+
+
+function renderRateios(){
+
+const container=
+document.getElementById(
+"rateiosList"
+);
+
+container.innerHTML=
+rateios.map(r=>{
+
+const opened=
+r.is_open===true;
+
+return `
+
+<div class="rateio">
+
+<div class="rateio-name">
+${escapeHtml(r.brand)}
+</div>
+
+<div class="status ${opened?"open":"closed"}">
+
+${opened
+?"● RATEIO ABERTO"
+:"● RATEIO FECHADO"}
+
+</div>
+
+<br>
+
+<button
+class="btn ${opened?"red":"green"}"
+onclick="toggleRateio(
+'${escapeHtml(r.brand)}',
+${opened}
+)">
+
+${opened
+?"FECHAR RATEIO"
+:"ABRIR RATEIO"}
+
+</button>
+
+<div class="rateio-dates">
+
+<label>
+Data do pagamento atual para todo o rateio
+</label>
+
+<input
+type="date"
+id="rateio-due-now-${escapeHtml(r.brand)}"
+value="${r.payment_due_date||""}">
+
+<label>
+Data do próximo pagamento para todo o rateio
+</label>
+
+<input
+type="date"
+id="rateio-due-next-${escapeHtml(r.brand)}"
+value="${r.next_payment_due_date||""}">
+
+<button
+class="btn"
+onclick="applyRateioDates('${escapeHtml(r.brand)}')">
+APLICAR DATAS A TODOS OS PEDIDOS
+</button>
+
+<div
+id="rateio-date-message-${escapeHtml(r.brand)}"
+class="message">
+</div>
+
+</div>
+
+</div>
+
+`;
+
+}).join("");
+
+}
+
+
+async function toggleRateio(
+brand,
+current
+){
+
+const msg=
+document.getElementById(
+"rateioMessage"
+);
+
+msg.textContent=
+"Salvando...";
+
+try{
+
+await api(
+"/rest/v1/rateios"+
+"?brand=eq."+
+encodeURIComponent(brand),
+{
+  method:"PATCH",
+
+  headers:{
+    Prefer:"return=minimal"
+  },
+
+  body:JSON.stringify({
+    is_open:!current,
+    updated_at:
+    new Date().toISOString()
+  })
+}
+);
+
+msg.className=
+"message success";
+
+msg.textContent=
+"✅ Rateio atualizado.";
+
+await loadRateios();
+
+}catch(error){
+
+console.error(error);
+
+msg.className=
+"message error";
+
+msg.textContent=
+"Erro ao alterar rateio.";
+
+}
+
+}
+
+
+async function applyRateioDates(brand){
+
+const safeId=String(brand);
+
+const msg=
+document.getElementById(
+"rateio-date-message-"+safeId
+);
+
+const dueNow=
+document.getElementById(
+"rateio-due-now-"+safeId
+).value||null;
+
+const dueNext=
+document.getElementById(
+"rateio-due-next-"+safeId
+).value||null;
+
+if(!dueNow && !dueNext){
+  msg.className="message error";
+  msg.textContent="Escolha pelo menos uma data.";
+  return;
+}
+
+const matchingOrders=
+orders.filter(o=>
+  String(inferBrand(o)||"").toUpperCase()===
+  String(brand).toUpperCase()
+);
+
+if(!matchingOrders.length){
+  msg.className="message error";
+  msg.textContent="Não há pedidos neste rateio.";
+  return;
+}
+
+const body={
+  updated_at:new Date().toISOString()
+};
+
+if(dueNow){
+  body.payment_due_date=dueNow;
+}
+
+if(dueNext){
+  body.next_payment_due_date=dueNext;
+}
+
+const ids=matchingOrders
+.map(o=>Number(o.id))
+.filter(Number.isFinite);
+
+msg.className="message";
+msg.textContent="Aplicando datas...";
+
+try{
+
+await api(
+"/rest/v1/rateios?brand=eq."+encodeURIComponent(brand),
+{
+  method:"PATCH",
+  headers:{Prefer:"return=minimal"},
+  body:JSON.stringify({
+    payment_due_date:dueNow,
+    next_payment_due_date:dueNext,
+    updated_at:new Date().toISOString()
+  })
+}
+);
+
+if(ids.length){
+await api(
+"/rest/v1/orders?id=in.("+ids.join(",")+")",
+{
+  method:"PATCH",
+  headers:{Prefer:"return=minimal"},
+  body:JSON.stringify(body)
+}
+);
+}
+
+msg.className="message success";
+msg.textContent=
+"✅ Datas aplicadas em "+ids.length+
+" pedido(s) do rateio "+brand+". Novos pedidos também usarão essas datas.";
+
+await loadRateios();
+await loadOrders();
+
+}catch(error){
+  console.error(error);
+  msg.className="message error";
+  msg.textContent="Erro ao aplicar as datas.";
+}
+
+}
+
+
+/* PRODUTOS */
+
+async function loadProducts(){
+
+products=
+await api(
+"/rest/v1/products"+
+"?select=id,nameName,brand,price_brl,active,sort_order"+
+"&order=brand.asc,sort_order.asc,id.asc"
+);
+
+productBrands={};
+
+products.forEach(p=>{
+  productBrands[p.id]=p.brand;
+});
+
+updateBrandFilter();
+renderProducts();
+
+}
+
+
+function updateBrandFilter(){
+
+const select=
+document.getElementById(
+"brandFilter"
+);
+
+const current=
+select.value||"ALL";
+
+const brands=
+new Set();
+
+rateios.forEach(r=>
+brands.add(r.brand)
+);
+
+products.forEach(p=>
+brands.add(p.brand)
+);
+
+select.innerHTML=
+`
+<option value="ALL">
+Todos os rateios
+</option>
+`
++
+[...brands]
+.filter(Boolean)
+.sort()
+.map(b=>`
+<option value="${escapeHtml(b)}">
+${escapeHtml(b)}
+</option>
+`)
+.join("");
+
+select.value=
+[...select.options]
+.some(o=>o.value===current)
+? current
+: "ALL";
+
+}
+
+
+function renderProducts(){
+
+const container=
+document.getElementById(
+"productsList"
+);
+
+const filter=
+document.getElementById(
+"brandFilter"
+).value;
+
+const visible=
+products.filter(p=>
+  filter==="ALL" ||
+  p.brand===filter
+);
+
+if(!visible.length){
+
+container.innerHTML=
+`
+<div class="empty">
+Nenhum produto encontrado.
+</div>
+`;
+
+return;
+}
+
+container.innerHTML=
+visible.map(p=>`
+
+<div class="product-row">
+
+<input
+id="name-${p.id}"
+value="${escapeHtml(p.nameName||"")}">
+
+<input
+id="brand-${p.id}"
+value="${escapeHtml(p.brand||"")}">
+
+<input
+id="price-${p.id}"
+type="number"
+step="0.01"
+value="${Number(p.price_brl||0).toFixed(2)}">
+
+<label class="check">
+
+<input
+id="active-${p.id}"
+type="checkbox"
+${p.active?"checked":""}>
+
+Ativo
+
+</label>
+
+<button
+class="btn"
+onclick="saveProduct(${p.id})">
+Salvar
+</button>
+
+</div>
+
+`).join("");
+
+}
+
+
+async function ensureRateio(brand){
+
+const exists=
+rateios.some(r=>
+  String(r.brand).toUpperCase()===
+  String(brand).toUpperCase()
+);
+
+if(exists)return;
+
+await api(
+"/rest/v1/rateios",
+{
+  method:"POST",
+
+  headers:{
+    Prefer:"return=minimal"
+  },
+
+  body:JSON.stringify({
+    brand,
+    is_open:true,
+    active:true,
+    sort_order:
+    rateios.length+1
+  })
+}
+);
+
+await loadRateios();
+
+}
+
+
+async function saveProduct(id){
+
+const msg=
+document.getElementById(
+"productMessage"
+);
+
+const name=
+document.getElementById(
+"name-"+id
+).value.trim();
+
+const brand=
+document.getElementById(
+"brand-"+id
+).value.trim().toUpperCase();
+
+const price=
+Number(
+document.getElementById(
+"price-"+id
+).value
+);
+
+const active=
+document.getElementById(
+"active-"+id
+).checked;
+
+if(
+  !name ||
+  !brand ||
+  Number.isNaN(price)
+){
+
+  msg.className=
+  "message error";
+
+  msg.textContent=
+  "Confira os dados.";
+
+  return;
+}
+
+try{
+
+await ensureRateio(brand);
+
+await api(
+"/rest/v1/products?id=eq."+id,
+{
+  method:"PATCH",
+
+  headers:{
+    Prefer:"return=minimal"
+  },
+
+  body:JSON.stringify({
+    nameName:name,
+    brand,
+    price_brl:price,
+    active
+  })
+}
+);
+
+msg.className=
+"message success";
+
+msg.textContent=
+"✅ Produto salvo.";
+
+await loadProducts();
+
+}catch(error){
+
+console.error(error);
+
+msg.className=
+"message error";
+
+msg.textContent=
+"Erro ao salvar produto.";
+
+}
+
+}
+
+
+async function addProduct(){
+
+const msg=
+document.getElementById(
+"productMessage"
+);
+
+const name=
+document.getElementById(
+"newProductName"
+).value.trim();
+
+const brand=
+document.getElementById(
+"newProductBrand"
+).value.trim().toUpperCase();
+
+const price=
+Number(
+document.getElementById(
+"newProductPrice"
+).value
+);
+
+if(
+  !name ||
+  !brand ||
+  Number.isNaN(price)
+){
+
+  msg.className=
+  "message error";
+
+  msg.textContent=
+  "Preencha todos os dados.";
+
+  return;
+}
+
+try{
+
+await ensureRateio(brand);
+
+await api(
+"/rest/v1/products",
+{
+  method:"POST",
+
+  headers:{
+    Prefer:"return=minimal"
+  },
+
+  body:JSON.stringify({
+    nameName:name,
+    brand,
+    price_brl:price,
+    active:true,
+    reserved:0,
+    stock_available:0,
+    box_size:10,
+    sort_order:0
+  })
+}
+);
+
+msg.className=
+"message success";
+
+msg.textContent=
+"✅ Produto adicionado.";
+
+document.getElementById(
+"newProductName"
+).value="";
+
+document.getElementById(
+"newProductBrand"
+).value="";
+
+document.getElementById(
+"newProductPrice"
+).value="";
+
+await loadProducts();
+
+}catch(error){
+
+console.error(error);
+
+msg.className=
+"message error";
+
+msg.textContent=
+"Erro ao adicionar produto.";
+
+}
+
+}
+
+
+/* PEDIDOS */
+
+async function loadOrders(){
+
+orders=
+await api(
+"/rest/v1/orders"+
+"?select=*"+
+"&order=created_at.desc"
+);
+
+renderOrders();
+
+}
+
+
+function inferBrand(order){
+
+if(order.rateio_brand){
+  return order.rateio_brand;
+}
+
+const items=
+Array.isArray(order.items)
+? order.items
+: [];
+
+const brands=
+new Set();
+
+items.forEach(item=>{
+
+const brand=
+productBrands[
+item.product_id
+];
+
+if(brand){
+  brands.add(brand);
+}
+
+});
+
+return brands.size===1
+? [...brands][0]
+: "Não identificado";
+
+}
+
+
+function customerKey(order){
+
+if(order.user_id){
+  return "U:"+order.user_id;
+}
+
+if(order.customer_email){
+
+  return "E:"+
+  order.customer_email.toLowerCase();
+}
+
+if(order.customer_phone){
+
+  return "P:"+
+  order.customer_phone.replace(/\D/g,"");
+}
+
+return "N:"+
+String(
+order.customer_name||"Cliente"
+).toLowerCase();
+
+}
+
+
+/* EDITAR ITENS */
+
+function renderEditableItems(
+items,
+orderId
+){
+
+if(
+  !Array.isArray(items) ||
+  !items.length
+){
+
+return `
+<p class="muted">
+Itens não informados.
+</p>
+`;
+
+}
+
+return `
+
+<div class="items-edit">
+
+${items.map(i=>{
+
+const productId=
+Number(i.product_id||0);
+
+const qty=
+Math.max(
+0,
+Number(i.quantity||0)
+);
+
+if(!productId){
+
+return `
+
+<div class="item-edit">
+
+<div class="item-name">
+${escapeHtml(
+i.name||"Produto"
+)}
+</div>
+
+<div>
+${qty} un.
+</div>
+
+</div>
+
+`;
+
+}
+
+return `
+
+<div class="item-edit">
+
+<div class="item-name">
+
+${escapeHtml(
+i.name||"Produto"
+)}
+
+</div>
+
+
+<div class="qty-control">
+
+<button
+type="button"
+class="qty-btn"
+onclick="
+changeQty(
+${orderId},
+${productId},
+-1
+)
+">
+−
+</button>
+
+
+<input
+class="qty-input"
+id="qty-${orderId}-${productId}"
+data-order-id="${orderId}"
+data-product-id="${productId}"
+type="number"
+min="0"
+max="999"
+step="1"
+value="${qty}"
+>
+
+
+<button
+type="button"
+class="qty-btn"
+onclick="
+changeQty(
+${orderId},
+${productId},
+1
+)
+">
++
+</button>
+
+</div>
+
+</div>
+
+`;
+
+}).join("")}
+
+
+<button
+class="btn qty-save"
+onclick="
+saveOrderQuantities(
+${orderId}
+)
+">
+
+💾 SALVAR QUANTIDADES
+
+</button>
+
+
+<div
+id="quantity-message-${orderId}"
+class="message">
+</div>
+
+</div>
+
+`;
+
+}
+
+
+function changeQty(
+orderId,
+productId,
+change
+){
+
+const input=
+document.getElementById(
+`qty-${orderId}-${productId}`
+);
+
+if(!input)return;
+
+let value=
+Number(input.value||0);
+
+value+=change;
+
+if(value<0){
+  value=0;
+}
+
+if(value>999){
+  value=999;
+}
+
+input.value=value;
+
+}
+
+
+/* SALVAR QUANTIDADES */
+
+async function saveOrderQuantities(
+orderId
+){
+
+const msg=
+document.getElementById(
+"quantity-message-"+orderId
+);
+
+const inputs=
+document.querySelectorAll(
+`.qty-input[data-order-id="${orderId}"]`
+);
+
+const quantities=
+[...inputs].map(input=>({
+
+product_id:
+Number(
+input.dataset.productId
+),
+
+quantity:
+Math.max(
+0,
+Math.min(
+999,
+Number(input.value||0)
+)
+)
+
+}));
+
+const totalQuantity=
+quantities.reduce(
+(sum,item)=>
+sum+item.quantity,
+0
+);
+
+if(totalQuantity<=0){
+
+msg.className=
+"message error";
+
+msg.textContent=
+"⚠️ O pedido precisa ficar com pelo menos 1 produto.";
+
+return;
+}
+
+
+const confirmed=
+confirm(
+"Salvar as novas quantidades do pedido #"+
+orderId+
+"?"
+);
+
+if(!confirmed){
+  return;
+}
+
+
+msg.className=
+"message";
+
+msg.textContent=
+"Salvando quantidades...";
+
+
+try{
+
+await api(
+"/rest/v1/rpc/admin_update_order_quantities",
+{
+  method:"POST",
+
+  headers:{
+    Prefer:"return=representation"
+  },
+
+  body:JSON.stringify({
+    p_order_id:orderId,
+    p_quantities:quantities
+  })
+}
+);
+
+
+msg.className=
+"message success";
+
+msg.textContent=
+"✅ Quantidades atualizadas.";
+
+
+await loadProducts();
+await loadOrders();
+
+
+}catch(error){
+
+console.error(error);
+
+msg.className=
+"message error";
+
+msg.textContent=
+"Não foi possível alterar as quantidades.";
+
+}
+
+}
+
+
+function paymentStatus(
+confirmed,
+confirmedAt
+){
+
+if(confirmed){
+
+return `
+
+<div class="paid">
+✅ PAGO
+</div>
+
+<small>
+${confirmedAt
+? dateTimeBR(confirmedAt)
+: ""}
+</small>
+
+`;
+
+}
+
+return `
+<div class="pending">
+⏳ PENDENTE
+</div>
+`;
+
+}
+
+
+function paymentButton(
+id,
+type,
+confirmed
+){
+
+return `
+
+<button
+class="btn ${confirmed?"gray":"green"}"
+onclick="
+togglePayment(
+${id},
+'${type}',
+${confirmed}
+)
+">
+
+${confirmed
+?"Desfazer confirmação"
+:type==="fee"
+?"Confirmar taxa"
+:"Confirmar pagamento"}
+
+</button>
+
+`;
+
+}
+
+
+function renderOrders(){
+
+const groups={};
+
+orders.forEach(order=>{
+
+const key=
+customerKey(order);
+
+if(!groups[key]){
+
+groups[key]={
+  name:
+  order.customer_name||
+  "Cliente",
+
+  phone:
+  order.customer_phone||
+  "",
+
+  email:
+  order.customer_email||
+  "",
+
+  orders:[]
+};
+
+}
+
+groups[key].orders.push(
+order
+);
+
+});
+
+
+const customers=
+Object.values(groups)
+.sort(
+(a,b)=>
+a.name.localeCompare(
+b.name,
+"pt-BR"
+)
+);
+
+
+document.getElementById(
+"totalClients"
+).textContent=
+customers.length;
+
+
+document.getElementById(
+"totalOrders"
+).textContent=
+orders.length;
+
+
+document.getElementById(
+"totalValue"
+).textContent=
+money(
+orders.reduce(
+(sum,o)=>
+sum+
+Number(o.total||0),
+0
+)
+);
+
+
+const container=
+document.getElementById(
+"ordersList"
+);
+
+
+if(!customers.length){
+
+container.innerHTML=
+`
+<div class="empty">
+Nenhum pedido encontrado.
+</div>
+`;
+
+return;
+}
+
+
+container.innerHTML=
+customers.map(c=>`
+
+<div class="customer">
+
+<div class="customer-header">
+
+<h3>
+${escapeHtml(c.name)}
+</h3>
+
+<div class="customer-info">
+
+📱 ${escapeHtml(c.phone||"-")}
+
+<br>
+
+✉️ ${escapeHtml(c.email||"-")}
+
+</div>
+
+<div class="tags">
+
+<span class="tag">
+
+${c.orders.length}
+pedido(s)
+
+</span>
+
+</div>
+
+</div>
+
+
+<div class="orders">
+
+${c.orders.map(o=>{
+
+const brand=
+inferBrand(o);
+
+return `
+
+<details class="order">
+
+<summary>
+
+Pedido #${o.id}
+
+<br>
+
+<span style="color:#58c6ff">
+
+${escapeHtml(brand)}
+
+</span>
+
+•
+
+${dateTimeBR(o.created_at)}
+
+</summary>
+
+
+<div class="order-body">
+
+
+<h4>
+🧪 Produtos e quantidades
+</h4>
+
+
+${renderEditableItems(
+o.items,
+o.id
+)}
+
+
+<div class="payment-edit">
+
+<div class="field">
+
+<label>
+Data pagamento atual
+</label>
+
+<input
+type="date"
+id="due-now-${o.id}"
+value="${o.payment_due_date||""}">
+
+</div>
+
+
+<div class="field">
+
+<label>
+Data próximo pagamento
+</label>
+
+<input
+type="date"
+id="due-next-${o.id}"
+value="${o.next_payment_due_date||""}">
+
+</div>
+
+
+<div class="field">
+
+<label>
+Cripto USDT
+</label>
+
+<input
+type="number"
+step="0.01"
+id="crypto-${o.id}"
+value="${o.payment_now_crypto??""}">
+
+</div>
+
+
+<div class="field">
+
+<label>
+Pix R$
+</label>
+
+<input
+type="number"
+step="0.01"
+id="pix-${o.id}"
+value="${o.payment_now_pix??""}">
+
+</div>
+
+
+<div class="field">
+
+<label>
+Próximo pagamento R$
+</label>
+
+<input
+type="number"
+step="0.01"
+id="next-${o.id}"
+value="${o.next_payment_brl??""}">
+
+</div>
+
+</div>
+
+
+<button
+class="btn"
+onclick="
+savePaymentData(${o.id})
+">
+
+SALVAR VALORES E DATAS
+
+</button>
+
+
+<div
+id="payment-message-${o.id}"
+class="message">
+</div>
+
+
+<div class="payment-grid">
+
+
+<div class="payment-box">
+
+<h4>
+💰 Pagamento atual
+</h4>
+
+<div class="value">
+
+Cripto:
+${crypto(
+o.payment_now_crypto
+)}
+
+</div>
+
+<div class="value">
+
+Pix:
+${money(
+o.payment_now_pix
+)}
+
+</div>
+
+${paymentStatus(
+o.payment_now_confirmed,
+o.payment_now_confirmed_at
+)}
+
+${paymentButton(
+o.id,
+"now",
+o.payment_now_confirmed
+)}
+
+</div>
+
+
+<div class="payment-box">
+
+<h4>
+📅 Próximo pagamento
+</h4>
+
+<div class="value">
+
+${money(
+o.next_payment_brl
+)}
+
+</div>
+
+${paymentStatus(
+o.next_payment_confirmed,
+o.next_payment_confirmed_at
+)}
+
+${paymentButton(
+o.id,
+"next",
+o.next_payment_confirmed
+)}
+
+</div>
+
+
+<div class="payment-box">
+
+<h4>
+Taxa administrativa
+</h4>
+
+<div class="value">
+
+${money(
+o.admin_fee_brl??50
+)}
+
+</div>
+
+${paymentStatus(
+o.admin_fee_confirmed,
+o.admin_fee_confirmed_at
+)}
+
+${paymentButton(
+o.id,
+"fee",
+o.admin_fee_confirmed
+)}
+
+</div>
+
+
+<div class="payment-box">
+
+<h4>
+🚚 Frete
+</h4>
+
+<div class="value">
+
+${escapeHtml(
+o.freight_note||
+"Frete à parte"
+)}
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="delete-area">
+
+<button
+class="btn delete-btn"
+onclick="
+deleteOrder(${o.id})
+">
+
+🗑 EXCLUIR PEDIDO
+
+</button>
+
+</div>
+
+
+</div>
+
+</details>
+
+`;
+
+}).join("")}
+
+</div>
+
+</div>
+
+`).join("");
+
+}
+
+
+/* SALVAR PAGAMENTO */
+
+async function savePaymentData(id){
+
+const msg=
+document.getElementById(
+"payment-message-"+id
+);
+
+try{
+
+await api(
+"/rest/v1/orders?id=eq."+id,
+{
+  method:"PATCH",
+
+  headers:{
+    Prefer:"return=minimal"
+  },
+
+  body:JSON.stringify({
+
+    payment_due_date:
+    document.getElementById(
+    "due-now-"+id
+    ).value||null,
+
+    next_payment_due_date:
+    document.getElementById(
+    "due-next-"+id
+    ).value||null,
+
+    payment_now_crypto:
+    numOrNull(
+    document.getElementById(
+    "crypto-"+id
+    ).value
+    ),
+
+    payment_now_pix:
+    numOrNull(
+    document.getElementById(
+    "pix-"+id
+    ).value
+    ),
+
+    next_payment_brl:
+    numOrNull(
+    document.getElementById(
+    "next-"+id
+    ).value
+    ),
+
+    admin_fee_brl:50,
+
+    freight_note:
+    "Frete à parte",
+
+    updated_at:
+    new Date().toISOString()
+
+  })
+}
+);
+
+msg.className=
+"message success";
+
+msg.textContent=
+"✅ Salvo.";
+
+await loadOrders();
+
+}catch(error){
+
+console.error(error);
+
+msg.className=
+"message error";
+
+msg.textContent=
+"Erro ao salvar.";
+
+}
+
+}
+
+
+/* CONFIRMAR PAGAMENTOS */
+
+async function togglePayment(
+id,
+type,
+current
+){
+
+const confirmed=
+!current;
+
+const body={
+  updated_at:
+  new Date().toISOString()
+};
+
+if(type==="now"){
+
+  body.payment_now_confirmed=
+  confirmed;
+
+  body.payment_now_confirmed_at=
+  confirmed
+  ? new Date().toISOString()
+  : null;
+}
+
+if(type==="next"){
+
+  body.next_payment_confirmed=
+  confirmed;
+
+  body.next_payment_confirmed_at=
+  confirmed
+  ? new Date().toISOString()
+  : null;
+}
+
+if(type==="fee"){
+
+  body.admin_fee_confirmed=
+  confirmed;
+
+  body.admin_fee_confirmed_at=
+  confirmed
+  ? new Date().toISOString()
+  : null;
+}
+
+try{
+
+await api(
+"/rest/v1/orders?id=eq."+id,
+{
+  method:"PATCH",
+
+  headers:{
+    Prefer:"return=minimal"
+  },
+
+  body:JSON.stringify(body)
+}
+);
+
+await loadOrders();
+
+}catch(error){
+
+console.error(error);
+
+alert(
+"Não foi possível atualizar o pagamento."
+);
+
+}
+
+}
+
+
+/* EXCLUIR PEDIDO */
+
+async function deleteOrder(id){
+
+const confirmacao=
+confirm(
+"Tem certeza que deseja excluir o pedido #"+
+id+
+"?\n\n"+
+"As unidades deste pedido também sairão da contagem dos boxes."
+);
+
+if(!confirmacao){
+  return;
+}
+
+const confirmacaoFinal=
+confirm(
+"CONFIRMAR EXCLUSÃO\n\n"+
+"O pedido #"+
+id+
+" será apagado."
+);
+
+if(!confirmacaoFinal){
+  return;
+}
+
+try{
+
+await api(
+"/rest/v1/rpc/admin_delete_order",
+{
+  method:"POST",
+
+  headers:{
+    Prefer:"return=representation"
+  },
+
+  body:JSON.stringify({
+    p_order_id:id
+  })
+}
+);
+
+alert(
+"✅ Pedido #"+
+id+
+" excluído."
+);
+
+await loadProducts();
+await loadOrders();
+
+}catch(error){
+
+console.error(error);
+
+alert(
+"Não foi possível excluir o pedido."
+);
+
+}
+
+}
+
+
+/* EVENTOS */
+
+document.getElementById(
+"brandFilter"
+).addEventListener(
+"change",
+renderProducts
+);
+
+document.getElementById(
+"addProductButton"
+).addEventListener(
+"click",
+addProduct
+);
+
+
+/* INICIAR */
+
+async function start(){
+
+const allowed=
+await verifyAdmin();
+
+if(!allowed)return;
+
+try{
+
+await loadRateios();
+await loadProducts();
+await loadOrders();
+
+}catch(error){
+
+console.error(error);
+
+alert(
+"Não foi possível carregar o painel."
+);
+
+}
+
+}
+
+start();
+
+</script>
+
+</body>
+  </html>
