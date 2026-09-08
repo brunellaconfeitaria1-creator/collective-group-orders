@@ -124,6 +124,13 @@ body{
   margin-top:14px;
 }
 
+.rateio-due{
+  margin-top:10px;
+  color:#f5b84d;
+  font-size:14px;
+  font-weight:900;
+}
+
 
 /* CABEÇALHO CATÁLOGO */
 
@@ -413,6 +420,27 @@ body{
 
 .next{
   color:#bb8cff;
+}
+
+.total-order{
+  margin-top:14px;
+  padding:16px;
+  border:1px solid #6d45ff;
+  border-radius:15px;
+  background:linear-gradient(
+    90deg,
+    rgba(18,166,242,.13),
+    rgba(105,58,255,.18)
+  );
+}
+
+.total-order span{
+  font-weight:900;
+}
+
+.total-order strong{
+  font-size:22px;
+  color:#fff;
 }
 
 .notice{
@@ -758,6 +786,23 @@ Frete
 
 </div>
 
+
+<div class="summary-row total-order">
+
+<span>
+TOTAL DO PEDIDO
+<br>
+<small>
+(Pix + próximo pagamento + taxa, sem frete)
+</small>
+</span>
+
+<strong id="orderTotal">
+R$ 0,00
+</strong>
+
+</div>
+
 </div>
 
 
@@ -770,7 +815,11 @@ R$ 70,20 por unidade reservada
 
 <br><br>
 
-Os valores são atualizados automaticamente assim que você adiciona ou remove um produto.
+O total do pedido considera o pagamento atual em Pix (+5%), o próximo pagamento e a taxa administrativa de R$ 50,00.
+
+<br><br>
+
+O frete para sua casa não está incluso no total.
 
 </div>
 
@@ -977,6 +1026,10 @@ const NEXT_PAYMENT_UNIT =
 70.20;
 
 
+const ADMIN_FEE =
+50.00;
+
+
 const accessToken =
 localStorage.getItem(
 "access_token"
@@ -1042,6 +1095,31 @@ return Number(value || 0)
 .toFixed(2)
 .replace(".",",") +
 " USDT";
+
+}
+
+
+function dateBR(value){
+
+if(!value){
+return "";
+}
+
+const parts =
+String(value)
+.split("-");
+
+if(parts.length !== 3){
+return value;
+}
+
+return (
+parts[2] +
+"/" +
+parts[1] +
+"/" +
+parts[0]
+);
 
 }
 
@@ -1143,7 +1221,7 @@ rateios =
 await api(
 
 "/rest/v1/rateios" +
-"?select=brand,is_open,active,sort_order" +
+"?select=brand,is_open,active,sort_order,payment_due_date,next_payment_due_date" +
 "&active=eq.true" +
 "&order=sort_order.asc,brand.asc"
 
@@ -1304,6 +1382,17 @@ produto(s) disponível(is)
 
 </div>
 
+
+${rateio.payment_due_date
+? `
+<div class="rateio-due">
+📅 1º pagamento:
+${dateBR(rateio.payment_due_date)}
+</div>
+`
+: ""
+}
+
 </article>
 
 `;
@@ -1447,6 +1536,11 @@ selectedRateio &&
 selectedRateio.is_open;
 
 
+const dueNow =
+selectedRateio &&
+selectedRateio.payment_due_date;
+
+
 container.innerHTML =
 `
 
@@ -1462,6 +1556,17 @@ ${open
 }
 
 </span>
+
+
+${dueNow
+? `
+<div class="rateio-due">
+📅 1º pagamento até:
+${dateBR(dueNow)}
+</div>
+`
+: ""
+}
 
 `;
 
@@ -2204,6 +2309,15 @@ Remover produto
 }
 
 
+const finalTotal =
+
+entries.length
+? pixTotal +
+nextTotal +
+ADMIN_FEE
+: 0;
+
+
 document
 .getElementById(
 "cryptoTotal"
@@ -2231,6 +2345,16 @@ document
 .textContent =
 money(
 nextTotal
+);
+
+
+document
+.getElementById(
+"orderTotal"
+)
+.textContent =
+money(
+finalTotal
 );
 
 
@@ -2540,6 +2664,25 @@ fullAddress
 );
 
 
+const finalOrderTotal =
+
+result.total_brl_pix_scenario !== undefined
+? Number(
+result.total_brl_pix_scenario
+)
+: (
+Number(
+result.payment_now_pix || 0
+) +
+Number(
+result.next_payment_brl || 0
+) +
+Number(
+result.admin_fee_brl || ADMIN_FEE
+)
+);
+
+
 message.className =
 "message success";
 
@@ -2555,6 +2698,21 @@ confirmada com sucesso.
 
 <br><br>
 
+${result.payment_due_date
+? `
+📅 1º pagamento até:
+
+<strong>
+${dateBR(
+result.payment_due_date
+)}
+</strong>
+
+<br><br>
+`
+: ""
+}
+
 Pagamento atual em Cripto:
 
 <strong>
@@ -2565,7 +2723,7 @@ result.payment_now_crypto
 
 <br>
 
-Pagamento atual em Pix:
+Pagamento atual em Pix (+5%):
 
 <strong>
 ${money(
@@ -2597,6 +2755,20 @@ Frete:
 
 <strong>
 à parte
+</strong>
+
+<br><br>
+
+TOTAL DO PEDIDO
+(Pix + próximo pagamento + taxa, sem frete):
+
+<strong style="
+font-size:21px;
+color:#fff;
+">
+${money(
+finalOrderTotal
+)}
 </strong>
 
 <br><br>
@@ -2717,4 +2889,4 @@ start();
 
 </body>
 
-  </html>
+</html>
