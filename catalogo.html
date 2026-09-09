@@ -1,14 +1,11 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-
 <title>Catálogo | Forever Collective</title>
 
 <style>
-
 *{
   box-sizing:border-box;
 }
@@ -76,7 +73,6 @@ body{
   line-height:1.5;
 }
 
-
 /* RATEIOS */
 
 .rateio-grid{
@@ -124,14 +120,6 @@ body{
   margin-top:14px;
 }
 
-.rateio-due{
-  margin-top:10px;
-  color:#f5b84d;
-  font-size:14px;
-  font-weight:900;
-}
-
-
 /* CABEÇALHO CATÁLOGO */
 
 .catalog-header{
@@ -154,7 +142,6 @@ body{
   padding:11px 13px;
   font-weight:900;
 }
-
 
 /* PRODUTOS */
 
@@ -270,7 +257,6 @@ body{
   margin:8px 0 17px;
 }
 
-
 /* UNIDADE / BOX */
 
 .mode-selector{
@@ -297,7 +283,6 @@ body{
   color:white;
   background:linear-gradient(90deg,#14b1f4,#5d40ff);
 }
-
 
 /* ADICIONAR */
 
@@ -346,7 +331,6 @@ body{
   font-weight:900;
   margin-top:12px;
 }
-
 
 /* CARRINHO */
 
@@ -422,27 +406,6 @@ body{
   color:#bb8cff;
 }
 
-.total-order{
-  margin-top:14px;
-  padding:16px;
-  border:1px solid #6d45ff;
-  border-radius:15px;
-  background:linear-gradient(
-    90deg,
-    rgba(18,166,242,.13),
-    rgba(105,58,255,.18)
-  );
-}
-
-.total-order span{
-  font-weight:900;
-}
-
-.total-order strong{
-  font-size:22px;
-  color:#fff;
-}
-
 .notice{
   background:#07101e;
   border:1px solid #20364e;
@@ -452,7 +415,6 @@ body{
   line-height:1.5;
   margin-top:13px;
 }
-
 
 /* BARRA FIXA */
 
@@ -522,7 +484,6 @@ body{
   font-weight:900;
 }
 
-
 /* CLIENTE */
 
 label{
@@ -591,7 +552,6 @@ label{
   display:none;
 }
 
-
 @media(max-width:700px){
 
   .rateio-grid,
@@ -620,11 +580,9 @@ label{
 </style>
 </head>
 
-
 <body>
 
 <main class="wrap">
-
 
 <header class="top">
 
@@ -637,7 +595,6 @@ Meus pedidos
 </a>
 
 </header>
-
 
 <section id="rateioScreen">
 
@@ -661,9 +618,7 @@ Carregando rateios...
 
 </section>
 
-
 <section id="catalogScreen" class="hidden">
-
 
 <div class="catalog-header">
 
@@ -677,7 +632,6 @@ Rateio
 
 </div>
 
-
 <button
 type="button"
 class="change-rateio"
@@ -689,9 +643,7 @@ onclick="showRateios()">
 
 </div>
 
-
 <div id="productsList"></div>
-
 
 <section
 class="cart"
@@ -706,7 +658,6 @@ Nenhum produto adicionado.
 </p>
 
 </div>
-
 
 <div class="payment-summary">
 
@@ -726,7 +677,6 @@ id="cryptoTotal">
 
 </div>
 
-
 <div class="summary-row">
 
 <span>
@@ -742,7 +692,6 @@ R$ 0,00
 </strong>
 
 </div>
-
 
 <div class="summary-row">
 
@@ -760,11 +709,17 @@ R$ 0,00
 
 </div>
 
-
 <div class="summary-row">
 
 <span>
 Taxa administrativa e separação
+<br>
+
+<small style="color:#7f90a8;font-weight:700;line-height:1.4;display:inline-block;margin-top:4px">
+R$ 50,00 uma única vez por pessoa em cada rateio.
+Se você fizer novas reservas neste mesmo rateio, elas serão adicionadas ao seu pedido atual sem nova taxa.
+</small>
+
 </span>
 
 <strong>
@@ -772,7 +727,6 @@ R$ 50,00
 </strong>
 
 </div>
-
 
 <div class="summary-row">
 
@@ -786,50 +740,27 @@ Frete
 
 </div>
 
-
-<div class="summary-row total-order">
-
-<span>
-TOTAL DO PEDIDO
-<br>
-<small>
-(Pix + próximo pagamento + taxa, sem frete)
-</small>
-</span>
-
-<strong id="orderTotal">
-R$ 0,00
-</strong>
-
 </div>
-
-</div>
-
 
 <div class="notice">
 
 O próximo pagamento corresponde a
+
 <strong>
 R$ 70,20 por unidade reservada
 </strong>.
 
 <br><br>
 
-O total do pedido considera o pagamento atual em Pix (+5%), o próximo pagamento e a taxa administrativa de R$ 50,00.
-
-<br><br>
-
-O frete para sua casa não está incluso no total.
+Os valores são atualizados automaticamente assim que você adiciona ou remove um produto.
 
 </div>
 
 </section>
 
-
 <section class="customer">
 
 <h2>Dados do cliente</h2>
-
 
 <label for="customerName">
 Nome completo
@@ -840,7 +771,6 @@ class="customer-input"
 id="customerName"
 type="text">
 
-
 <label for="customerPhone">
 Telefone / WhatsApp
 </label>
@@ -849,7 +779,6 @@ Telefone / WhatsApp
 class="customer-input"
 id="customerPhone"
 type="tel">
-
 
 <label for="customerEmail">
 E-mail
@@ -860,7 +789,6 @@ class="customer-input"
 id="customerEmail"
 type="email">
 
-
 <label for="customerCep">
 CEP
 </label>
@@ -870,7 +798,6 @@ class="customer-input"
 id="customerCep"
 type="text">
 
-
 <label for="customerAddress">
 Rua, número e complemento
 </label>
@@ -879,7 +806,6 @@ Rua, número e complemento
 class="customer-input"
 id="customerAddress"
 type="text">
-
 
 <div class="two">
 
@@ -895,7 +821,6 @@ id="customerCity"
 type="text">
 
 </div>
-
 
 <div>
 
@@ -913,7 +838,6 @@ type="text">
 
 </div>
 
-
 <button
 id="confirmButton"
 class="confirm"
@@ -924,7 +848,6 @@ disabled>
 CONFIRMAR RESERVA
 
 </button>
-
 
 <div
 id="message"
@@ -937,11 +860,9 @@ class="message">
 
 </main>
 
-
 <div
 id="floatingCart"
 class="floating-cart">
-
 
 <div class="float-top">
 
@@ -952,11 +873,12 @@ class="floating-cart">
 <span
 id="floatQuantity"
 class="float-total">
+
 0 un.
+
 </span>
 
 </div>
-
 
 <div class="float-values">
 
@@ -970,7 +892,6 @@ class="float-total">
 
 </div>
 
-
 <div class="float-box">
 
 <span>Pix</span>
@@ -980,7 +901,6 @@ R$ 0
 </strong>
 
 </div>
-
 
 <div class="float-box">
 
@@ -994,7 +914,6 @@ R$ 0
 
 </div>
 
-
 <button
 type="button"
 class="float-btn"
@@ -1006,41 +925,29 @@ VER RESERVA →
 
 </div>
 
-
 <script>
-
 
 const SUPABASE_URL =
 "https://ygulvirkzwvdyfgqsbjj.supabase.co";
 
-
 const SUPABASE_KEY =
 "sb_publishable_2u7B7_ZvZuKc-e3UPxx3rg_5oEN83x5";
-
 
 const DOLLAR =
 5.50;
 
-
 const NEXT_PAYMENT_UNIT =
 70.20;
-
-
-const ADMIN_FEE =
-50.00;
-
 
 const accessToken =
 localStorage.getItem(
 "access_token"
 );
 
-
 const userId =
 localStorage.getItem(
 "user_id"
 );
-
 
 if(
 !accessToken ||
@@ -1052,16 +959,12 @@ window.location.href =
 
 }
 
-
 let rateios = [];
 let products = [];
-
 let selectedBrand = null;
 let selectedRateio = null;
-
 let cart = {};
 let productModes = {};
-
 
 function escapeHtml(value){
 
@@ -1073,7 +976,6 @@ return String(value ?? "")
 .replaceAll("'","&#039;");
 
 }
-
 
 function money(value){
 
@@ -1088,7 +990,6 @@ currency:"BRL"
 
 }
 
-
 function usdt(value){
 
 return Number(value || 0)
@@ -1098,32 +999,6 @@ return Number(value || 0)
 
 }
 
-
-function dateBR(value){
-
-if(!value){
-return "";
-}
-
-const parts =
-String(value)
-.split("-");
-
-if(parts.length !== 3){
-return value;
-}
-
-return (
-parts[2] +
-"/" +
-parts[1] +
-"/" +
-parts[0]
-);
-
-}
-
-
 function unitCrypto(product){
 
 return Number(
@@ -1132,7 +1007,6 @@ product.price_brl || 0
 
 }
 
-
 function unitPix(product){
 
 return Number(
@@ -1140,7 +1014,6 @@ product.price_brl || 0
 ) * 1.05;
 
 }
-
 
 async function api(
 path,
@@ -1168,9 +1041,9 @@ accessToken,
 ...(options.headers || {})
 
 }
+
 }
 );
-
 
 if(response.status === 401){
 
@@ -1185,7 +1058,6 @@ throw new Error(
 
 }
 
-
 if(!response.ok){
 
 const text =
@@ -1195,56 +1067,45 @@ throw new Error(text);
 
 }
 
-
 if(response.status === 204){
 return null;
 }
 
-
 const text =
 await response.text();
-
 
 if(!text){
 return null;
 }
 
-
 return JSON.parse(text);
 
 }
-
 
 async function loadRateios(){
 
 rateios =
 await api(
-
 "/rest/v1/rateios" +
-"?select=brand,is_open,active,sort_order,payment_due_date,next_payment_due_date" +
+"?select=brand,is_open,active,sort_order" +
 "&active=eq.true" +
 "&order=sort_order.asc,brand.asc"
-
 );
 
 }
-
 
 async function loadProducts(){
 
 products =
 await api(
-
 "/rest/v1/products" +
 "?select=id,nameName,brand,price_brl,reserved,box_size,description,active,sort_order" +
 "&active=eq.true" +
 "&price_brl=gt.0" +
 "&order=sort_order.asc,id.asc"
-
 );
 
 }
-
 
 async function loadUser(){
 
@@ -1255,15 +1116,12 @@ await api(
 "/auth/v1/user"
 );
 
-
 const meta =
 user.user_metadata || {};
-
 
 document.getElementById(
 "customerName"
 ).value =
-
 meta.nome ||
 meta.name ||
 localStorage.getItem(
@@ -1271,26 +1129,21 @@ localStorage.getItem(
 ) ||
 "";
 
-
 document.getElementById(
 "customerPhone"
 ).value =
-
 meta.telefone ||
 meta.phone ||
 "";
 
-
 document.getElementById(
 "customerEmail"
 ).value =
-
 user.email ||
 localStorage.getItem(
 "user_email"
 ) ||
 "";
-
 
 }catch(error){
 
@@ -1300,14 +1153,12 @@ console.error(error);
 
 }
 
-
 function renderRateios(){
 
 const container =
 document.getElementById(
 "rateioList"
 );
-
 
 if(!rateios.length){
 
@@ -1322,29 +1173,23 @@ return;
 
 }
 
-
 container.innerHTML =
-
 rateios.map(
 function(rateio){
 
 const totalProducts =
-
 products.filter(
 product =>
 
 String(product.brand)
 .toUpperCase() ===
-
 String(rateio.brand)
 .toUpperCase()
 
 ).length;
 
-
 const open =
 rateio.is_open === true;
-
 
 return `
 
@@ -1360,7 +1205,6 @@ rateio.brand
 
 </div>
 
-
 <span
 class="
 rateio-status
@@ -1374,7 +1218,6 @@ ${open
 
 </span>
 
-
 <div class="rateio-count">
 
 ${totalProducts}
@@ -1382,24 +1225,12 @@ produto(s) disponível(is)
 
 </div>
 
-
-${rateio.payment_due_date
-? `
-<div class="rateio-due">
-📅 1º pagamento:
-${dateBR(rateio.payment_due_date)}
-</div>
-`
-: ""
-}
-
 </article>
 
 `;
 
 }
 ).join("");
-
 
 document
 .querySelectorAll(
@@ -1422,29 +1253,23 @@ card.dataset.brand
 
 }
 
-
 function selectRateio(brand){
 
 selectedBrand =
 brand;
 
-
 selectedRateio =
 rateios.find(
-
 rateio =>
 
 String(rateio.brand)
 .toUpperCase() ===
-
 String(brand)
 .toUpperCase()
 
 );
 
-
 cart = {};
-
 
 document
 .getElementById(
@@ -1454,7 +1279,6 @@ document
 "hidden"
 );
 
-
 document
 .getElementById(
 "catalogScreen"
@@ -1462,7 +1286,6 @@ document
 .classList.remove(
 "hidden"
 );
-
 
 document
 .getElementById(
@@ -1471,11 +1294,11 @@ document
 .textContent =
 "Rateio " + brand;
 
-
 renderCatalogStatus();
-renderProducts();
-renderCart();
 
+renderProducts();
+
+renderCart();
 
 window.scrollTo({
 top:0,
@@ -1484,13 +1307,11 @@ behavior:"smooth"
 
 }
 
-
 function showRateios(){
 
 selectedBrand = null;
 selectedRateio = null;
 cart = {};
-
 
 document
 .getElementById(
@@ -1500,7 +1321,6 @@ document
 "hidden"
 );
 
-
 document
 .getElementById(
 "rateioScreen"
@@ -1509,10 +1329,9 @@ document
 "hidden"
 );
 
-
 renderRateios();
-renderCart();
 
+renderCart();
 
 window.scrollTo({
 top:0,
@@ -1521,7 +1340,6 @@ behavior:"smooth"
 
 }
 
-
 function renderCatalogStatus(){
 
 const container =
@@ -1529,17 +1347,9 @@ document.getElementById(
 "catalogStatus"
 );
 
-
 const open =
-
 selectedRateio &&
 selectedRateio.is_open;
-
-
-const dueNow =
-selectedRateio &&
-selectedRateio.payment_due_date;
-
 
 container.innerHTML =
 `
@@ -1557,21 +1367,9 @@ ${open
 
 </span>
 
-
-${dueNow
-? `
-<div class="rateio-due">
-📅 1º pagamento até:
-${dateBR(dueNow)}
-</div>
-`
-: ""
-}
-
 `;
 
 }
-
 
 function renderProducts(){
 
@@ -1580,20 +1378,16 @@ document.getElementById(
 "productsList"
 );
 
-
 const list =
-
 products.filter(
 product =>
 
 String(product.brand)
 .toUpperCase() ===
-
 String(selectedBrand)
 .toUpperCase()
 
 );
-
 
 if(!list.length){
 
@@ -1608,71 +1402,54 @@ return;
 
 }
 
-
 const open =
-
 selectedRateio &&
 selectedRateio.is_open;
 
-
 container.innerHTML =
-
 list.map(
 function(product){
 
-
 const productId =
 Number(product.id);
-
 
 const reserved =
 Number(
 product.reserved || 0
 );
 
-
 const boxSize =
 Number(
 product.box_size || 10
 );
-
 
 const boxes =
 Math.floor(
 reserved / boxSize
 );
 
-
 const remainder =
 reserved % boxSize;
 
-
 const missing =
-
 remainder === 0
 ? boxSize
 : boxSize - remainder;
 
-
 const percent =
-
 (
 remainder /
 boxSize
 ) * 100;
 
-
 const mode =
-
 productModes[
 productId
 ] || "unit";
 
-
 return `
 
 <article class="product-card">
-
 
 <div class="badges">
 
@@ -1683,7 +1460,6 @@ product.brand
 )}
 
 </span>
-
 
 <span
 class="
@@ -1700,7 +1476,6 @@ ${open
 
 </div>
 
-
 <div class="product-name">
 
 ${escapeHtml(
@@ -1709,9 +1484,7 @@ product.nameName
 
 </div>
 
-
 <div class="payment-preview">
-
 
 <div class="payment-mini">
 
@@ -1729,7 +1502,6 @@ unitCrypto(product)
 
 </div>
 
-
 <div class="payment-mini">
 
 <span>
@@ -1745,7 +1517,6 @@ unitPix(product)
 </strong>
 
 </div>
-
 
 <div class="payment-mini">
 
@@ -1765,9 +1536,7 @@ NEXT_PAYMENT_UNIT
 
 </div>
 
-
 <div class="numbers">
-
 
 <div class="number-box">
 
@@ -1780,7 +1549,6 @@ ${boxes}
 </strong>
 
 </div>
-
 
 <div class="number-box">
 
@@ -1796,7 +1564,6 @@ ${reserved}
 
 </div>
 
-
 <div class="progress-title">
 
 <span>
@@ -1804,13 +1571,10 @@ Próximo box
 </span>
 
 <strong>
-
 ${remainder}/${boxSize}
-
 </strong>
 
 </div>
-
 
 <div class="progress">
 
@@ -1820,7 +1584,6 @@ style="width:${percent}%">
 </div>
 
 </div>
-
 
 <div class="missing">
 
@@ -1834,9 +1597,7 @@ unidade(s) para fechar o próximo box.
 
 </div>
 
-
 <div class="mode-selector">
-
 
 <button
 type="button"
@@ -1848,7 +1609,6 @@ data-mode="unit">
 Unidade
 
 </button>
-
 
 <button
 type="button"
@@ -1863,9 +1623,7 @@ Box com ${boxSize}
 
 </div>
 
-
 <div class="reserve-row">
-
 
 <input
 class="quantity"
@@ -1878,7 +1636,6 @@ step="1"
 value="1"
 ${open ? "" : "disabled"}
 >
-
 
 <button
 class="reserve-btn"
@@ -1893,7 +1650,6 @@ ${open ? "" : "disabled"}>
 </button>
 
 </div>
-
 
 ${!open
 ? `
@@ -1913,7 +1669,6 @@ Rateio fechado — novas reservas encerradas.
 
 }
 
-
 document
 .getElementById(
 "productsList"
@@ -1922,27 +1677,22 @@ document
 "click",
 function(event){
 
-
 const button =
 event.target.closest(
 "button[data-action]"
 );
 
-
 if(!button){
 return;
 }
 
-
 const action =
 button.dataset.action;
-
 
 const productId =
 Number(
 button.dataset.id
 );
-
 
 if(action === "mode"){
 
@@ -1951,13 +1701,11 @@ productId
 ] =
 button.dataset.mode;
 
-
 renderProducts();
 
 return;
 
 }
-
 
 if(action === "add"){
 
@@ -1970,7 +1718,6 @@ button
 
 }
 );
-
 
 function addToCart(
 productId,
@@ -1990,9 +1737,7 @@ return;
 
 }
 
-
 const product =
-
 products.find(
 item =>
 
@@ -2000,7 +1745,6 @@ Number(item.id) ===
 Number(productId)
 
 );
-
 
 if(!product){
 
@@ -2012,19 +1756,16 @@ return;
 
 }
 
-
 const input =
 document.getElementById(
 "qty-" + productId
 );
-
 
 let quantity =
 parseInt(
 input?.value,
 10
 );
-
 
 if(
 !Number.isFinite(quantity) ||
@@ -2035,13 +1776,10 @@ quantity = 1;
 
 }
 
-
 const mode =
-
 productModes[
 productId
 ] || "unit";
-
 
 if(mode === "box"){
 
@@ -2051,7 +1789,6 @@ product.box_size || 10
 );
 
 }
-
 
 cart[
 String(productId)
@@ -2065,9 +1802,7 @@ String(productId)
 
 quantity;
 
-
 renderCart();
-
 
 if(button){
 
@@ -2077,7 +1812,6 @@ button.classList.add(
 
 button.textContent =
 "✓ ADICIONADO";
-
 
 setTimeout(
 ()=>{
@@ -2097,7 +1831,6 @@ button.textContent =
 
 }
 
-
 function removeFromCart(
 productId
 ){
@@ -2110,14 +1843,12 @@ renderCart();
 
 }
 
-
 function renderCart(){
 
 const container =
 document.getElementById(
 "cartItems"
 );
-
 
 const entries =
 Object.entries(cart)
@@ -2126,12 +1857,10 @@ Object.entries(cart)
 Number(quantity) > 0
 );
 
-
 let cryptoTotal = 0;
 let pixTotal = 0;
 let nextTotal = 0;
 let quantityTotal = 0;
-
 
 if(!entries.length){
 
@@ -2144,7 +1873,6 @@ Nenhum produto adicionado.
 
 }else{
 
-
 container.innerHTML =
 
 entries.map(
@@ -2153,10 +1881,8 @@ productId,
 quantity
 ]){
 
-
 quantity =
 Number(quantity);
-
 
 const product =
 
@@ -2168,45 +1894,36 @@ Number(productId)
 
 );
 
-
 if(!product){
 return "";
 }
-
 
 const itemCrypto =
 
 unitCrypto(product) *
 quantity;
 
-
 const itemPix =
 
 unitPix(product) *
 quantity;
-
 
 const itemNext =
 
 NEXT_PAYMENT_UNIT *
 quantity;
 
-
 cryptoTotal +=
 itemCrypto;
-
 
 pixTotal +=
 itemPix;
 
-
 nextTotal +=
 itemNext;
 
-
 quantityTotal +=
 quantity;
-
 
 const boxSize =
 
@@ -2214,24 +1931,20 @@ Number(
 product.box_size || 10
 );
 
-
 const boxes =
 
 Math.floor(
 quantity / boxSize
 );
 
-
 const loose =
 
 quantity %
 boxSize;
 
-
 return `
 
 <div class="cart-item">
-
 
 <div class="cart-item-top">
 
@@ -2251,7 +1964,6 @@ ${quantity} un.
 
 </div>
 
-
 <small>
 
 ${boxes} box(es)
@@ -2264,7 +1976,6 @@ loose +
 }
 
 </small>
-
 
 <div class="cart-values">
 
@@ -2289,7 +2000,6 @@ ${money(itemNext)}
 
 </div>
 
-
 <button
 type="button"
 class="remove"
@@ -2308,16 +2018,6 @@ Remover produto
 
 }
 
-
-const finalTotal =
-
-entries.length
-? pixTotal +
-nextTotal +
-ADMIN_FEE
-: 0;
-
-
 document
 .getElementById(
 "cryptoTotal"
@@ -2326,7 +2026,6 @@ document
 usdt(
 cryptoTotal
 );
-
 
 document
 .getElementById(
@@ -2337,7 +2036,6 @@ money(
 pixTotal
 );
 
-
 document
 .getElementById(
 "nextTotal"
@@ -2347,17 +2045,6 @@ money(
 nextTotal
 );
 
-
-document
-.getElementById(
-"orderTotal"
-)
-.textContent =
-money(
-finalTotal
-);
-
-
 document
 .getElementById(
 "floatQuantity"
@@ -2365,7 +2052,6 @@ document
 .textContent =
 quantityTotal +
 " un.";
-
 
 document
 .getElementById(
@@ -2376,7 +2062,6 @@ usdt(
 cryptoTotal
 );
 
-
 document
 .getElementById(
 "floatPix"
@@ -2385,7 +2070,6 @@ document
 money(
 pixTotal
 );
-
 
 document
 .getElementById(
@@ -2396,12 +2080,10 @@ money(
 nextTotal
 );
 
-
 const floating =
 document.getElementById(
 "floatingCart"
 );
-
 
 if(entries.length){
 
@@ -2417,7 +2099,6 @@ floating.classList.remove(
 
 }
 
-
 document
 .getElementById(
 "confirmButton"
@@ -2429,7 +2110,6 @@ entries.length === 0 ||
 !selectedRateio.is_open;
 
 }
-
 
 function goToCart(){
 
@@ -2444,7 +2124,6 @@ block:"start"
 
 }
 
-
 async function confirmReservation(){
 
 const button =
@@ -2452,48 +2131,40 @@ document.getElementById(
 "confirmButton"
 );
 
-
 const message =
 document.getElementById(
 "message"
 );
-
 
 const name =
 document.getElementById(
 "customerName"
 ).value.trim();
 
-
 const phone =
 document.getElementById(
 "customerPhone"
 ).value.trim();
-
 
 const email =
 document.getElementById(
 "customerEmail"
 ).value.trim();
 
-
 const cep =
 document.getElementById(
 "customerCep"
 ).value.trim();
-
 
 const address =
 document.getElementById(
 "customerAddress"
 ).value.trim();
 
-
 const city =
 document.getElementById(
 "customerCity"
 ).value.trim();
-
 
 const state =
 document.getElementById(
@@ -2502,7 +2173,6 @@ document.getElementById(
 .value
 .trim()
 .toUpperCase();
-
 
 if(
 !name ||
@@ -2524,7 +2194,6 @@ return;
 
 }
 
-
 const entries =
 
 Object.entries(cart)
@@ -2532,7 +2201,6 @@ Object.entries(cart)
 ([,quantity]) =>
 Number(quantity) > 0
 );
-
 
 if(!entries.length){
 
@@ -2546,28 +2214,21 @@ return;
 
 }
 
-
 button.disabled =
 true;
-
 
 button.textContent =
 "CONFIRMANDO...";
 
-
 message.className =
 "message";
-
 
 message.textContent =
 "Enviando sua reserva...";
 
-
 try{
 
-
 await loadRateios();
-
 
 selectedRateio =
 
@@ -2582,7 +2243,6 @@ String(selectedBrand)
 
 );
 
-
 if(
 !selectedRateio ||
 !selectedRateio.is_open
@@ -2593,7 +2253,6 @@ throw new Error(
 );
 
 }
-
 
 const items =
 
@@ -2616,7 +2275,6 @@ Number(quantity)
 }
 );
 
-
 const fullAddress =
 
 address +
@@ -2624,7 +2282,6 @@ address +
 city +
 " - " +
 state;
-
 
 const result =
 
@@ -2663,154 +2320,131 @@ fullAddress
 }
 );
 
-
-const finalOrderTotal =
-
-result.total_brl_pix_scenario !== undefined
-? Number(
-result.total_brl_pix_scenario
-)
-: (
-Number(
-result.payment_now_pix || 0
-) +
-Number(
-result.next_payment_brl || 0
-) +
-Number(
-result.admin_fee_brl || ADMIN_FEE
-)
-);
-
-
 message.className =
 "message success";
 
-
 message.innerHTML =
-`
-
-✅ Reserva
-<strong>
-#${result.order_id}
-</strong>
-confirmada com sucesso.
-
-<br><br>
-
-${result.payment_due_date
+result.merged_into_existing
 ? `
-📅 1º pagamento até:
 
-<strong>
-${dateBR(
-result.payment_due_date
-)}
+✅ Sua nova reserva foi adicionada ao pedido
+<strong>#${result.order_id}</strong>
+deste rateio.
+
+<br><br>
+
+<strong style="color:#4ae38a">
+Você não pagará outra taxa de R$ 50,00.
 </strong>
 
 <br><br>
-`
-: ""
-}
+
+Seus produtos foram somados ao pedido que você já tinha neste rateio.
+
+<br><br>
 
 Pagamento atual em Cripto:
-
-<strong>
-${usdt(
-result.payment_now_crypto
-)}
-</strong>
+<strong>${usdt(result.payment_now_crypto)}</strong>
 
 <br>
 
-Pagamento atual em Pix (+5%):
-
-<strong>
-${money(
-result.payment_now_pix
-)}
-</strong>
+Pagamento atual em Pix:
+<strong>${money(result.payment_now_pix)}</strong>
 
 <br>
 
 Próximo pagamento:
-
-<strong>
-${money(
-result.next_payment_brl
-)}
-</strong>
+<strong>${money(result.next_payment_brl)}</strong>
 
 <br>
 
 Taxa administrativa e separação:
-
-<strong>
-R$ 50,00
-</strong>
+<strong>R$ 50,00 — única neste rateio</strong>
 
 <br>
 
 Frete:
-
-<strong>
-à parte
-</strong>
-
-<br><br>
-
-TOTAL DO PEDIDO
-(Pix + próximo pagamento + taxa, sem frete):
-
-<strong style="
-font-size:21px;
-color:#fff;
-">
-${money(
-finalOrderTotal
-)}
-</strong>
+<strong>à parte</strong>
 
 <br><br>
 
 <a
 href="meus-pedidos.html"
-style="
-color:#59c6ff;
-font-weight:900;
-">
+style="color:#59c6ff;font-weight:900">
 
-Ver meus pedidos →
+Ver meu pedido atualizado →
+
+</a>
+
+`
+: `
+
+✅ Reserva
+<strong>#${result.order_id}</strong>
+confirmada com sucesso.
+
+<br><br>
+
+Pagamento atual em Cripto:
+<strong>${usdt(result.payment_now_crypto)}</strong>
+
+<br>
+
+Pagamento atual em Pix:
+<strong>${money(result.payment_now_pix)}</strong>
+
+<br>
+
+Próximo pagamento:
+<strong>${money(result.next_payment_brl)}</strong>
+
+<br>
+
+Taxa administrativa e separação:
+<strong>R$ 50,00 — única neste rateio</strong>
+
+<br><br>
+
+<span style="color:#9fb0c7">
+Se você fizer novas reservas neste mesmo rateio, elas serão adicionadas a este pedido sem cobrar outra taxa de R$ 50,00.
+</span>
+
+<br><br>
+
+Frete:
+<strong>à parte</strong>
+
+<br><br>
+
+<a
+href="meus-pedidos.html"
+style="color:#59c6ff;font-weight:900">
+
+Ver meu pedido →
 
 </a>
 
 `;
 
-
 cart = {};
-
 
 await loadProducts();
 
-
 renderProducts();
-renderCart();
 
+renderCart();
 
 message.scrollIntoView({
 behavior:"smooth",
 block:"center"
 });
 
-
 }catch(error){
 
 console.error(error);
 
-
 message.className =
 "message error";
-
 
 if(
 String(error.message)
@@ -2841,7 +2475,6 @@ renderCart();
 
 }
 
-
 async function start(){
 
 try{
@@ -2854,14 +2487,11 @@ loadUser()
 
 ]);
 
-
 renderRateios();
-
 
 }catch(error){
 
 console.error(error);
-
 
 document
 .getElementById(
@@ -2882,11 +2512,9 @@ Não foi possível carregar o catálogo.
 
 }
 
-
 start();
 
 </script>
 
 </body>
-
 </html>
